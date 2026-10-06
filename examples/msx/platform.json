@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "platform": {
+    "id": "msx",
+    "name": "MSX",
+    "aliases": ["msx", "msx computer"],
+    "extensions": ["rom", "mx1", "mx2"],
+    "medium": "CARTRIDGE"
+  },
+  "manufacturer": "ASCII / Microsoft",
+  "releaseYear": 1983,
+  "coverAspectRatio": 0.75,
+  "assets": {"logo": "assets/logo.png", "pixel": "assets/pixel.png"}
+}

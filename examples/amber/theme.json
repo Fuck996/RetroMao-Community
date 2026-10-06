@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 3,
+  "id": "amber-arcade",
+  "name": "琥珀街机",
+  "author": "RetroMao Community",
+  "colors": {
+    "background": "#17120F",
+    "surface": "#281E17",
+    "foreground": "#FFF1DB",
+    "muted": "#C8A785",
+    "accent": "#F9B64D",
+    "outline": "#6A4932"
+  },
+  "layout": {"detailWidthFraction": 0.25, "cardCornerRadius": 8, "cardGap": 16, "titleLines": 2},
+  "motion": {"focusDelayMs": 500, "focusScale": 1.04, "transitionMs": 220},
+  "assets": {"background.library": "art/library.png"}
+}
