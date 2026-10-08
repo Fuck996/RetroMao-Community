@@ -12,7 +12,8 @@
       "releaseTag": "packs-2026-10-06",
       "fileName": "platform-msx-1.0.0.zip",
       "sizeBytes": 14440,
-      "sha256": "bfab526dfc929bf87093917065db38360cb45db17badfea9ebb3009474e9ceb3"
+      "sha256": "bfab526dfc929bf87093917065db38360cb45db17badfea9ebb3009474e9ceb3",
+      "previewPath": "previews/msx.png"
     },
     {
       "kind": "THEME",

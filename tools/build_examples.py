@@ -39,6 +39,8 @@ def make_images() -> None:
     draw.rectangle((42, 62, 214, 164), fill="#6B9C86")
     draw.text((128, 183), "MSX", anchor="mm", font=font(38), fill="white")
     pixel.save(icons / "pixel.png")
+    (ROOT / "previews").mkdir(exist_ok=True)
+    pixel.save(ROOT / "previews/msx.png")
 
     art = ROOT / "examples/amber/art"
     art.mkdir(parents=True, exist_ok=True)
@@ -99,7 +101,7 @@ def main() -> None:
     entries = [
         {"kind": "PLATFORM", "id": "msx", "name": "MSX", "author": "RetroMao Community",
          "description": "MSX 平台配置与图标示例；不包含模拟器或 ROM。", "version": "1.0.0",
-         "minAppVersion": "0.9.44", "releaseTag": TAG, **platform},
+         "minAppVersion": "0.9.44", "releaseTag": TAG, **platform, "previewPath": "previews/msx.png"},
         {"kind": "THEME", "id": "amber-arcade", "name": "琥珀街机", "author": "RetroMao Community",
          "description": "暖色网格背景、琥珀色卡片与轻微焦点动效。", "version": "1.0.0",
          "minAppVersion": "0.9.44", "releaseTag": TAG, **theme,
