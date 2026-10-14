@@ -18,10 +18,10 @@
       "name": "日本語",
       "file": "ja.json",
       "status": "draft",
-      "translated": 0,
+      "translated": 958,
       "total": 958,
-      "size_bytes": 40811,
-      "sha256": "96cf3aa97eb949687cac3e0920edc26286d9250239428635424de0afd673186c"
+      "size_bytes": 97644,
+      "sha256": "16bb114f4800c346661d0c09bf4e1b6f877d7593233271e59560de9f48a130fc"
     },
     {
       "locale": "zh-Hans",
