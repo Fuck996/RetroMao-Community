@@ -38,10 +38,10 @@
       "name": "繁體中文",
       "file": "zh-Hant.json",
       "status": "draft",
-      "translated": 0,
+      "translated": 958,
       "total": 958,
-      "size_bytes": 41787,
-      "sha256": "b766e6444b73ef1ebcc8c859ddd4ec7c188de1fe0a90b3f6af53866aa6674eb6"
+      "size_bytes": 74994,
+      "sha256": "f58f439dd2e509a6ab2b37c7b92ad6dab1404ecfc8c96a36e2ce0e80abc29bb2"
     }
   ]
 }
