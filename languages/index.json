@@ -8,10 +8,10 @@
       "name": "English",
       "file": "en.json",
       "status": "draft",
-      "translated": 0,
+      "translated": 958,
       "total": 958,
-      "size_bytes": 40809,
-      "sha256": "039286160e8763796e6cf40f1ede219ec8f4edeeeb2b445d42258ebd36f835b4"
+      "size_bytes": 75299,
+      "sha256": "786038e02873f956353616c52bab4ede900b268571a346d22f25d2abe407eceb"
     },
     {
       "locale": "ja",
