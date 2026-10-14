@@ -10,8 +10,8 @@
       "status": "draft",
       "translated": 0,
       "total": 958,
-      "size_bytes": 41777,
-      "sha256": "dc0bebd349f7367945773aadb86a7b48a5e7edc8d4a92066aebfc0341f38cc20"
+      "size_bytes": 40809,
+      "sha256": "039286160e8763796e6cf40f1ede219ec8f4edeeeb2b445d42258ebd36f835b4"
     },
     {
       "locale": "ja",
@@ -20,8 +20,8 @@
       "status": "draft",
       "translated": 0,
       "total": 958,
-      "size_bytes": 41779,
-      "sha256": "fa19911e931e4292838f983a36f3efdc770505c527df3dc8e4e9b8bc4837a24c"
+      "size_bytes": 40811,
+      "sha256": "96cf3aa97eb949687cac3e0920edc26286d9250239428635424de0afd673186c"
     },
     {
       "locale": "zh-Hans",
@@ -30,8 +30,8 @@
       "status": "source",
       "translated": 958,
       "total": 958,
-      "size_bytes": 74806,
-      "sha256": "76111b9213d0b3489fe8d20ea86736894d298dec1358bdd0fce627bfa2e890c9"
+      "size_bytes": 73838,
+      "sha256": "653cee7274aab1256d59b519a2f5ce9ae62515f5878c1afc41e484a6e4c4df49"
     },
     {
       "locale": "zh-Hant",
@@ -40,8 +40,8 @@
       "status": "draft",
       "translated": 958,
       "total": 958,
-      "size_bytes": 74994,
-      "sha256": "f58f439dd2e509a6ab2b37c7b92ad6dab1404ecfc8c96a36e2ce0e80abc29bb2"
+      "size_bytes": 74026,
+      "sha256": "a37a5fb754f3c4031944963a5b119aef473c58696560e104397329f00703033c"
     }
   ]
 }

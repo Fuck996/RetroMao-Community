@@ -5,12 +5,14 @@ on:
       - 'languages/**'
       - 'tools/validate_languages.py'
       - '.github/workflows/languages.yml'
+      - '.gitattributes'
   push:
     branches: [main]
     paths:
       - 'languages/**'
       - 'tools/validate_languages.py'
       - '.github/workflows/languages.yml'
+      - '.gitattributes'
 permissions:
   contents: read
 jobs:
@@ -18,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Check draft language files
+      - name: Check language files and index
         run: python3 tools/validate_languages.py

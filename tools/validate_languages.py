@@ -25,7 +25,10 @@ def unique_object(pairs):
 
 
 def read_json(path):
-    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    data = path.read_bytes()
+    if b"\r" in data:
+        raise ValueError(f"Language files must use LF line endings: {path.name}")
+    return json.loads(data.decode("utf-8"), object_pairs_hook=unique_object)
 
 
 def catalog_hash(messages):
@@ -92,6 +95,16 @@ def validate(root, require_complete=False, locale=None):
             "catalog_hash": expected_hash, "languages": rows}
 
 
+def check_index(root, expected):
+    if read_json(Path(root) / "index.json") != expected:
+        raise ValueError("Language index does not match files; run --write-index and commit the updated index")
+
+
+def write_index(root, index):
+    data = (json.dumps(index, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    (Path(root) / "index.json").write_bytes(data)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--languages", type=Path, default=Path(__file__).resolve().parents[1] / "languages")
@@ -101,7 +114,8 @@ def main():
     args = parser.parse_args()
     index = validate(args.languages, args.require_complete, args.locale)
     if args.write_index:
-        (args.languages / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_index(args.languages, index)
+    check_index(args.languages, index)
     for row in index["languages"]:
         print(f'{row["locale"]}: {row["translated"]}/{row["total"]} ({row["status"]})')
 
