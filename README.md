@@ -46,3 +46,7 @@
 示例可用 `python tools/build_examples.py` 重建，ZIP 输出到 `dist/`；脚本不会自动发布 Release。官方示例包与三语说明见[示例 Release](https://github.com/Fuck996/RetroMao-Community/releases/tag/packs-2026-10-06)。
 
 平台包定义机种身份、ROM 扩展名、介质类型、封面比例和图标，不提供模拟器或存档目录。主题包按已声明素材替换外观，不修改复古猫的渲染器。
+
+## 语言文件与社区翻译
+
+每种语言独立维护一个 JSON，社区可提交补译和新增语言 PR。文件、贡献规则和下载说明见 [languages/](languages/README.md)。简中为界面原文基线，英／日／繁中目前是待译模板；可下载编辑，当前 APK 尚不支持语言包导入，不能按平台或主题扩展安装。

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "catalog_version": "0.9.86",
+  "catalog_hash": "df5bbc6094d41e9d202b841614628ecb1ec43d1aa2540a38003ae5fc1aee4367",
+  "languages": [
+    {
+      "locale": "en",
+      "name": "English",
+      "file": "en.json",
+      "status": "draft",
+      "translated": 0,
+      "total": 958,
+      "size_bytes": 41777,
+      "sha256": "dc0bebd349f7367945773aadb86a7b48a5e7edc8d4a92066aebfc0341f38cc20"
+    },
+    {
+      "locale": "ja",
+      "name": "日本語",
+      "file": "ja.json",
+      "status": "draft",
+      "translated": 0,
+      "total": 958,
+      "size_bytes": 41779,
+      "sha256": "fa19911e931e4292838f983a36f3efdc770505c527df3dc8e4e9b8bc4837a24c"
+    },
+    {
+      "locale": "zh-Hans",
+      "name": "简体中文",
+      "file": "zh-Hans.json",
+      "status": "source",
+      "translated": 958,
+      "total": 958,
+      "size_bytes": 74806,
+      "sha256": "76111b9213d0b3489fe8d20ea86736894d298dec1358bdd0fce627bfa2e890c9"
+    },
+    {
+      "locale": "zh-Hant",
+      "name": "繁體中文",
+      "file": "zh-Hant.json",
+      "status": "draft",
+      "translated": 0,
+      "total": 958,
+      "size_bytes": 41787,
+      "sha256": "b766e6444b73ef1ebcc8c859ddd4ec7c188de1fe0a90b3f6af53866aa6674eb6"
+    }
+  ]
+}

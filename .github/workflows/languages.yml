@@ -1,0 +1,22 @@
+name: Validate languages
+on:
+  pull_request:
+    paths:
+      - 'languages/**'
+      - 'tools/validate_languages.py'
+      - '.github/workflows/languages.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'languages/**'
+      - 'tools/validate_languages.py'
+      - '.github/workflows/languages.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check draft language files
+        run: python3 tools/validate_languages.py
