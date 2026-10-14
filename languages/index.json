@@ -1,47 +1,51 @@
 {
   "schema_version": 1,
   "catalog_version": "0.9.86",
-  "catalog_hash": "df5bbc6094d41e9d202b841614628ecb1ec43d1aa2540a38003ae5fc1aee4367",
+  "catalog_hash": "715b8aead0313d885e49d54b456a3004ae4a8ebfab1e31846715fa58fcffbbdc",
   "languages": [
     {
       "locale": "en",
       "name": "English",
       "file": "en.json",
+      "author": "4NPC",
       "status": "draft",
-      "translated": 958,
-      "total": 958,
-      "size_bytes": 75358,
-      "sha256": "c956137934a5d3ea41d2e816861012be899e5df7bbd6b0a1853e1efeae5c8bcf"
+      "translated": 1115,
+      "total": 1115,
+      "size_bytes": 83542,
+      "sha256": "71656677ded20f1ae73191678086cae761ab4bb3d59944afaf00af5538427c93"
     },
     {
       "locale": "ja",
       "name": "日本語",
       "file": "ja.json",
+      "author": "4NPC",
       "status": "draft",
-      "translated": 958,
-      "total": 958,
-      "size_bytes": 97641,
-      "sha256": "3f6b2aaf9b9d6d8a10cc7c0e4d3a6e4e4d2e5cd53df705199845cf0a4a6625fa"
+      "translated": 1115,
+      "total": 1115,
+      "size_bytes": 107320,
+      "sha256": "4d3168f5f3844f4beb66d3bda6d788ee06243abb75d37e3f29d73d3151d40e51"
     },
     {
       "locale": "zh-Hans",
       "name": "简体中文",
       "file": "zh-Hans.json",
+      "author": "4NPC",
       "status": "source",
-      "translated": 958,
-      "total": 958,
-      "size_bytes": 73838,
-      "sha256": "653cee7274aab1256d59b519a2f5ce9ae62515f5878c1afc41e484a6e4c4df49"
+      "translated": 1115,
+      "total": 1115,
+      "size_bytes": 81718,
+      "sha256": "93136efad1fdcd802f39d0485ece8d4e4e0a9d2653b40ec6a6fd6de394d19ef9"
     },
     {
       "locale": "zh-Hant",
       "name": "繁體中文",
       "file": "zh-Hant.json",
+      "author": "4NPC",
       "status": "draft",
-      "translated": 958,
-      "total": 958,
-      "size_bytes": 74026,
-      "sha256": "a37a5fb754f3c4031944963a5b119aef473c58696560e104397329f00703033c"
+      "translated": 1115,
+      "total": 1115,
+      "size_bytes": 81927,
+      "sha256": "0da4cc18abf2f8b65249629e13b952573d9c39c690771e7efe79707e85b831bd"
     }
   ]
 }

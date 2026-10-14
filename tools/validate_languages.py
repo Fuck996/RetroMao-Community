@@ -52,6 +52,12 @@ def validate(root, require_complete=False, locale=None):
         if path.name == "index.json":
             continue
         pack = read_json(path)
+        author = pack.get("author", "")
+        credits = pack.get("credits", [])
+        if not isinstance(author, str) or len(author) > 160 or not isinstance(credits, list) or len(credits) > 50 or any(not isinstance(credit, str) or not credit.strip() or len(credit) > 160 for credit in credits):
+            raise ValueError(f"Invalid author credits: {path.name}")
+        if pack.get("status") == "reviewed" and not author.strip():
+            raise ValueError(f"Reviewed language needs an author: {path.name}")
         pack_locale = pack.get("locale")
         if not isinstance(pack_locale, str) or not LOCALE.fullmatch(pack_locale) or path.stem != pack_locale:
             raise ValueError(f"Invalid locale or filename: {path.name}")
@@ -86,7 +92,7 @@ def validate(root, require_complete=False, locale=None):
             complete += 1
         if require_this and pack_locale != "zh-Hans" and pack["status"] != "reviewed":
             raise ValueError(f"Language not reviewed: {path.name}")
-        rows.append({"locale": pack_locale, "name": pack["name"], "file": path.name,
+        rows.append({"locale": pack_locale, "name": pack["name"], "file": path.name, "author": author,
                      "status": pack["status"], "translated": complete, "total": len(messages),
                      "size_bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     if locale is not None and not any(row["locale"] == locale for row in rows):
