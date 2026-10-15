@@ -3,7 +3,7 @@
   "locale": "zh-Hans",
   "name": "简体中文",
   "catalog_version": "0.9.86",
-  "catalog_hash": "c32b7da6b32892fa1fb1037a18b0167758250d1522d46b6bfbb892556908a3fd",
+  "catalog_hash": "575d04a61f0a6e4dbca340a5125ee5f0fd697c58cdd0fb51c0822ed42e95dbed",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -976,7 +976,7 @@
     "language_open_repository": "查看语言",
     "language_author": "作者：%1$s",
     "language_credits": "致谢：%1$s",
-    "language_empty": "此仓库尚无完整且已审核的兼容语言包",
+    "language_empty": "暂无可用语言包",
     "language_incompatible": "语言包与当前文案版本不兼容",
     "language_unreviewed": "译稿尚未审核或翻译未完成",
     "language_progress": "正在下载 %1$s / %2$s",
@@ -1231,7 +1231,14 @@
     "ui_followup_109": "停止后续上传。已处理的远端文件需要联网恢复，原位置被改动时保留现场并提示。尚未发布的上传会恢复原文件、清理本任务新增内容；已发布的上传只完成清理，不标记为已取消。本地游戏与存档、已建立的复古猫资料库保留。",
     "ui_followup_110": "停止后续下载。已进入写入阶段的当前文件会完成校验，已下载并保存的文件会保留，其余暂存会清理。尚未更新的游戏资料保持原样；ROM 依赖不完整时仍不能启动。若任务先完成，则不会标记为已取消。",
     "ui_followup_111": "库状态已更新，无法再撤回此次删除。继续处理将清理本任务的恢复副本。",
-    "ui_followup_112": "恢复尚未生效的%1$s删除。原路径已有其他文件时会停止恢复并保留两份内容。若删除先完成提交，则只能继续清理恢复副本，任务不会标记为已撤销。"
+    "ui_followup_112": "恢复尚未生效的%1$s删除。原路径已有其他文件时会停止恢复并保留两份内容。若删除先完成提交，则只能继续清理恢复副本，任务不会标记为已撤销。",
+    "repository_settings": "仓库设置",
+    "repository_sources_description": "每行填写一个 GitHub 仓库地址。语言、主题和平台共用这些仓库；相同内容合并显示，不同内容分别列出。",
+    "repository_addresses": "仓库地址（每行一个）",
+    "repository_invalid_line": "第 %1$d 行不是有效的 GitHub 仓库地址",
+    "repository_save": "保存",
+    "repository_load_failed": "%1$s：%2$s",
+    "repository_retry": "重试失败的仓库"
   },
   "author": "4NPC",
   "credits": []

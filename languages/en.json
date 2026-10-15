@@ -3,7 +3,7 @@
   "locale": "en",
   "name": "English",
   "catalog_version": "0.9.86",
-  "catalog_hash": "c32b7da6b32892fa1fb1037a18b0167758250d1522d46b6bfbb892556908a3fd",
+  "catalog_hash": "575d04a61f0a6e4dbca340a5125ee5f0fd697c58cdd0fb51c0822ed42e95dbed",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -976,7 +976,7 @@
     "language_open_repository": "View languages",
     "language_author": "Author: %1$s",
     "language_credits": "Credits: %1$s",
-    "language_empty": "This repository has no complete, reviewed language packs compatible with this app.",
+    "language_empty": "No language packs available",
     "language_incompatible": "This language pack does not match the current message catalog.",
     "language_unreviewed": "The translation is incomplete or has not been reviewed.",
     "language_progress": "Downloading %1$s / %2$s",
@@ -1231,7 +1231,14 @@
     "ui_followup_109": "Stop further uploads. Restoring processed remote files requires a connection; changes at the original location will be preserved and reported. Unpublished uploads restore original files and remove content added by this task. Published uploads only finish cleanup and are not marked cancelled. Local games, saves and the existing RetroMao library are kept.",
     "ui_followup_110": "Stop further downloads. The current file will finish verification if writing has started. Downloaded and saved files are kept; other temporary data is removed. Metadata not yet updated stays unchanged. Games with incomplete ROM dependencies still cannot start. If the task finishes first, it will not be marked cancelled.",
     "ui_followup_111": "The library has been updated, so this deletion can no longer be undone. Continuing will clean up this task's recovery copies.",
-    "ui_followup_112": "Undo the %1$s deletion that has not yet taken effect. If another file occupies an original path, restoration stops and keeps both copies. If deletion commits first, only recovery-copy cleanup can continue; the task will not be marked undone."
+    "ui_followup_112": "Undo the %1$s deletion that has not yet taken effect. If another file occupies an original path, restoration stops and keeps both copies. If deletion commits first, only recovery-copy cleanup can continue; the task will not be marked undone.",
+    "repository_settings": "Repositories",
+    "repository_sources_description": "Enter one GitHub repository URL per line. Languages, themes and platforms use these repositories. Identical content is merged; different content is listed separately.",
+    "repository_addresses": "Repository URLs (one per line)",
+    "repository_invalid_line": "Line %1$d is not a valid GitHub repository URL",
+    "repository_save": "Save",
+    "repository_load_failed": "%1$s: %2$s",
+    "repository_retry": "Retry failed repositories"
   },
   "author": "4NPC",
   "credits": []
