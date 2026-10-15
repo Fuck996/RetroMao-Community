@@ -2,7 +2,18 @@
 
 [中文](README.md) · **English** · [日本語](README.ja.md)
 
-This public repository distributes platform and theme extension packs for RetroMao. Packs contain configuration and redistributable artwork; installing one does not upload your ROMs, saves, or WebDAV credentials. Online installation requires **RetroMao 0.9.44 or later** and access to GitHub. Existing games and installed packs remain usable offline.
+This repository maintains language, platform, and theme extensions for RetroMao. Extensions contain translations, configuration, and redistributable artwork; installing one does not upload your ROMs, saves, or cloud credentials. Online platform/theme installation supports **0.9.44 and later**, built-in languages and language downloads start with **0.9.87**, and multiple repositories are supported from **0.9.88**. Online downloads require access to GitHub. Existing games and installed extensions remain usable offline.
+
+The current app version is **0.9.89**; see the [changelog (Chinese)](CHANGELOG.md). This version shares synchronization workflows and provider configuration within the host app. An SDK for independently installable storage plugins has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
+
+## Add official and community repositories
+
+1. On the **Settings home screen**, select the icon-only floating repository button in the bottom-right corner.
+2. Enter one public GitHub repository URL per line, for example `https://github.com/Fuck996/RetroMao-Community`. Community authors can fork this repository, maintain their own translations and extensions, and share their repository URL with players.
+3. Save the list. Languages, community themes, and community platforms share it. Keep a separate line for each official or community source you want to use; an empty list makes no repository requests.
+4. Open the relevant download page and select an extension. Entries with the same identity and content are merged while retaining their sources; different content is listed separately rather than silently replaced by name. The language download dialog lists languages; repository URLs are configured here instead.
+
+Repository settings discover extensions; they are separate from cloud connections used for save synchronization. Authors and source repositories are displayed separately. Fork maintainers should preserve original author credits and artwork licenses.
 
 ## Download and install in RetroMao
 
@@ -12,7 +23,7 @@ This public repository distributes platform and theme extension packs for RetroM
 2. Select **Download and Install (下载并安装)** and wait for the download, size and SHA-256 checks, and installation. An installed platform can be reinstalled from the same list to update it.
 3. Back in **Game Library & Folders (游戏库与文件夹)**, add the local ROM folder for that platform. The pack contains neither games nor an emulator; configure an emulator already installed on your device to launch games.
 
-The new platform uses RetroMao's existing platform selector, folder scan, and library workflow. Installation does not scan the whole device or upload ROMs. WebDAV resource sync still requires the normal per-platform sync-directory setup.
+The new platform uses RetroMao's existing platform selector, folder scan, and library workflow. Installation does not scan the whole device or upload ROMs. Cloud resource sync still requires the normal per-platform cloud source and directory setup.
 
 ### Install a theme
 
@@ -46,3 +57,9 @@ The catalog is a manifest; the Release ZIP is the installed payload, while the p
 Run `python tools/build_examples.py` to rebuild the examples into `dist/`; it does not publish a Release. The [example Release](https://github.com/Fuck996/RetroMao-Community/releases/tag/packs-2026-10-06) also has notes in Chinese, English, and Japanese.
 
 A platform pack defines identity, ROM extensions, medium, cover ratio, and icons; it does not provide an emulator or save directory. A theme changes declared visual assets without replacing RetroMao's renderer.
+
+## Language files and community translation
+
+Each language is maintained in one JSON file. Contributions and new languages are welcome; see [languages/](languages/README.md) for files, contribution rules, and downloads. The current catalog contains **1233 messages**. Simplified Chinese keeps `source` status; English, Traditional Chinese, and Japanese are complete and remain `draft` for review.
+
+The APK includes Simplified Chinese, Traditional Chinese, English, and Japanese. It initially matches the system language and uses Simplified Chinese if none matches. Under **Settings → Theme and display → Language**, choose a language or follow the system. **Download languages** lists extensions from the repositories configured above. Online installation accepts only complete `reviewed` packs matching the APK's message catalog, not drafts. Language files use their own installation flow, not the platform or theme importer.
