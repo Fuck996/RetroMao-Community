@@ -1,0 +1,9 @@
+:root { color-scheme: dark light; font-family: system-ui, sans-serif; }
+:where(body) { margin: 0; padding: 20px; color: var(--retromao-text, #eeeeee); background: var(--retromao-background, #171717); font-size: 16px; }
+:where(button,input,select,textarea) { font: inherit; color: inherit; background: var(--retromao-surface, #272727); border: 1px solid var(--retromao-outline, #686868); border-radius: 8px; min-height: 44px; padding: 8px 14px; box-sizing: border-box; }
+:where(button,a,input,select,textarea,[tabindex]):focus-visible { outline: 3px solid var(--retromao-primary, #ddb374); outline-offset: 3px; }
+:where(button) { cursor: pointer; }
+:where(button:disabled) { opacity: .5; cursor: default; }
+:where(a) { color: var(--retromao-primary, #ddb374); }
+:where(p) { line-height: 1.5; }
+:where([role="alert"]) { color: var(--retromao-error, #ffb4ab); white-space: pre-wrap; }

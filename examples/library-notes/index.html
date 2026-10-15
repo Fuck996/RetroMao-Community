@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>游戏笔记</title>
+<style>
+  main { max-width: 1100px; margin: auto; } h1 { margin-top: 0; font-size: 24px; }
+  .toolbar, .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(280px,100%),1fr)); gap: 16px; }
+  article { padding: 16px; border: 1px solid var(--retromao-outline); border-radius: 12px; background: var(--retromao-surface); }
+  article h2 { font-size: 18px; } input { width: 100%; } .muted { color: var(--retromao-muted); }
+  button { min-width: 80px; } #result { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style></head>
+<body><main>
+  <h1>游戏笔记</h1><p class="muted">本示例使用复古猫的公共接口。笔记保存在插件自己的游戏索引字段中。</p>
+  <div class="toolbar"><button id="all">全部游戏</button><button id="favorites">收藏</button><button id="background">后台读取收藏</button><button id="cancel" hidden>取消任务</button></div>
+  <p id="error" role="alert"></p><p id="result" role="status"></p><div id="games" class="cards"></div><button id="next" hidden>下一页</button>
+</main><script src="page.js"></script></body></html>

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "example.library-notes",
+  "name": "游戏笔记示例",
+  "author": "RetroMao Community",
+  "version": "1.0.0",
+  "minAppVersion": "0.9.90",
+  "description": "演示公共游戏库读取、收藏编辑、扩展字段、配置与后台动作，不包含 ROM 或媒体文件。",
+  "entryPoint": "main.js",
+  "capabilities": ["LIBRARY_READ", "LIBRARY_WRITE"],
+  "pages": [{"id": "notes", "title": "游戏笔记", "path": "index.html"}],
+  "actions": [{"id": "favorites", "title": "读取收藏列表", "description": "读取最多 40 项收藏并返回结果，不修改游戏资料。"}],
+  "settings": [{"id": "suggestedNote", "label": "默认笔记内容", "default": ""}],
+  "license": "MIT"
+}

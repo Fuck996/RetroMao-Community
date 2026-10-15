@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "org.retromao.favorites-sync",
+  "name": "收藏同步",
+  "author": "4NPC",
+  "version": "1.0.1",
+  "minAppVersion": "0.9.91",
+  "description": "通过已配置网盘同步收藏。按游戏名和完整 ROM 文件名集合匹配，支持新增及取消收藏，不传输 ROM、媒体或存档。",
+  "entryPoint": "main.js",
+  "icon": "icon.png",
+  "iconName": "star",
+  "capabilities": ["LIBRARY_READ", "LIBRARY_WRITE", "STORAGE"],
+  "pages": [{"id": "sync", "title": "收藏同步", "path": "index.html"}],
+  "actions": [{"id": "sync", "title": "同步收藏", "description": "使用插件页面选定的网盘，合并收藏变化。"}],
+  "license": "MIT"
+}

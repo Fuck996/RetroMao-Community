@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "org.retromao.recent-sync",
+  "name": "最近游戏记录同步",
+  "author": "4NPC",
+  "version": "1.0.1",
+  "minAppVersion": "0.9.91",
+  "description": "通过已配置网盘同步最近游戏记录。按游戏名和完整 ROM 文件名集合匹配，保留较新游玩时间，次数及时长取较大值。",
+  "entryPoint": "main.js",
+  "icon": "icon.png",
+  "iconName": "history",
+  "capabilities": ["LIBRARY_READ", "LIBRARY_WRITE", "STORAGE"],
+  "pages": [{"id": "sync", "title": "最近游戏记录同步", "path": "index.html"}],
+  "actions": [{"id": "sync", "title": "同步最近游戏", "description": "使用插件页面选定的网盘，合并最近游戏记录。"}],
+  "license": "MIT"
+}
