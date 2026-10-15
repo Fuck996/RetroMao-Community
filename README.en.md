@@ -4,7 +4,7 @@
 
 This repository maintains language, platform, and theme extensions for RetroMao. Extensions contain translations, configuration, and redistributable artwork; installing one does not upload your ROMs, saves, or cloud credentials. Online platform/theme installation supports **0.9.44 and later**, built-in languages and language downloads start with **0.9.87**, and multiple repositories are supported from **0.9.88**. Online downloads require access to GitHub. Existing games and installed extensions remain usable offline.
 
-The current app version is **0.9.89**; see the [changelog (Chinese)](CHANGELOG.md). This version shares synchronization workflows and provider configuration within the host app. An SDK for independently installable storage plugins has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
+The current packaged app version is **0.9.91**; see the [changelog (Chinese)](CHANGELOG.md). It includes the script plugin framework and reuses the shared content APIs, synchronization workflows and provider configuration. Script-based storage-provider integration has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
 
 ## Add official and community repositories
 
@@ -46,9 +46,11 @@ If the online catalog cannot be fetched, the app may show its last successfully 
 3. It verifies the exact byte count and SHA-256 before installation. A mismatch is rejected and cannot replace an installed pack.
 4. The verified ZIP enters the same installer as manual import. The installer validates the manifest, ZIP paths, image dimensions, and size limits, then stores the pack in the app's extension directory for subsequent launches.
 
-The catalog is a manifest; the Release ZIP is the installed payload, while the preview is only an image. ROMs, saves, and WebDAV data do not pass through this repository. Packs do not execute scripts or native code. See the [pack specification](EXTENSIONS.md) for the format and limits.
+The catalog is a manifest; the Release ZIP is the installed payload, while the preview is only an image. ROMs, saves, and WebDAV data do not pass through this repository. Theme, platform and language packs do not execute code. See the [pack specification](EXTENSIONS.md) for the format and limits.
 
 ## Create and contribute
+
+The 0.9.90 APK includes the script plugin framework and a main-menu plugin center with Installed and Store tabs. An [SDK](sdk/README.md) and [library notes example](examples/library-notes/) are provided. It reuses the existing repository settings and downloads. Script discovery uses `plugins/index.json`, currently empty; no script example Release has been published. Build the example ZIP for local import. Native engine and page behavior still require device validation.
 
 - Put `platform.json` at the root of a platform ZIP, optionally with icons. Put `theme.json` at the root of a theme ZIP and provide a 1280×720 PNG/WebP preview for online themes.
 - Start with [`examples/`](examples/) and the [pack specification](EXTENSIONS.md). Test local import and the 16:9, 4:3, and 1:1 layouts, touch, and controller navigation. State the author and redistribution license. Do not include ROMs, firmware, saves, secrets, or account data.

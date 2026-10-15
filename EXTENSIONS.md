@@ -60,6 +60,8 @@ ZIP 根目录包含 `theme.json`。配色、布局与动效的可运行示例见
 
 ## 语言与同步渠道
 
+脚本插件采用独立的 `plugins/index.json` 和包含 `plugin.json` 的 ZIP，SDK、安装与页面规则见[脚本插件文档](sdk/README.md)。框架已随 0.9.90 APK 打包，原生设备验收仍待完成；资源包不会因为增加脚本框架而获得代码执行权限。存储服务的脚本注册及流式文件桥接仍待后续阶段接入，不将现有通用 JSON API 当成另一套同步实现。
+
 语言使用独立的 `languages/index.json` 和单语 JSON，不加入平台／主题的 ZIP 清单。作者署名、译文基线和 reviewed 发布规则见[语言贡献说明](languages/README.md)。
 
 平台和主题的 `author` 由在线目录展示，主题清单可保存自身署名；语言文件使用 `author` 和 `credits`。Fork 保留原作者、素材来源与许可，新增维护者署名不能冒充原作者。

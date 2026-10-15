@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": "org.retromao.favorites-sync",
+      "name": "收藏同步",
+      "author": "4NPC",
+      "description": "通过已配置网盘同步收藏。按游戏名和完整 ROM 文件名集合匹配，支持新增及取消收藏，不传输 ROM、媒体或存档。",
+      "version": "1.0.1",
+      "minAppVersion": "0.9.91",
+      "kind": "SCRIPT",
+      "releaseTag": "sync-examples-1.0.1",
+      "fileName": "plugin-org.retromao.favorites-sync-1.0.1.zip",
+      "sizeBytes": 18531,
+      "sha256": "16cdc10c0175b490dc132a5b70a78f6c7caec04275c9b7f2ce14401a18da520b",
+      "iconName": "star",
+      "previewPath": "previews/plugin-favorites-sync.png"
+    },
+    {
+      "id": "org.retromao.recent-sync",
+      "name": "最近游戏记录同步",
+      "author": "4NPC",
+      "description": "通过已配置网盘同步最近游戏记录。按游戏名和完整 ROM 文件名集合匹配，保留较新游玩时间，次数及时长取较大值。",
+      "version": "1.0.1",
+      "minAppVersion": "0.9.91",
+      "kind": "SCRIPT",
+      "releaseTag": "sync-examples-1.0.1",
+      "fileName": "plugin-org.retromao.recent-sync-1.0.1.zip",
+      "sizeBytes": 22207,
+      "sha256": "cfdf718578b796f592359f77c1cdd9d035a6853023655821df7eb3a310bde5ee",
+      "iconName": "history",
+      "previewPath": "previews/plugin-recent-sync.png"
+    }
+  ]
+}

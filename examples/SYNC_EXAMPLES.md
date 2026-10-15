@@ -46,4 +46,4 @@ node --test community/tools/test_sync_examples.cjs community/tools/test_script_s
 
 打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别启用并打开页面选择网盘。第二台设备同样操作后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
 
-生成的目录条目须在对应 ZIP 真正上传 GitHub Release 后再加入 `plugins/index.json`；此处不陈列尚未发布的商店资产。配套 0.9.91 签名 APK 已打包，真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。
+两个插件 **1.0.1** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.1)并加入 `plugins/index.json`，0.9.91 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
