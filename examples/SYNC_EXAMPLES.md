@@ -40,7 +40,7 @@
 两份清单、模式和图标位于 `favorites-sync/`、`recent-sync/`；共享的合并逻辑、四语页面位于 `activity-sync-shared/`。共同源只在打包时合入，每个 ZIP 都能独立安装运行，不依赖另一个插件。
 
 ```text
-python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.2
+python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.3
 node --test community/tools/test_sync_examples.cjs community/tools/test_script_sdk.cjs
 ```
 
@@ -49,3 +49,5 @@ node --test community/tools/test_sync_examples.cjs community/tools/test_script_s
 两个插件 **1.0.2** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.2)并加入 `plugins/index.json`，0.9.94 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
 
 **1.0.2** 补齐四语商店与宿主文字，沿用既有同步规则。同来源更新保留配置和私有数据；旧版 **1.0.1** Release 保留，供 0.9.91–0.9.93 用户手动下载。
+
+当前源码 **1.0.3** 补充 `configurationPage: "sync"`，将现有网盘选择页面声明为配置入口，需要主程序 **0.9.95**。卡片“配置”按声明直接进入同一页面，网盘选择仍保存在原私有数据的 `destination`，不新增配置副本或迁移；原打开入口和同步算法不变。1.0.3 与 0.9.95 尚未正式发布，上面的构建命令用于新候选包，不覆盖已发布的 1.0.2。

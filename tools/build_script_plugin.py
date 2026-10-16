@@ -61,6 +61,12 @@ def validate_localizations(manifest: dict) -> None:
 def build(source: Path, output: Path, release_tag: str) -> dict:
     manifest = json.loads((source / "plugin.json").read_text(encoding="utf-8"))
     validate_localizations(manifest)
+    configuration_page = manifest.get("configurationPage")
+    if configuration_page is not None:
+        if not isinstance(configuration_page, str) or configuration_page not in {page["id"] for page in manifest.get("pages", [])}:
+            raise ValueError("configurationPage must reference a declared page")
+        if tuple(map(int, manifest["minAppVersion"].split("."))) < (0, 9, 95):
+            raise ValueError("configurationPage requires minAppVersion 0.9.95 or later")
     output.mkdir(parents=True, exist_ok=True)
     name = f"plugin-{manifest['id']}-{manifest['version']}.zip"
     target = output / name

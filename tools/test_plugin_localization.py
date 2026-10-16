@@ -39,6 +39,26 @@ class PluginLocalizationTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_localizations(manifest)
 
+    def test_configuration_page_references_a_declared_page_and_supporting_host(self):
+        manifest = self.manifest()
+        manifest["configurationPage"] = "main"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source"
+            source.mkdir()
+            output = root / "output"
+            (source / "index.html").write_text("<p>Configuration</p>", encoding="utf-8")
+            for minimum, page in (("0.9.94", "main"), ("0.9.95", "missing"), ("0.9.95", "main")):
+                manifest.update(minAppVersion=minimum, configurationPage=page)
+                (source / "plugin.json").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+                if minimum == "0.9.95" and page == "main":
+                    entry = build(source, output, "test-release")
+                    with ZipFile(output / entry["fileName"]) as archive:
+                        self.assertEqual("main", json.loads(archive.read("plugin.json"))["configurationPage"])
+                else:
+                    with self.assertRaises(ValueError):
+                        build(source, output, "test-release")
+
     def test_translations_cannot_drop_or_rename_native_and_custom_keys(self):
         for key in ("pages", "messages"):
             manifest = copy.deepcopy(self.manifest())
