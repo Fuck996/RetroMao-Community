@@ -26,7 +26,9 @@ ZIP 根目录放 `plugin.json`，业务入口为已编译的 JavaScript，页面
 
 `configurationPage` 引用 `pages` 中的配置页面。0.9.96 起，自定义配置页面声明 `kind: "CONFIGURATION"`，最低应用版本为 0.9.96；普通页面默认 `BUSINESS`。两者必须使用不同 HTML 文件，配置页不出现在业务页面列表。示例：`"pages": [{"id":"sync","title":"同步","path":"index.html"},{"id":"settings","title":"配置","path":"configuration.html","kind":"CONFIGURATION"}], "configurationPage":"settings"`。
 
-配置界面由宿主统一提供启用开关、能力授权与卸载（含可选清除数据），插件禁用时同样可配置。原生 `settings` 与自定义配置页共用该外框；自定义页只编辑配置，可调用 `session.ready`、`settings.get`、`data.get/patch`，声明 STORAGE 后可列出本机已配置连接 `storage.sources`，不能运行任务、修改游戏库或访问远端。`ready.configuring` 标识配置上下文；配置页不订阅任务。业务页与后台动作仍须启用并授权。
+配置界面由宿主统一提供启用开关、能力授权与卸载（含可选清除数据），插件禁用时同样可配置。原生 `settings` 与自定义配置页共用宿主页面框架：保留主导航、底部操作提示与返回历史，标题、返回和管理操作由宿主绘制；插件只提供框架内的内容区域，不另建全屏窗口。安装、授权与卸载确认使用公共确认弹窗。此页面框架调整在 0.9.96 之后的源码中接入，已发布的 1.0.4 插件无需修改。
+
+自定义页只编辑配置，可调用 `session.ready`、`settings.get`、`data.get/patch`，声明 STORAGE 后可列出本机已配置连接 `storage.sources`，不能运行任务、修改游戏库或访问远端。`ready.configuring` 标识配置上下文；配置页不订阅任务。业务页与后台动作仍须启用并授权。
 
 已安装卡片按 `settings`／`configurationPage` 声明显示“配置”；无配置项的插件从详情页进入同一管理界面。商店只提供安装、更新及已安装状态，不提供配置。首次安装和替换均先确认；商店确认后才下载，本地 ZIP 解压一次后确认，取消清理暂存内容。已有 0.9.95 页面声明仍可读取；新版本应采用分离页面。两个同步插件 1.0.4 已分离网盘配置与同步业务，沿用原 `data.destination`，已公开发布并更新商店目录。
 
