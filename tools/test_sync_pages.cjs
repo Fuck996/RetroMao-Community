@@ -13,8 +13,11 @@ function bridge() {
   const result = { scope: source.scope, localCount: 42, updated: 8, uploaded: 2, unmatched: 1, skipped: 0, finishedAt: 1780000000000,
     unmatchedGames: [{ platformId: "dc", title: "Shenmue II" }] };
   let task = null;
+  window.testRequests = [];
   window.retromaoNative = { postMessage(raw) {
     const request = JSON.parse(raw);
+    window.testRequests.push(request.method);
+    if (window.testConfiguration && !["session.ready", "storage.sources", "data.get", "data.patch"].includes(request.method)) throw new Error("Business request from configuration: " + request.method);
     let response;
     switch (request.method) {
       case "session.ready": response = { locale: window.testLocale, colors: { text: "#ece5da", background: "#171614", surface: "#24211c", outline: "#514b42", primary: "#e4bd83", muted: "#bdb4a7" } }; break;
@@ -55,14 +58,25 @@ function bridge() {
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
         await page.locator("#sync").scrollIntoViewIfNeeded();
         assert.equal(await page.locator("#sync").isEnabled(), true);
-        await page.locator("#source").focus(); await page.keyboard.press("ArrowDown");
+        assert.equal(await page.locator("select").count(), 0);
+        await page.locator("#sync").focus();
         assert.equal(await page.locator("#sync").evaluate(element => element === document.activeElement), true);
         await page.locator("#sync").tap(); await page.waitForFunction(() => !document.querySelector("#cancel").hidden);
-        assert.equal(await page.locator("#source").isDisabled(), true);
+        assert.equal(await page.evaluate(() => window.testRequests.includes("data.patch")), false);
         await page.locator("#cancel").tap(); await page.waitForFunction(() => document.querySelector("#cancel").hidden);
         assert.equal(await page.locator("#sync").isEnabled(), true);
         await page.screenshot({ path: path.join(output, "sync-" + kind + "-" + width + "x" + height + ".png"), fullPage: true });
         assert.deepEqual(errors, []);
+        await page.addInitScript("window.testConfiguration=true;");
+        await page.goto("https://plugin-test.local/configuration.html");
+        await page.waitForFunction(() => !document.querySelector("#source").disabled);
+        assert.equal(await page.locator("#sync, #cancel, #progress").count(), 0);
+        await page.locator("#source").selectOption("");
+        await page.waitForFunction(() => window.testRequests.filter(method => method === "data.patch").length === 1);
+        await page.waitForFunction(() => !document.querySelector("#source").disabled);
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+        assert.deepEqual(errors, []);
+        await page.screenshot({ path: path.join(output, "sync-config-" + kind + "-" + width + "x" + height + ".png"), fullPage: true });
         process.stdout.write(kind + " " + width + "x" + height + ": touch, focus, progress, cancel OK\n");
       } finally { await context.close(); }
     }

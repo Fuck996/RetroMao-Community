@@ -66,6 +66,24 @@ class PluginLocalizationTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_localizations(manifest)
 
+    def test_configuration_role_cannot_reuse_a_business_page(self):
+        manifest = self.manifest()
+        manifest.update(minAppVersion="0.9.96", configurationPage="settings")
+        manifest["pages"].append({"id": "settings", "title": "Settings", "path": "settings.html", "kind": "CONFIGURATION"})
+        manifest["localizations"]["zh-Hans"]["pages"]["settings"] = "配置"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "index.html").write_text("Business", encoding="utf-8")
+            (root / "settings.html").write_text("Settings", encoding="utf-8")
+            for role, path, valid in [("CONFIGURATION", "settings.html", True), ("BUSINESS", "settings.html", False), ("CONFIGURATION", "index.html", False)]:
+                manifest["pages"][1].update(kind=role, path=path)
+                (root / "plugin.json").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+                if valid:
+                    build(root, root / "output", "test")
+                else:
+                    with self.assertRaises(ValueError):
+                        build(root, root / "output", "test")
+
     def test_localized_plugins_declare_the_host_version_that_preserves_language_metadata(self):
         manifest = self.manifest()
         manifest["minAppVersion"] = "0.9.91"

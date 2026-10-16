@@ -6,18 +6,16 @@
   for (const id of ["title", "author", "help", "privacy", "sync", "cancel", "retained"]) $(id).textContent = t(id);
   for (const key of ["source", "local", "updated", "uploaded"]) $(key === "source" ? "sourceLabel" : key + "Label").textContent = t(key);
   $("status").textContent = t("ready");
-  let current = null, sources = [], unwatch = null, saving = false, busy = false;
+  let current = null, destination = null, unwatch = null, busy = false;
   const active = task => task && ["WAITING", "RUNNING", "CANCELLING"].includes(task.state);
   function controls() {
     const running = active(current);
-    $("source").disabled = running || saving || busy || !sources.length;
-    $("sync").disabled = running || saving || busy || !$("source").value;
+    $("sync").disabled = running || busy || !destination;
     $("cancel").hidden = !running;
     $("cancel").disabled = current && current.state === "CANCELLING";
   }
   function summary(result) {
-    const selected = sources.find(source => source.id === $("source").value);
-    if (!selected || !result || result.scope !== selected.scope) result = null;
+    if (!destination || !result || result.scope !== destination.scope) result = null;
     $("last").textContent = result ? t("last") + " · " + new Date(result.finishedAt).toLocaleString(locale) : t("empty");
     for (const key of ["localCount", "updated", "uploaded"]) $(key).textContent = result ? String(result[key]) : "—";
     $("unmatched").hidden = !result || !result.unmatched;
@@ -36,15 +34,6 @@
       try { summary(await retromao.tasks.result(task.id)); } catch (error) { $("error").textContent = error.message; }
     }
   }
-  $("source").addEventListener("change", async () => {
-    saving = true; controls(); $("error").textContent = ""; $("connectionHint").textContent = t("saving");
-    try {
-      const destination = sources.find(source => source.id === $("source").value);
-      await retromao.data.patch({ destination: destination || null });
-      summary(null); $("connectionHint").textContent = "";
-    } catch (error) { $("error").textContent = error.message; $("source").value = ""; }
-    finally { saving = false; controls(); }
-  });
   $("sync").addEventListener("click", async () => {
     busy = true; controls(); $("error").textContent = "";
     try {
@@ -60,16 +49,13 @@
   });
   try {
     const [connections, data, task] = await Promise.all([retromao.storage.sources(), retromao.data.get(), retromao.tasks.current()]);
-    sources = connections;
-    const empty = document.createElement("option"); empty.value = ""; empty.textContent = t("select"); $("source").appendChild(empty);
-    for (const source of sources) { const option = document.createElement("option"); option.value = source.id; option.textContent = source.name + " · " + source.provider; $("source").appendChild(option); }
-    const previous = data.destination && sources.find(source => source.id === data.destination.id && source.scope === data.destination.scope);
-    $("source").value = previous ? previous.id : "";
-    $("connectionHint").textContent = !sources.length ? t("noSources") : data.destination && !previous ? t("unavailable") : "";
-    summary(previous && data.lastSync && data.lastSync.scope === previous.scope ? data.lastSync : null);
+    destination = data.destination && connections.find(source => source.id === data.destination.id && source.scope === data.destination.scope);
+    $("source").textContent = destination ? destination.name + " · " + destination.provider : t("select");
+    $("connectionHint").textContent = !connections.length ? t("noSources") : data.destination && !destination ? t("unavailable") : !destination ? t("chooseSource") : "";
+    summary(destination && data.lastSync && data.lastSync.scope === destination.scope ? data.lastSync : null);
     if (task) { await taskChanged(task); unwatch = retromao.tasks.watch(task.id, taskChanged); }
     controls();
-    document.querySelector(!$("source").disabled ? "#source" : "#title").focus();
+    document.querySelector(!$("sync").disabled ? "#sync" : "#title").focus();
   } catch (error) { $("error").textContent = error.message; }
   window.addEventListener("pagehide", () => { if (unwatch) unwatch(); }, { once: true });
 })();

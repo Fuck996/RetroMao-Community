@@ -4,35 +4,35 @@
   "id": "org.retromao.recent-sync",
   "name": "最近游戏记录同步",
   "author": "4NPC",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "defaultLocale": "zh-Hans",
-  "minAppVersion": "0.9.95",
+  "minAppVersion": "0.9.96",
   "description": "通过已配置网盘同步最近游戏记录。按游戏名和完整 ROM 文件名集合匹配，保留较新游玩时间，次数及时长取较大值。",
   "entryPoint": "main.js",
   "icon": "icon.png",
   "iconName": "history",
   "capabilities": ["LIBRARY_READ", "LIBRARY_WRITE", "STORAGE"],
-  "pages": [{"id": "sync", "title": "最近游戏记录同步", "path": "index.html"}],
-  "configurationPage": "sync",
+  "pages": [{"id": "sync", "title": "最近游戏记录同步", "path": "index.html"}, {"id": "settings", "title": "配置", "path": "configuration.html", "kind": "CONFIGURATION"}],
+  "configurationPage": "settings",
   "actions": [{"id": "sync", "title": "同步最近游戏", "description": "使用插件页面选定的网盘，合并最近游戏记录。"}],
   "license": "MIT",
   "localizations": {
     "zh-Hant": {
       "name": "最近遊戲紀錄同步",
       "description": "透過已設定的網路硬碟同步最近遊戲紀錄。以遊戲名稱及完整 ROM 檔名集合比對，保留較新的遊玩時間，次數與時長取較大值。",
-      "pages": {"sync": "最近遊戲紀錄同步"},
+      "pages": {"sync": "最近遊戲紀錄同步", "settings": "設定"},
       "actions": {"sync": {"title": "同步最近遊戲紀錄", "description": "使用外掛頁面選定的網路硬碟，合併最近遊戲紀錄。"}}
     },
     "en": {
       "name": "Recent games sync",
       "description": "Sync recent game records through a configured cloud connection. Match games by title and the complete ROM filename set. Keep the latest play date and the higher play count and duration.",
-      "pages": {"sync": "Recent games sync"},
+      "pages": {"sync": "Recent games sync", "settings": "Settings"},
       "actions": {"sync": {"title": "Sync recent games", "description": "Merge recent game records using the cloud connection selected on the plugin page."}}
     },
     "ja": {
       "name": "最近遊んだゲームの同期",
       "description": "設定済みのクラウド接続で最近遊んだゲームの記録を同期します。ゲーム名と ROM ファイル名の集合で照合し、最終プレイ日時は新しい方、回数と時間は大きい方を保持します。",
-      "pages": {"sync": "最近遊んだゲームの同期"},
+      "pages": {"sync": "最近遊んだゲームの同期", "settings": "設定"},
       "actions": {"sync": {"title": "最近のゲーム記録を同期", "description": "プラグイン画面で選択したクラウド接続を使い、最近のゲーム記録を統合します。"}}
     }
   }

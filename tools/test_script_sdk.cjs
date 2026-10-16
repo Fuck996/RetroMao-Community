@@ -21,10 +21,11 @@ async function host(environment = { locale: "en", icons: ["star", "history"] }) 
 }
 
 test("ready exposes the plugin-selected language and author messages without additional RPC", async () => {
-  const environment = { locale: "en", appLocale: "ja", defaultLocale: "en", locales: ["en", "zh-Hans"], messages: { hint: "Choose" } };
+  const environment = { locale: "en", appLocale: "ja", defaultLocale: "en", locales: ["en", "zh-Hans"], messages: { hint: "Choose" }, configuring: true };
   const { api, messages } = await host(environment);
   const selected = await api.ready;
   assert.equal(selected.locale, "en"); assert.equal(selected.appLocale, "ja");
+  assert.equal(selected.configuring, true);
   assert.equal(selected.messages.hint, "Choose"); assert.equal(selected.defaultLocale, "en");
   assert.equal(messages.length, 0);
   api.__dispose();

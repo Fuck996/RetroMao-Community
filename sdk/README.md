@@ -24,9 +24,11 @@ ZIP 根目录放 `plugin.json`，业务入口为已编译的 JavaScript，页面
 
 配置 `settings` 支持 `TEXT`、`SECRET`、`BOOLEAN`、`NUMBER`、`CHOICE`，值统一为字符串。字段支持 `default`、`required`、`options: [{value,label}]`。宿主用公共弹窗编辑验证，`SECRET` 沿用凭据加密；动作开始时读取一次配置。配置与私有 JSON 按来源仓库和插件 ID 分开保存，切换 Fork 不复用另一来源的密钥，切回原来源仍能接续。
 
-0.9.95 增加可选的 `configurationPage`，值为 `pages` 中已声明的页面 ID，例如 `"configurationPage": "sync"`。使用自定义页面进行配置的插件须明确声明该字段；已安装和同来源商店卡片据此显示“配置”，通过原页面导航打开该页。未声明页面时仍由 `settings` 表单决定是否显示按钮，两者都未声明则不显示。不为插件增加空表单或固定按钮。
+`configurationPage` 引用 `pages` 中的配置页面。0.9.96 起，自定义配置页面声明 `kind: "CONFIGURATION"`，最低应用版本为 0.9.96；普通页面默认 `BUSINESS`。两者必须使用不同 HTML 文件，配置页不出现在业务页面列表。示例：`"pages": [{"id":"sync","title":"同步","path":"index.html"},{"id":"settings","title":"配置","path":"configuration.html","kind":"CONFIGURATION"}], "configurationPage":"settings"`。
 
-自定义配置页使用原 WebView、SDK、权限和私有数据，不另存一份配置。插件禁用时先进入原详情页，完成启用及权限确认后才能运行脚本配置页；点击“配置”不会自动启用插件。表单配置仍可在禁用时编辑。声明 `configurationPage` 的插件最低主程序须为 0.9.95。两个同步插件 1.0.3 已声明原 `sync` 页并公开发布。
+配置界面由宿主统一提供启用开关、能力授权与卸载（含可选清除数据），插件禁用时同样可配置。原生 `settings` 与自定义配置页共用该外框；自定义页只编辑配置，可调用 `session.ready`、`settings.get`、`data.get/patch`，声明 STORAGE 后可列出本机已配置连接 `storage.sources`，不能运行任务、修改游戏库或访问远端。`ready.configuring` 标识配置上下文；配置页不订阅任务。业务页与后台动作仍须启用并授权。
+
+已安装卡片按 `settings`／`configurationPage` 声明显示“配置”；无配置项的插件从详情页进入同一管理界面。商店只提供安装、更新及已安装状态，不提供配置。首次安装和替换均先确认；商店确认后才下载，本地 ZIP 解压一次后确认，取消清理暂存内容。已有 0.9.95 页面声明仍可读取；新版本应采用分离页面。两个同步示例源码 1.0.4 已分离网盘配置与同步业务，沿用原 `data.destination`，尚未发布，商店仍提供已发布 1.0.3。
 
 ## 公共接口
 

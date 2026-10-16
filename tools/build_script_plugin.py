@@ -62,11 +62,22 @@ def build(source: Path, output: Path, release_tag: str) -> dict:
     manifest = json.loads((source / "plugin.json").read_text(encoding="utf-8"))
     validate_localizations(manifest)
     configuration_page = manifest.get("configurationPage")
+    pages = manifest.get("pages", [])
+    minimum = tuple(map(int, manifest["minAppVersion"].split(".")))
+    if any(page.get("kind", "BUSINESS") not in ("BUSINESS", "CONFIGURATION") for page in pages):
+        raise ValueError("Invalid plugin page kind")
+    if any(page.get("kind") == "CONFIGURATION" and (page["id"] != configuration_page or minimum < (0, 9, 96)) for page in pages):
+        raise ValueError("Configuration pages require their declared entry and minAppVersion 0.9.96 or later")
     if configuration_page is not None:
         if not isinstance(configuration_page, str) or configuration_page not in {page["id"] for page in manifest.get("pages", [])}:
             raise ValueError("configurationPage must reference a declared page")
-        if tuple(map(int, manifest["minAppVersion"].split("."))) < (0, 9, 95):
+        if minimum < (0, 9, 95):
             raise ValueError("configurationPage requires minAppVersion 0.9.95 or later")
+        config = next(page for page in pages if page["id"] == configuration_page)
+        if minimum >= (0, 9, 96) and config.get("kind") != "CONFIGURATION":
+            raise ValueError("Declare configurationPage as a dedicated CONFIGURATION page")
+        if config.get("kind") == "CONFIGURATION" and any(page.get("kind", "BUSINESS") == "BUSINESS" and page["path"] == config["path"] for page in pages):
+            raise ValueError("Configuration and business pages must use different files")
     output.mkdir(parents=True, exist_ok=True)
     name = f"plugin-{manifest['id']}-{manifest['version']}.zip"
     target = output / name

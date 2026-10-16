@@ -17,7 +17,7 @@ declare namespace RetroMao {
   interface Task { id: string; pluginId: string; version: string; actionId: string; state: "WAITING" | "RUNNING" | "CANCELLING" | "SUCCEEDED" | "FAILED" | "CANCELLED"; message: string; completed: number; total: number | null; createdAt: number; updatedAt: number; }
   interface Api {
     readonly version: 1;
-    readonly ready: Promise<{ locale?: string; appLocale?: string; defaultLocale?: string; locales?: readonly string[]; messages?: Readonly<Record<string, string>>; colors?: Record<string, string> }>;
+    readonly ready: Promise<{ locale?: string; appLocale?: string; defaultLocale?: string; locales?: readonly string[]; messages?: Readonly<Record<string, string>>; colors?: Record<string, string>; configuring?: boolean }>;
     icons: { list(): Promise<readonly IconName[]>; url(name: IconName): string };
     library: { game(id: string): Promise<Game | null>; games(query?: Query): Promise<Page>; records(query?: Query): Promise<RecordPage>; edit(changes: Edit[], checkpoint?: Record<string, Json>): Promise<Game[]>; apply(changes: Edit[], checkpoint?: Record<string, Json>): Promise<void> };
     favorites: { list(query?: Query): Promise<Page>; set(gameId: string, favorite: boolean): Promise<Game[]> };
