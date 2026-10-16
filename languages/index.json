@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog_version": "0.9.98",
-  "catalog_hash": "2afdae57d3906bc5d45791951e22d44a0b5090144a7a208e52ab5e084b5dc6a0",
+  "catalog_hash": "3221312e0b7cb7e5440e96318bf0a408b863f5291a98918b7af38126be35f9ac",
   "languages": [
     {
       "locale": "en",
@@ -9,10 +9,10 @@
       "file": "en.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1304,
-      "total": 1304,
-      "size_bytes": 97638,
-      "sha256": "ccdd1855ba54371a980b887307bf6032bda7f82ad7f9b981fe95cf0fc51b4bdf"
+      "translated": 1328,
+      "total": 1328,
+      "size_bytes": 99823,
+      "sha256": "9d62cbebf4b27cce8a8f06f93ee8126f7a208747c937920e5db34b722a7f49cd"
     },
     {
       "locale": "ja",
@@ -20,10 +20,10 @@
       "file": "ja.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1304,
-      "total": 1304,
-      "size_bytes": 125987,
-      "sha256": "39baf395f01e12d54c7c0328b8179e35cc786ebb64d9839c46fb56030d96819a"
+      "translated": 1328,
+      "total": 1328,
+      "size_bytes": 128873,
+      "sha256": "39bd2bdb92403e201f28e2bc6685cb40c51e0ca5a900c30f7f075da346f544a8"
     },
     {
       "locale": "zh-Hans",
@@ -31,10 +31,10 @@
       "file": "zh-Hans.json",
       "author": "4NPC",
       "status": "source",
-      "translated": 1304,
-      "total": 1304,
-      "size_bytes": 94791,
-      "sha256": "b85e0386be50a433b96e533153331784e317af96f63d11cfb0988a19f76897ab"
+      "translated": 1328,
+      "total": 1328,
+      "size_bytes": 96774,
+      "sha256": "4c7289f510c3863925a4b461825b96643f000ea089428c07934b3bc9762fabd4"
     },
     {
       "locale": "zh-Hant",
@@ -42,10 +42,10 @@
       "file": "zh-Hant.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1304,
-      "total": 1304,
-      "size_bytes": 95195,
-      "sha256": "ef6c1fe52a5fc3e869e761f3b06d7156a88350f87bcce13550997c211009749e"
+      "translated": 1328,
+      "total": 1328,
+      "size_bytes": 97181,
+      "sha256": "5fcd58b92ca242d4ce915caf6272032a4aac4ae8a66136cb24dc5dcf453298be"
     }
   ]
 }
