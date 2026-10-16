@@ -60,6 +60,35 @@
         }
       },
       "previewPath": "previews/plugin-recent-sync.png"
+    },
+    {
+      "id": "org.retromao.vita3k-sync",
+      "name": "Vita3K ROM 同步",
+      "author": "4NPC",
+      "version": "1.0.0",
+      "minAppVersion": "0.9.98",
+      "description": "在系统 ROM 同步时加入 Vita3K 已安装的游戏本体、补丁、DLC 和对应许可。仅需选择 Vita3K 目录，存档、固件和缓存不在本插件范围内。",
+      "kind": "SCRIPT",
+      "releaseTag": "vita3k-sync-1.0.0",
+      "fileName": "plugin-org.retromao.vita3k-sync-1.0.0.zip",
+      "sizeBytes": 2392,
+      "sha256": "e0c0d32b5dc0fc6d0a9c22a236ecae665f4046528fa310171b3a846105fb31ee",
+      "iconName": "gamepad",
+      "defaultLocale": "zh-Hans",
+      "localizations": {
+        "zh-Hant": {
+          "name": "Vita3K ROM 同步",
+          "description": "在系統 ROM 同步時加入 Vita3K 已安裝的遊戲本體、更新、DLC 和對應授權。只需選擇 Vita3K 目錄，本外掛不處理存檔、韌體及快取。"
+        },
+        "en": {
+          "name": "Vita3K ROM sync",
+          "description": "Include installed Vita3K games, updates, DLC and their licenses in system ROM transfers. Choose the Vita3K directory; saves, firmware and caches are excluded."
+        },
+        "ja": {
+          "name": "Vita3K ROM 同期",
+          "description": "システムの ROM 同期に、Vita3K にインストールしたゲーム、更新データ、DLC と対応するライセンスを含めます。Vita3K フォルダーを選択してください。セーブ、ファームウェア、キャッシュは対象外です。"
+        }
+      }
     }
   ]
 }

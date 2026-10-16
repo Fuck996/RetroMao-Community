@@ -4,7 +4,7 @@
 
 This repository maintains language, platform, and theme extensions for RetroMao. Extensions contain translations, configuration, and redistributable artwork; installing one does not upload your ROMs, saves, or cloud credentials. Online platform/theme installation supports **0.9.44 and later**, built-in languages and language downloads start with **0.9.87**, and multiple repositories are supported from **0.9.88**. Online downloads require access to GitHub. Existing games and installed extensions remain usable offline.
 
-The current packaged app version is **0.9.97**; see the [changelog (Chinese)](CHANGELOG.md). It includes the script plugin framework, version management, plugin localization and shared icons, and reuses the shared content APIs, synchronization workflows and provider configuration. Script-based storage-provider integration has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
+The current packaged app version is **0.9.98**; see the [changelog (Chinese)](CHANGELOG.md). It includes the script plugin framework, version management, plugin localization and shared icons, and reuses the shared content APIs, synchronization workflows and provider configuration. Script-based storage-provider integration has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
 
 ## Add official and community repositories
 

@@ -2,6 +2,8 @@
 
 脚本框架首次随 0.9.90 APK 打包，0.9.91 APK 增加已配置网盘的 JSON 读写与两个同步示例所需接口，原生引擎与页面仍待设备验收。收藏同步与最近记录同步 **1.0.4** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4)，通过 `plugins/index.json` 在商店提供，需要 0.9.96；旧版 Release 保留。
 
+0.9.98 APK 增加 [ROM 资源提供者](ROM_RESOURCES.md)和 `DIRECTORY` 配置字段；插件定位授权目录中的游戏资源，宿主沿用原 ROM 同步流程。作者 4NPC 的 [Vita3K ROM 同步 1.0.0](https://github.com/Fuck996/RetroMao-Community/releases/tag/vita3k-sync-1.0.0)已发布并加入商店，需要 0.9.98。未启用或未配置插件的终端保持原有同步行为，实际设备双端同步仍待验收。
+
 主菜单的 **插件** 提供 **已安装** 与 **商店**。入口开关位于 **设置 → 主题与显示**；隐藏入口不卸载或禁用插件。仓库沿用设置右下角的公共入口，多行地址和内容合并规则不变。平台、主题和语言保留原安装入口及索引。
 
 0.9.92 增加版本徽标、已安装插件更新提示、安装确认与公共图标，规则见[插件版本与公共图标](PLUGIN_VERSIONS.md)。图标可用清单的 `iconName`，或页面的 `retromao.icons.list/url`，不为每个图标发网络请求。
