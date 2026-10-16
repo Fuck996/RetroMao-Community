@@ -65,7 +65,9 @@ await retromao.index.patch(game.id, { note: { expected: "通关后再玩" } });
 
 页面网络访问经 `http.request`，不直接联网或读取 `file://`、`content://`。主动点击的外部链接交给浏览器；桥接只授予本插件 HTTPS 源的顶层页面。SDK 提供主题 CSS 变量及方向键焦点移动，作者仍须验证 16:9、4:3、1:1、触摸与手柄。
 
-当前不包含存储渠道脚本注册、ROM/存档流式传输、任意媒体下载及外部 APK 安装。这些能力须继续接入既有传输流程，不能通过 JSON 或私有数据库重做同步。见[同步提供者契约](../SYNC_PROVIDERS.md)。
+0.9.98 源码提供 [ROM 资源扩展接口](ROM_RESOURCES.md)：声明 `ROM_RESOURCES`、原生 `DIRECTORY` 配置和 `resourceProviders`，通过 `define({resources:{...}})` 定位文件范围，实际上传、下载及索引维护复用宿主资源队列。脚本不接收文件正文；未配置插件的终端保留原有同步行为和远端扩展资源记录。Vita3K 示例仅配置目录，没有独立同步按钮或网盘设置。
+
+当前不包含存储渠道脚本注册、脚本任意二进制传输、任意媒体下载及外部 APK 安装。这些能力须接入既有传输流程，不能通过 JSON 或私有数据库重做同步。见[同步提供者契约](../SYNC_PROVIDERS.md)。
 
 ## 打包发布
 

@@ -1,0 +1,34 @@
+"use strict";
+const { test } = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const vm = require("node:vm");
+const sdk = fs.readFileSync(path.join(__dirname, "../sdk/runtime/retromao.js"), "utf8");
+const script = fs.readFileSync(path.join(__dirname, "../examples/vita3k-sync/main.js"), "utf8");
+
+test("Vita3K resolver runs through the SDK and returns paths without per-file RPC or network", async () => {
+  const messages = [];
+  const port = { postMessage(raw) { messages.push(JSON.parse(raw)); } };
+  const context = vm.createContext({ android: { async getNamedPort() { return port; } } });
+  vm.runInContext(sdk, context);
+  await new Promise(resolve => setImmediate(resolve));
+  const request = messages.find(item => item.method === "session.ready");
+  port.onmessage({ data: JSON.stringify({ id: request.id, result: { locale: "en" } }) });
+  await context.retromao.ready;
+  messages.length = 0;
+  vm.runInContext(script, context);
+  await context.retromao.__run("resource:installed", { games: [{ gameId: "one", romNames: ["PCSG00001.psvita"] }, { gameId: "two", romNames: ["PCSE00002.PSVITA"] }] });
+  assert.equal(messages.length, 1);
+  assert.equal(messages[0].type, "complete");
+  const [first, second] = messages[0].result;
+  assert.equal(first.paths[0].path, "ux0/app/PCSG00001");
+  assert.equal(second.paths[0].path, "ux0/app/PCSE00002");
+  assert.equal(first.paths[0].required, true);
+  assert.equal(first.paths.length, 4);
+  assert.ok(first.paths.every(item => !/savedata|firmware|cache/.test(item.path)));
+  messages.length = 0;
+  await context.retromao.__run("resource:installed", { games: [{ gameId: "bad", romNames: ["../outside.psvita"] }] });
+  assert.equal(messages[0].type, "failure");
+  context.retromao.__dispose();
+});

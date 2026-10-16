@@ -13,6 +13,9 @@ declare namespace RetroMao {
   interface GameRecord { id: string; platformId: string; title: string; romFileNames: string[]; favorite: boolean; recent: Recent; }
   interface RecordPage { games: GameRecord[]; next: Query["after"]; }
   interface StorageSource { id: string; name: string; provider: string; scope: string; }
+  interface ResourceGame { gameId: string; romNames: string[]; }
+  interface ResourceResolution { gameId: string; key: string; paths: { path: string; required?: boolean }[]; }
+  interface ResourceProvider { id: string; platformId: string; extensions: string[]; directorySetting: string; rootPaths?: string[]; rootMarker: string; formatVersion?: 1; }
   interface Edit { gameId: string; metadata?: { expected: Metadata; values: Partial<Record<MetadataField, string>> }; favorite?: boolean; recent?: { expected: Recent; value: Recent }; media?: { role: MediaRole; expected: Media | null; asset: Asset | null }[]; extensions?: Record<string, { expected?: Json; value?: Json }>; mode?: "EDIT" | "FILL_MISSING"; }
   interface Task { id: string; pluginId: string; version: string; actionId: string; state: "WAITING" | "RUNNING" | "CANCELLING" | "SUCCEEDED" | "FAILED" | "CANCELLED"; message: string; completed: number; total: number | null; createdAt: number; updatedAt: number; }
   interface Api {
@@ -29,7 +32,8 @@ declare namespace RetroMao {
     storage: { sources(): Promise<StorageSource[]>; read(source: StorageSource, key: string): Promise<{ token: string; value: Record<string, Json> | null }>; write(token: string, value: Record<string, Json>): Promise<void> };
     http: { request(options: { url: string; method?: "GET" | "HEAD" | "POST" | "PUT" | "PATCH" | "DELETE"; headers?: Record<string, string>; body?: string }): Promise<{ status: number; headers: Record<string, string>; body: string }> };
     tasks: { run(action: string, arguments_?: Record<string, Json>): Promise<Task>; current(): Promise<Task | null>; get(id: string): Promise<Task>; result(id: string): Promise<Json>; cancel(id: string): Promise<void>; progress(completed: number, total?: number | null, message?: string): Promise<void>; watch(id: string, callback: (task: Task) => void): () => void };
-    define(definition: { actions: Record<string, (arguments_: Record<string, Json>) => Json | void | Promise<Json | void>> }): void;
+    define(definition: { actions?: Record<string, (arguments_: Record<string, Json>) => Json | void | Promise<Json | void>>;
+      resources?: Record<string, (arguments_: { games: ResourceGame[] }) => ResourceResolution[] | Promise<ResourceResolution[]>> }): void;
   }
 }
 declare const retromao: RetroMao.Api;

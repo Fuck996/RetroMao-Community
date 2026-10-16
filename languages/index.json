@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "catalog_version": "0.9.89",
-  "catalog_hash": "5e84aab1462af2bcf1ab318603935337bb7029fdc0ea6ac550e6cb3fadf6a0fc",
+  "catalog_version": "0.9.98",
+  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
   "languages": [
     {
       "locale": "en",
@@ -9,10 +9,10 @@
       "file": "en.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1300,
-      "total": 1300,
-      "size_bytes": 97402,
-      "sha256": "2770196706f6bc7e5045abd08843cb0006464050b31fe4f5de9e77296e3c6c3f"
+      "translated": 1301,
+      "total": 1301,
+      "size_bytes": 97520,
+      "sha256": "15e901bfacf0223ec545abfdf6929f7e16715372e9bb795202bd638d62de236a"
     },
     {
       "locale": "ja",
@@ -20,10 +20,10 @@
       "file": "ja.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1300,
-      "total": 1300,
-      "size_bytes": 125694,
-      "sha256": "dbcc1c2ba9f0ddc1d52e40559df01fe58a15bb5047f6811fa71953be03c2b87c"
+      "translated": 1301,
+      "total": 1301,
+      "size_bytes": 125847,
+      "sha256": "8720fc086a1cda12f05cdebb3d16850023cc364fc2cf0f097c6f9d1b02fa634c"
     },
     {
       "locale": "zh-Hans",
@@ -31,10 +31,10 @@
       "file": "zh-Hans.json",
       "author": "4NPC",
       "status": "source",
-      "translated": 1300,
-      "total": 1300,
-      "size_bytes": 94558,
-      "sha256": "fe4242a8eba7fedd20a8461d50f9b167bf7c6260e6853cdba24ab0a364517efa"
+      "translated": 1301,
+      "total": 1301,
+      "size_bytes": 94666,
+      "sha256": "52d1d113bbc3051601f6b61850010f1c34d7a9d85a7251b7d1029a8e358a459f"
     },
     {
       "locale": "zh-Hant",
@@ -42,10 +42,10 @@
       "file": "zh-Hant.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1300,
-      "total": 1300,
-      "size_bytes": 94962,
-      "sha256": "ad8e65cbe53f960f57ec968768ecf685023627020a49b8e5bc9204382473909c"
+      "translated": 1301,
+      "total": 1301,
+      "size_bytes": 95070,
+      "sha256": "56cf418c05b05d2edbd420247c5bfa7dbc4ce444a9f9e5b3c54b6fce631ecac5"
     }
   ]
 }

@@ -101,7 +101,9 @@
       __dispose: () => { watchers.clear(); rejectAll("Plugin page closed"); },
       __run: async (action, arguments_) => {
         try {
-          const execute = definition && definition.actions && definition.actions[action];
+          const execute = action.startsWith("resource:")
+            ? definition && definition.resources && definition.resources[action.slice(9)]
+            : definition && definition.actions && definition.actions[action];
           if (typeof execute !== "function") throw new Error("Action is not registered: " + action);
           const result = await execute(arguments_);
           send(JSON.stringify({ type: "complete", result: result === undefined ? null : result }));

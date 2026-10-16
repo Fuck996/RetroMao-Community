@@ -64,6 +64,18 @@ def build(source: Path, output: Path, release_tag: str) -> dict:
     configuration_page = manifest.get("configurationPage")
     pages = manifest.get("pages", [])
     minimum = tuple(map(int, manifest["minAppVersion"].split(".")))
+    providers = manifest.get("resourceProviders", [])
+    if providers:
+        if minimum < (0, 9, 98) or not manifest.get("entryPoint") or "ROM_RESOURCES" not in manifest.get("capabilities", []):
+            raise ValueError("ROM resource providers require an entry point, ROM_RESOURCES and app 0.9.98")
+        settings = {setting["id"]: setting for setting in manifest.get("settings", [])}
+        if len({provider["id"] for provider in providers}) != len(providers):
+            raise ValueError("Duplicate ROM resource provider")
+        for provider in providers:
+            if settings.get(provider["directorySetting"], {}).get("kind") != "DIRECTORY":
+                raise ValueError("ROM resource providers require a directory setting")
+            if provider.get("formatVersion", 1) != 1:
+                raise ValueError("Unsupported ROM resource format")
     if any(page.get("kind", "BUSINESS") not in ("BUSINESS", "CONFIGURATION") for page in pages):
         raise ValueError("Invalid plugin page kind")
     if any(page.get("kind") == "CONFIGURATION" and (page["id"] != configuration_page or minimum < (0, 9, 96)) for page in pages):

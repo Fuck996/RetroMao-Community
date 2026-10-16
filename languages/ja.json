@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.89",
-  "catalog_hash": "5e84aab1462af2bcf1ab318603935337bb7029fdc0ea6ac550e6cb3fadf6a0fc",
+  "catalog_version": "0.9.98",
+  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1305,7 +1305,8 @@
     "plugin_replace_source_description": "プラグインの提供元を切り替えます。設定と専用データは提供元ごとに保持します。切り替え後は再度有効にして設定してください。",
     "controller_style": "コントローラースタイル",
     "controller_style_nintendo": "任天堂",
-    "controller_style_description": "選んだボタン配置に合わせて操作ガイドを表示します。決定・戻る・カスタム割り当ては現在の設定を引き継ぎます。"
+    "controller_style_description": "選んだボタン配置に合わせて操作ガイドを表示します。決定・戻る・カスタム割り当ては現在の設定を引き継ぎます。",
+    "plugin_permission_rom_resources": "許可したフォルダー内のゲームデータを読み書きし、システムの ROM 同期に含める"
   },
   "author": "4NPC",
   "credits": []

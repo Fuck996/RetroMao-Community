@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "en",
   "name": "English",
-  "catalog_version": "0.9.89",
-  "catalog_hash": "5e84aab1462af2bcf1ab318603935337bb7029fdc0ea6ac550e6cb3fadf6a0fc",
+  "catalog_version": "0.9.98",
+  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1305,7 +1305,8 @@
     "plugin_replace_source_description": "Changes this plugin’s repository. Each repository keeps separate settings and private data. Enable and configure the plugin again after switching.",
     "controller_style": "Controller style",
     "controller_style_nintendo": "Nintendo",
-    "controller_style_description": "Show button prompts for this layout. Keep the current confirm, back, and custom bindings."
+    "controller_style_description": "Show button prompts for this layout. Keep the current confirm, back, and custom bindings.",
+    "plugin_permission_rom_resources": "Read and write game files in authorized directories through system ROM sync"
   },
   "author": "4NPC",
   "credits": []
