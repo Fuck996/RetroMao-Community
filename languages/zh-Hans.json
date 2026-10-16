@@ -3,7 +3,7 @@
   "locale": "zh-Hans",
   "name": "简体中文",
   "catalog_version": "0.9.98",
-  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
+  "catalog_hash": "2afdae57d3906bc5d45791951e22d44a0b5090144a7a208e52ab5e084b5dc6a0",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1306,7 +1306,10 @@
     "controller_style": "手柄模式",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "按手柄布局显示按键提示；确认、返回和自定义映射沿用当前设置。",
-    "plugin_permission_rom_resources": "通过授权目录读写游戏本体，并加入系统 ROM 同步"
+    "plugin_permission_rom_resources": "通过授权目录读写游戏本体，并加入系统 ROM 同步",
+    "navigation_style": "顶部菜单样式",
+    "navigation_style_text": "文字",
+    "navigation_style_icons": "图标"
   },
   "author": "4NPC",
   "credits": []

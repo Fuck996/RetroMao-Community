@@ -3,7 +3,7 @@
   "locale": "ja",
   "name": "日本語",
   "catalog_version": "0.9.98",
-  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
+  "catalog_hash": "2afdae57d3906bc5d45791951e22d44a0b5090144a7a208e52ab5e084b5dc6a0",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1306,7 +1306,10 @@
     "controller_style": "コントローラースタイル",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "選んだボタン配置に合わせて操作ガイドを表示します。決定・戻る・カスタム割り当ては現在の設定を引き継ぎます。",
-    "plugin_permission_rom_resources": "許可したフォルダー内のゲームデータを読み書きし、システムの ROM 同期に含める"
+    "plugin_permission_rom_resources": "許可したフォルダー内のゲームデータを読み書きし、システムの ROM 同期に含める",
+    "navigation_style": "上部メニューの表示",
+    "navigation_style_text": "文字",
+    "navigation_style_icons": "アイコン"
   },
   "author": "4NPC",
   "credits": []

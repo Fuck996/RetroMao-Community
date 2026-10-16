@@ -3,7 +3,7 @@
   "locale": "zh-Hant",
   "name": "繁體中文",
   "catalog_version": "0.9.98",
-  "catalog_hash": "8ebcb319d50c9daa8e58d4b1d38d4a48d683357a3e1573d63430b74157dd4eb4",
+  "catalog_hash": "2afdae57d3906bc5d45791951e22d44a0b5090144a7a208e52ab5e084b5dc6a0",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1306,7 +1306,10 @@
     "controller_style": "控制器模式",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "依控制器配置顯示按鍵提示；確認、返回和自訂對應沿用目前設定。",
-    "plugin_permission_rom_resources": "透過授權目錄讀寫遊戲本體，並加入系統 ROM 同步"
+    "plugin_permission_rom_resources": "透過授權目錄讀寫遊戲本體，並加入系統 ROM 同步",
+    "navigation_style": "頂部選單樣式",
+    "navigation_style_text": "文字",
+    "navigation_style_icons": "圖示"
   },
   "author": "4NPC",
   "credits": []
