@@ -1,8 +1,8 @@
 # 收藏与最近游戏同步示例
 
-源码正在准备 **1.0.4 / 主程序 0.9.96**：网盘选择移入独立的 CONFIGURATION 页面，启用开关、授权与卸载由宿主统一提供。配置时不需要启用插件，也不执行同步。业务页只展示所选网盘、同步进度与结果，沿用原 `data.destination` 和同步算法。此版本尚未发布；商店与下列下载链接仍指向已发布 1.0.3。
+已发布 **1.0.4 / 主程序 0.9.96**：网盘选择移入独立的 CONFIGURATION 页面，启用开关、授权与卸载由宿主统一提供。配置时不需要启用插件，也不执行同步。业务页只展示所选网盘、同步进度与结果，沿用原 `data.destination` 和同步算法。商店与下列下载链接已更新至 1.0.4，旧版 Release 保留。
 
-两个独立插件，作者 **4NPC**，当前版本 **1.0.3**，最低主程序 **0.9.95**：
+两个独立插件，作者 **4NPC**，当前版本 **1.0.4**，最低主程序 **0.9.96**：
 
 - `org.retromao.favorites-sync`：收藏同步。
 - `org.retromao.recent-sync`：最近游戏记录同步。
@@ -42,13 +42,13 @@
 两份清单、模式和图标位于 `favorites-sync/`、`recent-sync/`；共享的合并逻辑、四语页面位于 `activity-sync-shared/`。共同源只在打包时合入，每个 ZIP 都能独立安装运行，不依赖另一个插件。
 
 ```text
-python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.3
+python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.4
 node --test community/tools/test_sync_examples.cjs community/tools/test_script_sdk.cjs
 ```
 
-打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别启用并打开页面选择网盘。第二台设备同样操作后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
+打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别进入配置选择网盘并启用，再打开业务页面同步。第二台设备同样配置后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
 
-两个插件 **1.0.3** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.3)并加入 `plugins/index.json`，0.9.95 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
+两个插件 **1.0.4** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4)并加入 `plugins/index.json`，0.9.96 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
 
 **1.0.2** 补齐四语商店与宿主文字，沿用既有同步规则。同来源更新保留配置和私有数据；旧版 **1.0.1** Release 保留，供 0.9.91–0.9.93 用户手动下载。
 
