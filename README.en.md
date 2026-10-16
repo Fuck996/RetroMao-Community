@@ -4,7 +4,7 @@
 
 This repository maintains language, platform, and theme extensions for RetroMao. Extensions contain translations, configuration, and redistributable artwork; installing one does not upload your ROMs, saves, or cloud credentials. Online platform/theme installation supports **0.9.44 and later**, built-in languages and language downloads start with **0.9.87**, and multiple repositories are supported from **0.9.88**. Online downloads require access to GitHub. Existing games and installed extensions remain usable offline.
 
-The current packaged app version is **0.9.93**; see the [changelog (Chinese)](CHANGELOG.md). It includes the script plugin framework, version management and shared icons, and reuses the shared content APIs, synchronization workflows and provider configuration. Script-based storage-provider integration has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
+The current packaged app version is **0.9.94**; see the [changelog (Chinese)](CHANGELOG.md). It includes the script plugin framework, version management, plugin localization and shared icons, and reuses the shared content APIs, synchronization workflows and provider configuration. Script-based storage-provider integration has not been released; see the [storage-provider guide (Chinese)](SYNC_PROVIDERS.md) for the current boundaries.
 
 ## Add official and community repositories
 
@@ -50,7 +50,7 @@ The catalog is a manifest; the Release ZIP is the installed payload, while the p
 
 ## Create and contribute
 
-The script plugin framework provides an [SDK](sdk/README.md), a [library notes example](examples/library-notes/), and Installed and Store tabs in the main menu. It reuses the existing repository settings and downloads. Script discovery uses `plugins/index.json`. [Favorites Sync and Recent Games Sync 1.0.1](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.1) are published and compatible with 0.9.91. Native execution and synchronization with actual cloud storage still require device validation. See the [version and shared icon guide (Chinese)](sdk/PLUGIN_VERSIONS.md) for update rules.
+The script plugin framework provides an [SDK](sdk/README.md), a [library notes example](examples/library-notes/), and Installed and Store tabs in the main menu. It reuses the existing repository settings and downloads. Script discovery uses `plugins/index.json`. [Favorites Sync and Recent Games Sync 1.0.2](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.2) are published and require 0.9.94. Native execution and synchronization with actual cloud storage still require device validation. See the [version and shared icon guide (Chinese)](sdk/PLUGIN_VERSIONS.md) for update rules.
 
 - Put `platform.json` at the root of a platform ZIP, optionally with icons. Put `theme.json` at the root of a theme ZIP and provide a 1280×720 PNG/WebP preview for online themes.
 - Start with [`examples/`](examples/) and the [pack specification](EXTENSIONS.md). Test local import and the 16:9, 4:3, and 1:1 layouts, touch, and controller navigation. State the author and redistribution license. Do not include ROMs, firmware, saves, secrets, or account data.

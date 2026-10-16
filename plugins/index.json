@@ -5,30 +5,60 @@
       "id": "org.retromao.favorites-sync",
       "name": "收藏同步",
       "author": "4NPC",
+      "version": "1.0.2",
+      "minAppVersion": "0.9.94",
       "description": "通过已配置网盘同步收藏。按游戏名和完整 ROM 文件名集合匹配，支持新增及取消收藏，不传输 ROM、媒体或存档。",
-      "version": "1.0.1",
-      "minAppVersion": "0.9.91",
       "kind": "SCRIPT",
-      "releaseTag": "sync-examples-1.0.1",
-      "fileName": "plugin-org.retromao.favorites-sync-1.0.1.zip",
-      "sizeBytes": 18531,
-      "sha256": "16cdc10c0175b490dc132a5b70a78f6c7caec04275c9b7f2ce14401a18da520b",
+      "releaseTag": "sync-examples-1.0.2",
+      "fileName": "plugin-org.retromao.favorites-sync-1.0.2.zip",
+      "sizeBytes": 19128,
+      "sha256": "0cbb1f54019656a074fef711c400390b248571aa3d3bbf36b50f3d9a5414c790",
       "iconName": "star",
+      "defaultLocale": "zh-Hans",
+      "localizations": {
+        "zh-Hant": {
+          "name": "收藏同步",
+          "description": "透過已設定的網路硬碟同步收藏。以遊戲名稱及完整 ROM 檔名集合比對，支援新增與取消收藏，不傳輸 ROM、媒體或存檔。"
+        },
+        "en": {
+          "name": "Favorites sync",
+          "description": "Sync favorites through a configured cloud connection. Match games by title and the complete ROM filename set. Sync additions and removals without transferring ROMs, media or saves."
+        },
+        "ja": {
+          "name": "お気に入りの同期",
+          "description": "設定済みのクラウド接続でお気に入りを同期します。ゲーム名と ROM ファイル名の集合で照合し、登録と解除を同期します。ROM・メディア・セーブデータは転送しません。"
+        }
+      },
       "previewPath": "previews/plugin-favorites-sync.png"
     },
     {
       "id": "org.retromao.recent-sync",
       "name": "最近游戏记录同步",
       "author": "4NPC",
+      "version": "1.0.2",
+      "minAppVersion": "0.9.94",
       "description": "通过已配置网盘同步最近游戏记录。按游戏名和完整 ROM 文件名集合匹配，保留较新游玩时间，次数及时长取较大值。",
-      "version": "1.0.1",
-      "minAppVersion": "0.9.91",
       "kind": "SCRIPT",
-      "releaseTag": "sync-examples-1.0.1",
-      "fileName": "plugin-org.retromao.recent-sync-1.0.1.zip",
-      "sizeBytes": 22207,
-      "sha256": "cfdf718578b796f592359f77c1cdd9d035a6853023655821df7eb3a310bde5ee",
+      "releaseTag": "sync-examples-1.0.2",
+      "fileName": "plugin-org.retromao.recent-sync-1.0.2.zip",
+      "sizeBytes": 22805,
+      "sha256": "920386b1a51d3644aace8948452f26c23d6f31f1bd8451bc7be0511b48a49b96",
       "iconName": "history",
+      "defaultLocale": "zh-Hans",
+      "localizations": {
+        "zh-Hant": {
+          "name": "最近遊戲紀錄同步",
+          "description": "透過已設定的網路硬碟同步最近遊戲紀錄。以遊戲名稱及完整 ROM 檔名集合比對，保留較新的遊玩時間，次數與時長取較大值。"
+        },
+        "en": {
+          "name": "Recent games sync",
+          "description": "Sync recent game records through a configured cloud connection. Match games by title and the complete ROM filename set. Keep the latest play date and the higher play count and duration."
+        },
+        "ja": {
+          "name": "最近遊んだゲームの同期",
+          "description": "設定済みのクラウド接続で最近遊んだゲームの記録を同期します。ゲーム名と ROM ファイル名の集合で照合し、最終プレイ日時は新しい方、回数と時間は大きい方を保持します。"
+        }
+      },
       "previewPath": "previews/plugin-recent-sync.png"
     }
   ]
