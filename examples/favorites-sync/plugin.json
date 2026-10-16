@@ -4,8 +4,9 @@
   "id": "org.retromao.favorites-sync",
   "name": "收藏同步",
   "author": "4NPC",
-  "version": "1.0.1",
-  "minAppVersion": "0.9.91",
+  "version": "1.0.2",
+  "defaultLocale": "zh-Hans",
+  "minAppVersion": "0.9.94",
   "description": "通过已配置网盘同步收藏。按游戏名和完整 ROM 文件名集合匹配，支持新增及取消收藏，不传输 ROM、媒体或存档。",
   "entryPoint": "main.js",
   "icon": "icon.png",
@@ -13,5 +14,25 @@
   "capabilities": ["LIBRARY_READ", "LIBRARY_WRITE", "STORAGE"],
   "pages": [{"id": "sync", "title": "收藏同步", "path": "index.html"}],
   "actions": [{"id": "sync", "title": "同步收藏", "description": "使用插件页面选定的网盘，合并收藏变化。"}],
-  "license": "MIT"
+  "license": "MIT",
+  "localizations": {
+    "zh-Hant": {
+      "name": "收藏同步",
+      "description": "透過已設定的網路硬碟同步收藏。以遊戲名稱及完整 ROM 檔名集合比對，支援新增與取消收藏，不傳輸 ROM、媒體或存檔。",
+      "pages": {"sync": "收藏同步"},
+      "actions": {"sync": {"title": "同步收藏", "description": "使用外掛頁面選定的網路硬碟，合併收藏變更。"}}
+    },
+    "en": {
+      "name": "Favorites sync",
+      "description": "Sync favorites through a configured cloud connection. Match games by title and the complete ROM filename set. Sync additions and removals without transferring ROMs, media or saves.",
+      "pages": {"sync": "Favorites sync"},
+      "actions": {"sync": {"title": "Sync favorites", "description": "Merge favorite changes using the cloud connection selected on the plugin page."}}
+    },
+    "ja": {
+      "name": "お気に入りの同期",
+      "description": "設定済みのクラウド接続でお気に入りを同期します。ゲーム名と ROM ファイル名の集合で照合し、登録と解除を同期します。ROM・メディア・セーブデータは転送しません。",
+      "pages": {"sync": "お気に入りの同期"},
+      "actions": {"sync": {"title": "お気に入りを同期", "description": "プラグイン画面で選択したクラウド接続を使い、お気に入りの変更を統合します。"}}
+    }
+  }
 }

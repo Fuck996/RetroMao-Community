@@ -40,10 +40,12 @@
 两份清单、模式和图标位于 `favorites-sync/`、`recent-sync/`；共享的合并逻辑、四语页面位于 `activity-sync-shared/`。共同源只在打包时合入，每个 ZIP 都能独立安装运行，不依赖另一个插件。
 
 ```text
-python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.1
+python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.2
 node --test community/tools/test_sync_examples.cjs community/tools/test_script_sdk.cjs
 ```
 
 打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别启用并打开页面选择网盘。第二台设备同样操作后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
 
 两个插件 **1.0.1** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.1)并加入 `plugins/index.json`，0.9.91 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
+
+当前源码的下一版为 **1.0.2**，补齐四语商店与宿主文字，最低主程序版本 **0.9.94**。该版候选包已本地核验，尚未发布 Release 或更新商店目录；上面的构建命令不重新生成已发布的 1.0.1 资产。

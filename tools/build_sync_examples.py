@@ -33,4 +33,4 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=Path, default=ROOT / "dist")
     parser.add_argument("--release-tag", required=True)
     args = parser.parse_args()
-    print(json.dumps(build_examples(args.output, args.release_tag), ensure_ascii=False, indent=2))
+    print(json.dumps(build_examples(args.output, args.release_tag), ensure_ascii=True, indent=2))
