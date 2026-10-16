@@ -1,6 +1,6 @@
 # 收藏与最近游戏同步示例
 
-两个独立插件，作者 **4NPC**，当前版本 **1.0.2**，最低主程序 **0.9.94**：
+两个独立插件，作者 **4NPC**，当前版本 **1.0.3**，最低主程序 **0.9.95**：
 
 - `org.retromao.favorites-sync`：收藏同步。
 - `org.retromao.recent-sync`：最近游戏记录同步。
@@ -46,8 +46,8 @@ node --test community/tools/test_sync_examples.cjs community/tools/test_script_s
 
 打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别启用并打开页面选择网盘。第二台设备同样操作后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
 
-两个插件 **1.0.2** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.2)并加入 `plugins/index.json`，0.9.94 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
+两个插件 **1.0.3** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.3)并加入 `plugins/index.json`，0.9.95 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
 
 **1.0.2** 补齐四语商店与宿主文字，沿用既有同步规则。同来源更新保留配置和私有数据；旧版 **1.0.1** Release 保留，供 0.9.91–0.9.93 用户手动下载。
 
-当前源码 **1.0.3** 补充 `configurationPage: "sync"`，将现有网盘选择页面声明为配置入口，需要主程序 **0.9.95**。卡片“配置”按声明直接进入同一页面，网盘选择仍保存在原私有数据的 `destination`，不新增配置副本或迁移；原打开入口和同步算法不变。1.0.3 与 0.9.95 尚未正式发布，上面的构建命令用于新候选包，不覆盖已发布的 1.0.2。
+**1.0.3** 补充 `configurationPage: "sync"`，将现有网盘选择页面声明为配置入口，需要主程序 **0.9.95**。卡片“配置”按声明直接进入同一页面，网盘选择仍保存在原私有数据的 `destination`，不新增配置副本或迁移；原打开入口和同步算法不变。旧版 1.0.2 Release 保留，供主程序 0.9.94 用户手动下载。
