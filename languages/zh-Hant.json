@@ -3,7 +3,7 @@
   "locale": "zh-Hant",
   "name": "繁體中文",
   "catalog_version": "0.9.98",
-  "catalog_hash": "3221312e0b7cb7e5440e96318bf0a408b863f5291a98918b7af38126be35f9ac",
+  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1333,7 +1333,8 @@
     "cloud_directory_sync_busy": "此來源仍在同步或還原存檔，請先完成或取消原工作",
     "cloud_directory_target_collision": "新目錄已有同名內容，未覆寫，請選擇其他目錄：%1$s",
     "cloud_directory_task_complete": "目錄遷移已經完成",
-    "cloud_directory_task_required": "未完成的目錄遷移需要繼續，不能捨棄原位置記錄"
+    "cloud_directory_task_required": "未完成的目錄遷移需要繼續，不能捨棄原位置記錄",
+    "emulator_settings_imported_configuration": "透過索引匯入設定"
   },
   "author": "4NPC",
   "credits": []

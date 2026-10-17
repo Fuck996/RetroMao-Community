@@ -3,7 +3,7 @@
   "locale": "ja",
   "name": "日本語",
   "catalog_version": "0.9.98",
-  "catalog_hash": "3221312e0b7cb7e5440e96318bf0a408b863f5291a98918b7af38126be35f9ac",
+  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1333,7 +1333,8 @@
     "cloud_directory_sync_busy": "この接続でセーブを同期または復元中です。先にそのタスクを完了するかキャンセルしてください。",
     "cloud_directory_target_collision": "移動先に同名のデータがあります。上書きしていません。別のフォルダーを選択してください：%1$s",
     "cloud_directory_task_complete": "このフォルダーの移動は完了しています。",
-    "cloud_directory_task_required": "元の場所の記録を削除するには、移動を完了してください。"
+    "cloud_directory_task_required": "元の場所の記録を削除するには、移動を完了してください。",
+    "emulator_settings_imported_configuration": "インデックスから取り込んだ設定"
   },
   "author": "4NPC",
   "credits": []

@@ -3,7 +3,7 @@
   "locale": "en",
   "name": "English",
   "catalog_version": "0.9.98",
-  "catalog_hash": "3221312e0b7cb7e5440e96318bf0a408b863f5291a98918b7af38126be35f9ac",
+  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -839,7 +839,7 @@
     "source_directories_dialog_text_0006": "ROM and media are stored in the library under this folder.",
     "source_directories_dialog_text_0007": "Choose root folder",
     "source_directories_dialog_text_0009": "Current saves and historical backups are stored separately here.",
-    "source_directories_dialog_text_0011": "Saving moves the affected ROMs, media, saves and indexes while keeping version history. View progress in Transfers.",
+    "source_directories_dialog_text_0011": "Saving moves the affected ROM files, media, saves and indexes while keeping version history. View progress in Transfers.",
     "source_directories_dialog_text_0012": "Saving folders",
     "source_directories_dialog_text_0015": "Save folders",
     "source_edit_dialog_text_0005": "Update connection password",
@@ -1333,7 +1333,8 @@
     "cloud_directory_sync_busy": "This connection is syncing or restoring saves. Finish or cancel that task first.",
     "cloud_directory_target_collision": "The destination contains matching names. Nothing was overwritten. Choose another directory: %1$s",
     "cloud_directory_task_complete": "This directory move is already complete.",
-    "cloud_directory_task_required": "Resume the unfinished move before removing its location record."
+    "cloud_directory_task_required": "Resume the unfinished move before removing its location record.",
+    "emulator_settings_imported_configuration": "Configured from imported indexes"
   },
   "author": "4NPC",
   "credits": []

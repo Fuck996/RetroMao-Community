@@ -3,7 +3,7 @@
   "locale": "zh-Hans",
   "name": "简体中文",
   "catalog_version": "0.9.98",
-  "catalog_hash": "3221312e0b7cb7e5440e96318bf0a408b863f5291a98918b7af38126be35f9ac",
+  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1333,7 +1333,8 @@
     "cloud_directory_sync_busy": "此来源仍在同步或恢复存档，请先完成或取消原任务",
     "cloud_directory_target_collision": "新目录已有同名内容，未覆盖，请选择其他目录：%1$s",
     "cloud_directory_task_complete": "目录迁移已经完成",
-    "cloud_directory_task_required": "未完成的目录迁移需要继续，不能丢弃原位置记录"
+    "cloud_directory_task_required": "未完成的目录迁移需要继续，不能丢弃原位置记录",
+    "emulator_settings_imported_configuration": "通过索引导入设置"
   },
   "author": "4NPC",
   "credits": []
