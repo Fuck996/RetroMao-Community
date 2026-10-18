@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.103",
-  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
+  "catalog_version": "0.9.104",
+  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1340,7 +1340,8 @@
     "emulator_rom_directory_choose": "ゲームフォルダーを選択",
     "emulator_rom_directory_clear": "フォルダー設定を解除",
     "emulator_rom_directory_unreadable": "ゲームフォルダーの読み取り権限を取得できません",
-    "emulator_rom_directory_mismatch": "選択した AetherSX2 / NetherSX2 のゲームフォルダーと ROM のファイルプロバイダーが異なります。フォルダーを選び直してください。"
+    "emulator_rom_directory_mismatch": "選択した AetherSX2 / NetherSX2 のゲームフォルダーと ROM のファイルプロバイダーが異なります。フォルダーを選び直してください。",
+    "emulator_document_uri_unsupported": "インデックスにはシステムストレージのドキュメント URI が必要です。この ROM のファイルプロバイダーは対応していません。"
   },
   "author": "4NPC",
   "credits": []

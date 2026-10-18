@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hans",
   "name": "简体中文",
-  "catalog_version": "0.9.103",
-  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
+  "catalog_version": "0.9.104",
+  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1340,7 +1340,8 @@
     "emulator_rom_directory_choose": "选择游戏目录",
     "emulator_rom_directory_clear": "清除目录设置",
     "emulator_rom_directory_unreadable": "无法取得游戏目录的读取授权",
-    "emulator_rom_directory_mismatch": "所选以太游戏目录与 ROM 不属于同一文件提供方，请重新选择"
+    "emulator_rom_directory_mismatch": "所选以太游戏目录与 ROM 不属于同一文件提供方，请重新选择",
+    "emulator_document_uri_unsupported": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式"
   },
   "author": "4NPC",
   "credits": []

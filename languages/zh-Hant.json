@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hant",
   "name": "繁體中文",
-  "catalog_version": "0.9.103",
-  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
+  "catalog_version": "0.9.104",
+  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1340,7 +1340,8 @@
     "emulator_rom_directory_choose": "選擇遊戲目錄",
     "emulator_rom_directory_clear": "清除目錄設定",
     "emulator_rom_directory_unreadable": "無法取得遊戲目錄的讀取授權",
-    "emulator_rom_directory_mismatch": "所選以太遊戲目錄與 ROM 不屬於同一個檔案提供者，請重新選擇"
+    "emulator_rom_directory_mismatch": "所選以太遊戲目錄與 ROM 不屬於同一個檔案提供者，請重新選擇",
+    "emulator_document_uri_unsupported": "索引要求系統儲存空間的文件 URI，目前 ROM 的檔案提供者不支援此格式"
   },
   "author": "4NPC",
   "credits": []
