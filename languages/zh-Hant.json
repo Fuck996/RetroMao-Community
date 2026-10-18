@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hant",
   "name": "繁體中文",
-  "catalog_version": "0.9.98",
-  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
+  "catalog_version": "0.9.103",
+  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1334,7 +1334,13 @@
     "cloud_directory_target_collision": "新目錄已有同名內容，未覆寫，請選擇其他目錄：%1$s",
     "cloud_directory_task_complete": "目錄遷移已經完成",
     "cloud_directory_task_required": "未完成的目錄遷移需要繼續，不能捨棄原位置記錄",
-    "emulator_settings_imported_configuration": "透過索引匯入設定"
+    "emulator_settings_imported_configuration": "透過索引匯入設定",
+    "emulator_rom_directory_title": "以太遊戲目錄（選填）",
+    "emulator_rom_directory_help": "選擇與 AetherSX2 / NetherSX2 中新增的同一層遊戲目錄，讓個別遊戲設定保持可用。不移動檔案；未設定時沿用遊戲庫位址。",
+    "emulator_rom_directory_choose": "選擇遊戲目錄",
+    "emulator_rom_directory_clear": "清除目錄設定",
+    "emulator_rom_directory_unreadable": "無法取得遊戲目錄的讀取授權",
+    "emulator_rom_directory_mismatch": "所選以太遊戲目錄與 ROM 不屬於同一個檔案提供者，請重新選擇"
   },
   "author": "4NPC",
   "credits": []

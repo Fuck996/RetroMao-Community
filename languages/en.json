@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "en",
   "name": "English",
-  "catalog_version": "0.9.98",
-  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
+  "catalog_version": "0.9.103",
+  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1334,7 +1334,13 @@
     "cloud_directory_target_collision": "The destination contains matching names. Nothing was overwritten. Choose another directory: %1$s",
     "cloud_directory_task_complete": "This directory move is already complete.",
     "cloud_directory_task_required": "Resume the unfinished move before removing its location record.",
-    "emulator_settings_imported_configuration": "Configured from imported indexes"
+    "emulator_settings_imported_configuration": "Configured from imported indexes",
+    "emulator_rom_directory_title": "AetherSX2 / NetherSX2 game folder (optional)",
+    "emulator_rom_directory_help": "Select the exact game folder added in AetherSX2 / NetherSX2 to keep per-game settings available. Files stay in place. Leave unset to use the library address.",
+    "emulator_rom_directory_choose": "Select game folder",
+    "emulator_rom_directory_clear": "Clear folder setting",
+    "emulator_rom_directory_unreadable": "Unable to obtain read access to the game folder",
+    "emulator_rom_directory_mismatch": "The selected AetherSX2 / NetherSX2 game folder and ROM use different file providers. Select the folder again."
   },
   "author": "4NPC",
   "credits": []

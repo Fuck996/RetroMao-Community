@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.98",
-  "catalog_hash": "0316db0d5444681b32afc5470ca0ce5745e97f4d659e6122c0ef5b2bb75516c6",
+  "catalog_version": "0.9.103",
+  "catalog_hash": "8df3ab053aba84e18f75602bc6a00a0968a34ec31b59a87c2e07fc70a52cdbe6",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1334,7 +1334,13 @@
     "cloud_directory_target_collision": "移動先に同名のデータがあります。上書きしていません。別のフォルダーを選択してください：%1$s",
     "cloud_directory_task_complete": "このフォルダーの移動は完了しています。",
     "cloud_directory_task_required": "元の場所の記録を削除するには、移動を完了してください。",
-    "emulator_settings_imported_configuration": "インデックスから取り込んだ設定"
+    "emulator_settings_imported_configuration": "インデックスから取り込んだ設定",
+    "emulator_rom_directory_title": "AetherSX2 / NetherSX2 のゲームフォルダー（任意）",
+    "emulator_rom_directory_help": "ゲームごとの設定を利用するには、AetherSX2 / NetherSX2 に追加したものと同じ階層のゲームフォルダーを選んでください。ファイルは移動しません。未設定の場合はライブラリのアドレスを使います。",
+    "emulator_rom_directory_choose": "ゲームフォルダーを選択",
+    "emulator_rom_directory_clear": "フォルダー設定を解除",
+    "emulator_rom_directory_unreadable": "ゲームフォルダーの読み取り権限を取得できません",
+    "emulator_rom_directory_mismatch": "選択した AetherSX2 / NetherSX2 のゲームフォルダーと ROM のファイルプロバイダーが異なります。フォルダーを選び直してください。"
   },
   "author": "4NPC",
   "credits": []
