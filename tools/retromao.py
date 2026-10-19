@@ -174,6 +174,8 @@ def check_repository():
         build_examples(Path(directory), "validation")
     from check_docs import check_docs
     check_docs()
+    from check_api import check_api
+    check_api()
     print(f"OK: {len(index['languages'])} languages, package templates, examples, schemas and trilingual documents")
 
 

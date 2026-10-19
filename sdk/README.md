@@ -2,6 +2,8 @@
 
 [中文](#中文) · [English](#english) · [日本語](#日本語)
 
+[API reference / 逐接口调用 / API 呼び出し](API_REFERENCE.md) · [Inventory / 清单 / 一覧](api.json) · [Versioning / 版本管理 / 版管理](API_VERSIONING.md) · [API changes / 接口变更 / API 変更](API_CHANGELOG.md)
+
 [Types](retromao.d.ts) · [Schema](../schemas/plugin.schema.json) · [Localization](PLUGIN_LOCALIZATION.md) · [Versions](PLUGIN_VERSIONS.md) · [ROM resources](ROM_RESOURCES.md) · [Testing](../docs/TESTING.md) · [Publishing](../docs/PUBLISHING.md)
 
 | API | Capability / 能力 / 権限 |

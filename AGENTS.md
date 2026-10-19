@@ -4,6 +4,8 @@
 
 [README](README.md) · [TESTING](docs/TESTING.md) · [PUBLISHING](docs/PUBLISHING.md)
 
+[Interfaces / 接口导航 / 公開一覧](docs/INTERFACES.md) · [API reference / 调用手册 / 呼び出し](sdk/API_REFERENCE.md) · [API versions / 版本管理 / 版管理](sdk/API_VERSIONING.md) · [API changes / 接口变更 / API 変更](sdk/API_CHANGELOG.md)
+
 ## 中文
 
 先读 README、对应契约及 TESTING。只使用公共 SDK，不访问宿主 Room、任意设备文件、账号凭据或内部同步实现。插件、平台、语言各用自己的格式和索引，不能混装。

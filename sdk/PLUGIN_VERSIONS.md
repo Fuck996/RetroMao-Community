@@ -4,6 +4,8 @@
 
 [Icons](runtime/icons/) · [Publishing](../docs/PUBLISHING.md)
 
+[SDK API versioning / SDK 接口版本 / SDK API 版管理](API_VERSIONING.md) · [API changelog / 接口变更 / API 変更](API_CHANGELOG.md)
+
 ```javascript
 await retromao.ready;
 document.getElementById("icon").src = retromao.icons.url("star");

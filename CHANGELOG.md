@@ -4,6 +4,12 @@
 
 ## 中文
 
+### 公共 SDK 契约 1.0.0 · 2026-10-19
+
+- 补齐 [32 个公开成员的调用手册](sdk/API_REFERENCE.md)与[接口导航](docs/INTERFACES.md)，包括参数、返回、权限、上下文、错误条件和示例，全部提供中英日三语。
+- 建立 [API 版本规则](sdk/API_VERSIONING.md)、[接口变更说明](sdk/API_CHANGELOG.md)、机器清单和不可改写的版本快照；校验接入现有 check、Node 测试与 CI。
+- 此次建立已有 API 的文档基线，不改宿主、插件版本、语言资源或已发布资产；实机验收边界不变。
+
 本文记录与本仓库有关的主程序能力。本仓库现有 Release 继续分发平台／主题示例 ZIP，语言使用独立 JSON；这里不是主程序 APK 或存储插件 SDK 的下载目录。
 
 ### 0.9.108 · 2026-10-19
@@ -157,6 +163,12 @@
 
 ## English
 
+### Public SDK contract 1.0.0 · 2026-10-19
+
+- Added a [32-member API reference](sdk/API_REFERENCE.md) and [interface map](docs/INTERFACES.md) with arguments, results, grants, contexts, failures and examples in Chinese, English and Japanese.
+- Established [API versioning](sdk/API_VERSIONING.md), [API changes](sdk/API_CHANGELOG.md), machine inventory and immutable snapshots, integrated into check, Node tests and CI.
+- This documents existing APIs without changing host/plugin versions, language resources or published assets. Device acceptance boundaries remain unchanged.
+
 This records host capabilities relevant to this repository. Existing Releases distribute platform/theme examples, while languages use JSON. This is not an APK or storage-provider SDK download directory. Entries describe their historical state; current contracts take precedence for development.
 
 ### 0.9.108 · 2026-10-19
@@ -248,6 +260,12 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### 公開 SDK 契約 1.0.0 · 2026-10-19
+
+- [公開 32 メンバーの呼び出し手引き](sdk/API_REFERENCE.md)と[インターフェース一覧](docs/INTERFACES.md)を追加し、引数、戻り値、権限、実行場所、失敗条件、例を中国語・英語・日本語で整備しました。
+- [API 版管理](sdk/API_VERSIONING.md)、[変更履歴](sdk/API_CHANGELOG.md)、機械可読一覧、変更不可のスナップショットを導入し、check、Node テスト、CI に組み込みました。
+- 既存 API の文書基準を作成するもので、ホスト・プラグインの版、言語リソース、公開済みアセットは変更しません。実機検証の範囲も変わりません。
 
 本リポジトリに関係するホストの機能を記録します。Release はプラットフォームとテーマのサンプル、言語は個別 JSON で配布します。APK やストレージプロバイダー SDK のダウンロード場所ではありません。各項目は当時の状態です。開発には現在の契約を使用してください。
 

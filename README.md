@@ -20,9 +20,11 @@ python tools/retromao.py pack extensions/demo-plugin --release-tag demo-plugin-1
 
 | 要做什么 | 从哪里开始 | 发布形式 |
 | --- | --- | --- |
-| 脚本插件 | [SDK](sdk/README.md)、templates/plugin | ZIP + plugins/index.json |
+| 脚本插件 | [SDK](sdk/README.md)、[接口调用手册](sdk/API_REFERENCE.md)、templates/plugin | ZIP + plugins/index.json |
 | 增加语言 | [语言指南](languages/README.md) | 单语 JSON + languages/index.json |
 | 增加平台 | [平台契约](EXTENSIONS.md)、templates/platform | ZIP + catalog.json |
+
+全部契约见[公共接口导航](docs/INTERFACES.md)；逐接口说明附带[机器清单](sdk/api.json)、[版本管理](sdk/API_VERSIONING.md)和 [API 变更说明](sdk/API_CHANGELOG.md)。
 
 平台启动配置使用格式 2，需要包含此能力的宿主构建，版本门槛为 0.9.108；是否已经完成正式 APK 验收以[能力契约](contracts/host.json)和对应发行记录为准。旧格式 1 不包含启动配置。脚本框架最低 0.9.90，多语言元数据最低 0.9.94，独立配置页最低 0.9.96，ROM 资源提供者最低 0.9.98。新增专有模拟器协议和脚本存储渠道注册仍需宿主支持，不能在数据包中运行代码。
 

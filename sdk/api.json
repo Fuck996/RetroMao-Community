@@ -1,0 +1,618 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "apiVersion": 1,
+  "date": "2026-10-19",
+  "verifiedHostVersion": "0.9.108",
+  "sources": {
+    "sdk/runtime/retromao.js": "647d2cc9eb6aa235c0abd74e97e6decf5eb9bbcb62b0a043672de86580d45877",
+    "sdk/retromao.d.ts": "b0a5c53a1b993e39fb968f23260725ae5ede59fe1271b2d875931c7ac480b736"
+  },
+  "members": [
+    {
+      "path": "version",
+      "declaration": "readonly version: 1",
+      "rpc": null,
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "只读值 1，表示协议主版本；不表示宿主已支持该主版本下的所有后续新增接口。通过 minAppVersion 声明所用功能的最低宿主版本。",
+        "English": "Readonly value 1 identifies the protocol major. It does not imply support for every later addition in that major. Set minAppVersion for the features you use.",
+        "日本語": "読み取り専用の値 1 はプロトコルのメジャー版です。同じメジャー版で後から追加された全機能の対応を意味しません。使用する機能に応じて minAppVersion を指定します。"
+      },
+      "example": "const apiMajor = retromao.version;"
+    },
+    {
+      "path": "ready",
+      "declaration": "readonly ready: Promise<{ locale?: string; appLocale?: string; defaultLocale?: string; locales?: readonly string[]; messages?: Readonly<Record<string, string>>; colors?: Record<string, string>; configuring?: boolean }>",
+      "rpc": "session.ready",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "只读 Promise，等待会话就绪并返回环境对象。locale 是插件实际语言，appLocale 是宿主语言，defaultLocale/locales/messages 来自插件清单（这些字段从 0.9.94 提供）；colors 为页面主题变量，configuring 从 0.9.96 标记配置页。类型中可选字段在旧宿主可缺失。连接失败会拒绝。不要从此环境读取账号或系统凭据。",
+        "English": "Readonly Promise resolving to the session environment. locale is the selected plugin locale; appLocale is the app locale; defaultLocale/locales/messages come from the manifest (these fields require 0.9.94). colors contains page theme variables; configuring marks configuration pages from 0.9.96. Optional fields may be absent on older hosts. Bridge failure rejects. This environment does not expose account/system credentials.",
+        "日本語": "セッションの準備完了を待ち、環境を返す読み取り専用 Promise です。locale はプラグインの選択言語、appLocale はホスト言語、defaultLocale/locales/messages はマニフェスト由来で 0.9.94 以降です。colors はページのテーマ変数、configuring は 0.9.96 以降の設定ページ判定です。任意項目は旧ホストに存在しない場合があります。接続失敗は拒否されます。アカウントやシステムの認証情報は取得できません。"
+      },
+      "example": "const environment = await retromao.ready;"
+    },
+    {
+      "path": "icons.list",
+      "declaration": "list(): Promise<readonly IconName[]>",
+      "rpc": null,
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.92",
+      "description": {
+        "中文": "无参数；自动等待 ready，返回只读 IconName 数组。旧宿主不提供图标列表时明确失败，不发额外 RPC。",
+        "English": "No arguments. Awaits ready and returns a readonly IconName array without another RPC. Rejects when the host does not provide public icons.",
+        "日本語": "引数はありません。ready を待ち、追加 RPC なしで読み取り専用 IconName 配列を返します。公開アイコンに未対応のホストでは失敗します。"
+      },
+      "example": "const names = await retromao.icons.list();"
+    },
+    {
+      "path": "icons.url",
+      "declaration": "url(name: IconName): string",
+      "rpc": null,
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.92",
+      "description": {
+        "中文": "name 必须来自公共图标列表；等待 ready 后同步返回 `/__retromao/icons/<name>.svg`。本地页面地址不用于远端下载。未就绪或未知名称直接抛 Error；不做网络请求。",
+        "English": "name must be a public icon name. After ready, synchronously returns `/__retromao/icons/<name>.svg` for local page use, not remote download. Throws Error before readiness or for unknown names; no network request.",
+        "日本語": "name は公開アイコン名です。ready の後で `/__retromao/icons/<name>.svg` を同期的に返します。ローカルページ用で、外部ダウンロード用ではありません。準備前や不明な名前は Error となり、通信しません。"
+      },
+      "example": "await retromao.ready;\nconst url = retromao.icons.url(\"star\");"
+    },
+    {
+      "path": "library.game",
+      "declaration": "game(id: string): Promise<Game | null>",
+      "rpc": "library.game",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "id 为本机 Game.id 字符串；返回完整 Game，不存在返回 null。包含资料、媒体引用、收藏、最近记录、隐藏和用户编辑标记，不返回 ROM 正文。缺少 id 或无读权限会失败。",
+        "English": "id is a local Game.id string. Returns the complete Game or null if absent: metadata, media references, favorite/recent state, visibility and user-edit markers, not ROM bodies. Invalid input or missing read grants can reject.",
+        "日本語": "id は端末内の Game.id 文字列です。資料、メディア参照、お気に入り、履歴、非表示、利用者の編集印を含む Game を返し、存在しなければ null です。ROM 本文は返しません。不正入力や読み取り権限不足で失敗します。"
+      },
+      "example": "const game = await retromao.library.game(\"game-demo\");"
+    },
+    {
+      "path": "library.games",
+      "declaration": "games(query?: Query): Promise<Page>",
+      "rpc": "library.games",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "query 可省略；platformId 可筛选机种，collection 为 ALL/FAVORITES/RECENT，默认 ALL；after 默认 null，limit 默认 40，范围 1–200。返回 Page，games 为 Game 数组，next 为下一页游标或 null。把 next 原样作为 after，RECENT 游标必须保留 lastPlayedAt（毫秒）。无效 limit／游标会失败。",
+        "English": "Optional query filters by platformId and collection (ALL/FAVORITES/RECENT, default ALL). after defaults to null; limit defaults to 40, allowed 1–200. Returns Page with a Game games array and next cursor or null. Pass next unchanged as after; RECENT cursors must retain lastPlayedAt (milliseconds). Invalid limits/cursors reject.",
+        "日本語": "query は省略可です。platformId と collection（ALL/FAVORITES/RECENT、既定 ALL）で絞り込みます。after の既定は null、limit は 40、範囲は 1–200 です。Game の games 配列と next（次のカーソルまたは null）を含む Page を返します。next をそのまま after に渡し、RECENT では lastPlayedAt（ミリ秒）も保持します。不正な件数やカーソルは失敗します。"
+      },
+      "example": "const page = await retromao.library.games({ limit: 40 });\nif (page.next) {\n  const nextPage = await retromao.library.games({ limit: 40, after: page.next });\n}"
+    },
+    {
+      "path": "library.records",
+      "declaration": "records(query?: Query): Promise<RecordPage>",
+      "rpc": "library.records",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.91",
+      "description": {
+        "中文": "query 可省略；platformId 可筛选机种，collection 为 ALL/FAVORITES/RECENT，默认 ALL；after 默认 null，limit 默认 200，范围 1–200。返回 RecordPage，games 为 GameRecord 数组，next 为下一页游标或 null。把 next 原样作为 after，RECENT 游标必须保留 lastPlayedAt（毫秒）。无效 limit／游标会失败。 records 仅返回 id/platformId/title/romFileNames/favorite/recent，不含路径、媒体或哈希。",
+        "English": "Optional query filters by platformId and collection (ALL/FAVORITES/RECENT, default ALL). after defaults to null; limit defaults to 200, allowed 1–200. Returns RecordPage with a GameRecord games array and next cursor or null. Pass next unchanged as after; RECENT cursors must retain lastPlayedAt (milliseconds). Invalid limits/cursors reject. records only includes id/platformId/title/romFileNames/favorite/recent, excluding paths, media and hashes.",
+        "日本語": "query は省略可です。platformId と collection（ALL/FAVORITES/RECENT、既定 ALL）で絞り込みます。after の既定は null、limit は 200、範囲は 1–200 です。GameRecord の games 配列と next（次のカーソルまたは null）を含む RecordPage を返します。next をそのまま after に渡し、RECENT では lastPlayedAt（ミリ秒）も保持します。不正な件数やカーソルは失敗します。 records は id/platformId/title/romFileNames/favorite/recent のみで、パス、メディア、ハッシュは含みません。"
+      },
+      "example": "const page = await retromao.library.records({ limit: 200 });\nif (page.next) {\n  const nextPage = await retromao.library.records({ limit: 200, after: page.next });\n}"
+    },
+    {
+      "path": "library.edit",
+      "declaration": "edit(changes: Edit[], checkpoint?: Record<string, Json>): Promise<Game[]>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "changes 为 1–200 个 Edit，同批 gameId 不可重复；每项至少修改一类字段。mode 默认 EDIT，FILL_MISSING 只补空缺且不覆盖用户编辑。metadata/recent/media/extensions 的 expected 来自刚读取的对象；冲突使整批失败。checkpoint 可省略，为插件私有 JSON 顶层补丁，null 删除键，与本批修改在同一事务提交；跨调用不构成事务。媒体或扩展字段不能修改已移除的本地条目。返回修改后的 Game[]。checkpoint 从 0.9.91 提供。metadata.values 用 MetadataField 枚举键和字符串值，RATING 也传字符串；字段格式由宿主校验。",
+        "English": "changes contains 1–200 Edit entries with distinct gameId values and at least one changed field each. mode defaults to EDIT; FILL_MISSING only fills eligible missing fields without overriding user edits. Use freshly read metadata/recent/media/extensions expected values; a conflict fails the whole batch. Optional checkpoint is a top-level private-data patch (null deletes keys), committed atomically with this batch, not across calls. Media/extension edits reject removed local entries. Returns updated Game[]. checkpoint requires 0.9.91. metadata.values uses MetadataField enum keys and string values, including RATING; the host validates field formats.",
+        "日本語": "changes は異なる gameId の Edit を 1–200 件指定し、各項目で一つ以上変更します。mode は既定 EDIT、FILL_MISSING は利用者の編集を上書きせず補完可能な空欄だけを埋めます。metadata/recent/media/extensions の expected は直前の読み取り値を使い、競合時はバッチ全体が失敗します。任意の checkpoint は専用 JSON の最上位パッチ（null でキー削除）で、このバッチと同一トランザクションで保存します。複数呼び出しは一つのトランザクションではありません。削除済みローカル項目のメディア・拡張編集は失敗します。更新後の Game[] を返します。checkpoint は 0.9.91 以降です。metadata.values は MetadataField の列挙キーと文字列値を使い、RATING も文字列です。形式はホストが検査します。"
+      },
+      "example": "const game = await retromao.library.game(\"game-demo\");\nif (!game) throw new Error(\"Game missing\");\nconst updated = await retromao.library.edit([{\n  gameId: game.id,\n  metadata: { expected: game.metadata, values: { DESCRIPTION: \"Example note\" } }\n}], { lastGame: game.id });"
+    },
+    {
+      "path": "library.apply",
+      "declaration": "apply(changes: Edit[], checkpoint?: Record<string, Json>): Promise<void>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.91",
+      "description": {
+        "中文": "changes 为 1–200 个 Edit，同批 gameId 不可重复；每项至少修改一类字段。mode 默认 EDIT，FILL_MISSING 只补空缺且不覆盖用户编辑。metadata/recent/media/extensions 的 expected 来自刚读取的对象；冲突使整批失败。checkpoint 可省略，为插件私有 JSON 顶层补丁，null 删除键，与本批修改在同一事务提交；跨调用不构成事务。媒体或扩展字段不能修改已移除的本地条目。与 edit 共享校验，设置 returnGames:false；Promise<void> 不读取返回值（桥接结果为 null），适合批量同步，避免大响应。",
+        "English": "changes contains 1–200 Edit entries with distinct gameId values and at least one changed field each. mode defaults to EDIT; FILL_MISSING only fills eligible missing fields without overriding user edits. Use freshly read metadata/recent/media/extensions expected values; a conflict fails the whole batch. Optional checkpoint is a top-level private-data patch (null deletes keys), committed atomically with this batch, not across calls. Media/extension edits reject removed local entries. Uses the same edit validation with returnGames:false. Treat the Promise<void> result as absent (the bridge sends null), suitable for batch sync without large responses.",
+        "日本語": "changes は異なる gameId の Edit を 1–200 件指定し、各項目で一つ以上変更します。mode は既定 EDIT、FILL_MISSING は利用者の編集を上書きせず補完可能な空欄だけを埋めます。metadata/recent/media/extensions の expected は直前の読み取り値を使い、競合時はバッチ全体が失敗します。任意の checkpoint は専用 JSON の最上位パッチ（null でキー削除）で、このバッチと同一トランザクションで保存します。複数呼び出しは一つのトランザクションではありません。削除済みローカル項目のメディア・拡張編集は失敗します。edit と同じ検査を使い returnGames:false を指定します。Promise<void> の結果は使用しません（ブリッジは null）。大きな応答を避けるバッチ同期に適します。"
+      },
+      "example": "await retromao.library.apply([{ gameId: \"game-demo\", favorite: true }], { lastGame: \"game-demo\" });"
+    },
+    {
+      "path": "favorites.list",
+      "declaration": "list(query?: Query): Promise<Page>",
+      "rpc": "library.games",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "参数和 Page 返回与 library.games 相同，limit 默认 40；强制 collection=FAVORITES，即使 query 指定其他集合也会覆盖。游标必须来自同一集合和筛选条件；无效参数失败。",
+        "English": "Same query parameters and Page result as library.games, with limit 40. Forces collection=FAVORITES, overriding any query collection. Keep cursors within the same collection/filter. Invalid parameters reject.",
+        "日本語": "引数と Page は library.games と同じで、limit は既定 40 です。query に指定しても collection=FAVORITES に固定します。同じ集合・条件のカーソルを使ってください。不正な引数は失敗します。"
+      },
+      "example": "const page = await retromao.favorites.list({ limit: 40 });"
+    },
+    {
+      "path": "recent.list",
+      "declaration": "list(query?: Query): Promise<Page>",
+      "rpc": "library.games",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "参数和 Page 返回与 library.games 相同，limit 默认 40；强制 collection=RECENT，即使 query 指定其他集合也会覆盖。游标必须来自同一集合和筛选条件；无效参数失败。",
+        "English": "Same query parameters and Page result as library.games, with limit 40. Forces collection=RECENT, overriding any query collection. Keep cursors within the same collection/filter. Invalid parameters reject.",
+        "日本語": "引数と Page は library.games と同じで、limit は既定 40 です。query に指定しても collection=RECENT に固定します。同じ集合・条件のカーソルを使ってください。不正な引数は失敗します。"
+      },
+      "example": "const page = await retromao.recent.list({ limit: 40 });"
+    },
+    {
+      "path": "favorites.set",
+      "declaration": "set(gameId: string, favorite: boolean): Promise<Game[]>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "gameId 为本机 ID，favorite 为显式布尔值；返回 Game[]。通过原 library.edit 修改收藏，重复设置相同值不会反转；游戏不存在或未授权失败。仅设置不需要 LIBRARY_READ，先读取再决定则需读权限。",
+        "English": "gameId is local; favorite is an explicit boolean. Returns Game[] through library.edit. Repeating the same value never toggles it. Missing games/grants reject. Setting alone needs no LIBRARY_READ; reading before deciding does.",
+        "日本語": "gameId は端末内 ID、favorite は明示的な真偽値です。library.edit 経由で Game[] を返します。同じ値を繰り返しても反転しません。対象不在や権限不足は失敗します。設定だけなら LIBRARY_READ は不要で、事前に読む場合は必要です。"
+      },
+      "example": "const updated = await retromao.favorites.set(\"game-demo\", true);"
+    },
+    {
+      "path": "recent.edit",
+      "declaration": "edit(gameId: string, expected: Recent, value: Recent): Promise<Game[]>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "gameId、expected、value 必填；expected 为最近读取的完整 Recent，value 为完整新记录。lastPlayedAt 是非负 Unix 毫秒或 null，playCount 非负整数，importedPlayTimeSeconds 非负秒或 null。返回 Game[]；当前值既非 expected 也非 value 时冲突。不会启动游戏或自动累计次数。",
+        "English": "Requires gameId, the freshly read complete expected Recent and complete new value. lastPlayedAt is nonnegative Unix milliseconds or null; playCount is a nonnegative integer; importedPlayTimeSeconds is nonnegative seconds or null. Returns Game[]. Conflicts when current matches neither expected nor value. Does not launch a game or increment counts automatically.",
+        "日本語": "gameId、直前に読んだ完全な expected Recent、新しい完全な value が必要です。lastPlayedAt は非負の Unix ミリ秒または null、playCount は非負整数、importedPlayTimeSeconds は非負の秒または null です。Game[] を返し、現在値が expected と value のどちらでもなければ競合します。ゲーム起動や回数の自動加算はしません。"
+      },
+      "example": "const game = await retromao.library.game(\"game-demo\");\nif (!game) throw new Error(\"Game missing\");\nconst updated = await retromao.recent.edit(game.id, game.recent, { ...game.recent, playCount: game.recent.playCount + 1 });"
+    },
+    {
+      "path": "media.folders",
+      "declaration": "folders(platformId?: string): Promise<{ id: string; platformId: string; role: \"ROM\" | \"MEDIA\"; name: string }[]>",
+      "rpc": "media.folders",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "可选 platformId；省略时返回全部已配置文件夹。结果为 {id,platformId,role,name}[]，role 为 ROM/MEDIA；不暴露任意设备路径或目录授权。后续 assets 使用这里的 id；无权限失败。",
+        "English": "Optional platformId; omission lists all configured folders. Returns {id,platformId,role,name}[] with role ROM/MEDIA, not arbitrary device paths or directory grants. Use these IDs for assets. Missing grants reject.",
+        "日本語": "platformId は任意で、省略時は設定済みの全フォルダーを返します。結果は {id,platformId,role,name}[]、role は ROM/MEDIA です。任意の端末パスやディレクトリ権限は公開しません。この id を assets に使用します。権限不足は失敗します。"
+      },
+      "example": "const folders = await retromao.media.folders(\"fc\");"
+    },
+    {
+      "path": "media.assets",
+      "declaration": "assets(folderId: string, afterPath?: string | null, limit?: number): Promise<Asset[]>",
+      "rpc": "media.assets",
+      "capabilities": [
+        "LIBRARY_READ"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "folderId 必填；afterPath 默认 null，limit 默认 100，范围 1–200。返回 Asset[]（folderId/path/revision/bytes）；下一页用末项 path 作为 afterPath，空数组结束。只枚举已索引资产，不返回文件正文；文件夹已移除或 limit 无效失败。",
+        "English": "Requires folderId; afterPath defaults to null; limit defaults to 100, allowed 1–200. Returns Asset[] with folderId/path/revision/bytes. Continue with the last path as afterPath until an empty array. Enumerates indexed assets, not file bodies. Removed folders and invalid limits reject.",
+        "日本語": "folderId が必要です。afterPath は既定 null、limit は既定 100、範囲 1–200 です。folderId/path/revision/bytes の Asset[] を返します。末尾の path を afterPath に渡し、空配列まで続けます。索引済み素材だけで本文は返しません。フォルダーの削除や不正な件数は失敗します。"
+      },
+      "example": "const assets = await retromao.media.assets(\"media-demo\", null, 100);\nif (assets.length) {\n  const nextAssets = await retromao.media.assets(\"media-demo\", assets[assets.length - 1].path, 100);\n}"
+    },
+    {
+      "path": "media.edit",
+      "declaration": "edit(gameId: string, media: NonNullable<Edit[\"media\"]>): Promise<Game[]>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "gameId 和 media 数组必填，项为 {role,expected,asset}，同批 role 不重复；expected 是当前完整 Media 或 null，asset 是 assets 返回的完整 Asset，null 解除关联。返回 Game[]。机种、介质用途、文件格式和 revision/bytes 均会核对；引用变化或资料已移除失败，物理文件不会被删除。",
+        "English": "Requires gameId and media entries {role,expected,asset}, with distinct roles. expected is the current complete Media or null; asset is a complete indexed Asset, or null to unlink. Returns Game[]. Platform, medium role, format and revision/bytes are validated. Changed references or removed local entries reject. Unlinking does not delete files.",
+        "日本語": "gameId と {role,expected,asset} の配列が必要で、role は重複不可です。expected は現在の完全な Media または null、asset は索引済みの完全な Asset、解除時は null です。Game[] を返します。機種、媒体用途、形式、revision/bytes を検査し、参照の変更やローカル項目の削除は失敗します。ファイル自体は削除しません。"
+      },
+      "example": "const game = await retromao.library.game(\"game-demo\");\nif (!game) throw new Error(\"Game missing\");\nconst expected = game.media.find(item => item.role === \"COVER\") || null;\nconst updated = await retromao.media.edit(game.id, [{ role: \"COVER\", expected, asset: null }]);"
+    },
+    {
+      "path": "index.patch",
+      "declaration": "patch(gameId: string, extensions: NonNullable<Edit[\"extensions\"]>): Promise<Game[]>",
+      "rpc": "library.edit",
+      "capabilities": [
+        "LIBRARY_WRITE"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "gameId 和 extensions 映射必填，键为本插件字段名，值为 {expected?,value?}；只写 metadata.extensions[插件ID]。省略 expected 表示原值不存在，省略 value 删除键，显式 null 保存 JSON null。返回 Game[]；当前值既非 expected 也非 value 时冲突，不允许写其他插件命名空间。",
+        "English": "Requires gameId and extensions mapping own field names to {expected?,value?}. Only writes metadata.extensions[pluginID]. Omitted expected means absent; omitted value deletes; explicit null stores JSON null. Returns Game[]. Conflicts if current matches neither expected nor value; other plugin namespaces cannot be written.",
+        "日本語": "gameId と、専用項目名を {expected?,value?} に対応させる extensions が必要です。metadata.extensions[プラグインID] だけを書きます。expected 省略は元の値なし、value 省略は削除、明示的 null は JSON null 保存です。Game[] を返し、現在値が expected と value のどちらでもなければ競合します。他の名前空間には書けません。"
+      },
+      "example": "const game = await retromao.library.game(\"game-demo\");\nif (!game) throw new Error(\"Game missing\");\nconst expected = game.metadata.extensions?.[\"demo-plugin\"]?.note;\nconst updated = await retromao.index.patch(game.id, { note: { expected, value: \"Example note\" } });"
+    },
+    {
+      "path": "settings.get",
+      "declaration": "get(): Promise<Record<string, string>>",
+      "rpc": "settings.get",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "无参数，返回本插件配置 Record<string,string>，未保存项使用清单默认值；SECRET 解密后也为字符串，不记录到日志。后台动作和资源回调使用开始时的配置快照。BOOLEAN/NUMBER 也需作者显式解析。该接口只读，配置保存由宿主界面负责；插件已替换或卸载失败。",
+        "English": "No arguments. Returns this plugin's Record<string,string> settings, using manifest defaults for unsaved values. SECRET values are decrypted strings: do not log them. Actions/resolvers use the start-time snapshot. Parse BOOLEAN/NUMBER explicitly. Read-only; host UI owns saving settings. Replaced/uninstalled plugins reject.",
+        "日本語": "引数なしで専用設定 Record<string,string> を返し、未保存値はマニフェストの既定値です。SECRET も復号済み文字列なのでログに出さないでください。処理・解析では開始時のスナップショットを使います。BOOLEAN/NUMBER は明示的に変換します。読み取り専用で、設定保存はホスト画面が担当します。置換・削除後は失敗します。"
+      },
+      "example": "const settings = await retromao.settings.get();"
+    },
+    {
+      "path": "data.get",
+      "declaration": "get(): Promise<Record<string, Json>>",
+      "rpc": "data.get",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "无参数；返回本插件私有 JSON 对象，首次为空对象。按来源仓库和插件 ID 隔离，配置页禁用时仍可读。它不是游戏库、账号凭据或自动云同步数据；插件已替换或卸载失败。",
+        "English": "No arguments. Returns the plugin's private JSON object, initially empty, isolated by repository origin and plugin ID. Configuration pages can read while disabled. This is not the game database, account credentials or automatically cloud-synced data. Replaced/uninstalled plugins reject.",
+        "日本語": "引数なしで専用 JSON オブジェクトを返します。初回は空で、配布元とプラグイン ID ごとに分離します。無効時も設定ページで読めます。ゲーム DB、認証情報、自動クラウド同期ではありません。置換・削除後は失敗します。"
+      },
+      "example": "const data = await retromao.data.get();"
+    },
+    {
+      "path": "data.patch",
+      "declaration": "patch(values: Record<string, Json>): Promise<Record<string, Json>>",
+      "rpc": "data.patch",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "values 为顶层 JSON 补丁：非 null 替换整个键值，null 删除键，不做嵌套深度合并。返回更新后的整个私有对象；与别次调用不是事务，修改游戏库并存 checkpoint 应用 library.edit/apply。配置页禁用时可写；已替换或卸载失败。",
+        "English": "values is a top-level JSON patch: non-null replaces the entire value; null deletes the key; no recursive merge. Returns the updated whole private object. Separate calls are not transactional; use library.edit/apply checkpoint for atomic library/data changes. Configuration pages can write while disabled. Replaced/uninstalled plugins reject.",
+        "日本語": "values は最上位 JSON のパッチです。非 null は値全体を置換し、null はキーを削除します。再帰的マージはしません。更新後の専用オブジェクト全体を返します。別呼び出しとはトランザクションにならず、ライブラリと同時保存する場合は library.edit/apply の checkpoint を使います。無効時も設定ページで書けます。置換・削除後は失敗します。"
+      },
+      "example": "const updated = await retromao.data.patch({ lastCursor: null, mode: \"manual\" });"
+    },
+    {
+      "path": "storage.sources",
+      "declaration": "sources(): Promise<StorageSource[]>",
+      "rpc": "storage.sources",
+      "capabilities": [
+        "STORAGE"
+      ],
+      "contexts": [
+        "PAGE",
+        "CONFIGURATION",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.91",
+      "description": {
+        "中文": "无参数，返回已配置 StorageSource[]（id/name/provider/scope），不返回凭据。业务上下文需 STORAGE 授权；CONFIGURATION 只需清单声明 STORAGE，禁用时也能选择连接。scope 绑定账号与插件目录；保存完整来源对象，账号或目录变化后重新选择，不能只保存 id。",
+        "English": "No arguments. Returns configured StorageSource[] (id/name/provider/scope), without credentials. Business contexts require a STORAGE grant; CONFIGURATION only requires the STORAGE declaration and works while disabled. scope binds account and plugin directory. Save the complete source, not just id; reselect after account/directory changes.",
+        "日本語": "引数なしで設定済み StorageSource[]（id/name/provider/scope）を返し、認証情報は返しません。業務では STORAGE の許可、CONFIGURATION では宣言だけが必要で無効時も選択できます。scope はアカウントと専用ディレクトリに結び付きます。id だけでなく全体を保存し、アカウントやディレクトリ変更後は再選択します。"
+      },
+      "example": "const sources = await retromao.storage.sources();"
+    },
+    {
+      "path": "storage.read",
+      "declaration": "read(source: StorageSource, key: string): Promise<{ token: string; value: Record<string, Json> | null }>",
+      "rpc": "storage.read",
+      "capabilities": [
+        "STORAGE"
+      ],
+      "contexts": [
+        "ACTION"
+      ],
+      "since": "0.9.91",
+      "description": {
+        "中文": "source 为 sources 返回的完整对象；key 匹配 [a-zA-Z][a-zA-Z0-9._-]{0,79}\\.json，不能含路径。返回 {token,value}，缺失文档 value:null，已有文档必须为 JSON 对象。最多 384 KiB；过大响应还受 512 KiB 消息限制。只在后台动作可调用，账号／目录 scope 变化、坏 JSON、网络失败会拒绝，不转读其他来源。",
+        "English": "source is the complete object from sources. key matches [a-zA-Z][a-zA-Z0-9._-]{0,79}\\.json, without paths. Returns {token,value}; missing documents have value:null, existing documents must be JSON objects. Document limit is 384 KiB, also subject to the 512 KiB message limit. Background actions only; scope changes, invalid JSON and network failures reject without switching sources.",
+        "日本語": "source は sources が返した完全なオブジェクトです。key は [a-zA-Z][a-zA-Z0-9._-]{0,79}\\.json に一致し、パスは不可です。{token,value} を返し、不在は value:null、既存文書は JSON オブジェクトです。最大 384 KiB で、512 KiB のメッセージ制限も適用されます。バックグラウンド処理専用で、scope 変更、不正 JSON、通信失敗は拒否し、別の接続先へ切り替えません。"
+      },
+      "example": "const sources = await retromao.storage.sources();\nif (!sources.length) throw new Error(\"No storage source\");\nconst document = await retromao.storage.read(sources[0], \"state.json\");"
+    },
+    {
+      "path": "storage.write",
+      "declaration": "write(token: string, value: Record<string, Json>): Promise<void>",
+      "rpc": "storage.write",
+      "capabilities": [
+        "STORAGE"
+      ],
+      "contexts": [
+        "ACTION"
+      ],
+      "since": "0.9.91",
+      "description": {
+        "中文": "token 必须为同一后台动作最近一次 read 的令牌，value 是 JSON 对象，最大 384 KiB。返回 Promise<void>（桥接为 null）；内容未变不上传，实际写入后令牌失效。再读其他文档会取代旧令牌；不能跨动作保存令牌。账号／目录变化、令牌失效或远端冲突失败，应重新读取并由业务合并，不覆盖其他版本。",
+        "English": "token must come from the latest read in the same background action. value is a JSON object up to 384 KiB. Returns Promise<void> (bridge null). Unchanged content is not uploaded; an actual write invalidates the token. Reading another document replaces it; never persist tokens across actions. Changed account/directory, invalid tokens or remote conflicts reject. Reread and merge deliberately rather than overwrite another version.",
+        "日本語": "token は同じバックグラウンド処理内の最後の read のものです。value は最大 384 KiB の JSON オブジェクトです。Promise<void>（ブリッジでは null）を返し、未変更ならアップロードしません。実書き込み後は token が失効します。別文書の読み取りで旧 token は置き換わり、処理をまたいで保存できません。アカウント・ディレクトリ変更、失効、リモート競合は失敗します。再取得して業務上のマージを判断し、他版を上書きしないでください。"
+      },
+      "example": "const sources = await retromao.storage.sources();\nif (!sources.length) throw new Error(\"No storage source\");\nconst document = await retromao.storage.read(sources[0], \"state.json\");\nawait retromao.storage.write(document.token, { ...(document.value || {}), example: true });"
+    },
+    {
+      "path": "http.request",
+      "declaration": "request(options: { url: string; method?: \"GET\" | \"HEAD\" | \"POST\" | \"PUT\" | \"PATCH\" | \"DELETE\"; headers?: Record<string, string>; body?: string }): Promise<{ status: number; headers: Record<string, string>; body: string }>",
+      "rpc": "http.request",
+      "capabilities": [
+        "NETWORK"
+      ],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "options.url 必填 HTTP(S) 地址，method 默认 GET；支持 GET/HEAD/POST/PUT/PATCH/DELETE。headers 为字符串映射，body 为可选文本；POST/PUT/PATCH 无 body 发空正文。主机须匹配 networkHosts（非默认端口含 host:port）。返回 {status,headers,body}，headers 为字符串映射，body 为 UTF-8 文本；不跟随重定向。非 2xx 不自动抛错；网络、主机未声明、正文超过 256 KiB 或总消息过大失败，不提供流或二进制。",
+        "English": "options.url is required HTTP(S); method defaults to GET. Supports GET/HEAD/POST/PUT/PATCH/DELETE, string headers and optional text body; POST/PUT/PATCH without body sends empty content. networkHosts must allow the host (include host:port for non-default ports). Returns {status,headers,body}, string headers and UTF-8 text body, without redirects. Non-2xx does not automatically throw. Network errors, undeclared hosts, body over 256 KiB or oversized messages reject. No streaming/binary API.",
+        "日本語": "options.url は必須の HTTP(S)、method は既定 GET です。GET/HEAD/POST/PUT/PATCH/DELETE、文字列 headers、任意の本文を使えます。POST/PUT/PATCH の本文省略時は空です。networkHosts にホスト（非標準ポートは host:port）を宣言します。{status,headers,body} を返し、headers は文字列、body は UTF-8 で、リダイレクトしません。非 2xx だけでは例外になりません。通信、未宣言ホスト、256 KiB 超の本文、過大メッセージは失敗します。ストリームやバイナリー API はありません。"
+      },
+      "example": "const response = await retromao.http.request({ url: \"https://example.com/api/state\" });\nif (response.status < 200 || response.status >= 300) {\n  throw new Error(`HTTP ${response.status}`);\n}\nconst value = JSON.parse(response.body);"
+    },
+    {
+      "path": "tasks.run",
+      "declaration": "run(action: string, arguments_?: Record<string, Json>): Promise<Task>",
+      "rpc": "tasks.run",
+      "capabilities": [],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "action 是清单 actions 与 define.actions 中声明的同一 ID；arguments_ 默认空 JSON 对象。返回新 Task，不是动作结果；本插件只能有一个活动任务。未声明动作或前一任务未结束时请求失败；配置在执行时校验，无效则任务进入 FAILED。仅业务页面可发起，不从后台递归创建任务。执行使用版本／配置快照，新任务替换上一次任务记录并清除旧结果。",
+        "English": "action must match manifest actions and define.actions. arguments_ defaults to an empty JSON object. Returns a new Task, not the action result; only one active task per plugin. Unknown actions or active predecessors reject the request. Settings are validated during execution; invalid settings make the task FAILED. Business pages only; no recursive background task creation. Execution uses version/settings snapshots. A new task replaces the last record and clears its result.",
+        "日本語": "action はマニフェストの actions と define.actions の同じ ID です。arguments_ は既定で空の JSON オブジェクトです。結果ではなく新しい Task を返し、同時実行は一つです。未宣言動作や前の処理が活動中の場合は要求を拒否します。設定は実行時に検査し、不正ならタスクが FAILED になります。業務ページ専用で再帰的な処理作成はできません。版と設定のスナップショットを使い、新規処理は前の記録と結果を置き換えます。"
+      },
+      "example": "const task = await retromao.tasks.run(\"run\", { dryRun: true });"
+    },
+    {
+      "path": "tasks.current",
+      "declaration": "current(): Promise<Task | null>",
+      "rpc": "tasks.current",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "无参数；返回本插件最近保留的 Task 或 null，包括已成功／失败／取消的任务，并非只返回正在运行的任务。用于页面重开后接续状态；宿主只保留一个记录，不是任务历史列表。插件禁用或替换后调用失败。",
+        "English": "No arguments. Returns the plugin's retained latest Task or null, including terminal tasks, not just active ones. Use when reopening a page. The host retains one record, not task history. Disabled/replaced plugins reject.",
+        "日本語": "引数なしで専用の最新 Task または null を返します。完了・失敗・キャンセルも含み、実行中だけではありません。ページを開き直したときに使用します。保持は一件で、履歴一覧ではありません。無効化・置換後は失敗します。"
+      },
+      "example": "const task = await retromao.tasks.current();"
+    },
+    {
+      "path": "tasks.get",
+      "declaration": "get(id: string): Promise<Task>",
+      "rpc": "tasks.get",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "id 为本插件仍保留的任务 ID，返回 Task；旧任务被新任务替换、ID 不存在或属于其他插件均失败。Task 时间为 Unix 毫秒，completed 为非负计数，total 为非负总数或 null，message 为业务状态说明；不要把消息当错误码。",
+        "English": "id must identify this plugin's retained task. Returns Task; replaced IDs, missing IDs and other plugin IDs reject. Task times are Unix milliseconds; completed is a nonnegative count; total is a nonnegative total or null; message is human-readable state, not an error code.",
+        "日本語": "id は現在保持されている専用タスク ID です。Task を返し、置換済み、不在、他プラグインの ID は失敗します。時刻は Unix ミリ秒、completed は非負件数、total は非負合計または null、message は人向けの状態説明でエラーコードではありません。"
+      },
+      "example": "const task = await retromao.tasks.get(\"task-demo\");"
+    },
+    {
+      "path": "tasks.result",
+      "declaration": "result(id: string): Promise<Json>",
+      "rpc": "tasks.result",
+      "capabilities": [],
+      "contexts": [
+        "PAGE",
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "id 为本插件保留的任务 ID；仅 SUCCEEDED 可读取，返回动作返回的 Json，无返回值为 null。尚未成功、任务被替换或不属于本插件失败；不要依赖旧任务结果长期保存，必要数据写本插件 data 或正式库接口。",
+        "English": "id is the retained own task. Only SUCCEEDED tasks return the action's Json result; no returned value becomes null. Non-success, replaced tasks and other owners reject. Results are not long-term storage; persist required data through data or library APIs.",
+        "日本語": "id は保持中の専用タスクです。SUCCEEDED の場合だけ動作の Json を返し、戻り値なしは null です。未成功、置換済み、他所有者は失敗します。長期保存として使わず、必要な値は data やライブラリ API で保存します。"
+      },
+      "example": "const task = await retromao.tasks.get(\"task-demo\");\nif (task.state === \"SUCCEEDED\") {\n  const result = await retromao.tasks.result(task.id);\n}"
+    },
+    {
+      "path": "tasks.cancel",
+      "declaration": "cancel(id: string): Promise<void>",
+      "rpc": "tasks.cancel",
+      "capabilities": [],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "id 为本插件当前保留的任务；返回 Promise<void>，请求取消活动任务，已经结束不重复执行取消。取消保留已成功提交的批次，不回滚全部业务。其他插件或被替换 ID 失败。状态可能经历 CANCELLING，再以 current/get/watch 核对 CANCELLED 等最终状态；后台动作不能自行调用取消入口。",
+        "English": "id is the retained own task. Returns Promise<void>, requesting cancellation if active; terminal tasks need no cancellation. Committed batches remain, without whole-action rollback. Other owners/replaced IDs reject. State can pass through CANCELLING; use current/get/watch to confirm a terminal state such as CANCELLED. Background actions cannot call this entry.",
+        "日本語": "id は保持中の専用タスクです。Promise<void> を返し、活動中ならキャンセルを要求します。終了済みには再実行しません。保存済みバッチは残り、全体を巻き戻しません。他所有者や置換済み ID は失敗します。CANCELLING を経る場合があるため current/get/watch で CANCELLED などの終状態を確認します。バックグラウンド自身からは使えません。"
+      },
+      "example": "await retromao.tasks.cancel(\"task-demo\");\nconst task = await retromao.tasks.current();"
+    },
+    {
+      "path": "tasks.progress",
+      "declaration": "progress(completed: number, total?: number | null, message?: string): Promise<void>",
+      "rpc": "tasks.progress",
+      "capabilities": [],
+      "contexts": [
+        "ACTION"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "completed 为非负整数，total 默认 null（未知）或不小于 completed 的整数，message 默认空字符串；返回 Promise<void>。仅运行中的后台动作有进度回调；页面、资源回调、已停止任务或无效计数失败。宿主节流保存约 300ms，完成计数会保存，不用它代替业务 checkpoint。",
+        "English": "completed is a nonnegative integer; total defaults to null (unknown), otherwise an integer at least completed; message defaults to empty. Returns Promise<void>. Only running background actions have a progress callback. Pages, resolvers, stopped tasks and invalid counts reject. Host persistence is throttled around 300ms, with final counts saved; progress is not a business checkpoint.",
+        "日本語": "completed は非負整数、total は既定 null（不明）または completed 以上の整数、message は既定空文字列です。Promise<void> を返します。実行中のバックグラウンド動作専用で、ページ、解析、停止済み、不正件数は失敗します。ホストは約 300ms 間隔で保存し、完了値も保存します。業務の checkpoint の代わりにはなりません。"
+      },
+      "example": "await retromao.tasks.progress(1, 2, \"Processing\");"
+    },
+    {
+      "path": "tasks.watch",
+      "declaration": "watch(id: string, callback: (task: Task) => void): () => void",
+      "rpc": null,
+      "capabilities": [],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "id 与 callback 必填；同步返回无参数 unsubscribe 函数，不是 Promise。只监听宿主推送的同 ID Task；若 SDK 缓存过该任务，注册时立即回调；不主动请求状态，先用 current/get。页面销毁释放订阅，后台任务继续；不会保留完整历史。回调中自行处理异常并更新内容区，不阻断其他订阅。",
+        "English": "Requires id and callback. Synchronously returns an unsubscribe function, not a Promise. Receives pushed Task updates for that ID, immediately replaying an SDK-cached match if present. It does not fetch state: use current/get first. Release subscriptions on page exit; background work continues. No complete event history. Handle callback failures in your page so other listeners are not interrupted.",
+        "日本語": "id と callback が必要で、Promise ではなく購読解除関数を同期的に返します。同じ ID の Task 通知だけを受け、SDK に一致するキャッシュがあれば登録時に即時通知します。状態は取得しないため、先に current/get を使います。終了時に購読を解放してもバックグラウンドは継続します。完全な履歴は保持しません。他の購読を妨げないようコールバックの失敗はページ側で処理してください。"
+      },
+      "example": "const task = await retromao.tasks.current();\nif (task) {\n  const stop = retromao.tasks.watch(task.id, value => { console.log(value.state); });\n  stop();\n}"
+    },
+    {
+      "path": "define",
+      "declaration": "define(definition: { actions?: Record<string, (arguments_: Record<string, Json>) => Json | void | Promise<Json | void>>;\n      resources?: Record<string, (arguments_: { games: ResourceGame[] }) => ResourceResolution[] | Promise<ResourceResolution[]>> }): void",
+      "rpc": null,
+      "capabilities": [],
+      "contexts": [
+        "ACTION",
+        "RESOURCE"
+      ],
+      "since": "0.9.90",
+      "description": {
+        "中文": "后台入口顶层只注册一次 {actions?,resources?}，同步返回 void；重复注册直接抛 Error。actions 的键与清单 actions.id 一致，接收 Json 参数对象，返回 Json/void 或其 Promise；由宿主运行并保存任务结果。resources 从 0.9.98 提供，需 ROM_RESOURCES 及对应 resourceProviders，接收 {games:[{gameId,romNames}]}，返回 ResourceResolution[]；每个输入游戏恰好一项，路径为授权根下安全相对路径，不执行传输。回调抛错使动作／解析失败。不要调用内部 __run。",
+        "English": "Register {actions?,resources?} once at the background entry's top level; returns void synchronously and throws on duplicate registration. actions keys match manifest actions.id, receive a Json argument object and return Json/void or a Promise; the host runs them and stores task results. resources requires 0.9.98, ROM_RESOURCES and matching resourceProviders; input {games:[{gameId,romNames}]} returns ResourceResolution[], exactly one per input game, with safe relative paths under the authorized root. It does not transfer files. Thrown callback errors fail execution/resolution. Never call internal __run.",
+        "日本語": "バックグラウンド入口のトップレベルで {actions?,resources?} を一度登録し、同期的に void を返します。重複は Error です。actions のキーはマニフェスト actions.id と一致し、Json オブジェクトを受け、Json/void または Promise を返します。ホストが実行して結果を保存します。resources は 0.9.98、ROM_RESOURCES、対応する resourceProviders が必要です。{games:[{gameId,romNames}]} を受け、入力ゲームごとにちょうど一つの ResourceResolution[] を返します。権限ルート内の安全な相対パスだけで、転送はしません。例外は動作・解析を失敗させます。内部 __run を呼ばないでください。"
+      },
+      "example": "retromao.define({\n  actions: { run: async arguments_ => ({ dryRun: arguments_.dryRun === true }) }\n});"
+    }
+  ]
+}

@@ -20,9 +20,11 @@ The terminal prints the preview URL; Ctrl+C stops the server. Preview runs the s
 
 | Task | Start here | Distribution |
 | --- | --- | --- |
-| Script plugin | [SDK](sdk/README.md), templates/plugin | ZIP + plugins/index.json |
+| Script plugin | [SDK](sdk/README.md), [API reference](sdk/API_REFERENCE.md), templates/plugin | ZIP + plugins/index.json |
 | Add a language | [Language guide](languages/README.md) | One-language JSON + languages/index.json |
 | Add a platform | [Platform contract](EXTENSIONS.md), templates/platform | ZIP + catalog.json |
+
+Find all contracts in the [public interface map](docs/INTERFACES.md), with a [machine inventory](sdk/api.json), [API version policy](sdk/API_VERSIONING.md) and [API changelog](sdk/API_CHANGELOG.md).
 
 Declarative platform launchers use format 2 and need a host build containing that feature, with a minimum version of 0.9.108. Check the [capability contract](contracts/host.json) and release evidence for formal APK acceptance. Format 1 has no launchers. Script support starts at 0.9.90, localized metadata at 0.9.94, dedicated configuration pages at 0.9.96, and ROM resource providers at 0.9.98. New proprietary emulator protocols and script storage-provider registration still need host support; data packs cannot execute code.
 

@@ -20,9 +20,11 @@ python tools/retromao.py pack extensions/demo-plugin --release-tag demo-plugin-1
 
 | 目的 | 開始場所 | 配布形式 |
 | --- | --- | --- |
-| スクリプトプラグイン | [SDK](sdk/README.md)、templates/plugin | ZIP + plugins/index.json |
+| スクリプトプラグイン | [SDK](sdk/README.md)、[API リファレンス](sdk/API_REFERENCE.md)、templates/plugin | ZIP + plugins/index.json |
 | 言語の追加 | [言語ガイド](languages/README.md) | 言語別 JSON + languages/index.json |
 | プラットフォームの追加 | [プラットフォーム契約](EXTENSIONS.md)、templates/platform | ZIP + catalog.json |
+
+全契約は[公開インターフェース一覧](docs/INTERFACES.md)から確認できます。[機械可読一覧](sdk/api.json)、[API 版管理](sdk/API_VERSIONING.md)、[API 変更履歴](sdk/API_CHANGELOG.md)も参照してください。
 
 宣言型の起動設定は形式 2 を使用し、この機能を含むホストビルドが必要です。最低バージョンは 0.9.108 です。正式 APK の検証状況は[機能契約](contracts/host.json)とリリース記録で確認してください。形式 1 に起動設定はありません。スクリプトは 0.9.90、多言語メタデータは 0.9.94、独立設定ページは 0.9.96、ROM リソースプロバイダーは 0.9.98 以降に対応します。独自のエミュレータープロトコルやスクリプトによるストレージプロバイダー登録には、引き続きホスト側の対応が必要です。データパックはコードを実行できません。
 
