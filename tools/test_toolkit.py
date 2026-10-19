@@ -19,7 +19,7 @@ class ToolkitTest(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
-        self.root = Path(self.directory.name)
+        self.root = Path(self.directory.name).resolve()
         self.plugin = self.root / "plugin"
         shutil.copytree(ROOT / "templates/plugin", self.plugin)
 
