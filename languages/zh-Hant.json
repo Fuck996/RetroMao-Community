@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hant",
   "name": "繁體中文",
-  "catalog_version": "0.9.112",
-  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
+  "catalog_version": "0.9.113",
+  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1301,8 +1301,8 @@
     "plugin_other_source": "來自其他儲存庫",
     "plugin_install_confirmation": "安裝 %1$s",
     "plugin_version_change": "目前 %1$s → 安裝 %2$s",
-    "plugin_update_description": "更新會保留此儲存庫下的外掛設定和私人資料。新增權限須重新授權；若有執行中的工作，請先完成或取消。",
-    "plugin_replace_source_description": "即將切換外掛來源。各來源的設定和私人資料分開保留，切換後須重新啟用並設定。",
+    "plugin_update_description": "更新會保留此來源的設定、私有資料和啟停狀態。本次確認同時授權下列能力；有執行中的工作時，請先完成或取消。",
+    "plugin_replace_source_description": "即將切換外掛來源。各來源的設定和私有資料分開保留，切換後預設啟用，請重新核對設定。",
     "controller_style": "控制器模式",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "依控制器配置顯示按鍵提示；確認、返回和自訂對應沿用目前設定。",
@@ -1375,7 +1375,8 @@
     "plugin_version_incompatible": "目前前端版本不符合要求，無法安裝。",
     "plugin_permission_search": "讀取目前搜尋範圍內的遊戲與應用程式名稱，提供增強搜尋詞",
     "search_extensions_loading": "正在準備增強搜尋…",
-    "search_extensions_failed": "增強搜尋失敗：%1$s。請在外掛程式管理中處理後重新搜尋。"
+    "search_extensions_failed": "增強搜尋失敗：%1$s。請在外掛程式管理中處理後重新搜尋。",
+    "plugin_install_enabled": "確認安裝即授權下列能力，首次安裝和切換來源後預設啟用。"
   },
   "author": "4NPC",
   "credits": []

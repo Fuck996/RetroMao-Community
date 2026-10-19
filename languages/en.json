@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "en",
   "name": "English",
-  "catalog_version": "0.9.112",
-  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
+  "catalog_version": "0.9.113",
+  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1301,8 +1301,8 @@
     "plugin_other_source": "Different repository",
     "plugin_install_confirmation": "Install %1$s",
     "plugin_version_change": "Installed %1$s → Install %2$s",
-    "plugin_update_description": "Keeps plugin settings and private data for this repository. New permissions require approval. Finish or cancel any running task first.",
-    "plugin_replace_source_description": "Changes this plugin’s repository. Each repository keeps separate settings and private data. Enable and configure the plugin again after switching.",
+    "plugin_update_description": "Updates retain this source’s settings, private data and enabled/disabled choice. Confirmation also grants the capabilities below. Complete or cancel running tasks first.",
+    "plugin_replace_source_description": "The plugin source will change. Each source keeps separate settings and private data. The plugin will be enabled by default; review its settings again.",
     "controller_style": "Controller style",
     "controller_style_nintendo": "Nintendo",
     "controller_style_description": "Show button prompts for this layout. Keep the current confirm, back, and custom bindings.",
@@ -1375,7 +1375,8 @@
     "plugin_version_incompatible": "This frontend version does not meet the requirement. Installation is unavailable.",
     "plugin_permission_search": "Read game and app names in the current search scope to provide additional search terms",
     "search_extensions_loading": "Preparing enhanced search…",
-    "search_extensions_failed": "Enhanced search failed: %1$s. Resolve the issue in Plugins, then search again."
+    "search_extensions_failed": "Enhanced search failed: %1$s. Resolve the issue in Plugins, then search again.",
+    "plugin_install_enabled": "Confirming installation grants the capabilities below. New installations and source changes are enabled by default."
   },
   "author": "4NPC",
   "credits": []

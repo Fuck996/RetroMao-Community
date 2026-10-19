@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 插件安装默认启用 · 0.9.113 · 2026-10-19
+
+商店下载和本地 ZIP 在核验实际清单后共用一次安装确认，显示最低／当前前端版本、所需能力和网络主机。确认安装即授权并默认启用；同来源更新保留已有启停选择和私有数据，取消不落库。新增能力在安装确认中一并展示，无需安装后再手动启用。四语更新安装说明，新增 1 条文案，共 1371 键。拼音插件保持已发布的 1.0.0，资产不变。
+
 ### 搜索增强与安装兼容性 · 0.9.112 · 2026-10-19
 
 发布拼音首字母搜索插件 1.0.0，最低前端 0.9.112，使用离线简繁字典增强原游戏与应用搜索。SDK 1.1.0 追加 SEARCH 能力、清单回调与类型；原 API 1 的 32 个 RPC 签名不变。搜索只读取当前范围名称，沿用原隔离生命周期、排序和启动流程，准备及失败明确显示。插件安装弹窗显示最低／当前前端版本，版本不足禁止安装；默认桌面入口移入“主题与显示”。
@@ -181,6 +185,10 @@
 
 ## English
 
+### Plugins enabled on installation · 0.9.113 · 2026-10-19
+
+Store downloads and ZIP imports share one confirmation after validating the actual manifest, showing required/current host versions, capabilities and network hosts. Confirmation grants capabilities and enables new installations; same-source updates preserve the existing enabled/disabled choice and private data. Cancellation registers nothing. Newly requested capabilities appear in the same confirmation, without a separate post-install enable step. Installation copy is updated in four languages, adding one key for 1371 total. The published pinyin plugin and its 1.0.0 asset remain unchanged.
+
 ### Search enhancement and installation compatibility · 0.9.112 · 2026-10-19
 
 Pinyin initials search 1.0.0 requires host 0.9.112 and enhances existing game/app search using offline simplified/traditional dictionaries. SDK 1.1.0 adds SEARCH grants, a manifest callback and types; all 32 existing API 1 RPC signatures remain unchanged. Only current-scope names are supplied, with existing isolation, ordering and launch paths, and explicit preparation/failure states. Install dialogs display required/current frontend versions and block incompatible installation. Default-home settings move into Theme and display.
@@ -297,6 +305,9 @@ First MSX/platform and Amber/theme examples required host 0.9.44. Original trili
 
 ## 日本語
 
+### インストール時の自動有効化 · 0.9.113 · 2026-10-19
+
+ストアと ZIP は実際のマニフェストを検証してから一回の確認を共用し、最低・現在のホスト版、必要な機能、通信先を表示します。確認で許可し、新規プラグインを自動で有効にします。同じ配布元の更新は従来の有効・無効の選択と専用データを保持し、取り消した場合は登録しません。追加機能も同じ確認に表示し、インストール後の別途有効化は不要です。四言語の説明を更新し、一項目を追加して各 1371 キーになりました。公開済みのピンイン 1.0.0 と配布ファイルは変更しません。
 ### 検索拡張とインストール互換性 · 0.9.112 · 2026-10-19
 
 ピンイン頭文字検索 1.0.0 はホスト 0.9.112 以上を必要とし、オフラインの簡繁字辞書で既存のゲーム・アプリ検索を拡張します。SDK 1.1.0 に SEARCH 権限、マニフェストのコールバック、型を追加し、既存 API 1 の RPC 32 個のシグネチャは維持します。現在の範囲の名前だけを渡し、従来の隔離・順序・起動処理を使い、準備と失敗を明示します。インストール画面に最低・現在のフロントエンド版を表示し、版が不足するとインストールできません。既定ホームの設定は「テーマと表示」へ移動します。

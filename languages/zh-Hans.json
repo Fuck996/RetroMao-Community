@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hans",
   "name": "简体中文",
-  "catalog_version": "0.9.112",
-  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
+  "catalog_version": "0.9.113",
+  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1301,8 +1301,8 @@
     "plugin_other_source": "来自其他仓库",
     "plugin_install_confirmation": "安装 %1$s",
     "plugin_version_change": "当前 %1$s → 安装 %2$s",
-    "plugin_update_description": "更新会保留此仓库下的插件配置和私有数据。新增权限需重新授权；有运行中的任务时，请先完成或取消。",
-    "plugin_replace_source_description": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后需要重新启用并配置。",
+    "plugin_update_description": "更新会保留此来源下的配置、私有数据和启停状态。本次确认同时授权下列能力；有运行中的任务时，请先完成或取消。",
+    "plugin_replace_source_description": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后默认启用，请重新核对配置。",
     "controller_style": "手柄模式",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "按手柄布局显示按键提示；确认、返回和自定义映射沿用当前设置。",
@@ -1375,7 +1375,8 @@
     "plugin_version_incompatible": "当前前端版本不满足要求，无法安装。",
     "plugin_permission_search": "读取当前搜索范围内的游戏与应用名称，提供增强搜索词",
     "search_extensions_loading": "正在准备增强搜索…",
-    "search_extensions_failed": "增强搜索失败：%1$s。请在插件管理中处理后重新搜索。"
+    "search_extensions_failed": "增强搜索失败：%1$s。请在插件管理中处理后重新搜索。",
+    "plugin_install_enabled": "确认安装即授权下列能力，首次安装和切换来源后默认启用。"
   },
   "author": "4NPC",
   "credits": []

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.112",
-  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
+  "catalog_version": "0.9.113",
+  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1301,8 +1301,8 @@
     "plugin_other_source": "別のリポジトリ",
     "plugin_install_confirmation": "%1$s をインストール",
     "plugin_version_change": "現在 %1$s → %2$s をインストール",
-    "plugin_update_description": "このリポジトリの設定と専用データを保持します。新しい権限は再承認が必要です。実行中の処理は先に完了またはキャンセルしてください。",
-    "plugin_replace_source_description": "プラグインの提供元を切り替えます。設定と専用データは提供元ごとに保持します。切り替え後は再度有効にして設定してください。",
+    "plugin_update_description": "更新では、この配布元の設定、専用データ、有効・無効の選択を保持します。確認により以下の機能も許可します。実行中のタスクは先に完了または中止してください。",
+    "plugin_replace_source_description": "プラグインの配布元を変更します。設定と専用データは配布元ごとに保持します。変更後は自動で有効になりますので、設定を再確認してください。",
     "controller_style": "コントローラースタイル",
     "controller_style_nintendo": "任天堂",
     "controller_style_description": "選んだボタン配置に合わせて操作ガイドを表示します。決定・戻る・カスタム割り当ては現在の設定を引き継ぎます。",
@@ -1375,7 +1375,8 @@
     "plugin_version_incompatible": "必要なフロントエンドのバージョンを満たしていないため、インストールできません。",
     "plugin_permission_search": "現在の検索範囲のゲーム名とアプリ名を読み取り、検索語を追加",
     "search_extensions_loading": "検索拡張を準備中…",
-    "search_extensions_failed": "検索拡張に失敗しました：%1$s。プラグイン管理で問題を解決してから、再度検索してください。"
+    "search_extensions_failed": "検索拡張に失敗しました：%1$s。プラグイン管理で問題を解決してから、再度検索してください。",
+    "plugin_install_enabled": "インストールの確認で以下の機能を許可します。新規インストールと配布元変更後は自動で有効になります。"
   },
   "author": "4NPC",
   "credits": []

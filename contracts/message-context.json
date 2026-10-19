@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.112",
-  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
+  "catalog_version": "0.9.113",
+  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -12404,13 +12404,13 @@
       "owners": []
     },
     "plugin_update_description": {
-      "source": "更新会保留此仓库下的插件配置和私有数据。新增权限需重新授权；有运行中的任务时，请先完成或取消。",
+      "source": "更新会保留此来源下的配置、私有数据和启停状态。本次确认同时授权下列能力；有运行中的任务时，请先完成或取消。",
       "arguments": [],
       "surfaces": [],
       "owners": []
     },
     "plugin_replace_source_description": {
-      "source": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后需要重新启用并配置。",
+      "source": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后默认启用，请重新核对配置。",
       "arguments": [],
       "surfaces": [],
       "owners": []
@@ -12874,6 +12874,12 @@
       "arguments": [
         "%1$s"
       ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_install_enabled": {
+      "source": "确认安装即授权下列能力，首次安装和切换来源后默认启用。",
+      "arguments": [],
       "surfaces": [],
       "owners": []
     }
