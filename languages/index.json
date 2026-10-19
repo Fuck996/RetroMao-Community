@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "catalog_version": "0.9.111",
-  "catalog_hash": "6c3eb362ea10052155aa731c8b64bff303f880863853c8328d2086824d8cd254",
+  "catalog_version": "0.9.112",
+  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
   "languages": [
     {
       "locale": "en",
@@ -9,10 +9,10 @@
       "file": "en.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1365,
-      "total": 1365,
-      "size_bytes": 102198,
-      "sha256": "ec35cbffb7e950e19bfcfbbccda3fc046ef44875d6bad18e9dc49405f15d2ce9"
+      "translated": 1370,
+      "total": 1370,
+      "size_bytes": 102683,
+      "sha256": "07c430c922b5ad16de99aaa52c605a93f6a6624fd685ca8598e7973ed487ec76"
     },
     {
       "locale": "ja",
@@ -20,10 +20,10 @@
       "file": "ja.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1365,
-      "total": 1365,
-      "size_bytes": 132048,
-      "sha256": "d4152fdb35c67bf6d2cf2e80a80ce516e9abb7469e1a06c3b17240ead486e295"
+      "translated": 1370,
+      "total": 1370,
+      "size_bytes": 132628,
+      "sha256": "5862aa94388de046cd78cc42d84f7cb3391deffc5f00b12eb849619a570c433e"
     },
     {
       "locale": "zh-Hans",
@@ -31,10 +31,10 @@
       "file": "zh-Hans.json",
       "author": "4NPC",
       "status": "source",
-      "translated": 1365,
-      "total": 1365,
-      "size_bytes": 99066,
-      "sha256": "0e05fe7061c8d2215344499ea28fa14837d9c863de068650be4d8844acbbbfe4"
+      "translated": 1370,
+      "total": 1370,
+      "size_bytes": 99499,
+      "sha256": "50ce374e6125d2b4dcde274a3b3fe7a8a9f14d9e8f8eaf8e82b09bba3e8f342a"
     },
     {
       "locale": "zh-Hant",
@@ -42,10 +42,10 @@
       "file": "zh-Hant.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1365,
-      "total": 1365,
-      "size_bytes": 99641,
-      "sha256": "ece06c5407dd24363e082e4ce58ed2ae51195caf2139eb30203de2faa479a54e"
+      "translated": 1370,
+      "total": 1370,
+      "size_bytes": 100086,
+      "sha256": "e10720f9ec2c998ede1cf4d52e4a9f17fb6de8368bf638d03b9266496a614f18"
     }
   ]
 }

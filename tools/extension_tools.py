@@ -94,8 +94,13 @@ def validate_plugin(source):
     pages, actions, settings = (manifest.get(key, []) for key in ("pages", "actions", "settings"))
     providers = manifest.get("resourceProviders", [])
     minimum = version(manifest["minAppVersion"])
-    if not (pages or actions or providers):
-        raise ValueError("Declare a page, action or resource provider")
+    search = manifest.get("searchProvider")
+    if "SEARCH" in manifest.get("capabilities", []) and not search:
+        raise ValueError("SEARCH requires a searchProvider")
+    if not (pages or actions or providers or search):
+        raise ValueError("Declare a page, action, resource provider or search provider")
+    if search and (minimum < (0, 9, 112) or "SEARCH" not in manifest.get("capabilities", []) or not manifest.get("entryPoint")):
+        raise ValueError("Search providers require entryPoint, SEARCH and host 0.9.112")
     if actions and not manifest.get("entryPoint"):
         raise ValueError("Actions require entryPoint")
     for values, label in ((pages, "page"), (actions, "action"), (settings, "setting"), (providers, "provider")):

@@ -1,5 +1,7 @@
 declare namespace RetroMao {
   type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
+  interface SearchBatch { texts: string[]; }
+  interface SearchAliases { aliases: string[][]; }
   type IconName = "plugin" | "star" | "history" | "sync" | "cloud" | "library" | "image" | "language" | "palette" | "gamepad" | "chart" | "settings";
   type MediaRole = "COVER" | "CARTRIDGE" | "DISC" | "LOGO" | "VIDEO" | "SCREENSHOT" | "BACK" | "SPINE" | "MANUAL";
   type MetadataField = "TITLE" | "DESCRIPTION" | "DEVELOPER" | "PUBLISHER" | "GENRE" | "RELEASE_DATE" | "PLAYERS" | "RATING" | "SORT_TITLE";

@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.111",
-  "catalog_hash": "6c3eb362ea10052155aa731c8b64bff303f880863853c8328d2086824d8cd254",
+  "catalog_version": "0.9.112",
+  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -12715,259 +12715,118 @@
     "apps_open": {
       "source": "打开",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_details": {
       "source": "应用信息",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_manage": {
       "source": "管理应用",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_pin": {
       "source": "置顶",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_unpin": {
       "source": "取消置顶",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_pinned": {
       "source": "已置顶",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_uninstall": {
       "source": "卸载",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_uninstall_system": {
       "source": "系统应用无法卸载，可在应用信息中管理。",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_uninstall_restricted": {
       "source": "系统策略不允许卸载应用。",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_hint": {
       "source": "输入应用名称或包名",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_clear": {
       "source": "清除搜索",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_pinned": {
       "source": "置顶应用",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_results": {
       "source": "搜索结果",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_empty": {
       "source": "未找到匹配的应用",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_search_empty_pins": {
       "source": "尚未置顶应用，输入名称开始搜索。",
       "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "apps_pin_failed": {
       "source": "保存应用置顶失败：%1$s",
       "arguments": [
         "%1$s"
       ],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "common_search": {
       "source": "搜索",
       "arguments": [],
-      "surfaces": [
-        "launcher_search"
-      ],
-      "owners": [
-        "MainNavigation",
-        "FrontendAction"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "games_search": {
       "source": "搜索游戏",
       "arguments": [],
-      "surfaces": [
-        "launcher_search"
-      ],
-      "owners": [
-        "GameSearchPanel"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "games_search_hint": {
       "source": "输入游戏名称或 ROM 文件名",
       "arguments": [],
-      "surfaces": [
-        "launcher_search"
-      ],
-      "owners": [
-        "GameSearchPanel"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "games_search_scope": {
       "source": "%1$s · %2$s",
@@ -12975,22 +12834,48 @@
         "%1$s",
         "%2$s"
       ],
-      "surfaces": [
-        "launcher_search"
-      ],
-      "owners": [
-        "GameSearchPanel"
-      ]
+      "surfaces": [],
+      "owners": []
     },
     "games_search_empty": {
       "source": "当前页面和机种中没有匹配的游戏。",
       "arguments": [],
-      "surfaces": [
-        "launcher_search"
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_current_version": {
+      "source": "当前前端版本：%1$s",
+      "arguments": [
+        "%1$s"
       ],
-      "owners": [
-        "GameSearchPanel"
-      ]
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_version_incompatible": {
+      "source": "当前前端版本不满足要求，无法安装。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_search": {
+      "source": "读取当前搜索范围内的游戏与应用名称，提供增强搜索词",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "search_extensions_loading": {
+      "source": "正在准备增强搜索…",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "search_extensions_failed": {
+      "source": "增强搜索失败：%1$s。请在插件管理中处理后重新搜索。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
     }
   }
 }

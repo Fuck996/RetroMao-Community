@@ -2,6 +2,8 @@
 
 [中文](#中文) · [English](#english) · [日本語](#日本語)
 
+[搜索扩展 / Search extensions / 検索拡張](SEARCH_EXTENSIONS.md)
+
 [API reference / 逐接口调用 / API 呼び出し](API_REFERENCE.md) · [Inventory / 清单 / 一覧](api.json) · [Versioning / 版本管理 / 版管理](API_VERSIONING.md) · [API changes / 接口变更 / API 変更](API_CHANGELOG.md)
 
 [Types](retromao.d.ts) · [Schema](../schemas/plugin.schema.json) · [Localization](PLUGIN_LOCALIZATION.md) · [Versions](PLUGIN_VERSIONS.md) · [ROM resources](ROM_RESOURCES.md) · [Testing](../docs/TESTING.md) · [Publishing](../docs/PUBLISHING.md)
@@ -13,6 +15,7 @@
 | http.request | NETWORK + networkHosts |
 | storage.sources/read/write | STORAGE |
 | define resources | ROM_RESOURCES |
+| searchProvider | SEARCH + host 0.9.112 |
 | settings.get, data.get/patch, tasks.run/get/current/result/cancel/watch/progress | Own plugin / 本插件 / 自分のプラグイン |
 
 ```text

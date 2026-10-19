@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "pinyin-initials",
+  "name": "拼音首字母搜索",
+  "version": "1.0.0",
+  "author": "4NPC",
+  "description": "为游戏和应用搜索增加拼音首字母匹配，例如 hdl 搜索魂斗罗、jsq 搜索计算器。离线处理简繁中文，保留英文和数字。",
+  "minAppVersion": "0.9.112",
+  "entryPoint": "main.js",
+  "iconName": "language",
+  "category": "tools",
+  "capabilities": ["SEARCH"],
+  "searchProvider": "initials",
+  "defaultLocale": "zh-Hans",
+  "license": "MIT",
+  "credits": ["pinyin-pro 3.29.5 (MIT), zh-lx", "@pinyin-pro/data 1.3.1, traditional character mapping"],
+  "localizations": {
+    "zh-Hant": {"name": "拼音首字母搜尋", "description": "為遊戲與應用程式搜尋增加拼音首字母比對，例如 hdl 搜尋魂斗羅、jsq 搜尋計算器。離線處理簡繁中文，保留英文和數字。"},
+    "en": {"name": "Pinyin initials search", "description": "Search games and apps using Chinese pinyin initials: hdl for 魂斗罗, jsq for 计算器. Works offline with simplified and traditional Chinese, preserving Latin text and numbers."},
+    "ja": {"name": "ピンイン頭文字検索", "description": "ゲーム名とアプリ名を中国語ピンインの頭文字で検索。hdl で「魂斗罗」、jsq で「计算器」を検索できます。簡体字・繁体字をオフラインで処理し、英字と数字も保持します。"}
+  }
+}

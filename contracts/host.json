@@ -356,5 +356,17 @@
         "xbox360"
       ]
     }
-  ]
+  ],
+  "searchProviders": {
+    "minAppVersion": "0.9.112",
+    "batchSize": 200,
+    "maxArgumentsBytes": 262144,
+    "timeoutMs": 30000,
+    "maxAliasesPerText": 16,
+    "maxAliasCharacters": 4096,
+    "allowedRpc": [
+      "session.ready",
+      "settings.get"
+    ]
+  }
 }

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "apiVersion": 1,
   "date": "2026-10-19",
-  "verifiedHostVersion": "0.9.108",
+  "verifiedHostVersion": "0.9.112",
   "sources": {
     "sdk/runtime/retromao.js": "6e6f5a71dbc6825dd8df814780759abd1504648589c0e7da88ec8daccebac247",
-    "sdk/retromao.d.ts": "6acfc1742ee34204752a3b83fb7f5ac68b431d0d71b7be2dfb951102d81c08bf"
+    "sdk/retromao.d.ts": "eb3970cfb6c60f68a2841c1ddeed26c30a7367bb67b7d5a7ae9dc9ab1a672939"
   },
   "members": [
     {
@@ -615,5 +615,16 @@
       "example": "retromao.define({\n  actions: { run: async arguments_ => ({ dryRun: arguments_.dryRun === true }) }\n});"
     }
   ],
-  "sourceEncoding": "UTF-8/LF"
+  "sourceEncoding": "UTF-8/LF",
+  "searchProvider": {
+    "since": "0.9.112",
+    "capability": "SEARCH",
+    "arguments": "SearchBatch",
+    "result": "SearchAliases",
+    "allowedRpc": [
+      "session.ready",
+      "settings.get"
+    ],
+    "batchSize": 200
+  }
 }

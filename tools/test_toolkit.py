@@ -16,6 +16,20 @@ import validate_languages
 
 
 class ToolkitTest(unittest.TestCase):
+    def test_search_provider_requires_actual_host_permission_and_entry(self):
+        manifest = read_json(self.plugin / "plugin.json")
+        manifest.update(pages=[], actions=[], searchProvider="initials", capabilities=["SEARCH"], minAppVersion="0.9.112")
+        manifest.pop("localizations", None)
+        manifest.pop("configurationPage", None)
+        write_json(self.plugin / "plugin.json", manifest)
+        validate_plugin(self.plugin)
+        for field, value in (("minAppVersion", "0.9.111"), ("capabilities", []), ("searchProvider", "../escape"), ("entryPoint", None)):
+            invalid = copy.deepcopy(manifest)
+            invalid[field] = value
+            write_json(self.plugin / "plugin.json", invalid)
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                validate_plugin(self.plugin)
+
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)

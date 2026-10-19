@@ -6,6 +6,10 @@
 
 ## 中文
 
+### 1.1.0 · 2026-10-19
+
+追加 SearchBatch／SearchAliases 类型与 searchProvider 清单约定，最低宿主 0.9.112，使用原 API 1 后台引擎。32 个公开成员及原调用签名、授权和上下文定义不变；搜索自动回调额外限制为只读 ready／settings.get，详见 SEARCH_EXTENSIONS.md。历史快照保持原字节。既有插件无需迁移。
+
 ### 1.0.1 · 2026-10-19
 
 修正源码摘要的跨平台口径：UTF-8 文本统一 LF 后计算 SHA-256，与仓库文本规则一致。1.0.0 首次 CI 暴露旧 Windows 工作副本的 CRLF 摘要与 Git 中 LF 内容不一致；保留旧快照，新增明确 sourceEncoding 的 1.0.1。源码内容变化仍会使检查失败，不跳过摘要。新增换行一致性与内容变化的定向测试；API、最低宿主和插件发行版不变，作者无需迁移。
@@ -23,6 +27,10 @@
 
 ## English
 
+### 1.1.0 · 2026-10-19
+
+Adds SearchBatch/SearchAliases types and the searchProvider manifest contract for host 0.9.112, using the existing API 1 engine. All 32 public members, signatures, grants and context definitions remain unchanged; automatic search callbacks additionally allow only read-only ready/settings.get. See SEARCH_EXTENSIONS.md. Historical snapshots remain byte-identical; existing plugins require no migration.
+
 ### 1.0.1 · 2026-10-19
 
 Corrected cross-platform source digests: SHA-256 uses UTF-8 text with LF line endings, matching repository text rules. Initial 1.0.0 CI exposed old Windows CRLF worktree hashes differing from LF Git content. Its snapshot is preserved; 1.0.1 explicitly records sourceEncoding. Content changes still fail validation; hashing is not skipped. Added focused newline-equivalence and content-change tests. APIs, minimum hosts and plugin releases are unchanged; authors need no migration.
@@ -39,6 +47,10 @@ First independently versioned public SDK contract, checked against host 0.9.108'
 Historical feature baselines: 0.9.90 basic scripts/pages and library, favorites, media, task and network APIs; 0.9.91 lightweight records, apply/checkpoint and STORAGE; 0.9.92 public icons; 0.9.94 author locale environment; 0.9.96 dedicated configuration pages; 0.9.98 ROM resource callbacks. Earlier records did not use contract semver: no older contract versions or dates are invented. Product history retains product changes.
 
 ## 日本語
+
+### 1.1.0 · 2026-10-19
+
+SearchBatch／SearchAliases 型と searchProvider の規約を追加します。最低ホストは 0.9.112 で、既存 API 1 のエンジンを使います。32 メンバーのシグネチャ、権限、コンテキスト定義は維持し、自動検索コールバックは読み取り専用の ready／settings.get のみに制限します。SEARCH_EXTENSIONS.md を参照してください。過去のスナップショットは変更せず、既存プラグインの移行は不要です。
 
 ### 1.0.1 · 2026-10-19
 

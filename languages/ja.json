@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.111",
-  "catalog_hash": "6c3eb362ea10052155aa731c8b64bff303f880863853c8328d2086824d8cd254",
+  "catalog_version": "0.9.112",
+  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1370,7 +1370,12 @@
     "games_search": "ゲームを検索",
     "games_search_hint": "ゲーム名または ROM ファイル名を入力",
     "games_search_scope": "%1$s · %2$s",
-    "games_search_empty": "このページ・機種には一致するゲームがありません。"
+    "games_search_empty": "このページ・機種には一致するゲームがありません。",
+    "plugin_current_version": "現在のフロントエンド：%1$s",
+    "plugin_version_incompatible": "必要なフロントエンドのバージョンを満たしていないため、インストールできません。",
+    "plugin_permission_search": "現在の検索範囲のゲーム名とアプリ名を読み取り、検索語を追加",
+    "search_extensions_loading": "検索拡張を準備中…",
+    "search_extensions_failed": "検索拡張に失敗しました：%1$s。プラグイン管理で問題を解決してから、再度検索してください。"
   },
   "author": "4NPC",
   "credits": []

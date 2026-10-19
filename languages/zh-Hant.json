@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hant",
   "name": "繁體中文",
-  "catalog_version": "0.9.111",
-  "catalog_hash": "6c3eb362ea10052155aa731c8b64bff303f880863853c8328d2086824d8cd254",
+  "catalog_version": "0.9.112",
+  "catalog_hash": "9c6c9e54b1d836fa3cf9b6e690552014edf6d445246be93da99a14e9251ec790",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1370,7 +1370,12 @@
     "games_search": "搜尋遊戲",
     "games_search_hint": "輸入遊戲名稱或 ROM 檔案名稱",
     "games_search_scope": "%1$s · %2$s",
-    "games_search_empty": "目前頁面和機種中沒有符合的遊戲。"
+    "games_search_empty": "目前頁面和機種中沒有符合的遊戲。",
+    "plugin_current_version": "目前前端版本：%1$s",
+    "plugin_version_incompatible": "目前前端版本不符合要求，無法安裝。",
+    "plugin_permission_search": "讀取目前搜尋範圍內的遊戲與應用程式名稱，提供增強搜尋詞",
+    "search_extensions_loading": "正在準備增強搜尋…",
+    "search_extensions_failed": "增強搜尋失敗：%1$s。請在外掛程式管理中處理後重新搜尋。"
   },
   "author": "4NPC",
   "credits": []

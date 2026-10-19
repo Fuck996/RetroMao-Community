@@ -4,6 +4,12 @@
 
 ## 中文
 
+### 搜索增强与安装兼容性 · 0.9.112 · 2026-10-19
+
+发布拼音首字母搜索插件 1.0.0，最低前端 0.9.112，使用离线简繁字典增强原游戏与应用搜索。SDK 1.1.0 追加 SEARCH 能力、清单回调与类型；原 API 1 的 32 个 RPC 签名不变。搜索只读取当前范围名称，沿用原隔离生命周期、排序和启动流程，准备及失败明确显示。插件安装弹窗显示最低／当前前端版本，版本不足禁止安装；默认桌面入口移入“主题与显示”。
+
+四语新增 5 条文案，共 1370 键。社区完整检查、26 项 Python 和 58 项 Node 测试通过，包括真实拼音脚本、固定依赖摘要、简繁、多音字及可复现打包。厂商设备的 JavaScript 隔离仍需实机验收。
+
 ### 跨页面搜索文案 · 0.9.111 · 2026-10-19
 
 新增通用搜索动作和游戏搜索的 5 条四语文案，共 1365 键。游戏搜索用于宿主的游戏库、最近游戏和收藏，范围说明保留页面、机种参数与 ROM 保护词；更新目录、摘要和调用上下文。公共 SDK 接口没有变更。
@@ -175,6 +181,12 @@
 
 ## English
 
+### Search enhancement and installation compatibility · 0.9.112 · 2026-10-19
+
+Pinyin initials search 1.0.0 requires host 0.9.112 and enhances existing game/app search using offline simplified/traditional dictionaries. SDK 1.1.0 adds SEARCH grants, a manifest callback and types; all 32 existing API 1 RPC signatures remain unchanged. Only current-scope names are supplied, with existing isolation, ordering and launch paths, and explicit preparation/failure states. Install dialogs display required/current frontend versions and block incompatible installation. Default-home settings move into Theme and display.
+
+Five messages were added in all four languages, for 1370 keys each. Complete repository checks, 26 Python tests and 58 Node tests pass, including the real pinyin script, pinned dependency hashes, polyphones and reproducible packaging. Vendor-device JavaScript isolation still needs device acceptance.
+
 ### Cross-page search messages · 0.9.111 · 2026-10-19
 
 Added five messages in all four languages for the shared search action and game search, bringing the total to 1365 keys. Game search serves the host library, recent games and favorites. Scope labels preserve page/platform arguments and the protected ROM term. Catalog metadata, hashes and call context are updated; public SDK APIs are unchanged.
@@ -284,6 +296,12 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### 検索拡張とインストール互換性 · 0.9.112 · 2026-10-19
+
+ピンイン頭文字検索 1.0.0 はホスト 0.9.112 以上を必要とし、オフラインの簡繁字辞書で既存のゲーム・アプリ検索を拡張します。SDK 1.1.0 に SEARCH 権限、マニフェストのコールバック、型を追加し、既存 API 1 の RPC 32 個のシグネチャは維持します。現在の範囲の名前だけを渡し、従来の隔離・順序・起動処理を使い、準備と失敗を明示します。インストール画面に最低・現在のフロントエンド版を表示し、版が不足するとインストールできません。既定ホームの設定は「テーマと表示」へ移動します。
+
+四言語に 5 項目を追加し、各 1370 キーです。完全検査、Python 26 件、Node 58 件が合格しました。実際のピンイン、多音字、簡繁体、固定依存の摘要、再現可能なパッケージを確認しました。メーカー端末の JavaScript 隔離は実機確認が必要です。
 
 ### ページ共通検索の文言 · 0.9.111 · 2026-10-19
 
