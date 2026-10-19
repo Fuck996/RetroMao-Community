@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.109",
-  "catalog_hash": "c617a7e39f0a8d83cbf85d8cac4f40e1955fbf924e10fe91f36f778366b5e52c",
+  "catalog_version": "0.9.111",
+  "catalog_hash": "6c3eb362ea10052155aa731c8b64bff303f880863853c8328d2086824d8cd254",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -66,6 +66,284 @@
       ],
       "owners": [
         "AndroidSaveDirectoryDialog"
+      ]
+    },
+    "apps_default_home": {
+      "source": "默认桌面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_details": {
+      "source": "应用信息",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_empty": {
+      "source": "未找到可启动的应用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_home_active": {
+      "source": "复古猫已是默认桌面。点击可在系统中更换。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_home_description": {
+      "source": "将复古猫设为默认桌面，按 Home 键返回游戏前端。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_launch_failed": {
+      "source": "无法打开应用或系统页面：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_load_failed": {
+      "source": "读取应用列表失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_manage": {
+      "source": "管理应用",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_open": {
+      "source": "打开",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_pin": {
+      "source": "置顶",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_pin_failed": {
+      "source": "保存应用置顶失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_pinned": {
+      "source": "已置顶",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search": {
+      "source": "搜索应用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_search_clear": {
+      "source": "清除搜索",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search_empty": {
+      "source": "未找到匹配的应用",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search_empty_pins": {
+      "source": "尚未置顶应用，输入名称开始搜索。",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search_hint": {
+      "source": "输入应用名称或包名",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search_pinned": {
+      "source": "置顶应用",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_search_results": {
+      "source": "搜索结果",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_system_settings": {
+      "source": "系统设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_uninstall": {
+      "source": "卸载",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_uninstall_restricted": {
+      "source": "系统策略不允许卸载应用。",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_uninstall_system": {
+      "source": "系统应用无法卸载，可在应用信息中管理。",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
+      ]
+    },
+    "apps_unpin": {
+      "source": "取消置顶",
+      "arguments": [],
+      "surfaces": [
+        "apps_screen",
+        "apps_overlays"
+      ],
+      "owners": [
+        "AppsScreen",
+        "AppSearchPanel",
+        "AppActionMenu",
+        "MainInputHints"
       ]
     },
     "background_transfers_text_0028": {
@@ -218,6 +496,161 @@
       "owners": [
         "submit"
       ]
+    },
+    "cloud_directory_folder_changed": {
+      "source": "迁移期间存档目录状态发生变化",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_index_changed": {
+      "source": "迁移期间索引已有其他修改，保留现场等待处理",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_index_missing": {
+      "source": "迁移中的原有索引缺失，不能重建：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_index_owner": {
+      "source": "索引不属于此云端迁移目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_index_unconfirmed": {
+      "source": "迁移索引尚未确认，请继续原任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_invalid_path": {
+      "source": "此云端路径不是可用目录：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_complete": {
+      "source": "目录迁移完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_pause": {
+      "source": "暂停",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_progress": {
+      "source": "目录 %1$d/%2$d · 索引 %3$d/%4$d",
+      "arguments": [
+        "%1$d",
+        "%2$d",
+        "%3$d",
+        "%4$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_queued": {
+      "source": "目录迁移已加入传输任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_resume": {
+      "source": "继续迁移",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_title": {
+      "source": "云端目录迁移",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_move_unconfirmed": {
+      "source": "目录移动结果尚未确认，保留现场等待继续",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_path_duplicates": {
+      "source": "多个原目录对应同一个新目录，请分别设置目标",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_paths_overlap": {
+      "source": "新旧目录不能互相包含",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_paused": {
+      "source": "目录迁移已暂停",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_source_busy": {
+      "source": "此来源的目录迁移尚未完成，请在传输任务中继续",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_source_changed": {
+      "source": "迁移期间来源配置发生变化，请重新检查",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_step_changed": {
+      "source": "待提交索引不属于当前迁移步骤",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_steps_incomplete": {
+      "source": "目录或索引迁移尚未完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_sync_busy": {
+      "source": "此来源仍在同步或恢复存档，请先完成或取消原任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_target_collision": {
+      "source": "新目录已有同名内容，未覆盖，请选择其他目录：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_task_complete": {
+      "source": "目录迁移已经完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "cloud_directory_task_required": {
+      "source": "未完成的目录迁移需要继续，不能丢弃原位置记录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "common_back": {
       "source": "返回",
@@ -452,6 +885,17 @@
         "EmulatorConfigurationDialog",
         "GameMetadataDialog",
         "preference"
+      ]
+    },
+    "common_search": {
+      "source": "搜索",
+      "arguments": [],
+      "surfaces": [
+        "launcher_search"
+      ],
+      "owners": [
+        "MainNavigation",
+        "FrontendAction"
       ]
     },
     "common_upload": {
@@ -778,6 +1222,24 @@
         "CommunityPackSettings"
       ]
     },
+    "controller_style": {
+      "source": "手柄模式",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "controller_style_description": {
+      "source": "按手柄布局显示按键提示；确认、返回和自定义映射沿用当前设置。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "controller_style_nintendo": {
+      "source": "任天堂",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "controls_label_0001": {
       "source": "上一个顶栏页面",
       "arguments": [],
@@ -935,6 +1397,784 @@
       "owners": [
         "AssetNoticesDialog"
       ]
+    },
+    "display_supplement_001": {
+      "source": "自定义核心",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_002": {
+      "source": "尚未选择核心",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_005": {
+      "source": "扩展平台",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_006": {
+      "source": "ROM 与媒体目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_007": {
+      "source": "媒体",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_008": {
+      "source": "来源已移除",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_009": {
+      "source": "仅本地",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_010": {
+      "source": "选择媒体目录所属机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_011": {
+      "source": "已移除",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_012": {
+      "source": "可运行（%1$s/%2$s 个 ROM 在本地）",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_013": {
+      "source": "可运行",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_014": {
+      "source": "缺失",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_016": {
+      "source": "文件不完整",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_018": {
+      "source": "无 ROM",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_019": {
+      "source": "炭黑",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_020": {
+      "source": "暖灰",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_021": {
+      "source": "经典红",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_022": {
+      "source": "海蓝",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_023": {
+      "source": "紫罗兰",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_024": {
+      "source": "森林绿",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_025": {
+      "source": "明黄",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_026": {
+      "source": "米白",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_027": {
+      "source": "浅紫",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_028": {
+      "source": "冰蓝",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_029": {
+      "source": "（空）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_030": {
+      "source": "（清空）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_031": {
+      "source": "在线刮削",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_032": {
+      "source": "排序保存失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_033": {
+      "source": "本机保留：%1$s / %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_034": {
+      "source": "远端当前：%1$s / %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_035": {
+      "source": "正在检查文件与操作范围",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_036": {
+      "source": "正在加入传输队列",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_038": {
+      "source": "游戏资料（%1$s 项）",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_039": {
+      "source": "%1$s（%2$s 项）",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_040": {
+      "source": "删除本地文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_041": {
+      "source": "覆盖远端",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_042": {
+      "source": "新增远端",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_043": {
+      "source": "内容一致，执行时复核并跳过",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_044": {
+      "source": "覆盖本地",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_045": {
+      "source": "新增本地",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_046": {
+      "source": "名称",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_047": {
+      "source": "介绍",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_050": {
+      "source": "类型",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_052": {
+      "source": "人数",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_053": {
+      "source": "排序名",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_054": {
+      "source": "游戏存档",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_055": {
+      "source": "全部",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_059": {
+      "source": "RA 共享目录 · %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_060": {
+      "source": "%1$s · 整个机种，自动包含新游戏",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_061": {
+      "source": "云端备份 · %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_062": {
+      "source": "位置 %1$s：%2$s（%3$s）",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_065": {
+      "source": "此配置属于 %1$s，恢复包含所选位置内整个机种的存档。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_066": {
+      "source": "尚未取得云端索引，请先同步此机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_068": {
+      "source": "位置 %1$s · %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_069": {
+      "source": "移除文件：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_070": {
+      "source": "移除目录：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_071": {
+      "source": "创建目录：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_072": {
+      "source": "替换",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_073": {
+      "source": "新增",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_074": {
+      "source": "正在取消同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_075": {
+      "source": "准备同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_076": {
+      "source": "正在检查同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_077": {
+      "source": "同步目标已缺失",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_078": {
+      "source": "无法读取本机存档目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_079": {
+      "source": "请选择同步网盘",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_080": {
+      "source": "未能检查网盘存档",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_081": {
+      "source": "请选择要保留的存档",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_082": {
+      "source": "已取消同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_083": {
+      "source": "已同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_084": {
+      "source": "未完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_085": {
+      "source": "两端存档一致",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_086": {
+      "source": "有存档待同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_088": {
+      "source": "%1$s %2$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_089": {
+      "source": "手柄按键",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_090": {
+      "source": "方向键",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_091": {
+      "source": "摇杆",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_092": {
+      "source": "等待前面的批次完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_093": {
+      "source": "百度网盘",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_094": {
+      "source": "\n根目录：/%1$s · 存档：/%2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_095": {
+      "source": "百度网盘 · %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_096": {
+      "source": "%1$s 字节",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_097": {
+      "source": "等待批次准备完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_098": {
+      "source": "等待下载内容核对完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_100": {
+      "source": "已恢复 %1$s / %2$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_101": {
+      "source": "已上传 %1$s / %2$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_102": {
+      "source": "已下载 %1$s / %2$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_103": {
+      "source": "已恢复 %1$s / %2$s 个已处理文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_104": {
+      "source": "%1$s %2$s / %3$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_105": {
+      "source": "已删除",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_106": {
+      "source": "已移出",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_107": {
+      "source": "已提交 %1$s / %2$s 个文件",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_108": {
+      "source": "资料／媒体",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_109": {
+      "source": "游戏资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_111": {
+      "source": "待核对 · ",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_112": {
+      "source": "游戏详情",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_113": {
+      "source": "标志",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_114": {
+      "source": "像素图标",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_115": {
+      "source": "进行中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_116": {
+      "source": "取消中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_118": {
+      "source": "已取消",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_119": {
+      "source": "失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_120": {
+      "source": "已暂停",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_121": {
+      "source": "等待重试",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_122": {
+      "source": "等待中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_123": {
+      "source": "准备中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_124": {
+      "source": "传输中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_125": {
+      "source": "整理索引中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_127": {
+      "source": "等待整理索引",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_128": {
+      "source": "有任务失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_129": {
+      "source": "整理中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "display_supplement_130": {
+      "source": "待整理",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_document_uri_unsupported": {
+      "source": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_choose": {
+      "source": "选择游戏目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_clear": {
+      "source": "清除目录设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_help": {
+      "source": "选择与 AetherSX2 / NetherSX2 中添加的同一层游戏目录，让单游戏设置保持可用。不移动文件；未设置时沿用游戏库地址。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_mismatch": {
+      "source": "所选以太游戏目录与 ROM 不属于同一文件提供方，请重新选择",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_title": {
+      "source": "以太游戏目录（可选）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_rom_directory_unreadable": {
+      "source": "无法取得游戏目录的读取授权",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_settings_imported_configuration": {
+      "source": "通过索引导入设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "emulator_settings_text_0001": {
       "source": "还没有可配置的机种",
@@ -2657,6 +3897,49 @@
         "SaveGameAssociationsDialog"
       ]
     },
+    "games_search": {
+      "source": "搜索游戏",
+      "arguments": [],
+      "surfaces": [
+        "launcher_search"
+      ],
+      "owners": [
+        "GameSearchPanel"
+      ]
+    },
+    "games_search_empty": {
+      "source": "当前页面和机种中没有匹配的游戏。",
+      "arguments": [],
+      "surfaces": [
+        "launcher_search"
+      ],
+      "owners": [
+        "GameSearchPanel"
+      ]
+    },
+    "games_search_hint": {
+      "source": "输入游戏名称或 ROM 文件名",
+      "arguments": [],
+      "surfaces": [
+        "launcher_search"
+      ],
+      "owners": [
+        "GameSearchPanel"
+      ]
+    },
+    "games_search_scope": {
+      "source": "%1$s · %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [
+        "launcher_search"
+      ],
+      "owners": [
+        "GameSearchPanel"
+      ]
+    },
     "index_import_dialog_text_0047": {
       "source": "选择%1$s",
       "arguments": [
@@ -2762,6 +4045,149 @@
       "owners": [
         "validate"
       ]
+    },
+    "language_author": {
+      "source": "作者：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_builtin": {
+      "source": "内置语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_cancel": {
+      "source": "取消下载",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_cancelled": {
+      "source": "下载已取消，现有语言保留。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_close": {
+      "source": "关闭",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_credits": {
+      "source": "致谢：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_download": {
+      "source": "下载语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_empty": {
+      "source": "暂无可用语言包",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_extensions": {
+      "source": "扩展语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_failure": {
+      "source": "语言操作失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_incompatible": {
+      "source": "语言包与当前文案版本不兼容",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_installed_message": {
+      "source": "语言已安装，可在语言列表中选择。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_open_repository": {
+      "source": "查看语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_pending": {
+      "source": "译稿尚未完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_progress": {
+      "source": "正在下载 %1$s / %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_repository": {
+      "source": "GitHub 仓库地址",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_selected": {
+      "source": "当前语言：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_source_description": {
+      "source": "输入兼容的公开 GitHub 仓库地址，也可以使用社区 Fork。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_system": {
+      "source": "跟随系统",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_system_description": {
+      "source": "自动匹配已安装语言；不匹配时使用简体中文",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_title": {
+      "source": "语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "language_unreviewed": {
+      "source": "译稿尚未审核或翻译未完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "library_catalog_text_0055": {
       "source": "游戏库格式版本不受支持，请升级或重新导入旧开发版数据",
@@ -3652,6 +5078,30 @@
         "checkMapping"
       ]
     },
+    "media_back": {
+      "source": "包装背面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_cartridge": {
+      "source": "卡带封面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_cover": {
+      "source": "游戏封面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_disc": {
+      "source": "光盘封面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "media_inspection_host_text_0005": {
       "source": "收起模型背景",
       "arguments": [],
@@ -3661,6 +5111,18 @@
       "owners": [
         "MediaInspectionHost"
       ]
+    },
+    "media_logo": {
+      "source": "游戏标志",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_manual": {
+      "source": "说明书",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "media_missing_artwork": {
       "source": "尚未添加媒体文件",
@@ -3981,6 +5443,24 @@
         "preference"
       ]
     },
+    "media_screenshot": {
+      "source": "游戏截图",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_spine": {
+      "source": "包装书脊",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "media_video": {
+      "source": "预览视频",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "metadata_custom_label": {
       "source": "%1$s · 自定义",
       "arguments": [
@@ -3992,6 +5472,12 @@
       "owners": [
         "GameMetadataDialog"
       ]
+    },
+    "metadata_empty": {
+      "source": "未填写",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "metadata_field_label_0001": {
       "source": "游戏名称",
@@ -4082,6 +5568,24 @@
       "owners": [
         "MetadataField"
       ]
+    },
+    "navigation_style": {
+      "source": "顶部菜单样式",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "navigation_style_icons": {
+      "source": "图标",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "navigation_style_text": {
+      "source": "文字",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "online_scrape_dialog_text_0013": {
       "source": "来源：%1$s",
@@ -4232,6 +5736,424 @@
         "CloudPlatformFolderDialog"
       ]
     },
+    "plugin_all_sources": {
+      "source": "全部仓库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_back": {
+      "source": "返回",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_by_author": {
+      "source": "%1$s · %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_cancel": {
+      "source": "取消",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_catalog_error": {
+      "source": "仓库读取失败，已保留可用缓存：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_check_updates": {
+      "source": "检查插件更新",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_clear_data": {
+      "source": "同时清除插件配置和私有数据",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_compatible": {
+      "source": "适用于当前版本",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_configuration_title": {
+      "source": "配置 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_configure": {
+      "source": "配置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_content_changed": {
+      "source": "版本号相同，内容不同",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_disabled": {
+      "source": "已禁用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_disabled_description": {
+      "source": "启用后可打开业务页面和运行任务。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_dismiss": {
+      "source": "关闭提示",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_download_progress": {
+      "source": "%1$s / %2$s · %3$s/s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_empty_installed": {
+      "source": "还没有插件，可从商店安装或导入插件包。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_empty_store": {
+      "source": "没有符合条件的插件。仓库可在设置右下角的仓库入口中管理。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_enable": {
+      "source": "启用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_enabled": {
+      "source": "已启用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_import": {
+      "source": "导入插件包",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_install": {
+      "source": "安装",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_install_confirmation": {
+      "source": "安装 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_installed": {
+      "source": "已安装",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_installing": {
+      "source": "正在安装插件…",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_local_source": {
+      "source": "本地导入",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_menu": {
+      "source": "插件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_older_version": {
+      "source": "旧版本",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_open": {
+      "source": "打开",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_other_source": {
+      "source": "来自其他仓库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_page_error": {
+      "source": "插件页面运行失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_page_unavailable": {
+      "source": "此页面不可用，请确认插件已启用。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_network": {
+      "source": "访问以下网络主机（* 表示任意主机）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_read": {
+      "source": "读取游戏资料、媒体引用、收藏和最近游戏记录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_rom_resources": {
+      "source": "通过授权目录读写游戏本体，并加入系统 ROM 同步",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_storage": {
+      "source": "使用已配置网盘读写本插件的记录文件（不提供账号密码）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permission_write": {
+      "source": "通过公共接口编辑游戏资料、媒体引用、收藏及最近游戏记录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permissions_description": {
+      "source": "请确认此插件声明的能力，仅安装和启用你信任的作者提供的插件。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_permissions_title": {
+      "source": "启用 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_removed": {
+      "source": "插件已卸载。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_replace": {
+      "source": "安装此版本",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_replace_source_description": {
+      "source": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后需要重新启用并配置。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_requires_version": {
+      "source": "需要复古猫 %1$s 或更新版本",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_run": {
+      "source": "运行",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_save": {
+      "source": "保存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_saving": {
+      "source": "正在保存…",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_search": {
+      "source": "搜索名称、作者或简介",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_show_menu": {
+      "source": "显示插件入口",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_show_menu_description": {
+      "source": "在主菜单中显示插件，管理社区扩展及其业务页面。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_store": {
+      "source": "商店",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_cancelled": {
+      "source": "任务已取消",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_cancelling": {
+      "source": "正在取消…",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_failed": {
+      "source": "任务失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_interrupted": {
+      "source": "上次任务已中断，已完成的修改保留。需要时可重新运行。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_running": {
+      "source": "正在运行插件任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_succeeded": {
+      "source": "任务完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_task_waiting": {
+      "source": "任务等待中",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_uninstall": {
+      "source": "卸载",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_uninstall_description": {
+      "source": "将先取消此插件的运行任务。游戏资料、收藏和存档会保留。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_uninstall_title": {
+      "source": "卸载 %1$s？",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_update": {
+      "source": "更新",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_update_description": {
+      "source": "更新会保留此仓库下的插件配置和私有数据。新增权限需重新授权；有运行中的任务时，请先完成或取消。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_update_to": {
+      "source": "可更新至 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_version": {
+      "source": "v%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_version_change": {
+      "source": "当前 %1$s → 安装 %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_webview_required": {
+      "source": "当前 Android System WebView 不支持插件页面通信，请更新后重试。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "remote_library_import_succeeded": {
       "source": "已读取 %1$s 个远端游戏",
       "arguments": [
@@ -4256,6 +6178,53 @@
       "owners": [
         "importRemoteLibrary"
       ]
+    },
+    "repository_addresses": {
+      "source": "仓库地址（每行一个）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_invalid_line": {
+      "source": "第 %1$d 行不是有效的 GitHub 仓库地址",
+      "arguments": [
+        "%1$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_load_failed": {
+      "source": "%1$s：%2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_retry": {
+      "source": "重试失败的仓库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_save": {
+      "source": "保存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_settings": {
+      "source": "仓库设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "repository_sources_description": {
+      "source": "每行填写一个 GitHub 仓库地址。语言、主题和平台共用这些仓库；相同内容合并显示，不同内容分别列出。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "resource_operations_label_0003": {
       "source": "本地删除",
@@ -7990,6 +9959,60 @@
         "SaveTransferIndicator"
       ]
     },
+    "scan_discovering": {
+      "source": "正在检查目录和索引文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_hashing": {
+      "source": "正在建立本地 ROM 索引",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_importing": {
+      "source": "正在读取游戏资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_indexes": {
+      "source": "正在读取游戏索引",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_listing": {
+      "source": "正在检查目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_media": {
+      "source": "正在整理素材候选",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_replaying": {
+      "source": "正在核对已导入游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_saving": {
+      "source": "正在保存游戏库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scan_verifying": {
+      "source": "正在核对确认结果",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "scrape_worker_text_0001": {
       "source": "游戏资料补齐",
       "arguments": [],
@@ -8829,6 +10852,24 @@
       "owners": [
         "openProfile"
       ]
+    },
+    "sort_alphabetical": {
+      "source": "首字母",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "sort_manufacturer": {
+      "source": "厂商",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "sort_year": {
+      "source": "年代",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
     },
     "source_directories_dialog_text_0003": {
       "source": "云端目录",
@@ -9693,6 +11734,18 @@
         "TransferBatchCard"
       ]
     },
+    "transfer_delete_local": {
+      "source": "删除本机文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "transfer_delete_remote": {
+      "source": "删除远端文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
     "transfer_power_settings_text_0002": {
       "source": "锁屏传输",
       "arguments": [],
@@ -10205,1023 +12258,6 @@
       "owners": [
         "CancellationEffect"
       ]
-    },
-    "language_title": {
-      "source": "语言",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_system": {
-      "source": "跟随系统",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_system_description": {
-      "source": "自动匹配已安装语言；不匹配时使用简体中文",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_builtin": {
-      "source": "内置语言",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_extensions": {
-      "source": "扩展语言",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_download": {
-      "source": "下载语言",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_pending": {
-      "source": "译稿尚未完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_source_description": {
-      "source": "输入兼容的公开 GitHub 仓库地址，也可以使用社区 Fork。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_repository": {
-      "source": "GitHub 仓库地址",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_open_repository": {
-      "source": "查看语言",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_author": {
-      "source": "作者：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_credits": {
-      "source": "致谢：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_empty": {
-      "source": "暂无可用语言包",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_incompatible": {
-      "source": "语言包与当前文案版本不兼容",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_unreviewed": {
-      "source": "译稿尚未审核或翻译未完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_progress": {
-      "source": "正在下载 %1$s / %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_cancel": {
-      "source": "取消下载",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_close": {
-      "source": "关闭",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_installed_message": {
-      "source": "语言已安装，可在语言列表中选择。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_cancelled": {
-      "source": "下载已取消，现有语言保留。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_failure": {
-      "source": "语言操作失败：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "language_selected": {
-      "source": "当前语言：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_cover": {
-      "source": "游戏封面",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_cartridge": {
-      "source": "卡带封面",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_disc": {
-      "source": "光盘封面",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_logo": {
-      "source": "游戏标志",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_video": {
-      "source": "预览视频",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_screenshot": {
-      "source": "游戏截图",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_back": {
-      "source": "包装背面",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_spine": {
-      "source": "包装书脊",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "media_manual": {
-      "source": "说明书",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "metadata_empty": {
-      "source": "未填写",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "sort_alphabetical": {
-      "source": "首字母",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "sort_manufacturer": {
-      "source": "厂商",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "sort_year": {
-      "source": "年代",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_listing": {
-      "source": "正在检查目录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_importing": {
-      "source": "正在读取游戏资料",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_verifying": {
-      "source": "正在核对确认结果",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_hashing": {
-      "source": "正在建立本地 ROM 索引",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_saving": {
-      "source": "正在保存游戏库",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_discovering": {
-      "source": "正在检查目录和索引文件",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_replaying": {
-      "source": "正在核对已导入游戏",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_indexes": {
-      "source": "正在读取游戏索引",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "scan_media": {
-      "source": "正在整理素材候选",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_001": {
-      "source": "自定义核心",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_002": {
-      "source": "尚未选择核心",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_005": {
-      "source": "扩展平台",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_006": {
-      "source": "ROM 与媒体目录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_007": {
-      "source": "媒体",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_008": {
-      "source": "来源已移除",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_009": {
-      "source": "仅本地",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_010": {
-      "source": "选择媒体目录所属机种",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_011": {
-      "source": "已移除",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_012": {
-      "source": "可运行（%1$s/%2$s 个 ROM 在本地）",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_013": {
-      "source": "可运行",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_014": {
-      "source": "缺失",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_016": {
-      "source": "文件不完整",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_018": {
-      "source": "无 ROM",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_019": {
-      "source": "炭黑",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_020": {
-      "source": "暖灰",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_021": {
-      "source": "经典红",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_022": {
-      "source": "海蓝",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_023": {
-      "source": "紫罗兰",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_024": {
-      "source": "森林绿",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_025": {
-      "source": "明黄",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_026": {
-      "source": "米白",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_027": {
-      "source": "浅紫",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_028": {
-      "source": "冰蓝",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_029": {
-      "source": "（空）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_030": {
-      "source": "（清空）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_031": {
-      "source": "在线刮削",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_032": {
-      "source": "排序保存失败",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_033": {
-      "source": "本机保留：%1$s / %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_034": {
-      "source": "远端当前：%1$s / %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_035": {
-      "source": "正在检查文件与操作范围",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_036": {
-      "source": "正在加入传输队列",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_038": {
-      "source": "游戏资料（%1$s 项）",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_039": {
-      "source": "%1$s（%2$s 项）",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_040": {
-      "source": "删除本地文件",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_041": {
-      "source": "覆盖远端",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_042": {
-      "source": "新增远端",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_043": {
-      "source": "内容一致，执行时复核并跳过",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_044": {
-      "source": "覆盖本地",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_045": {
-      "source": "新增本地",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_046": {
-      "source": "名称",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_047": {
-      "source": "介绍",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_050": {
-      "source": "类型",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_052": {
-      "source": "人数",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_053": {
-      "source": "排序名",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_054": {
-      "source": "游戏存档",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_055": {
-      "source": "全部",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_059": {
-      "source": "RA 共享目录 · %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_060": {
-      "source": "%1$s · 整个机种，自动包含新游戏",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_061": {
-      "source": "云端备份 · %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_062": {
-      "source": "位置 %1$s：%2$s（%3$s）",
-      "arguments": [
-        "%1$s",
-        "%2$s",
-        "%3$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_065": {
-      "source": "此配置属于 %1$s，恢复包含所选位置内整个机种的存档。",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_066": {
-      "source": "尚未取得云端索引，请先同步此机种",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_068": {
-      "source": "位置 %1$s · %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_069": {
-      "source": "移除文件：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_070": {
-      "source": "移除目录：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_071": {
-      "source": "创建目录：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_072": {
-      "source": "替换",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_073": {
-      "source": "新增",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_074": {
-      "source": "正在取消同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_075": {
-      "source": "准备同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_076": {
-      "source": "正在检查同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_077": {
-      "source": "同步目标已缺失",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_078": {
-      "source": "无法读取本机存档目录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_079": {
-      "source": "请选择同步网盘",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_080": {
-      "source": "未能检查网盘存档",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_081": {
-      "source": "请选择要保留的存档",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_082": {
-      "source": "已取消同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_083": {
-      "source": "已同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_084": {
-      "source": "未完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_085": {
-      "source": "两端存档一致",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_086": {
-      "source": "有存档待同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_088": {
-      "source": "%1$s %2$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_089": {
-      "source": "手柄按键",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_090": {
-      "source": "方向键",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_091": {
-      "source": "摇杆",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_092": {
-      "source": "等待前面的批次完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_093": {
-      "source": "百度网盘",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_094": {
-      "source": "\n根目录：/%1$s · 存档：/%2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_095": {
-      "source": "百度网盘 · %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_096": {
-      "source": "%1$s 字节",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_097": {
-      "source": "等待批次准备完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_098": {
-      "source": "等待下载内容核对完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_100": {
-      "source": "已恢复 %1$s / %2$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_101": {
-      "source": "已上传 %1$s / %2$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_102": {
-      "source": "已下载 %1$s / %2$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_103": {
-      "source": "已恢复 %1$s / %2$s 个已处理文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_104": {
-      "source": "%1$s %2$s / %3$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s",
-        "%3$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_105": {
-      "source": "已删除",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_106": {
-      "source": "已移出",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_107": {
-      "source": "已提交 %1$s / %2$s 个文件",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_108": {
-      "source": "资料／媒体",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_109": {
-      "source": "游戏资料",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_111": {
-      "source": "待核对 · ",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_112": {
-      "source": "游戏详情",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_113": {
-      "source": "标志",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_114": {
-      "source": "像素图标",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_115": {
-      "source": "进行中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_116": {
-      "source": "取消中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_118": {
-      "source": "已取消",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_119": {
-      "source": "失败",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_120": {
-      "source": "已暂停",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_121": {
-      "source": "等待重试",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_122": {
-      "source": "等待中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_123": {
-      "source": "准备中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_124": {
-      "source": "传输中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_125": {
-      "source": "整理索引中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_127": {
-      "source": "等待整理索引",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_128": {
-      "source": "有任务失败",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_129": {
-      "source": "整理中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "display_supplement_130": {
-      "source": "待整理",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "transfer_delete_local": {
-      "source": "删除本机文件",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "transfer_delete_remote": {
-      "source": "删除远端文件",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
     },
     "ui_followup_001": {
       "source": "此授权属于另一个百度账号，请添加新连接；原任务与目录保持原账号",
@@ -11955,988 +12991,6 @@
       ],
       "surfaces": [],
       "owners": []
-    },
-    "repository_settings": {
-      "source": "仓库设置",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_sources_description": {
-      "source": "每行填写一个 GitHub 仓库地址。语言、主题和平台共用这些仓库；相同内容合并显示，不同内容分别列出。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_addresses": {
-      "source": "仓库地址（每行一个）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_invalid_line": {
-      "source": "第 %1$d 行不是有效的 GitHub 仓库地址",
-      "arguments": [
-        "%1$d"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_save": {
-      "source": "保存",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_load_failed": {
-      "source": "%1$s：%2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "repository_retry": {
-      "source": "重试失败的仓库",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_menu": {
-      "source": "插件",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_installed": {
-      "source": "已安装",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_store": {
-      "source": "商店",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_show_menu": {
-      "source": "显示插件入口",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_show_menu_description": {
-      "source": "在主菜单中显示插件，管理社区扩展及其业务页面。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_import": {
-      "source": "导入插件包",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_enabled": {
-      "source": "已启用",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_disabled": {
-      "source": "已禁用",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_disabled_description": {
-      "source": "启用后可打开业务页面和运行任务。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_empty_installed": {
-      "source": "还没有插件，可从商店安装或导入插件包。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_empty_store": {
-      "source": "没有符合条件的插件。仓库可在设置右下角的仓库入口中管理。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_back": {
-      "source": "返回",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_dismiss": {
-      "source": "关闭提示",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_cancel": {
-      "source": "取消",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_open": {
-      "source": "打开",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_install": {
-      "source": "安装",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_replace": {
-      "source": "安装此版本",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_installing": {
-      "source": "正在安装插件…",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_download_progress": {
-      "source": "%1$s / %2$s · %3$s/s",
-      "arguments": [
-        "%1$s",
-        "%2$s",
-        "%3$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_search": {
-      "source": "搜索名称、作者或简介",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_all_sources": {
-      "source": "全部仓库",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_compatible": {
-      "source": "适用于当前版本",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_catalog_error": {
-      "source": "仓库读取失败，已保留可用缓存：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_requires_version": {
-      "source": "需要复古猫 %1$s 或更新版本",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_by_author": {
-      "source": "%1$s · %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_configure": {
-      "source": "配置",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_configuration_title": {
-      "source": "配置 %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_save": {
-      "source": "保存",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_saving": {
-      "source": "正在保存…",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_local_source": {
-      "source": "本地导入",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_uninstall": {
-      "source": "卸载",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_uninstall_title": {
-      "source": "卸载 %1$s？",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_uninstall_description": {
-      "source": "将先取消此插件的运行任务。游戏资料、收藏和存档会保留。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_clear_data": {
-      "source": "同时清除插件配置和私有数据",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permissions_title": {
-      "source": "启用 %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permissions_description": {
-      "source": "请确认此插件声明的能力，仅安装和启用你信任的作者提供的插件。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permission_read": {
-      "source": "读取游戏资料、媒体引用、收藏和最近游戏记录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permission_write": {
-      "source": "通过公共接口编辑游戏资料、媒体引用、收藏及最近游戏记录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permission_network": {
-      "source": "访问以下网络主机（* 表示任意主机）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permission_storage": {
-      "source": "使用已配置网盘读写本插件的记录文件（不提供账号密码）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_enable": {
-      "source": "启用",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_run": {
-      "source": "运行",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_waiting": {
-      "source": "任务等待中",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_running": {
-      "source": "正在运行插件任务",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_cancelling": {
-      "source": "正在取消…",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_succeeded": {
-      "source": "任务完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_failed": {
-      "source": "任务失败",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_cancelled": {
-      "source": "任务已取消",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_task_interrupted": {
-      "source": "上次任务已中断，已完成的修改保留。需要时可重新运行。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_page_unavailable": {
-      "source": "此页面不可用，请确认插件已启用。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_removed": {
-      "source": "插件已卸载。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_webview_required": {
-      "source": "当前 Android System WebView 不支持插件页面通信，请更新后重试。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_page_error": {
-      "source": "插件页面运行失败：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_version": {
-      "source": "v%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_check_updates": {
-      "source": "检查插件更新",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_update": {
-      "source": "更新",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_update_to": {
-      "source": "可更新至 %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_older_version": {
-      "source": "旧版本",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_content_changed": {
-      "source": "版本号相同，内容不同",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_other_source": {
-      "source": "来自其他仓库",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_install_confirmation": {
-      "source": "安装 %1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_version_change": {
-      "source": "当前 %1$s → 安装 %2$s",
-      "arguments": [
-        "%1$s",
-        "%2$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_update_description": {
-      "source": "更新会保留此仓库下的插件配置和私有数据。新增权限需重新授权；有运行中的任务时，请先完成或取消。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_replace_source_description": {
-      "source": "即将切换插件来源。各来源的配置和私有数据分开保留，切换后需要重新启用并配置。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "controller_style": {
-      "source": "手柄模式",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "controller_style_nintendo": {
-      "source": "任天堂",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "controller_style_description": {
-      "source": "按手柄布局显示按键提示；确认、返回和自定义映射沿用当前设置。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "plugin_permission_rom_resources": {
-      "source": "通过授权目录读写游戏本体，并加入系统 ROM 同步",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "navigation_style": {
-      "source": "顶部菜单样式",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "navigation_style_text": {
-      "source": "文字",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "navigation_style_icons": {
-      "source": "图标",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_folder_changed": {
-      "source": "迁移期间存档目录状态发生变化",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_index_changed": {
-      "source": "迁移期间索引已有其他修改，保留现场等待处理",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_index_missing": {
-      "source": "迁移中的原有索引缺失，不能重建：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_index_owner": {
-      "source": "索引不属于此云端迁移目录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_index_unconfirmed": {
-      "source": "迁移索引尚未确认，请继续原任务",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_invalid_path": {
-      "source": "此云端路径不是可用目录：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_complete": {
-      "source": "目录迁移完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_pause": {
-      "source": "暂停",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_progress": {
-      "source": "目录 %1$d/%2$d · 索引 %3$d/%4$d",
-      "arguments": [
-        "%1$d",
-        "%2$d",
-        "%3$d",
-        "%4$d"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_queued": {
-      "source": "目录迁移已加入传输任务",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_resume": {
-      "source": "继续迁移",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_title": {
-      "source": "云端目录迁移",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_move_unconfirmed": {
-      "source": "目录移动结果尚未确认，保留现场等待继续",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_path_duplicates": {
-      "source": "多个原目录对应同一个新目录，请分别设置目标",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_paths_overlap": {
-      "source": "新旧目录不能互相包含",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_paused": {
-      "source": "目录迁移已暂停",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_source_busy": {
-      "source": "此来源的目录迁移尚未完成，请在传输任务中继续",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_source_changed": {
-      "source": "迁移期间来源配置发生变化，请重新检查",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_step_changed": {
-      "source": "待提交索引不属于当前迁移步骤",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_steps_incomplete": {
-      "source": "目录或索引迁移尚未完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_sync_busy": {
-      "source": "此来源仍在同步或恢复存档，请先完成或取消原任务",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_target_collision": {
-      "source": "新目录已有同名内容，未覆盖，请选择其他目录：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_task_complete": {
-      "source": "目录迁移已经完成",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "cloud_directory_task_required": {
-      "source": "未完成的目录迁移需要继续，不能丢弃原位置记录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_settings_imported_configuration": {
-      "source": "通过索引导入设置",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_title": {
-      "source": "以太游戏目录（可选）",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_help": {
-      "source": "选择与 AetherSX2 / NetherSX2 中添加的同一层游戏目录，让单游戏设置保持可用。不移动文件；未设置时沿用游戏库地址。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_choose": {
-      "source": "选择游戏目录",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_clear": {
-      "source": "清除目录设置",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_unreadable": {
-      "source": "无法取得游戏目录的读取授权",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_rom_directory_mismatch": {
-      "source": "所选以太游戏目录与 ROM 不属于同一文件提供方，请重新选择",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "emulator_document_uri_unsupported": {
-      "source": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_search": {
-      "source": "搜索应用",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_system_settings": {
-      "source": "系统设置",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_empty": {
-      "source": "未找到可启动的应用",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_load_failed": {
-      "source": "读取应用列表失败：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_launch_failed": {
-      "source": "无法打开应用或系统页面：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_default_home": {
-      "source": "默认桌面",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_home_description": {
-      "source": "将复古猫设为默认桌面，按 Home 键返回游戏前端。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_home_active": {
-      "source": "复古猫已是默认桌面。点击可在系统中更换。",
-      "arguments": [],
-      "surfaces": [],
-      "owners": []
-    },
-    "apps_open": {
-      "source": "打开",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_details": {
-      "source": "应用信息",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_manage": {
-      "source": "管理应用",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_pin": {
-      "source": "置顶",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_unpin": {
-      "source": "取消置顶",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_pinned": {
-      "source": "已置顶",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_uninstall": {
-      "source": "卸载",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_uninstall_system": {
-      "source": "系统应用无法卸载，可在应用信息中管理。",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_uninstall_restricted": {
-      "source": "系统策略不允许卸载应用。",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_hint": {
-      "source": "输入应用名称或包名",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_clear": {
-      "source": "清除搜索",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_pinned": {
-      "source": "置顶应用",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_results": {
-      "source": "搜索结果",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_empty": {
-      "source": "未找到匹配的应用",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_search_empty_pins": {
-      "source": "尚未置顶应用，输入名称开始搜索。",
-      "arguments": [],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
-    },
-    "apps_pin_failed": {
-      "source": "保存应用置顶失败：%1$s",
-      "arguments": [
-        "%1$s"
-      ],
-      "surfaces": [
-        "apps_screen",
-        "apps_overlays"
-      ],
-      "owners": [
-        "AppsScreen",
-        "AppSearchPanel",
-        "AppActionMenu",
-        "MainInputHints"
-      ]
     }
   }
 }

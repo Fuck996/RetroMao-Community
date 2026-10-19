@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 跨页面搜索文案 · 0.9.111 · 2026-10-19
+
+新增通用搜索动作和游戏搜索的 5 条四语文案，共 1365 键。游戏搜索用于宿主的游戏库、最近游戏和收藏，范围说明保留页面、机种参数与 ROM 保护词；更新目录、摘要和调用上下文。公共 SDK 接口没有变更。
+
 ### 应用页语言资源 · 0.9.109 · 2026-10-19
 
 新增应用页搜索、长按管理和置顶的 16 条简中、繁中、英语、日语文案，四语各 1360 键。保留既有译文，更新语言基线、摘要与调用上下文；SDK 契约及已发布插件资产不变。
@@ -171,6 +175,10 @@
 
 ## English
 
+### Cross-page search messages · 0.9.111 · 2026-10-19
+
+Added five messages in all four languages for the shared search action and game search, bringing the total to 1365 keys. Game search serves the host library, recent games and favorites. Scope labels preserve page/platform arguments and the protected ROM term. Catalog metadata, hashes and call context are updated; public SDK APIs are unchanged.
+
 ### App-page language resources · 0.9.109 · 2026-10-19
 
 Added 16 messages for app search, context management and pinning in Simplified Chinese, Traditional Chinese, English and Japanese, now 1360 keys per locale. Existing translations are preserved; the language baseline, hashes and call context are updated. SDK contracts and published plugin assets are unchanged.
@@ -276,6 +284,10 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### ページ共通検索の文言 · 0.9.111 · 2026-10-19
+
+共通検索操作とゲーム検索の 5 項目を四言語へ追加し、合計 1365 キーになりました。ホストのライブラリ、最近のゲーム、お気に入りで使用します。範囲表示のページ・機種の引数と ROM の保護語を維持し、カタログ情報、摘要、呼び出し文脈を更新しました。公開 SDK API に変更はありません。
 
 ### アプリ画面の言語リソース · 0.9.109 · 2026-10-19
 
