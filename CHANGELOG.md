@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 应用页语言资源 · 0.9.109 · 2026-10-19
+
+新增应用页搜索、长按管理和置顶的 16 条简中、繁中、英语、日语文案，四语各 1360 键。保留既有译文，更新语言基线、摘要与调用上下文；SDK 契约及已发布插件资产不变。
+
 ### 公共 SDK 契约 1.0.1 · 2026-10-19
 
 - 修正首次 CI 发现的 Windows 工作副本换行摘要差异，SDK 源码契约统一按 UTF-8/LF 校验；保留 1.0.0，新增 1.0.1 快照和三语说明。资产摘要仍按原始字节校验，运行接口不变。
@@ -167,6 +171,10 @@
 
 ## English
 
+### App-page language resources · 0.9.109 · 2026-10-19
+
+Added 16 messages for app search, context management and pinning in Simplified Chinese, Traditional Chinese, English and Japanese, now 1360 keys per locale. Existing translations are preserved; the language baseline, hashes and call context are updated. SDK contracts and published plugin assets are unchanged.
+
 ### Public SDK contract 1.0.1 · 2026-10-19
 
 - Fixed the Windows worktree newline digest mismatch found by initial CI. SDK source contracts now use UTF-8/LF; 1.0.0 is preserved alongside a new 1.0.1 snapshot and trilingual notes. Asset digests still use raw bytes; runtime APIs are unchanged.
@@ -268,6 +276,10 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### アプリ画面の言語リソース · 0.9.109 · 2026-10-19
+
+検索、長押しメニュー、ピン留めの 16 項目を簡体字中国語、繁体字中国語、英語、日本語で追加し、各言語 1360 キーになりました。既存訳を保持し、言語基準、摘要、呼び出し文脈を更新しました。SDK 契約と公開済みプラグインのアセットは変更しません。
 
 ### 公開 SDK 契約 1.0.1 · 2026-10-19
 
