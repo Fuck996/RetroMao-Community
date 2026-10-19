@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hans",
   "name": "简体中文",
-  "catalog_version": "0.9.113",
-  "catalog_hash": "87180b70518374deb4185034260c42b09144ca6620c0563cf10bb9335f4de400",
+  "catalog_version": "0.9.115",
+  "catalog_hash": "d295beaa18f445d9a283735bb8d94384a7b2efe8b65afda42a310503d6f76c38",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1376,7 +1376,8 @@
     "plugin_permission_search": "读取当前搜索范围内的游戏与应用名称，提供增强搜索词",
     "search_extensions_loading": "正在准备增强搜索…",
     "search_extensions_failed": "增强搜索失败：%1$s。请在插件管理中处理后重新搜索。",
-    "plugin_install_enabled": "确认安装即授权下列能力，首次安装和切换来源后默认启用。"
+    "plugin_install_enabled": "确认安装即授权下列能力，首次安装和切换来源后默认启用。",
+    "menu_display": "菜单显示"
   },
   "author": "4NPC",
   "credits": []

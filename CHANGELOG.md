@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 设置菜单显示 · 0.9.115 · 2026-10-19
+
+“主题与显示”集中提供最近游戏、收藏、应用、同步存档和插件的菜单显示开关，顺序与主菜单一致；隐藏项不参与手柄切页和历史返回。设置首页各入口以整组最高的自然内容高度对齐，随窗口、字号和语言重新测量，不截断说明。四语新增“菜单显示”，各 1372 键，保留其余译文与插件资产。
+
 ### 插件卡片与简介 · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
 
 已安装和商店卡片统一高度，标题单行省略，描述固定三行区域内滚动且不显示滚动条；状态和可选操作不再撑高卡片，字号变化时统一适配。新增[插件文案规范](sdk/PLUGIN_PRESENTATION.md)：中日文标题／简介建议 16／48 字符，英文 32／96 字符，建议不作为新的安装限制。Vita3K 1.0.1 精简四语简介，脚本和同步协议不变，以新 Release 分发并保留 1.0.0。
@@ -189,6 +193,10 @@
 
 ## English
 
+### Settings menu visibility · 0.9.115 · 2026-10-19
+
+Themes & display groups visibility switches for recent games, favorites, apps, save sync and plugins in main-menu order. Hidden pages are excluded from controller cycling and return history. Settings home cards share the tallest natural content height, remeasured for width, font and language without truncating descriptions. One four-language menu-visibility heading brings each catalog to 1372 keys; other translations and plugin assets are preserved.
+
 ### Plugin cards and summaries · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
 
 Installed/store cards share equal height, one-line title ellipsis and a three-line scrolling description without a scrollbar. Status and optional controls no longer enlarge cards; font scaling adjusts all cards together. New [copy guidelines](sdk/PLUGIN_PRESENTATION.md) recommend title/summary lengths of 16/48 characters for Chinese/Japanese and 32/96 for English, without introducing installation limits. Vita3K 1.0.1 shortens all four summaries; scripts and sync protocol remain unchanged, distributed as a new Release preserving 1.0.0.
@@ -312,6 +320,10 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### 設定のメニュー表示 · 0.9.115 · 2026-10-19
+
+テーマと表示に、最近のゲーム・お気に入り・アプリ・セーブ同期・プラグインの表示切替を主メニュー順でまとめます。非表示のページはコントローラーの切替と戻る履歴から外します。設定トップのカードは内容の自然な最大高さに合わせ、幅・文字倍率・言語に応じて再計測し、説明を切りません。四言語に表示設定の見出しを追加し、各 1372 キーになりました。既存の訳とプラグイン配布ファイルは保持します。
 
 ### プラグインカードと説明 · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
 
