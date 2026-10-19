@@ -12,7 +12,7 @@
       "translated": 1365,
       "total": 1365,
       "size_bytes": 102198,
-      "sha256": "d6049340fbcce600cdc942a8a5be92a7f522d727ec970d27c665c9d56ca2556d"
+      "sha256": "ec35cbffb7e950e19bfcfbbccda3fc046ef44875d6bad18e9dc49405f15d2ce9"
     },
     {
       "locale": "ja",
@@ -23,7 +23,7 @@
       "translated": 1365,
       "total": 1365,
       "size_bytes": 132048,
-      "sha256": "71042d4a948e1c5d3c3beeee8de8e09549fcabf24427d0ebe13a1952a48075e1"
+      "sha256": "d4152fdb35c67bf6d2cf2e80a80ce516e9abb7469e1a06c3b17240ead486e295"
     },
     {
       "locale": "zh-Hans",
@@ -34,7 +34,7 @@
       "translated": 1365,
       "total": 1365,
       "size_bytes": 99066,
-      "sha256": "2829177153c74f40de8c32d975e7e9bbfb800ed5314488849337045f1ddf662d"
+      "sha256": "0e05fe7061c8d2215344499ea28fa14837d9c863de068650be4d8844acbbbfe4"
     },
     {
       "locale": "zh-Hant",
@@ -45,7 +45,7 @@
       "translated": 1365,
       "total": 1365,
       "size_bytes": 99641,
-      "sha256": "80d6a5cb609f9049235fca17c3bfb75c5f5841464f15d0f4423c146b558c8ecb"
+      "sha256": "ece06c5407dd24363e082e4ce58ed2ae51195caf2139eb30203de2faa479a54e"
     }
   ]
 }
