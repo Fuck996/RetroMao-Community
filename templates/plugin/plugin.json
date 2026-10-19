@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "example.hello",
+  "name": "插件示例",
+  "author": "Your name",
+  "version": "1.0.0",
+  "minAppVersion": "0.9.96",
+  "defaultLocale": "zh-Hans",
+  "description": "读取游戏库并运行一个后台动作。",
+  "entryPoint": "main.js",
+  "iconName": "plugin",
+  "capabilities": ["LIBRARY_READ"],
+  "pages": [{"id": "main", "title": "游戏库", "path": "index.html"}],
+  "actions": [{"id": "count", "title": "统计游戏"}],
+  "messages": {"title": "游戏库", "run": "统计游戏", "count": "游戏数量", "empty": "尚无游戏", "failed": "操作失败"},
+  "localizations": {
+    "en": {"name": "Plugin example", "description": "Read the library and run a background action.", "pages": {"main": "Library"}, "actions": {"count": {"title": "Count games"}}, "messages": {"title": "Library", "run": "Count games", "count": "Games", "empty": "No games yet", "failed": "Operation failed"}},
+    "ja": {"name": "プラグインの例", "description": "ライブラリを読み取り、バックグラウンド処理を実行します。", "pages": {"main": "ライブラリ"}, "actions": {"count": {"title": "ゲームを数える"}}, "messages": {"title": "ライブラリ", "run": "ゲームを数える", "count": "ゲーム数", "empty": "ゲームがありません", "failed": "処理に失敗しました"}}
+  }
+}

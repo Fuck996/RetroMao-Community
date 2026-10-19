@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "platform": {"id": "msx", "name": "MSX", "aliases": ["msx", "msx computer"], "extensions": ["rom", "mx1", "mx2"], "medium": "CARTRIDGE"},
+  "manufacturer": "ASCII / Microsoft",
+  "releaseYear": 1983,
+  "coverAspectRatio": 0.75,
+  "launchers": [
+    {"id": "retroarch", "name": "RetroArch", "packageName": "com.retroarch", "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture", "protocol": "RETROARCH", "cores": [{"id": "bluemsx", "name": "blueMSX"}]},
+    {"id": "retroarch64", "name": "RetroArch 64", "packageName": "com.retroarch.aarch64", "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture", "protocol": "RETROARCH", "cores": [{"id": "bluemsx", "name": "blueMSX"}]}
+  ]
+}

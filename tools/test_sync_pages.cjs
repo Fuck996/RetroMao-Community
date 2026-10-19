@@ -5,7 +5,7 @@ const path = require("node:path");
 const { chromium } = require("playwright");
 const root = path.join(__dirname, "..");
 const shared = path.join(root, "examples/activity-sync-shared");
-const output = path.join(root, "../app/build/reports/ui-screenshots");
+const output = path.join(root, "reports/ui-screenshots");
 const sdk = fs.readFileSync(path.join(root, "sdk/runtime/retromao.js"), "utf8");
 
 function bridge() {
@@ -39,7 +39,7 @@ function bridge() {
 
 (async () => {
   fs.mkdirSync(output, { recursive: true });
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
+  const browser = await chromium.launch({ ...(process.env.RETROMAO_BROWSER_CHANNEL ? { channel: process.env.RETROMAO_BROWSER_CHANNEL } : {}), headless: true });
   try {
     for (const kind of ["favorites", "recent"]) for (const [width, height] of [[1280, 720], [960, 720], [720, 720]]) {
       const context = await browser.newContext({ viewport: { width, height }, isMobile: false, hasTouch: true });

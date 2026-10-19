@@ -1,0 +1,5 @@
+{
+  "kind": "PLATFORM", "id": "msx", "name": "MSX", "author": "Your name",
+  "description": "MSX platform with declarative RetroArch launchers.",
+  "version": "1.0.0", "minAppVersion": "0.9.108"
+}

@@ -8,6 +8,7 @@ import json
 import re
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
+from extension_tools import read_json, validate_plugin, package_files, write_archive, write_json
 
 
 def validate_localizations(manifest: dict) -> None:
@@ -59,7 +60,7 @@ def validate_localizations(manifest: dict) -> None:
 
 
 def build(source: Path, output: Path, release_tag: str) -> dict:
-    manifest = json.loads((source / "plugin.json").read_text(encoding="utf-8"))
+    manifest = validate_plugin(source)
     validate_localizations(manifest)
     configuration_page = manifest.get("configurationPage")
     pages = manifest.get("pages", [])
@@ -96,13 +97,10 @@ def build(source: Path, output: Path, release_tag: str) -> dict:
     files = sorted(path for path in source.rglob("*") if path.is_file())
     if any(path.is_symlink() for path in files):
         raise ValueError("Plugin packages must not contain symbolic links")
-    with ZipFile(target, "w", ZIP_DEFLATED, compresslevel=9) as archive:
-        for path in files:
-            archive.write(path, path.relative_to(source).as_posix())
-    content = target.read_bytes()
+    integrity = write_archive(source, target, package_files(source))
     entry = {key: manifest[key] for key in ("id", "name", "author", "version", "minAppVersion")}
     entry["description"] = manifest.get("description", "")
-    entry.update(kind="SCRIPT", releaseTag=release_tag, fileName=name, sizeBytes=len(content), sha256=hashlib.sha256(content).hexdigest())
+    entry.update(kind="SCRIPT", releaseTag=release_tag, **integrity)
     if manifest.get("iconName"):
         entry["iconName"] = manifest["iconName"]
     entry["defaultLocale"] = manifest["defaultLocale"]

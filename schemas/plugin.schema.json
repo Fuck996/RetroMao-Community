@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "apiVersion", "id", "name", "author", "version", "minAppVersion", "defaultLocale"],
+  "properties": {
+    "schemaVersion": {"const": 1}, "apiVersion": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$", "maxLength": 80},
+    "name": {"type": "string", "minLength": 1, "maxLength": 80},
+    "author": {"type": "string", "minLength": 1, "maxLength": 80},
+    "description": {"type": "string", "maxLength": 240},
+    "version": {"$ref": "#/$defs/version"}, "minAppVersion": {"$ref": "#/$defs/version"},
+    "defaultLocale": {"$ref": "#/$defs/locale"},
+    "entryPoint": {"$ref": "#/$defs/path"}, "icon": {"$ref": "#/$defs/path"},
+    "iconName": {"enum": ["plugin", "star", "history", "sync", "cloud", "library", "image", "language", "palette", "gamepad", "chart", "settings"]},
+    "category": {"type": "string"}, "credits": {"type": "array", "items": {"type": "string"}},
+    "homepage": {"type": "string"}, "license": {"type": "string"},
+    "capabilities": {"type": "array", "uniqueItems": true, "items": {"enum": ["LIBRARY_READ", "LIBRARY_WRITE", "NETWORK", "STORAGE", "ROM_RESOURCES"]}},
+    "networkHosts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(?:\\*|[a-z0-9][a-z0-9.-]*(?::[0-9]{1,5})?)$"}},
+    "pages": {"type": "array", "maxItems": 32, "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "title", "path"], "properties": {"id": {"$ref": "#/$defs/id"}, "title": {"type": "string", "minLength": 1}, "path": {"$ref": "#/$defs/path"}, "kind": {"enum": ["BUSINESS", "CONFIGURATION"]}}}},
+    "actions": {"type": "array", "maxItems": 64, "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "title"], "properties": {"id": {"$ref": "#/$defs/id"}, "title": {"type": "string", "minLength": 1}, "description": {"type": "string", "maxLength": 2000}}}},
+    "settings": {"type": "array", "maxItems": 100, "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "label"], "properties": {"id": {"$ref": "#/$defs/id"}, "label": {"type": "string", "minLength": 1}, "kind": {"enum": ["TEXT", "SECRET", "BOOLEAN", "NUMBER", "CHOICE", "DIRECTORY"]}, "default": {"type": "string"}, "required": {"type": "boolean"}, "options": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["value", "label"], "properties": {"value": {"type": "string"}, "label": {"type": "string", "minLength": 1}}}}}}},
+    "configurationPage": {"$ref": "#/$defs/id"},
+    "messages": {"$ref": "#/$defs/messages"},
+    "localizations": {"type": "object", "maxProperties": 31, "propertyNames": {"$ref": "#/$defs/locale"}, "additionalProperties": {"type": "object"}},
+    "resourceProviders": {"type": "array", "maxItems": 16, "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "platformId", "extensions", "directorySetting", "rootMarker"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "platformId": {"type": "string"}, "extensions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9]+$"}}, "directorySetting": {"$ref": "#/$defs/id"}, "rootPaths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}, "rootMarker": {"$ref": "#/$defs/path"}, "formatVersion": {"const": 1}}}}
+  },
+  "$defs": {
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "locale": {"type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}|[0-9]{3}))?$"},
+    "id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9._-]{0,79}$"},
+    "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+$"},
+    "messages": {"type": "object", "maxProperties": 1000, "propertyNames": {"pattern": "^[a-zA-Z][a-zA-Z0-9._-]{0,99}$"}, "additionalProperties": {"type": "string", "maxLength": 16000}}
+  }
+}

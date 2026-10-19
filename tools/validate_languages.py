@@ -37,6 +37,8 @@ def catalog_hash(messages):
 
 
 def arguments(text):
+    if '%' in ARGUMENT.sub('', text):
+        raise ValueError("Unsupported format directive; use numbered %1$s / %1$d or %%")
     return Counter((match.group(1), match.group(2)) for match in ARGUMENT.finditer(text) if match.group(1))
 
 
@@ -67,7 +69,7 @@ def validate(root, require_complete=False, locale=None):
             raise ValueError(f"Invalid review status: {path.name}")
         if (pack_locale == "zh-Hans") != (pack["status"] == "source"):
             raise ValueError(f"Source status belongs to zh-Hans only: {path.name}")
-        if not isinstance(pack.get("name"), str) or not pack["name"].strip():
+        if not isinstance(pack.get("name"), str) or not pack["name"].strip() or len(pack["name"]) > 80:
             raise ValueError(f"Missing native language name: {path.name}")
         messages = pack["messages"]
         if set(messages) != set(source_messages):
@@ -79,7 +81,7 @@ def validate(root, require_complete=False, locale=None):
                 if pack["status"] != "draft" or require_this:
                     raise ValueError(f"Incomplete language: {path.name}/{key}")
                 continue
-            if not isinstance(value, str) or not value.strip():
+            if not isinstance(value, str) or not value.strip() or len(value) > 16000 or '\0' in value:
                 raise ValueError(f"Empty or non-text translation: {path.name}/{key}")
             if arguments(value) != arguments(source_messages[key]):
                 raise ValueError(f"Placeholder mismatch: {path.name}/{key}")

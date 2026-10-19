@@ -79,10 +79,10 @@ class PluginLocalizationTest(unittest.TestCase):
                 manifest["pages"][1].update(kind=role, path=path)
                 (root / "plugin.json").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
                 if valid:
-                    build(root, root / "output", "test")
+                    build(root, root.parent / "output", "test")
                 else:
                     with self.assertRaises(ValueError):
-                        build(root, root / "output", "test")
+                        build(root, root.parent / "output", "test")
 
     def test_localized_plugins_declare_the_host_version_that_preserves_language_metadata(self):
         manifest = self.manifest()

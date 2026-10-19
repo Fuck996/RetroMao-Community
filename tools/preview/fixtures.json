@@ -1,0 +1,8 @@
+{
+  "games": [
+    {"id": "demo-1", "platformId": "msx", "title": "Example Adventure", "romFileNames": ["adventure.rom"], "favorite": true, "recent": {"lastPlayedAt": 1780000000000, "playCount": 2, "importedPlayTimeSeconds": 600}},
+    {"id": "demo-2", "platformId": "gba", "title": "Example Puzzle", "romFileNames": ["puzzle.gba"], "favorite": false, "recent": {"lastPlayedAt": null, "playCount": 0, "importedPlayTimeSeconds": null}}
+  ],
+  "sources": [{"id": "preview", "name": "Preview cloud", "provider": "WEBDAV", "scope": "fixture-account/library"}],
+  "documents": {}, "http": {}
+}

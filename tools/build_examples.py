@@ -91,7 +91,6 @@ def make_package(name: str, paths: list[str]) -> dict[str, int | str]:
 
 
 def main() -> None:
-    make_images()
     platform = make_package("platform-msx-1.0.0.zip", [
         "examples/msx/platform.json", "examples/msx/assets/logo.png", "examples/msx/assets/pixel.png"
     ])
@@ -107,7 +106,7 @@ def main() -> None:
          "minAppVersion": "0.9.44", "releaseTag": TAG, **theme,
          "previewPath": "previews/amber-arcade.png"},
     ]
-    (ROOT / "catalog.json").write_text(json.dumps({"schemaVersion": 1, "entries": entries}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (DIST / "examples.catalog.json").write_text(json.dumps({"schemaVersion": 1, "entries": entries}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

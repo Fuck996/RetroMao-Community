@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "locale", "name", "catalog_version", "catalog_hash", "status", "messages", "author"],
+  "properties": {
+    "schema_version": {"const": 1}, "locale": {"type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}|[0-9]{3}))?$"},
+    "name": {"type": "string", "minLength": 1, "maxLength": 80},
+    "catalog_version": {"type": "string"}, "catalog_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "status": {"enum": ["source", "draft", "reviewed"]},
+    "author": {"type": "string", "maxLength": 160},
+    "credits": {"type": "array", "maxItems": 50, "items": {"type": "string", "minLength": 1, "maxLength": 160}},
+    "messages": {"type": "object", "minProperties": 1, "maxProperties": 5000, "additionalProperties": {"type": ["string", "null"], "minLength": 1, "maxLength": 16000}}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "retromao-community-development",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node --test tools/test_script_sdk.cjs tools/test_sync_examples.cjs tools/test_vita3k_resources.cjs tools/test_preview.cjs",
+    "test:browser": "node tools/test_sync_pages.cjs && node tools/test_preview_browser.cjs"
+  },
+  "devDependencies": {"playwright": "1.56.1"}
+}

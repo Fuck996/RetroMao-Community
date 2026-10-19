@@ -2,70 +2,32 @@
 
 **中文** · [English](README.en.md) · [日本語](README.ja.md)
 
-这里维护复古猫的语言、平台和主题扩展。扩展只包含翻译、配置与可再分发的素材；安装扩展不会上传你的 ROM、存档或网盘凭据。平台／主题在线安装支持 **0.9.44 及更新版本**，内置四语与语言下载从 **0.9.87** 开始，多仓库设置从 **0.9.88** 开始。在线下载需要能够访问 GitHub；已有游戏和已安装扩展在离线时仍可使用。
+这里是独立的扩展开发与分发仓库。开发插件、翻译或平台包无需获取宿主源码；需要 Python 3.11+，插件测试与浏览器验证还需要 Node.js 22+。建议先创建并激活 Python 虚拟环境。所有命令都在本仓库根目录执行。
 
-当前打包版本为 **0.9.98**，能力变化见[更新记录](CHANGELOG.md)。该版本包含脚本插件框架、版本管理、多语言、公共图标及已配置网盘的小型 JSON 文档桥接，沿用公共内容接口、同步流程与渠道配置；存储渠道的脚本注册及流式文件桥接尚未提供，开发边界见[同步渠道扩展说明](SYNC_PROVIDERS.md)。
+从 Fork 后的第一个插件开始：安装固定依赖、检查仓库、生成模板、预览并打包。
 
-**0.9.98** 增加 [ROM 资源提供者接口](sdk/ROM_RESOURCES.md)与 [Vita3K ROM 同步 1.0.0](https://github.com/Fuck996/RetroMao-Community/releases/tag/vita3k-sync-1.0.0)。在商店安装后选择 Vita3K 目录，系统 ROM 同步会带上对应游戏资源；另一终端也需启用并配置插件才下载这些资源。
+```text
+python -m pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements-dev.txt
+npm ci --registry=https://registry.npmmirror.com
+python tools/retromao.py check
+python tools/retromao.py init plugin --id demo-plugin --name Demo --author YourName
+python tools/retromao.py check extensions/demo-plugin
+python tools/retromao.py preview extensions/demo-plugin
+python tools/retromao.py pack extensions/demo-plugin --release-tag demo-plugin-1.0.0
+```
 
-**0.9.96** 可使用[收藏同步与最近游戏记录同步](examples/SYNC_EXAMPLES.md)两个独立插件，复用已配置网盘。作者 **4NPC**，插件版本 **1.0.4**，已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4)。在主菜单 **插件 → 商店** 安装，或下载 ZIP 后在“已安装”中导入。后续版本管理与公共图标规则见[开发说明](sdk/PLUGIN_VERSIONS.md)。
+预览地址显示在终端；Ctrl+C 停止服务。预览运行正式 SDK 和自己的代码，使用本地样本，不连接真实网盘。更多步骤见[开发与验收](docs/TESTING.md)、[投稿规则](CONTRIBUTING.md)和[发布流程](docs/PUBLISHING.md)。AI 请先读 [AGENTS.md](AGENTS.md)。
 
-## 添加官方与社区仓库
+| 要做什么 | 从哪里开始 | 发布形式 |
+| --- | --- | --- |
+| 脚本插件 | [SDK](sdk/README.md)、templates/plugin | ZIP + plugins/index.json |
+| 增加语言 | [语言指南](languages/README.md) | 单语 JSON + languages/index.json |
+| 增加平台 | [平台契约](EXTENSIONS.md)、templates/platform | ZIP + catalog.json |
 
-1. 在 **设置首页右下角**点击无文字的仓库悬浮按钮。
-2. 每行填写一个公开 GitHub 仓库地址，例如 `https://github.com/Fuck996/RetroMao-Community`。社区可以 Fork 本仓库，自行维护翻译和扩展，并把自己的仓库地址提供给玩家。
-3. 保存后，语言、社区主题和社区平台共用这份列表。要同时使用官方与社区内容，请保留各自的一行；清空列表后不会请求任何仓库。
-4. 再进入相应的下载页选择扩展。相同身份且内容相同的条目合并并保留来源；内容不同的条目分别列出，不按名称静默覆盖。下载语言弹窗只展示可选语言，不再填写仓库地址。
+平台启动配置使用格式 2，需要包含此能力的宿主构建，版本门槛为 0.9.108；是否已经完成正式 APK 验收以[能力契约](contracts/host.json)和对应发行记录为准。旧格式 1 不包含启动配置。脚本框架最低 0.9.90，多语言元数据最低 0.9.94，独立配置页最低 0.9.96，ROM 资源提供者最低 0.9.98。新增专有模拟器协议和脚本存储渠道注册仍需宿主支持，不能在数据包中运行代码。
 
-仓库配置用于发现扩展，不能作为存档同步的网盘连接。作者署名与来源仓库分别展示；Fork 的维护者应保留原作者及素材许可说明。
+语言基线、条目数与摘要以 [languages/index.json](languages/index.json) 为准，不用 APK 版本猜测基线，也不要求 reviewed 状态；完整性与兼容性才是安装门槛。[消息上下文](contracts/message-context.json)提供已知界面与参数。只编辑目标语言，不修改中文基线。
 
-## 在复古猫中下载和安装
+在应用设置首页右下角的仓库入口，每行加入一个公开 GitHub 仓库。插件使用“插件 → 商店”；平台使用“设置 → 游戏库与文件夹 → 社区平台”；语言使用“设置 → 主题与显示 → 语言 → 下载语言”。离线 ZIP 从各自导入入口安装。Fork 不会复制上游 Release 资产，必须发布自己的资产后再更新目录。相同内容会合并显示，其他来源由用户明确选择。
 
-### 增加游戏平台
-
-1. 打开 **设置 → 游戏库与文件夹 → 社区平台**。列表显示扩展名称、作者和说明。
-2. 找到所需平台，选择 **下载并安装**。等待下载、大小与 SHA-256 校验，以及安装完成。已安装的同一平台可从这里重新安装更新包。
-3. 回到 **游戏库与文件夹**，添加对应的本地 ROM 文件夹。平台包不会附带游戏或模拟器；要启动游戏，还需配置本机已有的模拟器。
-
-平台安装后会进入应用原有的机种选择、文件夹扫描和游戏库流程。它不会自动扫描整个设备，也不会自动上传 ROM。若使用网盘资源同步，仍需按原有流程配置该机种的网盘来源与目录。
-
-### 更换主题
-
-1. 打开 **设置 → 主题与显示 → 社区主题**，先看 1280×720 预览图、作者与说明。
-2. 选择 **下载并安装**。下载后主题进入同页的 **已安装主题**；安装不会立刻改变当前主题。
-3. 在 **已安装主题** 中选择该主题，点击 **预览主题** 查看实际界面，再点击 **应用主题**。如果主题使用某个扩展平台的素材，先安装对应平台包。
-
-主题可以包含配色、背景、动效、平台图标、字体和包装/介质 GLB 模型；实际内容以该包的配置和说明为准。模型继续使用复古猫原有渲染、材质和动效管线。
-
-### 无法在线下载时
-
-打开[官方示例 Release](https://github.com/Fuck996/RetroMao-Community/releases/tag/packs-2026-10-06)，从 **Assets** 下载所需 `.zip`，**不要解压**。把 ZIP 复制到设备后，在 **设置 → 游戏库与文件夹 → 导入平台扩展包**，或 **设置 → 主题与显示 → 导入主题包** 中选择它。手动导入与在线安装使用相同的格式检查和安装流程；离线导入不需要访问 GitHub。
-
-如果在线列表暂时无法获取，应用可显示最近一次成功读取的目录；这不表示新包已下载或安装。请检查网络后重新进入页面，或使用上述 ZIP 导入入口。
-
-## 下载如何实现
-
-1. 应用读取本仓库公开的 [`catalog.json`](catalog.json)。每条记录声明包类型、版本、最低应用版本、Release 标签、文件名、精确字节数和 SHA-256；主题还声明预览图路径。
-2. 页面按目录显示可用包和主题预览。选择下载时，应用从该条记录指定的 **GitHub Release 资产**获取 ZIP，不需要 GitHub 账号。
-3. 下载完成后，应用先核对**精确大小和 SHA-256**。不一致的文件不会进入安装流程，也不会替换已安装扩展。
-4. 校验通过的 ZIP 交给与本地导入共用的安装器，检查配置格式、包内路径、素材尺寸和容量限制，再保存到应用自己的扩展目录。下次启动仍从该目录读取。
-
-目录只是清单，真正安装的是 Release 中的 ZIP；预览图不等于安装文件。ROM、存档和 WebDAV 数据不经过这个社区仓库。主题、平台和语言包不运行代码。格式和边界见[扩展包规范](EXTENSIONS.md)。
-
-## 制作和投稿
-
-脚本插件提供[SDK](sdk/README.md)与[游戏笔记示例](examples/library-notes/)。插件主菜单包含“已安装”和“商店”，使用同一份多仓库配置；脚本目录为 `plugins/index.json`。[收藏同步与最近游戏记录同步 1.0.4](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4) 已公开发布，需要 0.9.96；原生引擎与实际网盘同步仍待设备验收。
-
-- 平台 ZIP 根目录放 `platform.json`，可加入平台图标；主题 ZIP 根目录放 `theme.json`，并为在线主题提供同规格的 1280×720 PNG/WebP 预览图。
-- 参考 [`examples/`](examples/) 和[扩展包规范](EXTENSIONS.md)制作，先在本机通过导入入口验证安装、16:9／4:3／1:1 布局、触摸与手柄操作。投稿时说明作者和素材再分发许可，不提交 ROM、固件、存档、密钥或账号资料。
-- 提交包含源配置、素材和预览图的 PR。维护者审核后打包 ZIP、发布 Release，再把**实际发布资产**的字节数与 SHA-256 写入 `catalog.json`。清单更新后用户才会在在线列表看到新版本。
-
-示例可用 `python tools/build_examples.py` 重建，ZIP 输出到 `dist/`；脚本不会自动发布 Release。官方示例包与三语说明见[示例 Release](https://github.com/Fuck996/RetroMao-Community/releases/tag/packs-2026-10-06)。
-
-平台包定义机种身份、ROM 扩展名、介质类型、封面比例和图标，不提供模拟器或存档目录。主题包按已声明素材替换外观，不修改复古猫的渲染器。
-
-## 语言文件与社区翻译
-
-每种语言独立维护一个 JSON，社区可提交补译和新增语言 PR。文件、贡献规则和下载说明见 [languages/](languages/README.md)。当前基线为 **1233 条**，简中保留 `source`，英文、繁中、日文均完整并保留 `draft` 供复审。
-
-APK 内置简中、繁中、英语、日语，首次匹配系统语言，没有匹配则显示简中。在 **设置 → 主题与显示 → 语言** 中可手动切换或恢复跟随系统；**下载语言**从上方配置的仓库中列出扩展。在线安装只接受与 APK 文案基线匹配且完整的 `reviewed` 扩展，不会把草稿作为可安装扩展。语言文件不使用平台或主题的安装入口。
+扩展不附带 ROM、固件、存档或账号凭据。保留作者及素材许可，只有具有再分发许可的内容可以投稿。预览和自动测试不能替代 Android、模拟器与真实网盘验收。已发布示例及历史见[更新记录](CHANGELOG.md)和[发布说明](RELEASE_NOTES.md)。

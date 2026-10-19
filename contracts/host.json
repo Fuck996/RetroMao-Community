@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "platformLaunchers": {
+    "schemaVersion": 2,
+    "minAppVersion": "0.9.108",
+    "protocols": [
+      "URI",
+      "RETROARCH"
+    ],
+    "releaseVerified": false
+  },
+  "platforms": [
+    {
+      "id": "fc",
+      "name": "Famicom",
+      "aliases": [
+        "nes",
+        "famicom",
+        "nintendo entertainment system",
+        "fc"
+      ]
+    },
+    {
+      "id": "sfc",
+      "name": "Super Famicom",
+      "aliases": [
+        "snes",
+        "super nintendo entertainment system",
+        "sfc"
+      ]
+    },
+    {
+      "id": "md",
+      "name": "Mega Drive",
+      "aliases": [
+        "megadrive",
+        "genesis",
+        "sega genesis",
+        "md"
+      ]
+    },
+    {
+      "id": "pce",
+      "name": "PC Engine",
+      "aliases": [
+        "pcengine",
+        "turbografx16",
+        "pce"
+      ]
+    },
+    {
+      "id": "pcecd",
+      "name": "PC Engine CD",
+      "aliases": [
+        "pcenginecd",
+        "tg-cd",
+        "pcecd"
+      ]
+    },
+    {
+      "id": "neogeo",
+      "name": "NEO GEO",
+      "aliases": [
+        "neo geo",
+        "aes",
+        "mvs",
+        "neo geo mvs",
+        "neogeo"
+      ]
+    },
+    {
+      "id": "cps",
+      "name": "CPS",
+      "aliases": [
+        "cps1",
+        "cps2",
+        "cps3",
+        "cps-1",
+        "cps-2",
+        "cps-3",
+        "capcom play system",
+        "cps"
+      ]
+    },
+    {
+      "id": "pgm",
+      "name": "PGM",
+      "aliases": [
+        "pgm2",
+        "pgm 2",
+        "igs pgm",
+        "pgm"
+      ]
+    },
+    {
+      "id": "naomi",
+      "name": "NAOMI",
+      "aliases": [
+        "naomi2",
+        "naomi 2",
+        "sega naomi",
+        "naomi"
+      ]
+    },
+    {
+      "id": "arcade",
+      "name": "其他街机",
+      "aliases": [
+        "街机",
+        "mame",
+        "fbneo",
+        "fba",
+        "mame2003",
+        "mame2003-plus",
+        "arcade"
+      ]
+    },
+    {
+      "id": "ws",
+      "name": "WonderSwan",
+      "aliases": [
+        "wonderswan",
+        "ws"
+      ]
+    },
+    {
+      "id": "wsc",
+      "name": "WonderSwan Color",
+      "aliases": [
+        "wonderswancolor",
+        "wsc"
+      ]
+    },
+    {
+      "id": "gb",
+      "name": "Game Boy",
+      "aliases": [
+        "gameboy",
+        "gb"
+      ]
+    },
+    {
+      "id": "gbc",
+      "name": "Game Boy Color",
+      "aliases": [
+        "gameboycolor",
+        "gbc"
+      ]
+    },
+    {
+      "id": "gba",
+      "name": "Game Boy Advance",
+      "aliases": [
+        "gameboyadvance",
+        "gba"
+      ]
+    },
+    {
+      "id": "ps1",
+      "name": "PlayStation",
+      "aliases": [
+        "psx",
+        "playstation",
+        "ps1"
+      ]
+    },
+    {
+      "id": "n64",
+      "name": "Nintendo 64",
+      "aliases": [
+        "nintendo64",
+        "n64"
+      ]
+    },
+    {
+      "id": "ss",
+      "name": "SEGA Saturn",
+      "aliases": [
+        "saturn",
+        "sega saturn",
+        "ss"
+      ]
+    },
+    {
+      "id": "ps2",
+      "name": "PlayStation 2",
+      "aliases": [
+        "playstation2",
+        "ps2"
+      ]
+    },
+    {
+      "id": "dc",
+      "name": "Dreamcast",
+      "aliases": [
+        "dreamcast",
+        "dc"
+      ]
+    },
+    {
+      "id": "ngc",
+      "name": "Nintendo GameCube",
+      "aliases": [
+        "gc",
+        "gamecube",
+        "ngc"
+      ]
+    },
+    {
+      "id": "wii",
+      "name": "Wii",
+      "aliases": [
+        "nintendo wii",
+        "wii"
+      ]
+    },
+    {
+      "id": "wiiu",
+      "name": "Wii U",
+      "aliases": [
+        "wii u",
+        "wiiu"
+      ]
+    },
+    {
+      "id": "psp",
+      "name": "PlayStation Portable",
+      "aliases": [
+        "playstation portable",
+        "psp"
+      ]
+    },
+    {
+      "id": "nds",
+      "name": "Nintendo DS",
+      "aliases": [
+        "nintendo ds",
+        "ds",
+        "nds"
+      ]
+    },
+    {
+      "id": "3ds",
+      "name": "Nintendo 3DS",
+      "aliases": [
+        "nintendo 3ds",
+        "n3ds",
+        "3ds"
+      ]
+    },
+    {
+      "id": "psv",
+      "name": "PlayStation Vita",
+      "aliases": [
+        "psvita",
+        "vita",
+        "psv"
+      ]
+    },
+    {
+      "id": "switch",
+      "name": "Nintendo Switch",
+      "aliases": [
+        "nintendo switch",
+        "ns",
+        "nx",
+        "switch"
+      ]
+    },
+    {
+      "id": "sms",
+      "name": "Master System",
+      "aliases": [
+        "mastersystem",
+        "sms"
+      ]
+    },
+    {
+      "id": "gg",
+      "name": "Game Gear",
+      "aliases": [
+        "gamegear",
+        "gg"
+      ]
+    },
+    {
+      "id": "ngp",
+      "name": "NEO GEO Pocket",
+      "aliases": [
+        "neo geo pocket",
+        "ngp"
+      ]
+    },
+    {
+      "id": "ngpc",
+      "name": "NEO GEO Pocket Color",
+      "aliases": [
+        "neo geo pocket color",
+        "ngpc"
+      ]
+    },
+    {
+      "id": "fds",
+      "name": "Famicom Disk System",
+      "aliases": [
+        "famicom disk system",
+        "fds"
+      ]
+    },
+    {
+      "id": "segacd",
+      "name": "Mega CD / SEGA CD",
+      "aliases": [
+        "megacd",
+        "sega cd",
+        "segacd"
+      ]
+    },
+    {
+      "id": "32x",
+      "name": "SEGA 32X",
+      "aliases": [
+        "sega32x",
+        "32x"
+      ]
+    },
+    {
+      "id": "neogeocd",
+      "name": "NEO GEO CD",
+      "aliases": [
+        "neo geo cd",
+        "neogeocd"
+      ]
+    },
+    {
+      "id": "xbox",
+      "name": "Xbox",
+      "aliases": [
+        "microsoft xbox",
+        "xbox"
+      ]
+    },
+    {
+      "id": "ps3",
+      "name": "PlayStation 3",
+      "aliases": [
+        "playstation3",
+        "ps3"
+      ]
+    },
+    {
+      "id": "xbox360",
+      "name": "Xbox 360",
+      "aliases": [
+        "xbox 360",
+        "xbox360"
+      ]
+    }
+  ]
+}
