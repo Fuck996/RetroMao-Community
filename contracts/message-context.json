@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.115",
-  "catalog_hash": "d295beaa18f445d9a283735bb8d94384a7b2efe8b65afda42a310503d6f76c38",
+  "catalog_version": "0.9.118",
+  "catalog_hash": "afd632bb043478a3c096573f91d29ecfd096f19e09d57099bd1e50453cdfc20a",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -5848,7 +5848,7 @@
       ]
     },
     "save_directory_change_confirmation": {
-      "source": "%1$s\n原位置：%2$s\n新位置：%3$s\n\n下次同步先迁移已计入索引的原目录存档，复制完成后才清理源文件并切换目录。同名冲突由你选择；原目录为空或没有索引时跳过迁移。单个存档文件直接改用新位置。云端文件和历史版本保留。",
+      "source": "%1$s\n原位置：%2$s\n新位置：%3$s\n\n同一目录补授权仅更新访问入口，保留未完成恢复与历史版本。换到其他目录时，下次同步先迁移已计入索引的原目录存档，复制完成后才清理源文件并切换目录。同名冲突由你选择；原目录为空或没有索引时跳过迁移。单个存档文件直接改用新位置。云端文件和历史版本保留。",
       "arguments": [
         "%1$s",
         "%2$s",
@@ -6148,7 +6148,7 @@
       ]
     },
     "save_directory_dialog_text_0011": {
-      "source": "目录配置和系统授权会保存供后续同步使用。Android 应用目录也可直接浏览，支持情况取决于设备系统。",
+      "source": "目录配置和系统授权会保存供后续同步使用。Android 应用目录直接请求系统授权；普通目录使用文件夹选择器。",
       "arguments": [],
       "surfaces": [
         "save_directory_dialog"
@@ -7499,7 +7499,7 @@
       ]
     },
     "save_settings_text_0129": {
-      "source": "存档位置变更已记录，下次同步按迁移记录处理",
+      "source": "存档目录设置已保存",
       "arguments": [],
       "surfaces": [
         "save_settings"
@@ -8891,7 +8891,7 @@
       ]
     },
     "source_directories_dialog_text_0011": {
-      "source": "保存后会迁移受影响的 ROM、媒体、存档及索引，保留版本关系。进度可在传输任务中查看。",
+      "source": "原目录已有云端资源时，保存后会迁移受影响的 ROM、媒体、存档及索引，保留版本关系；空目录仅保存设置。迁移进度可在传输任务中查看。",
       "arguments": [],
       "surfaces": [
         "source_directories_dialog"
@@ -12885,6 +12885,24 @@
     },
     "menu_display": {
       "source": "菜单显示",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "save_directory_authorization_changed": {
+      "source": "存档任务归属已改变，停止更新授权，请重新打开。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "save_directory_restore_written": {
+      "source": "此恢复已开始写入本地存档，不能丢弃进度。请先在存档同步页面继续恢复或回到操作前。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "save_directory_restore_discarded": {
+      "source": "已更改同步目录，丢弃尚未写入本地存档的恢复进度。云端文件和历史版本保留，下次同步重新检查。",
       "arguments": [],
       "surfaces": [],
       "owners": []

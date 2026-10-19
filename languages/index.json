@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "catalog_version": "0.9.115",
-  "catalog_hash": "d295beaa18f445d9a283735bb8d94384a7b2efe8b65afda42a310503d6f76c38",
+  "catalog_version": "0.9.118",
+  "catalog_hash": "afd632bb043478a3c096573f91d29ecfd096f19e09d57099bd1e50453cdfc20a",
   "languages": [
     {
       "locale": "en",
@@ -9,10 +9,10 @@
       "file": "en.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1372,
-      "total": 1372,
-      "size_bytes": 102910,
-      "sha256": "2ff5e093199cb18a00e01d3c06bf5b52ba86af2b22df3cfeb18287f493b92079"
+      "translated": 1375,
+      "total": 1375,
+      "size_bytes": 103621,
+      "sha256": "79d64c5c911143218dde97bc690ee477f57e9a628f646c6f63cb8a03e2520ddb"
     },
     {
       "locale": "ja",
@@ -20,10 +20,10 @@
       "file": "ja.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1372,
-      "total": 1372,
-      "size_bytes": 132911,
-      "sha256": "c6fa921b6e10e07bf9eed7429a06e0c8fc1bdef31fe2d5fc1211f05a7fa9f125"
+      "translated": 1375,
+      "total": 1375,
+      "size_bytes": 133768,
+      "sha256": "f2908b3c08b78fc74a4738184b86fac9cfbe27c89cad21e2f99bb36866fbb75a"
     },
     {
       "locale": "zh-Hans",
@@ -31,10 +31,10 @@
       "file": "zh-Hans.json",
       "author": "4NPC",
       "status": "source",
-      "translated": 1372,
-      "total": 1372,
-      "size_bytes": 99677,
-      "sha256": "e45cbc86267f027c9e312db7757891a75d89abbf2ef5e4c4bc95a071dafc5651"
+      "translated": 1375,
+      "total": 1375,
+      "size_bytes": 100282,
+      "sha256": "0dfce847624942187fdfca60cb99c3abd2223c262532a54b0d070552a9cb39e6"
     },
     {
       "locale": "zh-Hant",
@@ -42,10 +42,10 @@
       "file": "zh-Hant.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1372,
-      "total": 1372,
-      "size_bytes": 100261,
-      "sha256": "4bcaf3416313562263417d204930500e721362b02191c95d21c9ffff3b04fe05"
+      "translated": 1375,
+      "total": 1375,
+      "size_bytes": 100878,
+      "sha256": "bfa95e67fa7cb32e99cfb462039265fb2348681240c31a445e1117456d760196"
     }
   ]
 }
