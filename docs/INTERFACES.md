@@ -4,7 +4,7 @@
 
 | Contract / 契约 / 契約 | Definition / 定义 / 定義 | Calls and validation / 调用与校验 / 利用と検査 |
 | --- | --- | --- |
-| Script API 1, contract 1.0.0 | [api.json](../sdk/api.json), [retromao.d.ts](../sdk/retromao.d.ts) | [API reference](../sdk/API_REFERENCE.md), [SDK](../sdk/README.md) |
+| Script API 1, contract 1.0.1 | [api.json](../sdk/api.json), [retromao.d.ts](../sdk/retromao.d.ts) | [API reference](../sdk/API_REFERENCE.md), [SDK](../sdk/README.md) |
 | Plugin manifest schemaVersion 1 | [plugin.schema.json](../schemas/plugin.schema.json) | [Template](../templates/plugin/), [localization](../sdk/PLUGIN_LOCALIZATION.md) |
 | Platform schemaVersion 1 / 2 | [platform.schema.json](../schemas/platform.schema.json), [host.json](../contracts/host.json) | [Platform and theme contract](../EXTENSIONS.md), [template](../templates/platform/) |
 | Language schema_version 1 | [language.schema.json](../schemas/language.schema.json), [language index](../languages/index.json) | [Language guide](../languages/README.md), [message context](../contracts/message-context.json) |

@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 公共 SDK 契约 1.0.1 · 2026-10-19
+
+- 修正首次 CI 发现的 Windows 工作副本换行摘要差异，SDK 源码契约统一按 UTF-8/LF 校验；保留 1.0.0，新增 1.0.1 快照和三语说明。资产摘要仍按原始字节校验，运行接口不变。
+
 ### 公共 SDK 契约 1.0.0 · 2026-10-19
 
 - 补齐 [32 个公开成员的调用手册](sdk/API_REFERENCE.md)与[接口导航](docs/INTERFACES.md)，包括参数、返回、权限、上下文、错误条件和示例，全部提供中英日三语。
@@ -163,6 +167,10 @@
 
 ## English
 
+### Public SDK contract 1.0.1 · 2026-10-19
+
+- Fixed the Windows worktree newline digest mismatch found by initial CI. SDK source contracts now use UTF-8/LF; 1.0.0 is preserved alongside a new 1.0.1 snapshot and trilingual notes. Asset digests still use raw bytes; runtime APIs are unchanged.
+
 ### Public SDK contract 1.0.0 · 2026-10-19
 
 - Added a [32-member API reference](sdk/API_REFERENCE.md) and [interface map](docs/INTERFACES.md) with arguments, results, grants, contexts, failures and examples in Chinese, English and Japanese.
@@ -260,6 +268,10 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+### 公開 SDK 契約 1.0.1 · 2026-10-19
+
+- 初回 CI で判明した Windows 作業コピーの改行による摘要差を修正し、SDK ソースを UTF-8/LF で検査します。1.0.0 を保持して 1.0.1 のスナップショットと三言語説明を追加しました。アセットは生のバイト列で検査し、実行 API は変更しません。
 
 ### 公開 SDK 契約 1.0.0 · 2026-10-19
 

@@ -81,5 +81,23 @@ class ApiHistoryTests(unittest.TestCase):
             self.check(current)
 
 
+class ApiSourceHashTests(unittest.TestCase):
+    def test_lf_and_crlf_sources_have_the_same_contract_digest(self):
+        with tempfile.TemporaryDirectory(prefix="retromao-api-source-") as directory:
+            source = Path(directory) / "sdk.js"
+            source.write_bytes("const title = '猫';\nconst version = 1;\n".encode("utf-8"))
+            expected = check_api.source_hash(source)
+            source.write_bytes("const title = '猫';\r\nconst version = 1;\r\n".encode("utf-8"))
+            self.assertEqual(check_api.source_hash(source), expected)
+
+    def test_changed_source_content_still_changes_digest(self):
+        with tempfile.TemporaryDirectory(prefix="retromao-api-source-") as directory:
+            source = Path(directory) / "sdk.js"
+            source.write_bytes(b"const version = 1;\n")
+            expected = check_api.source_hash(source)
+            source.write_bytes(b"const version = 2;\n")
+            self.assertNotEqual(check_api.source_hash(source), expected)
+
+
 if __name__ == "__main__":
     unittest.main()

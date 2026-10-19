@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "apiVersion": 1,
   "date": "2026-10-19",
   "verifiedHostVersion": "0.9.108",
   "sources": {
-    "sdk/runtime/retromao.js": "647d2cc9eb6aa235c0abd74e97e6decf5eb9bbcb62b0a043672de86580d45877",
-    "sdk/retromao.d.ts": "b0a5c53a1b993e39fb968f23260725ae5ede59fe1271b2d875931c7ac480b736"
+    "sdk/runtime/retromao.js": "6e6f5a71dbc6825dd8df814780759abd1504648589c0e7da88ec8daccebac247",
+    "sdk/retromao.d.ts": "6acfc1742ee34204752a3b83fb7f5ac68b431d0d71b7be2dfb951102d81c08bf"
   },
   "members": [
     {
@@ -614,5 +614,6 @@
       },
       "example": "retromao.define({\n  actions: { run: async arguments_ => ({ dryRun: arguments_.dryRun === true }) }\n});"
     }
-  ]
+  ],
+  "sourceEncoding": "UTF-8/LF"
 }

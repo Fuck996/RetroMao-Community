@@ -6,6 +6,10 @@
 
 ## 中文
 
+### 1.0.1 · 2026-10-19
+
+修正源码摘要的跨平台口径：UTF-8 文本统一 LF 后计算 SHA-256，与仓库文本规则一致。1.0.0 首次 CI 暴露旧 Windows 工作副本的 CRLF 摘要与 Git 中 LF 内容不一致；保留旧快照，新增明确 sourceEncoding 的 1.0.1。源码内容变化仍会使检查失败，不跳过摘要。新增换行一致性与内容变化的定向测试；API、最低宿主和插件发行版不变，作者无需迁移。
+
 ### 1.0.0 · 2026-10-19
 
 首次建立独立版本管理的公开 SDK 契约，对照宿主 0.9.108 的真实调用链，记录 32 个公开成员（30 个函数和 version/ready）。这不是在今天新增这些运行能力；运行时仍为 API 1，宿主与现有插件版本不变。
@@ -19,6 +23,10 @@
 
 ## English
 
+### 1.0.1 · 2026-10-19
+
+Corrected cross-platform source digests: SHA-256 uses UTF-8 text with LF line endings, matching repository text rules. Initial 1.0.0 CI exposed old Windows CRLF worktree hashes differing from LF Git content. Its snapshot is preserved; 1.0.1 explicitly records sourceEncoding. Content changes still fail validation; hashing is not skipped. Added focused newline-equivalence and content-change tests. APIs, minimum hosts and plugin releases are unchanged; authors need no migration.
+
 ### 1.0.0 · 2026-10-19
 
 First independently versioned public SDK contract, checked against host 0.9.108's actual call paths, covering 32 public members (30 functions plus version/ready). These runtime features were not all introduced today. Runtime API remains 1; host and existing plugin versions are unchanged.
@@ -31,6 +39,10 @@ First independently versioned public SDK contract, checked against host 0.9.108'
 Historical feature baselines: 0.9.90 basic scripts/pages and library, favorites, media, task and network APIs; 0.9.91 lightweight records, apply/checkpoint and STORAGE; 0.9.92 public icons; 0.9.94 author locale environment; 0.9.96 dedicated configuration pages; 0.9.98 ROM resource callbacks. Earlier records did not use contract semver: no older contract versions or dates are invented. Product history retains product changes.
 
 ## 日本語
+
+### 1.0.1 · 2026-10-19
+
+ソースの摘要を UTF-8・LF の SHA-256 に統一し、リポジトリのテキスト規則に合わせました。1.0.0 の初回 CI で、古い Windows 作業コピーの CRLF と Git 内の LF の不一致が判明しました。旧スナップショットを保持し、sourceEncoding を明記した 1.0.1 を追加します。内容変更は引き続き検査に失敗し、摘要を省略しません。改行の一致と内容変更のテストを追加しました。API、最低ホスト、プラグイン版は変わらず、作者の移行は不要です。
 
 ### 1.0.0 · 2026-10-19
 

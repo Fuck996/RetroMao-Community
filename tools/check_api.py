@@ -63,6 +63,10 @@ def normalize(value):
     return re.sub(r"\s+", "", value)
 
 
+def source_hash(path):
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()
+
+
 def reference(manifest):
     lines = ["# API 调用手册 / API reference / API リファレンス", "",
              "[中文](#中文) · [English](#english) · [日本語](#日本語)", "",
@@ -145,10 +149,12 @@ def check_api(*, write=False, base=None):
         if not entry["contexts"] or set(entry["contexts"]) - CONTEXTS or set(entry["capabilities"]) - CAPABILITIES:
             raise ValueError(f"Invalid API context/grants: {name}")
         version(entry["since"])
+    if manifest.get("sourceEncoding") != "UTF-8/LF":
+        raise ValueError("API source hashes must use UTF-8/LF")
     if set(manifest["sources"]) != {"sdk/runtime/retromao.js", "sdk/retromao.d.ts"}:
         raise ValueError("API inventory must track runtime and type source hashes")
     for name, expected in manifest["sources"].items():
-        actual = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+        actual = source_hash(ROOT / name)
         if actual != expected:
             raise ValueError(f"SDK source changed; review the API, version and snapshot: {name}")
     if f"version: {manifest['apiVersion']}" not in (ROOT / "sdk/runtime/retromao.js").read_text(encoding="utf-8"):

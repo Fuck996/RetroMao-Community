@@ -6,7 +6,7 @@
 
 ## 中文
 
-本文件由 tools/check_api.py 从 api.json 生成，请编辑清单后运行 --write。当前契约 1.0.0，运行时 API 1，对照宿主 0.9.108。完整字段见 Types；本页覆盖每个公开成员的签名、权限、上下文、参数、返回值、限制与示例。
+本文件由 tools/check_api.py 从 api.json 生成，请编辑清单后运行 --write。当前契约 1.0.1，运行时 API 1，对照宿主 0.9.108。完整字段见 Types；本页覆盖每个公开成员的签名、权限、上下文、参数、返回值、限制与示例。
 
 PAGE = 已启用插件的业务页面；CONFIGURATION = 独立配置页，可在插件禁用时使用；ACTION = tasks.run 发起的后台动作；RESOURCE = 宿主资源解析回调。标记未列出的上下文不属于受支持调用方式。权限须在 plugin.json 声明并授权；storage.sources 的配置页例外见该接口。
 
@@ -606,7 +606,7 @@ retromao.define({
 
 ## English
 
-Generated from api.json by tools/check_api.py; edit the inventory and run --write. Contract 1.0.0, runtime API 1, checked against host 0.9.108. Types defines every data field; this reference covers each public member's signature, grants, contexts, arguments, results, constraints and example.
+Generated from api.json by tools/check_api.py; edit the inventory and run --write. Contract 1.0.1, runtime API 1, checked against host 0.9.108. Types defines every data field; this reference covers each public member's signature, grants, contexts, arguments, results, constraints and example.
 
 PAGE = enabled plugin business page; CONFIGURATION = dedicated configuration page, also available while disabled; ACTION = background action started with tasks.run; RESOURCE = host resource-resolution callback. Unlisted contexts are unsupported usage. Declare grants in plugin.json and obtain approval; see storage.sources for its configuration-page exception.
 
@@ -1206,7 +1206,7 @@ retromao.define({
 
 ## 日本語
 
-api.json から tools/check_api.py で生成します。一覧を編集して --write を実行してください。契約 1.0.0、実行 API 1、確認対象ホスト 0.9.108。全データ項目は Types を参照してください。各公開メンバーのシグネチャ、権限、実行場所、引数、戻り値、制限、例を記載します。
+api.json から tools/check_api.py で生成します。一覧を編集して --write を実行してください。契約 1.0.1、実行 API 1、確認対象ホスト 0.9.108。全データ項目は Types を参照してください。各公開メンバーのシグネチャ、権限、実行場所、引数、戻り値、制限、例を記載します。
 
 PAGE は有効なプラグインの業務ページ、CONFIGURATION は無効時にも利用できる独立設定ページ、ACTION は tasks.run のバックグラウンド処理、RESOURCE はホストのリソース解析コールバックです。記載のない場所での呼び出しはサポート対象外です。plugin.json で権限を宣言して許可を得てください。storage.sources の設定ページでの例外は個別説明を参照してください。
 
