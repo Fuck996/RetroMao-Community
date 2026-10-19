@@ -4,6 +4,10 @@
 
 ## 中文
 
+### 插件卡片与简介 · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
+
+已安装和商店卡片统一高度，标题单行省略，描述固定三行区域内滚动且不显示滚动条；状态和可选操作不再撑高卡片，字号变化时统一适配。新增[插件文案规范](sdk/PLUGIN_PRESENTATION.md)：中日文标题／简介建议 16／48 字符，英文 32／96 字符，建议不作为新的安装限制。Vita3K 1.0.1 精简四语简介，脚本和同步协议不变，以新 Release 分发并保留 1.0.0。
+
 ### 插件安装默认启用 · 0.9.113 · 2026-10-19
 
 商店下载和本地 ZIP 在核验实际清单后共用一次安装确认，显示最低／当前前端版本、所需能力和网络主机。确认安装即授权并默认启用；同来源更新保留已有启停选择和私有数据，取消不落库。新增能力在安装确认中一并展示，无需安装后再手动启用。四语更新安装说明，新增 1 条文案，共 1371 键。拼音插件保持已发布的 1.0.0，资产不变。
@@ -185,6 +189,10 @@
 
 ## English
 
+### Plugin cards and summaries · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
+
+Installed/store cards share equal height, one-line title ellipsis and a three-line scrolling description without a scrollbar. Status and optional controls no longer enlarge cards; font scaling adjusts all cards together. New [copy guidelines](sdk/PLUGIN_PRESENTATION.md) recommend title/summary lengths of 16/48 characters for Chinese/Japanese and 32/96 for English, without introducing installation limits. Vita3K 1.0.1 shortens all four summaries; scripts and sync protocol remain unchanged, distributed as a new Release preserving 1.0.0.
+
 ### Plugins enabled on installation · 0.9.113 · 2026-10-19
 
 Store downloads and ZIP imports share one confirmation after validating the actual manifest, showing required/current host versions, capabilities and network hosts. Confirmation grants capabilities and enables new installations; same-source updates preserve the existing enabled/disabled choice and private data. Cancellation registers nothing. Newly requested capabilities appear in the same confirmation, without a separate post-install enable step. Installation copy is updated in four languages, adding one key for 1371 total. The published pinyin plugin and its 1.0.0 asset remain unchanged.
@@ -305,6 +313,9 @@ First MSX/platform and Amber/theme examples required host 0.9.44. Original trili
 
 ## 日本語
 
+### プラグインカードと説明 · 0.9.114 / Vita3K 1.0.1 · 2026-10-19
+
+一覧とストアのカードを同じ高さにし、タイトルは一行省略、説明は三行分の領域内でスクロールし、スクロールバーは表示しません。状態や追加操作で高さを変えず、文字拡大時も一緒に調整します。[文言規約](sdk/PLUGIN_PRESENTATION.md)では中国語・日本語のタイトル／説明を 16／48 文字、英語を 32／96 文字以内で推奨し、新しいインストール制限にはしません。Vita3K 1.0.1 は四言語の説明だけを短縮し、スクリプトと同期契約を保持します。1.0.0 を上書きせず新規公開します。
 ### インストール時の自動有効化 · 0.9.113 · 2026-10-19
 
 ストアと ZIP は実際のマニフェストを検証してから一回の確認を共用し、最低・現在のホスト版、必要な機能、通信先を表示します。確認で許可し、新規プラグインを自動で有効にします。同じ配布元の更新は従来の有効・無効の選択と専用データを保持し、取り消した場合は登録しません。追加機能も同じ確認に表示し、インストール後の別途有効化は不要です。四言語の説明を更新し、一項目を追加して各 1371 キーになりました。公開済みのピンイン 1.0.0 と配布ファイルは変更しません。

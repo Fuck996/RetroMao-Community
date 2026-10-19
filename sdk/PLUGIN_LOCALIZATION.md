@@ -4,6 +4,8 @@
 
 [Types](retromao.d.ts) · [Template manifest](../templates/plugin/plugin.json)
 
+[标题与描述长度建议 / Title and summary length guidance / タイトルと説明の長さ](PLUGIN_PRESENTATION.md)
+
 ```javascript
 const {locale, appLocale, defaultLocale, locales, messages} = await retromao.ready;
 document.getElementById("title").textContent = messages.title;

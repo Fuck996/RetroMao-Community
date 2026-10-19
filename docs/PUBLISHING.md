@@ -2,6 +2,8 @@
 
 [中文](#中文) · [English](#english) · [日本語](#日本語)
 
+[插件卡片与文案规范 / Card and copy guidelines / カードと文言の規約](../sdk/PLUGIN_PRESENTATION.md)
+
 ```text
 python tools/retromao.py check extensions/demo-plugin
 git add extensions/demo-plugin

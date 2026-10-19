@@ -7,6 +7,15 @@ const vm = require("node:vm");
 const sdk = fs.readFileSync(path.join(__dirname, "../sdk/runtime/retromao.js"), "utf8");
 const script = fs.readFileSync(path.join(__dirname, "../examples/vita3k-sync/main.js"), "utf8");
 
+test("Vita3K card copy meets the documented recommendations in every language", () => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "../examples/vita3k-sync/plugin.json"), "utf8"));
+  for (const [locale, text] of [[manifest.defaultLocale, manifest], ...Object.entries(manifest.localizations)]) {
+    assert.ok(Array.from(text.name).length <= (locale === "en" ? 32 : 16), locale + " title");
+    assert.ok(Array.from(text.description).length <= (locale === "en" ? 96 : 48), locale + " summary");
+    assert.ok(!text.description.includes("\n"), locale + " summary must be one sentence");
+  }
+});
+
 test("Vita3K resolver runs through the SDK and returns paths without per-file RPC or network", async () => {
   const messages = [];
   const port = { postMessage(raw) { messages.push(JSON.parse(raw)); } };
