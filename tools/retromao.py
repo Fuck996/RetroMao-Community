@@ -11,11 +11,13 @@ import subprocess
 import sys
 import tempfile
 
-from extension_tools import ROOT, archive_limits, read_json, schema_check, validate_platform, validate_plugin, version, write_archive, write_json
+from extension_tools import ROOT, archive_limits, read_json, schema_check, validate_catalog, validate_platform, validate_plugin, version, write_archive, write_json
 import validate_languages
 
 
 def scaffold(args):
+    if not args.name.strip() or not args.author.strip() or len(args.name) > 80 or len(args.author) > 80:
+        raise ValueError("Provide a nonempty name and author, each at most 80 characters")
     if args.kind == "language":
         if not validate_languages.LOCALE.fullmatch(args.id) or args.id == "zh-Hans":
             raise ValueError("Use a supported BCP 47 locale other than zh-Hans")
@@ -33,7 +35,10 @@ def scaffold(args):
             raise ValueError(f"Already exists: {target}")
         if not re.fullmatch(r"[a-z][a-z0-9._-]{1,60}", args.id):
             raise ValueError("Use a lowercase extension ID")
+        if args.kind == "platform" and not re.fullmatch(r"[a-z][a-z0-9_-]{1,31}", args.id):
+            raise ValueError("Platform IDs use 2–32 lowercase letters, digits, underscores or hyphens")
         shutil.copytree(ROOT / "templates" / args.kind, target)
+        shutil.copyfile(ROOT / "templates/release-notes.md", target / "RELEASE_NOTES.md")
         if args.kind == "plugin":
             manifest = read_json(target / "plugin.json")
             manifest.update(id=args.id, name=args.name, author=args.author)
@@ -106,6 +111,9 @@ def publish(args):
     origin = command("git", "remote", "get-url", "origin").removesuffix(".git")
     if origin not in (f"https://github.com/{args.repository}", f"git@github.com:{args.repository}"):
         raise ValueError("--repository must match this checkout's origin")
+    default_branch = command("gh", "api", f"repos/{args.repository}", "--jq", ".default_branch")
+    if branch != default_branch:
+        raise ValueError("Publish catalogs from the repository default branch")
     remote = command("git", "ls-remote", "origin", f"refs/heads/{branch}").split()
     if not remote or remote[0] != head:
         raise ValueError("Push this exact source commit before publishing")
@@ -121,6 +129,8 @@ def publish(args):
     notes = Path(args.notes).read_text(encoding="utf-8")
     if not all(marker in notes for marker in ("## 中文", "## English", "## 日本語")):
         raise ValueError("Release notes require 中文 / English / 日本語 sections")
+    if notes == (ROOT / "templates/release-notes.md").read_text(encoding="utf-8"):
+        raise ValueError("Replace the release-note template with actual changes and acceptance results")
     command("gh", "release", "create", args.tag, str(archive), "--repo", args.repository,
             "--target", head, "--title", f"{entry['id']} {entry['version']}", "--notes-file", args.notes)
     with tempfile.TemporaryDirectory(prefix="retromao-release-") as directory:
@@ -138,6 +148,14 @@ def publish(args):
 def check_repository():
     index = validate_languages.validate(ROOT / "languages")
     validate_languages.check_index(ROOT / "languages", index)
+    for language in (ROOT / "languages").glob("*.json"):
+        if language.name != "index.json":
+            schema_check(read_json(language), "language")
+    context = read_json(ROOT / "contracts/message-context.json")
+    if context["catalog_version"] != index["catalog_version"] or context["catalog_hash"] != index["catalog_hash"] or set(context["messages"]) != set(read_json(ROOT / "languages/zh-Hans.json")["messages"]):
+        raise ValueError("Message context differs from the public language baseline")
+    validate_catalog(ROOT / "catalog.json")
+    validate_catalog(ROOT / "plugins/index.json", script=True)
     for schema in (ROOT / "schemas").glob("*.json"):
         from jsonschema import Draft202012Validator
         Draft202012Validator.check_schema(read_json(schema))
@@ -147,10 +165,13 @@ def check_repository():
         for manifest in sorted(folder.glob("*/platform.json")):
             check_source(manifest.parent)
     for folder in (ROOT / "examples").iterdir():
-        if (folder / "plugin.json").exists() and (folder / read_json(folder / "plugin.json").get("entryPoint", "")).is_file():
+        if (folder / "plugin.json").exists() and folder.name not in ("favorites-sync", "recent-sync"):
             validate_plugin(folder)
         if (folder / "platform.json").exists():
             validate_platform(folder)
+    from build_sync_examples import build_examples
+    with tempfile.TemporaryDirectory(prefix="retromao-shared-check-") as directory:
+        build_examples(Path(directory), "validation")
     from check_docs import check_docs
     check_docs()
     print(f"OK: {len(index['languages'])} languages, package templates, examples, schemas and trilingual documents")

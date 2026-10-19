@@ -1,55 +1,46 @@
-# 收藏与最近游戏同步示例
+# 收藏与最近记录同步 / Favorites and recent sync / お気に入りと履歴の同期
 
-已发布 **1.0.4 / 主程序 0.9.96**：网盘选择移入独立的 CONFIGURATION 页面，启用开关、授权与卸载由宿主统一提供。配置时不需要启用插件，也不执行同步。业务页只展示所选网盘、同步进度与结果，沿用原 `data.destination` 和同步算法。商店与下列下载链接已更新至 1.0.4，旧版 Release 保留。
-
-两个独立插件，作者 **4NPC**，当前版本 **1.0.4**，最低主程序 **0.9.96**：
-
-- `org.retromao.favorites-sync`：收藏同步。
-- `org.retromao.recent-sync`：最近游戏记录同步。
-
-分别安装、启停、配置、运行和卸载。各自页面提供网盘选择、同步、进度、取消和结果；网盘选择来自宿主已配置的连接，支持 WebDAV、百度及已注册的原生渠道，不让脚本读取账号密码。不会自动在游戏启动时同步。
-
-## 匹配与合并
-
-同一机种内，**游戏名逐字一致，完整 ROM 文件名集合一致**才匹配。比较包含扩展名，大小写保持原样；忽略文件所在目录及集合顺序，保留集合中的全部文件。任一名称不同、缺少或多出一个文件均视为不同游戏。不访问 ROM 文件、不比较 MD5、不使用设备本地游戏 ID 做跨设备匹配。一条多 ROM 游戏只产生一条远端记录。
-
-收藏首次同步合并两端收藏。此后用本机上次成功应用的收藏状态判断本机新增／取消，未改变时接受远端状态。远端保留明确的取消状态，避免另一设备重新恢复收藏。两个设备都在上次同步后修改同一收藏时，当前发起同步的本机改动优先。只改本机实际有变化的记录，不删除无法匹配的远端记录。
-
-最近记录保留两端较新的游玩时间，游玩次数和已导入时长取较大值，不直接累加。它提供最近列表同步，不承诺跨设备总次数、总时长的加总；清空本机最近列表不会清除另一端历史。游玩期间记录发生改变时沿用公共编辑接口的并发检查，停止本次编辑并保留新记录，用户下次手动同步即可合并；不会阻止启动游戏。
-
-## 存储与成本
-
-每个机种一份 JSON，放在连接配置的应用根目录下：
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
 ```text
-<应用根目录>/plugins/<插件来源仓库或 local>/<插件 ID>/<机种 ID>.json
+python tools/build_sync_examples.py --release-tag sync-examples-1.0.4
+node --test tools/test_sync_examples.cjs tools/test_script_sdk.cjs
 ```
 
-未单独设置应用根目录的旧连接使用 `RemoteDirectories.defaults` 的 `RetroMao`。本地 ZIP 与商店安装属于不同来源；多设备应使用相同安装来源。不同仓库、插件、网盘账号、根目录相互隔离。本机同步基线以存储 scope 分开保留，切回原连接可继续使用。
+[Published 1.0.4](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4) · [SDK](../sdk/README.md)
 
-- 本机游戏记录按 200 项分页读已有数据库，不扫盘，不获取媒体正文，不触发存档或 ROM 同步。
-- 每轮每个本机已有机种读取该插件的一份记录文件；建立查找表后在内存中合并。未拥有的机种不请求、不改写。
-- 有变化的机种只提交一次 JSON；无变化不上传。JSON 最大 384 KiB，超限明确失败，不截断记录。
-- WebDAV 有强 ETag 时，正常已有文档为一次 GET、变化时一次条件 PUT；没有可用条件版本而使用既有短锁时，在锁内额外读取该文档一次核对。
-- 百度通过原渠道列目录、获取下载地址、下载正文和上传回执；同轮文档共享客户端、父目录分页与请求额度。写前版本检查沿用渠道实现，不逐游戏查文件，不创建探针。
-- 第一次创建记录目录时创建必要父目录，同轮复用；已有文档不会再创建目录。
-- 本机编辑按最多 200 项短事务提交，收藏基线与该批游戏修改原子提交。取消保留已完成批次，不自动重放；重新手动运行继续合并。
+## 中文
 
-百度现有接口不提供跨设备的原子条件写，示例不增加新的分布式锁或事务协议。并发能力与宿主原渠道相同，不宣称支持两个设备同时覆盖同一文档的强一致提交。
+4NPC 的 org.retromao.favorites-sync 与 org.retromao.recent-sync 为独立插件，公开版 1.0.4，最低宿主 0.9.96。各自安装、启用、授权、配置和卸载。CONFIGURATION 页选择已配置网盘，业务页执行同步、展示进度、结果和取消；配置保存到原 data.destination，不复制配置。不会在游戏启动时自动运行。
 
-## 开发和安装
+只匹配同平台、逐字相同游戏名和完整 ROM 文件名集合；扩展名和大小写保留，忽略目录和集合顺序，不读 ROM、不比较哈希、不用本机 ID 跨端匹配。多 ROM 游戏仍只有一条远端记录，无法匹配的远端条目保留。
 
-两份清单、模式和图标位于 `favorites-sync/`、`recent-sync/`；共享的合并逻辑、四语页面位于 `activity-sync-shared/`。共同源只在打包时合入，每个 ZIP 都能独立安装运行，不依赖另一个插件。
+收藏首次合并双方收藏；之后用上次成功基线识别本机变化，本机未改则接受远端。同一记录两边都修改时当前发起端优先，明确取消状态防止被另一端恢复。最近记录取较新的游玩时间、较大的次数和时长，不累加，不承诺跨端总量；清空本机最近列表不清除远端历史。游戏期间并发变化由 expected 拒绝，用户下一次手动同步再合并。
 
-```text
-python community/tools/build_sync_examples.py --release-tag sync-examples-1.0.4
-node --test community/tools/test_sync_examples.cjs community/tools/test_script_sdk.cjs
-```
+每机种一份 JSON 位于应用根/plugins/<来源仓库或local>/<插件ID>/<机种ID>.json，最大 384 KiB。来源、账号、根目录和插件互相隔离，两端应使用同一安装来源。本机记录每页 200，每轮每机种读取一份文档，仅有变化时写一次。WebDAV 用条件写或原短锁；百度复用原目录分页、上传回执和额度，不额外探针，也不承诺跨端原子覆盖。收藏基线与每批本机修改原子提交；取消保留已完成批次。
 
-打包脚本调用现有 `build_script_plugin.build`，输出到 `community/dist/`。在插件 → 已安装中导入两个 ZIP，分别进入配置选择网盘并启用，再打开业务页面同步。第二台设备同样配置后手动同步。旧的 0.9.90 APK 缺少 `STORAGE` 和轻量记录接口，需要先升级主程序。
+清单位于各自目录，共同代码在 activity-sync-shared，打包时合并成独立 ZIP，因此不能直接打包未组装的 favorites-sync 目录。下方工具复用公共打包器，输出到 dist；测试不调用真实网盘。先在插件的已安装页导入 ZIP，再配置并启用，两端手动同步。旧 1.0.1／1.0.2／1.0.3 Release 保留，分别对应旧宿主能力；不可覆盖。实际原生引擎与真实网盘必须单独验收。
 
-两个插件 **1.0.4** 已[公开发布](https://github.com/Fuck996/RetroMao-Community/releases/tag/sync-examples-1.0.4)并加入 `plugins/index.json`，0.9.96 可直接在商店下载安装。两个公开 ZIP 均已通过匿名下载、大小、SHA-256 与清单核对。真实 Android JavaScriptSandbox/WebView 与实际网盘验收仍待进行，模拟接口测试不代表已验证真实服务。后续仍须先发布 ZIP，再更新商店目录，不覆盖已发布的同版本资产。
+## English
 
-**1.0.2** 补齐四语商店与宿主文字，沿用既有同步规则。同来源更新保留配置和私有数据；旧版 **1.0.1** Release 保留，供 0.9.91–0.9.93 用户手动下载。
+4NPC's org.retromao.favorites-sync and org.retromao.recent-sync are independent plugins, published as 1.0.4 for host 0.9.96+. Install, enable, grant permissions, configure and uninstall each separately. CONFIGURATION selects an existing cloud connection; business pages run sync and show progress, results and cancellation. Settings stay in existing data.destination, without a duplicate configuration store. Game launch does not run them automatically.
 
-**1.0.3** 补充 `configurationPage: "sync"`，将现有网盘选择页面声明为配置入口，需要主程序 **0.9.95**。卡片“配置”按声明直接进入同一页面，网盘选择仍保存在原私有数据的 `destination`，不新增配置副本或迁移；原打开入口和同步算法不变。旧版 1.0.2 Release 保留，供主程序 0.9.94 用户手动下载。
+Match only the same platform, exact title and complete ROM filename set. Preserve extensions/case, ignore directory/set order, never read ROMs, compare hashes or use local IDs across devices. Multi-ROM games still produce one remote record. Preserve unmatched remote records.
+
+The first favorite sync merges both sides. Later syncs compare the last successful local baseline: unchanged local state accepts remote state; when both sides changed, the initiating device wins. Explicit removals prevent resurrection. Recent sync takes the newer time and larger count/duration, never sums them or promises cross-device totals. Clearing local recents does not erase remote history. expected rejects concurrent play updates; a later manual sync merges them.
+
+One JSON per platform lives under the app root/plugins/<origin-or-local>/<pluginID>/<platformID>.json, up to 384 KiB. Separate origins, accounts, roots and plugins; both devices should use the same installation origin. Read local records in pages of 200 and one document per owned platform per round; write once only when changed. WebDAV uses conditional writes/existing short leases; Baidu reuses directory pages, receipts and budgets without extra probes or cross-device atomic-overwrite guarantees. Favorite baselines commit atomically with local batches. Cancellation retains completed batches.
+
+Each plugin has its own manifest; shared code is in activity-sync-shared and is assembled into independent ZIPs. Do not package the unassembled favorites-sync directory directly. The tools below reuse the public builder and write dist; tests do not call real cloud services. Import under Installed Plugins, configure and enable, then manually sync both devices. Keep old 1.0.1/1.0.2/1.0.3 Releases for older host capabilities; never overwrite them. Native-engine and real-cloud acceptance remain separate.
+
+## 日本語
+
+4NPC の org.retromao.favorites-sync と org.retromao.recent-sync は独立したプラグインです。公開版は 1.0.4、最低ホストは 0.9.96 です。個別にインストール、有効化、権限許可、設定、削除を行います。CONFIGURATION ページは既存のクラウドを選択し、業務ページは同期、進捗、結果、キャンセルを扱います。設定は既存の data.destination に保持し、複製しません。ゲーム起動時には自動実行しません。
+
+同じ機種、完全一致するゲーム名、完全な ROM ファイル名の集合だけを照合します。拡張子と大小文字は保持し、ディレクトリと集合順序は無視します。ROM の読み取り、ハッシュ比較、端末 ID による端末間照合は行いません。複数 ROM でも一つのリモート記録とし、一致しない記録を残します。
+
+初回は両端のお気に入りを統合します。以後は最後の成功時のローカル基準と比較し、未変更ならリモートを採用し、両方が変更した場合は開始端末を優先します。解除を明示して再登録を防ぎます。最近の記録は新しい時刻、大きい回数と時間を採用し、加算や端末間合計は保証しません。ローカル履歴の消去はリモート履歴を消しません。プレイ中の変更は expected で拒否し、次の手動同期で統合します。
+
+機種ごとの JSON をアプリルート/plugins/<origin-or-local>/<pluginID>/<platformID>.json に保存し、最大 384 KiB です。配布元、アカウント、ルート、プラグインは分離し、両端で同じ配布元を使用してください。ローカルは 200 件ずつ読み、毎回所有する機種ごとに一つの文書を読み取って、変更時だけ一度書き込みます。WebDAV は条件付き書き込みまたは既存の短いロック、百度は既存のページ結果、応答、予算を使います。追加の書き込み試験や端末間の原子的上書きは保証しません。お気に入りの基準とローカルのバッチを同時に保存し、キャンセル後も完了分は残します。
+
+各プラグインのマニフェストと activity-sync-shared の共通コードを組み合わせ、独立 ZIP を作成します。未組み立ての favorites-sync を直接パックしないでください。下のツールは公開ビルダーを使い、dist に出力します。テストは実クラウドに接続しません。インストール済みページで ZIP を読み込み、設定して有効にし、両端で手動同期します。旧ホスト向けの 1.0.1／1.0.2／1.0.3 Release は残して上書きしません。ネイティブエンジンと実クラウドの検証は別途必要です。

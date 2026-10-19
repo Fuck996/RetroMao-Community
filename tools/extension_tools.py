@@ -159,6 +159,8 @@ def validate_platform(source):
     manifest = read_json(required_file(source, "platform.json", 1024 * 1024))
     schema_check(manifest, "platform")
     platform = manifest["platform"]
+    if any(not value.strip() for value in [platform["name"], manifest["manufacturer"], *platform["aliases"]]):
+        raise ValueError("Platform names, manufacturer and aliases cannot be blank")
     known = read_json(ROOT / "contracts/host.json")["platforms"]
     names = {name.lower() for row in known for name in [row["name"], *row["aliases"]]}
     if platform["id"] in {row["id"] for row in known} or any(name.lower() in names for name in [platform["name"], *platform["aliases"]]):
@@ -166,6 +168,8 @@ def validate_platform(source):
     unique_ids(manifest.get("launchers", []), "launcher")
     for launcher in manifest.get("launchers", []):
         unique_ids(launcher.get("cores", []), "core")
+        if not launcher["name"].strip() or any(not core["name"].strip() for core in launcher.get("cores", [])):
+            raise ValueError("Launcher and core names cannot be blank")
     for value in manifest.get("assets", {}).values():
         path = required_file(source, value, 8 * 1024 * 1024)
         if path.suffix.lower() not in (".png", ".webp"):
@@ -191,3 +195,25 @@ def write_archive(source, target, files):
             archive.writestr(entry, path.read_bytes(), compresslevel=9)
     content = target.read_bytes()
     return {"fileName": target.name, "sizeBytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
+
+
+def validate_catalog(path, script=False):
+    catalog = read_json(path)
+    schema_check(catalog, "catalog")
+    identities = [(entry["kind"], entry["id"]) for entry in catalog["entries"]]
+    if len(identities) != len(set(identities)):
+        raise ValueError(f"Duplicate catalog identity: {path}")
+    for entry in catalog["entries"]:
+        if (entry["kind"] == "SCRIPT") != script:
+            raise ValueError("Script packages must use plugins/index.json")
+        if entry["kind"] == "SCRIPT" and not entry["author"].strip():
+            raise ValueError("Script catalog entries require an author")
+        if entry["kind"] == "THEME" and not entry.get("previewPath"):
+            raise ValueError("Theme entries require previewPath")
+        if entry.get("previewPath"):
+            image_path = required_file(ROOT, entry["previewPath"], 8 * 1024 * 1024)
+            with Image.open(image_path) as image:
+                if image.format not in ("PNG", "WEBP") or entry["kind"] == "THEME" and image.size != (1280, 720):
+                    raise ValueError("Invalid catalog preview")
+                image.verify()
+    return catalog

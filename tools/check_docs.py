@@ -1,6 +1,5 @@
 """Check public document coverage, executable examples and local links."""
 
-import json
 from pathlib import Path
 import re
 
@@ -12,7 +11,7 @@ def fenced(text):
 
 
 def check_docs():
-    documents = [path for path in ROOT.rglob("*.md") if not any(part in {".git", ".venv", "node_modules", "dist", "reports", "work", "extensions"} for part in path.relative_to(ROOT).parts)]
+    documents = [path for path in ROOT.rglob("*.md") if not any(part in {".git", ".venv", "node_modules", "dist", "reports", "work"} for part in path.relative_to(ROOT).parts)]
     parallel = {"README.md", "README.en.md", "README.ja.md"}
     readmes = [(ROOT / name).read_text(encoding="utf-8") for name in ("README.md", "README.en.md", "README.ja.md")]
     if not all(fenced(text) == fenced(readmes[0]) for text in readmes):

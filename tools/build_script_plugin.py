@@ -3,12 +3,10 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import re
 from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile
-from extension_tools import read_json, validate_plugin, package_files, write_archive, write_json
+from extension_tools import validate_plugin, package_files, write_archive
 
 
 def validate_localizations(manifest: dict) -> None:
@@ -61,42 +59,11 @@ def validate_localizations(manifest: dict) -> None:
 
 def build(source: Path, output: Path, release_tag: str) -> dict:
     manifest = validate_plugin(source)
-    validate_localizations(manifest)
-    configuration_page = manifest.get("configurationPage")
-    pages = manifest.get("pages", [])
-    minimum = tuple(map(int, manifest["minAppVersion"].split(".")))
-    providers = manifest.get("resourceProviders", [])
-    if providers:
-        if minimum < (0, 9, 98) or not manifest.get("entryPoint") or "ROM_RESOURCES" not in manifest.get("capabilities", []):
-            raise ValueError("ROM resource providers require an entry point, ROM_RESOURCES and app 0.9.98")
-        settings = {setting["id"]: setting for setting in manifest.get("settings", [])}
-        if len({provider["id"] for provider in providers}) != len(providers):
-            raise ValueError("Duplicate ROM resource provider")
-        for provider in providers:
-            if settings.get(provider["directorySetting"], {}).get("kind") != "DIRECTORY":
-                raise ValueError("ROM resource providers require a directory setting")
-            if provider.get("formatVersion", 1) != 1:
-                raise ValueError("Unsupported ROM resource format")
-    if any(page.get("kind", "BUSINESS") not in ("BUSINESS", "CONFIGURATION") for page in pages):
-        raise ValueError("Invalid plugin page kind")
-    if any(page.get("kind") == "CONFIGURATION" and (page["id"] != configuration_page or minimum < (0, 9, 96)) for page in pages):
-        raise ValueError("Configuration pages require their declared entry and minAppVersion 0.9.96 or later")
-    if configuration_page is not None:
-        if not isinstance(configuration_page, str) or configuration_page not in {page["id"] for page in manifest.get("pages", [])}:
-            raise ValueError("configurationPage must reference a declared page")
-        if minimum < (0, 9, 95):
-            raise ValueError("configurationPage requires minAppVersion 0.9.95 or later")
-        config = next(page for page in pages if page["id"] == configuration_page)
-        if minimum >= (0, 9, 96) and config.get("kind") != "CONFIGURATION":
-            raise ValueError("Declare configurationPage as a dedicated CONFIGURATION page")
-        if config.get("kind") == "CONFIGURATION" and any(page.get("kind", "BUSINESS") == "BUSINESS" and page["path"] == config["path"] for page in pages):
-            raise ValueError("Configuration and business pages must use different files")
+    if not re.fullmatch(r"[a-zA-Z0-9._-]{1,80}", release_tag):
+        raise ValueError("Invalid Release tag")
     output.mkdir(parents=True, exist_ok=True)
     name = f"plugin-{manifest['id']}-{manifest['version']}.zip"
     target = output / name
-    files = sorted(path for path in source.rglob("*") if path.is_file())
-    if any(path.is_symlink() for path in files):
-        raise ValueError("Plugin packages must not contain symbolic links")
     integrity = write_archive(source, target, package_files(source))
     entry = {key: manifest[key] for key in ("id", "name", "author", "version", "minAppVersion")}
     entry["description"] = manifest.get("description", "")

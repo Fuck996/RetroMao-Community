@@ -1,67 +1,34 @@
-# 插件多语言
+# 插件多语言 / Plugin localization / プラグインの多言語化
 
-从 0.9.94 起，插件可在自己的 `plugin.json` 中声明语言。作者维护译文，宿主不自动翻译，也不为切换语言下载附加文件。
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-## 默认语言与必备语言
-
-- 发布时显式填写 `defaultLocale`。原有 `name`、`description`、页面、动作和配置字段的文字就是默认语言，不在 `localizations` 中重复填写默认语言。
-- `localizations` 填写其他语言，使用 `zh-Hans`、`zh-Hant`、`en`、`ja` 等语言标识。最多支持 32 种语言，包含默认语言。
-- **必须包含复古猫系统默认语言 `zh-Hans`。** 默认语言为英语等其他语言时，必须提供完整的 `zh-Hans` 译文。
-- 用户当前语言有对应译文时使用该语言，没有时使用插件的 `defaultLocale`。插件默认语言不随复古猫默认语言改变。
-- 已发布旧插件仍按原有基础文字显示，不因缺少新字段拒绝安装。新的发布工具要求显式声明默认语言。
-- 使用多语言元数据或 `ready.messages` 的新包须将 `minAppVersion` 设为 `0.9.94` 或更高，避免旧 APK 安装时忽略并丢弃这些字段；旧插件不需要额外扫描或迁移。
-
-## 清单示例
-
-```json
-{
-  "id": "example.localized",
-  "name": "Example plugin",
-  "description": "A localized example",
-  "author": "4NPC",
-  "version": "1.0.0",
-  "minAppVersion": "0.9.94",
-  "defaultLocale": "en",
-  "pages": [{"id": "main", "title": "Home", "path": "index.html"}],
-  "messages": {"hint": "Choose a game"},
-  "localizations": {
-    "zh-Hans": {
-      "name": "示例插件",
-      "description": "多语言示例",
-      "pages": {"main": "主页"},
-      "messages": {"hint": "选择游戏"}
-    }
-  }
-}
-```
-
-每个译文对象可包含：
-
-| 字段 | 内容 |
-| --- | --- |
-| `name`、`description` | 插件名称与说明；商店和卡片使用 |
-| `pages` | 页面 ID → 标题 |
-| `actions` | 动作 ID → `{ "title": "标题", "description": "说明" }` |
-| `settings` | 配置 ID → `{ "label": "名称", "options": { "选项值": "显示文字" } }` |
-| `messages` | 插件自定义消息键 → 文字，供页面和脚本自行使用 |
-
-页面、动作、配置、选项与自定义消息的键须与基础语言一致，不能通过翻译重命名业务 ID、配置键、选项值、资源路径、作者署名或版本。每种语言必须提供全部已有页面、动作和配置文字；没有对应功能的字典可以省略。每种语言的自定义消息最多 1000 项、256 KiB。
-
-## 页面与脚本
-
-已有 `retromao.ready` 提供一次会话的语言环境：
+[Types](retromao.d.ts) · [Template manifest](../templates/plugin/plugin.json)
 
 ```javascript
 const {locale, appLocale, defaultLocale, locales, messages} = await retromao.ready;
-document.getElementById("hint").textContent = messages.hint;
+document.getElementById("title").textContent = messages.title;
 ```
 
-`locale` 是插件实际选中的语言；`appLocale` 是用户设置的复古猫语言；`defaultLocale` 是插件默认语言；`locales` 是插件声明的语言集合。用户选择日语而上述插件只有英语和简中时，`locale` 为 `en`、`appLocale` 为 `ja`。
+## 中文
 
-页面和脚本自行完成显示、插值、复数、日期及数字格式处理。宿主将选中语言的 `messages` 随 `ready` 返回，不为每条消息调用 RPC；也可以只声明语言和宿主文字，将页面译文保存在插件自己的脚本中。
+最低宿主 0.9.94。defaultLocale 必须显式声明；基础 name、description、pages、actions、settings、messages 就是默认语言，不在 localizations 重复。其他语言最多 31 个，必须包含简中 zh-Hans。用户语言没有对应项时使用插件默认语言，不请求自动翻译。
 
-## 打包与更新
+每种译文的页面、动作、配置、选项、消息键必须与基础语言一致，不能改业务 ID、配置键、作者、版本或路径。messages 最多 1000 项、256 KiB，每条最多 16000 字符。ready 一次返回 locale、appLocale、defaultLocale、locales 和 messages；locale 是实际选择，appLocale 是应用设置。页面自行处理插值、复数、日期与数字，不为每条消息调用 RPC。
 
-`tools/build_script_plugin.py` 在生成 ZIP 前检查默认语言、简中必备项及译文键，并将商店所需的名称与说明写入同一条目录记录。完整译文和自定义消息保留在 ZIP 中，不把整份业务消息表塞进商店目录。安装时沿用现有整包摘要与清单核对。
+工具检查全部语言与最低版本，并只把名称和简介放入商店索引，完整文字留在 ZIP。译文变化同样递增扩展版本；配置与私有数据不因此迁移或清除。文档和模板必须同时提供中英日说明，插件自身可按声明支持更多语言。
 
-修改译文也须递增插件版本，按原来源发布新 ZIP 和目录条目。语言变化只影响展示，不迁移或清空配置与私有数据。两个同步示例从 1.0.2 起补齐四语宿主文字，沿用原有四语业务页面；当前商店为 1.0.3，增加配置页声明，需要主程序 0.9.95，旧版 Release 与资产保留。
+## English
+
+Requires host 0.9.94. Declare defaultLocale explicitly. Base name, description, pages, actions, settings and messages form that language; do not repeat it in localizations. Up to 31 additional locales are allowed, and zh-Hans is required. If the app language is unavailable, use the plugin default without automatic translation requests.
+
+Translated page/action/setting/choice/message keys must exactly match the base language. Do not translate IDs, setting keys, author, versions or paths. messages has up to 1000 entries, 256 KiB total and 16000 characters per value. ready returns locale, appLocale, defaultLocale, locales and messages together. locale is the selected plugin language; appLocale is the app preference. Pages handle interpolation, plurals, dates and numbers without per-message RPC.
+
+Tools check locales and minimum versions. Store indexes contain only names/descriptions; full text stays in ZIPs. Translation changes also increment extension versions and do not migrate/clear private data or configuration. Documentation/templates need Chinese, English and Japanese explanations; plugins can declare additional languages.
+
+## 日本語
+
+ホスト 0.9.94 が必要です。defaultLocale を明示してください。基本の name、description、pages、actions、settings、messages が既定言語で、localizations に重複して記載しません。追加言語は最大 31 個で、zh-Hans が必須です。アプリの言語がない場合はプラグインの既定言語を使い、自動翻訳を要求しません。
+
+翻訳されたページ、動作、設定、選択肢、メッセージのキーは基本言語と一致させます。ID、設定キー、作者、バージョン、パスは翻訳しません。messages は最大 1000 項目、合計 256 KiB、各値 16000 文字です。ready は locale、appLocale、defaultLocale、locales、messages をまとめて返します。locale は実際のプラグイン言語、appLocale はアプリの設定です。ページ側で引数展開、複数形、日付、数値を処理し、文章ごとの RPC は行いません。
+
+ツールは言語と最低バージョンを検査します。ストア索引には名称と説明だけを保存し、全文は ZIP 内に残します。翻訳の変更でも拡張のバージョンを上げますが、設定や専用データの移行・消去はしません。文書とテンプレートには中国語、英語、日本語の説明が必要です。プラグイン自体は追加言語も宣言できます。

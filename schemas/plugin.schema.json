@@ -4,7 +4,7 @@
   "required": ["schemaVersion", "apiVersion", "id", "name", "author", "version", "minAppVersion", "defaultLocale"],
   "properties": {
     "schemaVersion": {"const": 1}, "apiVersion": {"const": 1},
-    "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$", "maxLength": 80},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{1,79}$"},
     "name": {"type": "string", "minLength": 1, "maxLength": 80},
     "author": {"type": "string", "minLength": 1, "maxLength": 80},
     "description": {"type": "string", "maxLength": 240},

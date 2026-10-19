@@ -1,5 +1,4 @@
 import copy
-import json
 from pathlib import Path
 import shutil
 import tempfile
@@ -85,6 +84,18 @@ class ToolkitTest(unittest.TestCase):
             if language.name != "index.json":
                 schema_check(read_json(language), "language")
 
+    def test_public_platform_corpus_matches_host_acceptance(self):
+        source = self.root / "corpus"
+        source.mkdir()
+        for case in read_json(ROOT / "contracts/platform-cases.json"):
+            write_json(source / "platform.json", case["manifest"])
+            with self.subTest(case=case["name"]):
+                if case["valid"]:
+                    validate_platform(source)
+                else:
+                    with self.assertRaises(ValueError):
+                        validate_platform(source)
+
     def test_publish_stops_before_side_effects_when_source_is_dirty(self):
         import argparse
         args = argparse.Namespace(source=str(ROOT / "templates/plugin"), repository="owner/repo", tag="test", notes="templates/release-notes.md")
@@ -92,6 +103,50 @@ class ToolkitTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 retromao.publish(args)
             self.assertEqual(1, command.call_count)
+
+    def test_publish_verifies_remote_bytes_before_changing_the_catalog(self):
+        import argparse
+        release_root = self.root / "release-repo"
+        shutil.copytree(self.plugin, release_root / "extensions/demo")
+        shutil.copytree(ROOT / "templates", release_root / "templates")
+        (release_root / "plugins").mkdir()
+        write_json(release_root / "plugins/index.json", {"schemaVersion": 1, "entries": []})
+        notes = release_root / "notes.md"
+        notes.write_text("## 中文\n实际变更\n## English\nActual changes\n## 日本語\n変更内容\n", encoding="utf-8")
+        args = argparse.Namespace(source=str(release_root / "extensions/demo"), repository="owner/repo", tag="demo-1.0.0", notes=str(notes))
+        calls = []
+        corrupt = False
+        def command(*arguments, **_):
+            calls.append(arguments)
+            if arguments[:3] == ("git", "status", "--porcelain"):
+                return ""
+            if arguments[:3] == ("git", "rev-parse", "HEAD"):
+                return "a" * 40
+            if arguments[:3] == ("git", "branch", "--show-current"):
+                return "main"
+            if arguments[:3] == ("git", "remote", "get-url"):
+                return "https://github.com/owner/repo.git"
+            if arguments[:2] == ("git", "ls-remote"):
+                return "a" * 40 + " refs/heads/main"
+            if arguments[:2] == ("gh", "api"):
+                return "main"
+            if arguments[:3] == ("gh", "release", "download"):
+                destination = Path(arguments[arguments.index("--dir") + 1])
+                archive = next((release_root / "dist").glob("*.zip"))
+                (destination / archive.name).write_bytes(b"corrupt" if corrupt else archive.read_bytes())
+            return ""
+        with patch.object(retromao, "ROOT", release_root), patch.object(retromao, "command", side_effect=command):
+            corrupt = True
+            with self.assertRaises(ValueError):
+                retromao.publish(args)
+            self.assertEqual([], read_json(release_root / "plugins/index.json")["entries"])
+            corrupt = False
+            retromao.publish(args)
+            self.assertEqual(1, len(read_json(release_root / "plugins/index.json")["entries"]))
+            prior_calls = len(calls)
+            with self.assertRaises(ValueError):
+                retromao.publish(args)
+            self.assertFalse(any(call[:3] == ("gh", "release", "create") for call in calls[prior_calls:]))
 
     def test_preview_serves_actual_sdk_blocks_traversal_and_closes_its_port(self):
         server = make_server(self.plugin, 0, ROOT / "tools/preview/fixtures.json")

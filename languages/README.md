@@ -1,43 +1,49 @@
-# 复古猫语言贡献
+# 语言贡献 / Language contributions / 言語の追加
 
-每种语言独立维护一个 UTF-8、LF 换行的 JSON 文件：`zh-Hans.json`、`zh-Hant.json`、`en.json`、`ja.json`。新增语言可添加 `fr.json`、`de.json`、`pt-BR.json` 等文件，不需要改其他语言。仓库 `.gitattributes` 固定语言 JSON 的 LF 换行，大小与 SHA-256 按实际下载字节计算。
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-当前文案基线包含 1304 条消息，补齐插件、更新管理、手柄提示样式、ROM 资源授权与顶部菜单样式所需键；已有译文保持不变。英文、繁中、日语均已补齐，保留兼容的 draft 元数据。繁中采用台湾常用 UI 用詞；日语面向日本市场，短标签简洁，说明采用「です・ます」。null 明确表示未翻译。四语从 0.9.87 起随 APK 内置；内容完整并匹配应用文案版本的语言包即可安装，无人工审核步骤。
+[Language schema](../schemas/language.schema.json) · [Context](../contracts/message-context.json)
 
-## 如何贡献
+```text
+python tools/retromao.py init language --id fr --name Français --author YourName
+python tools/validate_languages.py --write-index
+python tools/validate_languages.py
+python tools/retromao.py preview languages/fr.json
+python tools/validate_languages.py --require-complete --locale fr
+```
 
-1. Fork 仓库，在所需语言文件的 messages 中填译文。新增语言时复制现有语言文件，将 messages 的值置为 null，修改 locale、name 和文件名，保持 status=draft。locale 使用 BCP 47 的语言／脚本／地区形式，name 使用该语言自己的名称。
-2. 对照 `zh-Hans.json` 的原句及实际应用界面。保留 key、数字参数和受保护名称；`%1$s` 等参数可调顺序，不可增删或改变类型。不把中文当作已完成译文，不为省事删除 null 条目。
-3. 英语、日语按具体界面精简，保留动作、方向、状态及存档类型。不要自行改中文，也不要把原／新目录写成本机／云端；上下文不清楚的句子在 PR 中提出疑问。
-4. 修改一份语言文件后，在仓库根目录运行 `python tools/validate_languages.py --write-index`，再运行 `python tools/validate_languages.py`。PR 包含所改语言及生成的 index.json，说明语言、译者和完成范围。CI 接受保留 null 的草稿，但拒绝重复／缺失／未知 key、参数错误、目录版本不兼容、受保护名称丢失及索引与文件不一致。
-5. 译文完整后重新生成索引，无需人工审核或更改 status；译者和维护者都不手工修改 index.json。发布单语前用 `--require-complete --locale fr` 检查该语言的完整性、署名与格式，其他语言草稿不阻塞它。安装验证使用支持本基线的 APK；0.9.88 起先通过设置首页右下角的仓库按钮配置地址，每行一个，再进入“设置 → 主题与显示 → 语言 → 下载语言”。
+## 中文
 
-保持 catalog_version、catalog_hash 不变，它们关联中文基线。新增功能时由维护者更新基线、补充 key，并重新审阅受影响译文；不能用旧文件静默覆盖新版本。公开仓库是后续译文的唯一维护来源，Android XML 为生成产物。
+每种语言独立一个 UTF-8／LF JSON。用下方命令从当前中文基线创建法语模板；基线版本、摘要和键直接继承，不复制历史的抽取稿。messages 的 null 表示待译。修改已有语言时直接编辑对应 JSON，不重建模板。
 
-## 下载与使用
+catalog_version、catalog_hash 和全部 key 必须保持不变。以 index.json 为准，不把 APK 版本当成语言版本，也不在文档手写消息总数。author 为自己的署名，credits 保留原贡献者，name 使用语言自己的名称。locale 支持语言、可选脚本、可选地区，如 fr、pt-BR、zh-Hant。
 
-英文短标签按界面语境使用：游戏库 Library、游戏资料 Metadata、游戏名称 Title、在线刮削 Scraping、媒体预览 Preview、存档同步 Save sync、网盘与 WebDAV Cloud and WebDAV。完整确认说明仍保留方向、状态、影响对象及存档类型，不把短标签机械套进整句。
+对照中文与 contracts/message-context.json 中的 surfaces、owners、arguments 判断用途；空上下文表示尚未登记，不代表可以猜。保留 %1$s、%1$d 的数量和类型，可调整次序；百分号写 %%；不支持 ICU、无编号参数或新增格式指令。保留 ROM、WebDAV、RetroArch、ScreenScraper 等保护名称，不把中文留作“已完成译文”。句子应完整且符合实际动作、方向和影响对象。
 
-日语按界面语境使用：游戏库「ライブラリ」、游戏名称「タイトル」、游戏资料「情報」、刮削「スクレイピング」、媒体预览「プレビュー」、存档同步「セーブ同期」、原生存档「ゲーム内セーブ」、即时存档「ステートセーブ」。动作与状态区分「再開」「再試行」「復元」；配置移除、实体文件删除和索引记录消除的影响不能混译。
+先生成索引，再运行检查。草稿可保留 null 并进入 PR，但只有全部非空、参数正确、署名完整、基线与 APK 一致的语言才可安装。status 的 source／draft／reviewed 只是兼容元数据，下载不要求人工 reviewed。中文只能用 source，其他语言不能用 source。
 
-可在任意单语言文件页面点击 Raw 下载 JSON，或下载仓库 ZIP 进行编辑。当前草稿不进入应用现有“社区平台／主题”清单，不能用平台或主题导入入口安装。
+语言直接提交 JSON 和生成索引，不使用 ZIP、平台或主题入口，也不需要 Release。安装入口是设置 → 主题与显示 → 语言 → 下载语言；先在设置首页的仓库入口加入 Fork 地址。内置语言可离线使用，跟随系统或手动选择；语言设置只影响应用界面，不改变 ROM 或资料语言。APK 的内置快照由宿主维护者从公开固定提交生成，普通翻译贡献不改 Android XML。
 
-支持多语言的新 APK 在“设置 → 主题与显示 → 语言”中提供手动选择和“跟随系统”。未指定语言时依次匹配系统语言，没有匹配则显示简体中文。手动选择会保存，切回“跟随系统”后重新自动匹配。
+## English
 
-简中、繁中、英语、日语随 APK 内置并可离线使用；其他语言按需下载。安装时核对大小、摘要、文案基线、完整性和参数，成功后保存到应用自己的语言目录；内存只加载当前使用的扩展。失败会显示原因并保留现有安装。语言设置仅改变应用界面，不改变 ROM、游戏资料或媒体的语言。
+Maintain one UTF-8/LF JSON file per language. The commands below create French from the current Chinese baseline, copying its version, hash and keys rather than a historical extraction draft. null messages are untranslated. Edit an existing language JSON directly instead of recreating it.
 
-## English contribution guide
+Preserve catalog_version, catalog_hash and every key. index.json is authoritative. Do not equate the APK version with the language baseline or hand-maintain counts in prose. Set your author name, preserve contributors in credits, and use the language's native name. Supported locale syntax is language, optional script, optional region, such as fr, pt-BR and zh-Hant.
 
-Edit one UTF-8 JSON file per language with LF line endings. Translate messages using `zh-Hans.json` and the app's UI. Preserve keys, numbered placeholders and protected names. Leave unfinished entries as null and keep status=draft. For a new language, copy an existing file, set its message values to null, and change its locale, native name and filename. Run `python tools/validate_languages.py --write-index`, then `python tools/validate_languages.py`. Include the generated index with the language file in your PR. No human review status is required; neither contributors nor maintainers edit index records by hand.
+Use Chinese source and surfaces, owners and arguments in contracts/message-context.json. Empty context means it has not been registered; do not guess. Preserve the count/type of %1$s and %1$d while allowing reordering. Write literal percent as %%. ICU, unnumbered placeholders and additional directives are unsupported. Preserve protected names such as ROM, WebDAV, RetroArch and ScreenScraper. Do not present untranslated Chinese as complete. Keep sentences faithful to the action, direction and affected object.
 
-APK builds with multilingual support include Simplified Chinese, Traditional Chinese, English and Japanese. Choose a language or follow the system under Settings → Theme and display → Language. From 0.9.88, use the icon-only repository button at the bottom right of the Settings home screen to enter public GitHub URLs, one per line, including community forks. Then open Download languages; URLs are not entered on the language page. Complete packs matching the app's catalog can be installed without a human review step; unfinished packs remain available for contributions. Set `author` and preserve contributor attribution in `credits`.
+Generate the index, then run checks. Drafts with null may be contributed, but installation requires all messages, valid arguments, author attribution and an APK-compatible baseline. source/draft/reviewed are compatibility metadata; installation does not require human-reviewed status. Chinese uses source; other languages must not.
 
-## APK 语言扩展接入
+Commit JSON and the generated index directly. Do not use ZIPs, platform/theme import or Releases. Install under Settings → Theme & Display → Language → Download Languages after adding your fork through the Settings repository control. Built-in languages work offline, following the system or manual choice. The preference only changes app UI, not ROM or metadata languages. Host maintainers generate Android XML from a fixed public snapshot; normal translation contributions do not edit it.
 
-当前 APK 文案基线为 1233 个键：在原有 1226 个键上增加 7 条多仓库设置文案。每个仓库只读取本目录的 `index.json`，安装时下载选中的单个语言文件，不需要完整克隆仓库。相同基线、语言和内容摘要的条目合并，其他内容分别列出；不会为了合并清单提前下载所有译稿。
+## 日本語
 
-`catalog_version` 当前仍为 `0.9.86`，它与 `catalog_hash` 共同标识文案兼容基线，不是 APK 的发布版本。APK 升级到 0.9.89 不要求修改这些字段或重新生成未变化的语言索引。
+言語ごとに UTF-8／LF の JSON を管理します。下のコマンドは現在の中国語基準からフランス語を作成し、バージョン、ハッシュ、キーを継承します。古い抽出稿は使いません。null は未翻訳です。既存言語はテンプレートを作り直さず、その JSON を編集してください。
 
-每份语言文件提供 `author` 作者署名和 `credits` 致谢名单。Fork 中由新的维护者修改译文时，请填写自己的署名并在 `credits` 中保留应有的原作者、译者贡献；应用中的来源仓库与作者分别展示。
+catalog_version、catalog_hash、すべてのキーを保持します。index.json を正とし、APK のバージョンを言語基準と同一視したり、文書内で件数を手動管理したりしないでください。author に自分の名前を設定し、credits に元の貢献者を残します。name は対象言語の自称を使います。locale は言語、任意の文字体系、任意の地域で構成し、fr、pt-BR、zh-Hant などに対応します。
 
-用户可输入兼容的公开 GitHub 仓库地址。可安装的扩展应包含全部键、通过参数与保护词检查，无需设置 `status: reviewed`。`status` 保留旧格式元数据，下载不使用它判定是否可用。内置语言直接显示已安装。
+中国語原文と contracts/message-context.json の surfaces、owners、arguments を確認します。空のコンテキストは未登録を意味し、推測してよいという意味ではありません。%1$s と %1$d は数と型を維持し、順序だけ変更できます。パーセント記号は %% と書きます。ICU、番号なしの引数、追加の書式指定は未対応です。ROM、WebDAV、RetroArch、ScreenScraper などの保護名称を保持してください。未翻訳の中国語を完成扱いにせず、動作、方向、対象に合った完全な文にしてください。
+
+索引を生成してから検査します。null を含む草稿も投稿できますが、インストールには全項目の翻訳、正しい引数、作者名、APK と一致する基準が必要です。source／draft／reviewed は互換性メタデータであり、人による reviewed 状態は不要です。中国語だけが source を使用し、他の言語は使用できません。
+
+JSON と生成した索引を直接コミットします。ZIP、プラットフォームやテーマのインポート、Release は使いません。設定のリポジトリ項目に Fork を追加し、「設定 → テーマと表示 → 言語 → 言語をダウンロード」でインストールします。内蔵言語はオフラインで利用でき、システム追従または手動選択が可能です。設定が変えるのはアプリの UI だけで、ROM や資料の言語は変更しません。Android XML はホストの担当者が公開済みの固定スナップショットから生成します。通常の翻訳投稿では編集しません。

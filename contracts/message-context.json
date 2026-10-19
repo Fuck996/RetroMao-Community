@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.104",
-  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
+  "catalog_version": "0.9.108",
+  "catalog_hash": "e4f30c4ad72db89c672ecd0ce4dd6095b05ec92a454c1f82e2ea3ee9d934a098",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -12656,6 +12656,58 @@
     },
     "emulator_document_uri_unsupported": {
       "source": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_search": {
+      "source": "搜索应用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_system_settings": {
+      "source": "系统设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_empty": {
+      "source": "未找到可启动的应用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_load_failed": {
+      "source": "读取应用列表失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_launch_failed": {
+      "source": "无法打开应用或系统页面：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_default_home": {
+      "source": "默认桌面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_home_description": {
+      "source": "将复古猫设为默认桌面，按 Home 键返回游戏前端。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "apps_home_active": {
+      "source": "复古猫已是默认桌面。点击可在系统中更换。",
       "arguments": [],
       "surfaces": [],
       "owners": []

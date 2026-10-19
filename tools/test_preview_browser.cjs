@@ -30,7 +30,11 @@ async function start(source) {
         await frame.locator("#games li").first().waitFor();
         assert.equal(await frame.locator("#games li").count(), 2);
         await frame.locator("#run").tap();
-        await frame.locator("#status").filter({ hasText: /: 2$/ }).waitFor();
+        try {
+          await frame.locator("#status").filter({ hasText: /: 2$/ }).waitFor({ timeout: 10000 });
+        } catch (error) {
+          throw new Error(JSON.stringify({ locale, size, status: await frame.locator("#status").innerText(), failure: await frame.locator("#error").innerText(), pageErrors: errors }) + "\n" + error.message);
+        }
         assert.equal(await frame.locator("#error").innerText(), "");
         const actual = page.frames().find(frame => frame.url().includes("/plugin/"));
         assert.equal(await actual.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);

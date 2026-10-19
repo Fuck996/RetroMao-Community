@@ -3,6 +3,8 @@
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import mimetypes
+import re
+import signal
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -33,8 +35,8 @@ def make_server(source, port, fixtures):
                         inject = '<script src="/__preview/mock-host.js"></script><script src="/__retromao/retromao.js"></script>'
                         content = content.decode("utf-8")
                         # The bridge must exist before any author script runs.
-                        position = content.lower().find("<head>")
-                        content = (content[:position + 6] + inject + content[position + 6:] if position >= 0 else inject + content).encode("utf-8")
+                        head = re.search(r"<head(?:\s[^>]*)?>", content, flags=re.I)
+                        content = (content[:head.end()] + inject + content[head.end():] if head else inject + content).encode("utf-8")
                     return self.respond(content, mimetypes.guess_type(target)[0] or "application/octet-stream")
                 if route.startswith("/__retromao/"):
                     target = path_in(ROOT / "sdk/runtime", route.removeprefix("/__retromao/"))
@@ -55,6 +57,7 @@ def make_server(source, port, fixtures):
             self.send_header("Content-Length", str(len(content)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'")
             self.end_headers()
             self.wfile.write(content)
 
@@ -66,6 +69,9 @@ def make_server(source, port, fixtures):
 
 def serve(source, port, fixtures):
     server = make_server(source, port, fixtures)
+    def stop(*_):
+        raise KeyboardInterrupt
+    signal.signal(signal.SIGTERM, stop)
     print(f"Preview: http://127.0.0.1:{server.server_port}/ | Ctrl+C: stop", flush=True)
     try:
         server.serve_forever()

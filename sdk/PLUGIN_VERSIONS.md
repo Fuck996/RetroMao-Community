@@ -1,52 +1,34 @@
-# 插件版本与公共图标
+# 版本与公共图标 / Versions and icons / バージョンと共通アイコン
 
-## 发布与更新
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-插件自己的 `version` 与主程序的 `minAppVersion` 分开管理，均使用三段数字。比较每段数值，例如 `1.10.0` 新于 `1.9.0`；不以 ZIP 摘要、时间或文件名判断新版。
+[Icons](runtime/icons/) · [Publishing](../docs/PUBLISHING.md)
 
-每次修改脚本、页面、配置定义、图标或权限都应递增插件版本。已发布版本、标签与 ZIP 保持不变，不覆盖同版本资产。公开仓库的 `plugins/index.json` 每个 ID 保留一个当前版本；旧 Release 可以保留供用户手动选择。必须先发布 ZIP，再将其精确大小与 SHA-256 写入目录。
-
-0.9.92 的插件页首次打开读取一次配置仓库的目录，并在已安装列表标记新版。顶部“检查插件更新”使用同一目录请求；切换“已安装／商店”不重复下载目录。它不下载每个插件的清单，也不在后台自动安装。
-
-0.9.93 在仓库列表变更后取消旧目录请求并读取新来源，避免继续展示旧仓库内容；来源不变时复用当前结果。
-
-- 只有同一仓库、同一 ID、兼容当前 APK 且版本更高的条目才提示更新。
-- 合并条目首次安装优先公共仓库；安装记录保存实际下载仓库。后续更新固定使用该仓库，调整仓库顺序不会切换来源。各仓库的 Release 标签、文件名和预览地址分别保留。
-- 首次安装与更新均需用户确认，确认后沿用现有流式下载、校验和 ZIP 安装。下载界面、已安装列表、商店卡片都显示版本。商店内当前版本显示“已安装”，不显示配置按钮。
-- 同来源更新保留配置、私有数据及已授权能力；新增能力时保持禁用，重新授权后才能运行。
-- 运行中的插件先完成或取消任务，避免替换正在使用的脚本。
-- 旧版本、同版本不同内容、切换来源分别提示；这些是用户手动替换，不属于自动识别的新版本。
-- 不同来源的配置与私有数据仍隔离。切换来源需重新启用和配置，切回原来源可继续使用原配置。
-- 本地 ZIP 首次导入及覆盖同 ID 插件均需确认。只解压一次，取消会清理暂存文件并保留已安装版本；本地 ZIP 不会冒充原下载仓库。
-- 已安装卡片的版本号位于标题行，有新版时在版本号左侧显示“更新”；“配置”进入宿主页面框架内的配置页，卡片点击仍沿用原打开入口。标题、导航、返回历史及管理操作由宿主管理，插件仅提供内容。
-- 目录内容未变化时复用已加载快照，不重写本地目录缓存；进程中断遗留的插件目录仅在首次加载安装记录后回收一次，不扫描 ROM、媒体或网盘。
-
-## 公共图标
-
-0.9.92 提供以下图标，原图与 PNG 见 [`runtime/icons/`](runtime/icons/)。素材可按本仓库 MIT 许可使用，公共样式由宿主管理。
-
-| 名称 | 用途 |
-| --- | --- |
-| `plugin` | 通用插件 |
-| `star` | 收藏 |
-| `history` | 最近记录 |
-| `sync` | 同步 |
-| `cloud` | 网盘 |
-| `library` | 游戏资料 |
-| `image` | 媒体资料 |
-| `language` | 翻译 |
-| `palette` | 主题 |
-| `gamepad` | 平台与启动 |
-| `chart` | 统计 |
-| `settings` | 工具与配置 |
-
-清单声明 `"iconName": "star"` 即可使用，不需要复制图标。商店目录也填写同一 `iconName`，便于下载前展示。允许继续使用包内 `icon` PNG/WebP；它在已安装卡片中优先于公共图标。未指定图标时显示通用插件图标。
-
-页面在 `await retromao.ready` 后调用：
-
-```js
-const names = await retromao.icons.list();
-document.querySelector("#icon").src = retromao.icons.url("star");
+```javascript
+await retromao.ready;
+document.getElementById("icon").src = retromao.icons.url("star");
 ```
 
-图标通过本插件的 `/__retromao/icons/star.svg` 本地地址提供，不产生图标 RPC 或网络请求。未知图标名明确报错；新增公共图标时应相应更新 `minAppVersion`。最低版本低于 0.9.92 的插件可保留包内 PNG，并在商店目录指定已有 `previews/` 图像；两个同步演示包以此兼容 0.9.91。
+## 中文
+
+version 是扩展版本，minAppVersion 是最低宿主版本，均为三段数字，按数值比较，1.10.0 大于 1.9.0。脚本、页面、翻译、权限、配置和素材变化都应递增扩展版本。既有 Release 标签与同版本 ZIP 不覆盖；目录每个 ID 维护一个当前版本，旧 Release 可以保留。
+
+更新只针对同一来源仓库、同 ID、兼容且版本更高的包。首次安装及更新均确认；增加权限后重新启用。同来源保留配置和数据，不同来源保持独立。跨来源替换清除当前任务和结果，避免另一作者读取旧输出；来源自己的配置可保留。运行中先结束或取消任务再替换。卸载不删除宿主收藏、记录、存档和索引字段；需要清除自己的字段时先通过公共接口执行。
+
+0.9.92 起可用 iconName 或 icons.list/url；未知图标报错，不能自动换图掩盖配置错误。公共图标包括 plugin、star、history、sync、cloud、library、image、language、palette、gamepad、chart、settings，来自包内 SDK，不逐个联网。也可提供包内 icon PNG/WebP，已安装卡片优先使用它。许可应以素材随附授权为准。
+
+## English
+
+version belongs to the extension; minAppVersion is the minimum host version. Both use three numeric parts: 1.10.0 is newer than 1.9.0. Increment the extension version for scripts, pages, translations, permissions, settings or assets. Never overwrite published tags or same-version ZIPs. Catalogs keep one current version per ID; old Releases may remain.
+
+Updates require the same origin/ID, compatibility and a higher version. Installation and updates require confirmation; new permissions require re-enabling. Same-origin updates retain configuration/data; different origins stay separate. Switching origins clears current tasks/results to prevent another author reading old output, while origin-specific settings may remain. Finish/cancel running work before replacement. Uninstall does not remove host favorites, history, saves or index fields. Clear your own fields through the public API beforehand if needed.
+
+From 0.9.92 use iconName or icons.list/url. Unknown names fail explicitly rather than silently changing icons. Names are plugin, star, history, sync, cloud, library, image, language, palette, gamepad, chart and settings. They are bundled with the SDK and need no individual network requests. You may provide a local PNG/WebP icon, preferred by installed cards. Follow the licenses supplied with each asset.
+
+## 日本語
+
+version は拡張、minAppVersion は必要なホストのバージョンです。どちらも三つの数値で比較し、1.10.0 は 1.9.0 より新しくなります。スクリプト、ページ、翻訳、権限、設定、素材を変更したら拡張のバージョンを上げます。公開済みのタグや同バージョンの ZIP は上書きしません。索引は ID ごとに現在の一つの版を保持し、旧 Release は残せます。
+
+更新は同じ配布元と ID、互換性、より新しい版が条件です。インストールと更新は確認を伴い、新しい権限には再有効化が必要です。同じ配布元の設定とデータは保持し、別の配布元とは分離します。配布元の変更時は現在のタスクと結果を消去し、別作者が過去の出力を読めないようにします。元の配布元の設定は保持できます。実行中のタスクは完了またはキャンセルしてから置き換えます。削除してもホストのお気に入り、履歴、セーブ、索引フィールドは消しません。必要なら削除前に公開 API で自分のフィールドを消してください。
+
+0.9.92 以降は iconName または icons.list/url を使用します。不明な名前は明示的に失敗し、別のアイコンに置き換えません。名前は plugin、star、history、sync、cloud、library、image、language、palette、gamepad、chart、settings です。SDK に同梱され、個別の通信は不要です。パック内の PNG/WebP icon も使用でき、インストール済みカードではこちらが優先されます。各素材の付属ライセンスを確認してください。

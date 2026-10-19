@@ -1,45 +1,35 @@
-# 同步渠道扩展：当前进度与接入边界
+# 同步渠道边界 / Sync provider boundaries / 同期プロバイダーの境界
 
-更新：2026-10-16。WebDAV 与百度网盘已接入宿主内的公共流程和渠道注册契约；0.9.90 提供脚本插件框架。0.9.91 APK 已打包 `STORAGE` 公共桥接，使脚本通过已配置连接读写自身的小型 JSON 文档，见[SDK](sdk/README.md)和[收藏／最近记录示例](examples/SYNC_EXAMPLES.md)。0.9.98 APK 增加 [ROM 资源提供者](sdk/ROM_RESOURCES.md)：插件定位授权目录中的游戏文件，宿主执行原 ROM 同步流程。任意二进制流的脚本读写、存储渠道的脚本注册及跨进程渠道接入仍未提供；下文原生渠道契约继续适用。
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-## 宿主与渠道分别负责什么
+[SDK](sdk/README.md) · [ROM resources](sdk/ROM_RESOURCES.md) · [Sync examples](examples/SYNC_EXAMPLES.md)
 
-| 业务 | 复古猫宿主 | 存储渠道 |
-| --- | --- | --- |
-| 任务调度 | 排队、并发额度、持久进度、取消、重试与恢复 | 在获分配的请求额度内执行操作并报告进度 |
-| 同步决策 | 本地／远端差异、冲突选择、版本关系、索引合并与最终提交 | 返回服务的真实属性、能力、错误与写入回执 |
-| 存档管理 | 备份、历史保留、版本回滚、渠道之间的独立索引 | 按既定操作读取、写入、复制、移动或删除文件 |
-| 文件传输 | 确定文件范围，复用本轮指纹及进度，完成本地落盘 | 读取目录和文件，取得下载地址，上传、下载与断点传输 |
-| 连接配置 | 公共渠道选择、参数弹窗、检查／保存／取消事件和凭据存储 | 参数定义、授权说明、连接与认证、稳定账号身份 |
+## 中文
 
-社区渠道不需要重新实现一套存档同步器，也不接管宿主数据库、版本分支或游戏启动。扩展仓库地址用于分发，与玩家的网盘连接、账号及存档索引身份分开。
+宿主负责队列、并发预算、进度、取消、重试、恢复、本地与远端差异、冲突、索引、存档版本及最终提交。存储渠道只负责认证、稳定账号身份、连接能力、目录和文件操作、传输及真实回执；不接管游戏启动或另造存档同步器。
 
-## 连接参数与界面
+WebDAV 与百度为原生适配器。脚本 STORAGE 从 0.9.91 提供已配置渠道内本插件的小型 JSON 文档；ROM_RESOURCES 从 0.9.98 提供目录定位。脚本注册新存储渠道、任意二进制流和跨进程渠道桥接尚未公开，不能通过主题、语言、平台或 JSON 存储绕过。
 
-渠道声明字段 ID、名称、初始值、必填状态及文本／秘密／开关类型，也可提供授权页面链接与说明。公共弹窗显示字段并处理焦点、滚动、忙碌和错误状态；渠道处理参数校验、认证及连接结果。
+沿用 RemoteClientRegistry、RemoteClient、RemoteTransferContext 的统一数据与失败语义。未知结果进入原任务恢复，不伪造成功；凭据不交给页面或记录日志。账号和根目录身份必须隔离，不能复用另一账号或来源的 token、缓存、队列。
 
-检查成功后，参数未变化的保存沿用该次结果；修改参数后重新校验。检查尚未结束时忽略重复点击。WebDAV 普通保存保留原本无需联网检查的方式，密码更新先检查；百度授权沿用账号核验。保存或取消不会额外启动同步。
+不新增全盘扫描、逐文件远端哈希、上传前写探针或独立重试并发。有效摘要与本轮目录分页复用；只有未完成文件准备下载地址，无变化不传正文或提交索引。取消保留已确认进度，恢复不重传成功文件；同机本地检查可按既有流程复用，渠道的任务、索引和版本独立。原生渠道代码变更需要宿主工程，不能声称只改公共 JSON 就增加任意网盘。
 
-**不提供写入探针或手动写入测试。** 是否写入成功，以实际业务文件的操作结果为准；失败沿原任务报错，不通过上传测试文件提前判断。
+## English
 
-## 文件操作和错误语义
+The host owns queues, concurrency budgets, progress, cancellation, retries, recovery, local/remote differences, conflicts, indexes, save versions and final commits. Storage providers own authentication, stable account identity, connection capabilities, directory/file operations, transfers and real receipts. They do not own game launch or create another save synchronizer.
 
-- 清单区分完整结果、分页未结束和失败。权限不足、断网、插件未安装或目录读取失败不能当成文件不存在。
-- 字节传完与服务确认写入成功分开。成功、失败、结果未知及取消保留各自含义；结果未知进入原任务的恢复步骤。
-- 渠道声明是否支持批量地址、条件写入、分片和服务端文件操作，不用模拟成功代替缺少的能力。
-- 断点由原渠道解析；宿主管理统一任务阶段和检查点。切换渠道保留各自索引与版本关系，切回来可以继续使用原记录。
-- 实际请求受宿主同轮并发额度约束。渠道不能在每个工位中再启动一组不受控的并发或独立重试队列。
+WebDAV and Baidu use native adapters. Script STORAGE exposes small plugin JSON documents through configured providers from 0.9.91; ROM_RESOURCES provides directory resolution from 0.9.98. Script registration of new providers, arbitrary binary streams and cross-process bridges is not public. Do not bypass that boundary using themes, languages, platforms or JSON storage.
 
-## 请求成本约束
+Reuse RemoteClientRegistry, RemoteClient and RemoteTransferContext data/failure semantics. Unknown outcomes enter existing task recovery, never fabricated success. Do not expose credentials to pages or logs. Isolate accounts and root identities; tokens, caches and queues cannot cross accounts or origins.
 
-1. 不新增全盘扫描、逐文件远端哈希、上传前写入测试或额外备份检查。已有索引和有效 MD5 继续复用；需要分片摘要时复用本轮文件读取。
-2. 远端索引存在而部分文件缺失时，按文件清单和索引定位缺失范围，沿原流程补齐；不因此全量重传。远端完全清空时，沿已确认的重建分支上传本机当前存档并保留版本关系。
-3. 下载地址只为仍需下载的文件准备，已跳过、已提交及已完整下载的暂存文件不再重复申请。完整下载后的本地提交继续原流程。
-4. 无变化时不上传下载正文或提交索引。索引提交及最终确认按原发布阶段完成，不放进逐文件循环；目录分页、必要的提交前提核对与最终确认分别计数。
-5. 取消后保留原任务已确认的进度；恢复时不因其他文件失败而重新传输已成功的文件。注册渠道不能附加游戏启动检查，游戏启动不等待同步。
+Do not add whole-device scans, per-file remote hashes, upload probes, or independent retry/concurrency loops. Reuse valid hashes and per-round directory pages. Prepare download URLs only for unfinished files; unchanged content needs no body transfer or index commit. Cancellation retains confirmed progress; recovery avoids retransmitting successes. Reuse local checks through existing flows while keeping provider tasks/indexes/versions independent. Native-provider changes require the host project; public JSON alone cannot add arbitrary cloud services.
 
-## 当前验证范围
+## 日本語
 
-0.9.89 对本轮探针移除与下载恢复修复完成了 350 项相关自动检查，覆盖百度／WebDAV 传输、索引、存档和设置页操作。正式 APK 已构建并核验。自动检查不等于所有真实网盘或外部插件进程已验收。
+ホストはキュー、同時実行予算、進捗、キャンセル、再試行、復旧、ローカルとリモートの差分、競合、索引、セーブの版、最終確定を管理します。ストレージ側は認証、安定したアカウント識別、接続機能、ディレクトリとファイル操作、転送、実際の応答を担当します。ゲーム起動や別のセーブ同期器は担当しません。
 
-公开 SDK 后，示例与构建产物会绑定明确版本；新增渠道仍须复用上述宿主流程。现有可下载内容继续使用[平台／主题规范](EXTENSIONS.md)和[语言规范](languages/README.md)，不能通过这些数据包加载可执行插件。
+WebDAV と百度はネイティブアダプターを使います。スクリプトの STORAGE は 0.9.91 以降、設定済み接続内の小さな専用 JSON を扱い、ROM_RESOURCES は 0.9.98 以降にディレクトリを特定します。新しい接続先のスクリプト登録、任意のバイナリー転送、プロセス間ブリッジは未公開です。テーマ、言語、プラットフォーム、JSON ストレージで迂回しないでください。
+
+RemoteClientRegistry、RemoteClient、RemoteTransferContext のデータと失敗の意味を再利用します。結果不明なら既存タスクの復旧へ進み、成功を捏造しません。認証情報をページやログに渡さないでください。アカウントとルートの識別情報を分離し、token、キャッシュ、キューを別のアカウントや配布元に流用しません。
+
+全端末スキャン、ファイルごとのリモートハッシュ、アップロード前の書き込みテスト、独自の再試行や並列ループは追加しません。有効なハッシュと同一回のページ結果を再利用します。未完了ファイルだけのダウンロード URL を準備し、変更がなければ本文転送や索引更新をしません。キャンセル後も確認済み進捗を残し、復旧では成功済みファイルを再転送しません。既存のローカル検査を再利用しつつ、接続先のタスク、索引、版は分離します。ネイティブ接続先の変更にはホスト工程が必要であり、公開 JSON だけで任意のクラウドを追加できるとは説明しないでください。

@@ -1,71 +1,68 @@
-# 复古猫扩展包规范
+# 扩展包契约 / Extension contracts / 拡張パック契約
 
-## 平台包
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-ZIP 根目录包含 `platform.json`，可附 `assets/logo.png` 和 `assets/pixel.png`。`schemaVersion` 为 1。示例：
+[Platform schema](schemas/platform.schema.json) · [Template](templates/platform/platform.json) · [Publication](docs/PUBLISHING.md)
 
-```json
-{
-  "schemaVersion": 1,
-  "platform": {
-    "id": "msx",
-    "name": "MSX",
-    "aliases": ["msx", "msx computer"],
-    "extensions": ["rom", "mx1", "mx2"],
-    "medium": "CARTRIDGE"
-  },
-  "manufacturer": "ASCII / Microsoft",
-  "releaseYear": 1983,
-  "coverAspectRatio": 0.75,
-  "assets": {"logo": "assets/logo.png", "pixel": "assets/pixel.png"}
-}
+```text
+python tools/retromao.py init platform --id demo-msx --name DemoMSX --author YourName
+python tools/retromao.py check extensions/demo-msx
+python tools/retromao.py preview extensions/demo-msx
+python tools/retromao.py pack extensions/demo-msx --release-tag demo-msx-1.0.0
 ```
 
-机种 ID 只能用 2～32 位小写字母、数字、`_`、`-`，不能与内置机种或已安装扩展重复。名称和别名不能与其他机种重复；扩展名不带点，允许与其他机种重叠，但重叠扩展名不能单独用来自动识别机种。`medium` 使用现有 `GameMedium` 枚举。`coverAspectRatio` 为封面宽/高，范围 0.5～2；没有模型时仍按该比例显示封面和占位图。图标只能是 PNG/WebP，单张不超过 8 MiB、宽高不超过 2048 像素；平台包最多 128 个条目、解压后最多 64 MiB。
+[Android URI permissions and package visibility](https://developer.android.com/training/package-visibility/use-cases) · [RetroArch Android source](https://github.com/libretro/RetroArch/tree/master/pkg/android)
 
-安装后机种出现在已有机种选择器和文件夹配置中。选择对应的本地 ROM 目录后，继续使用应用现有的扫描、游戏库、网盘映射与资源任务流程。包本身不执行代码，不提供模拟器，模拟器需用户在设置里配置。平台包目前不提供卸载入口，避免已经入库的游戏丢失机种定义；同 ID 的新包可重新安装替换。
+## 中文
 
-## 主题包
+平台从 templates/platform 开始。格式 1 兼容既有数据包；格式 2 增加 launchers，需要 0.9.108 或含此能力的宿主源码构建。正式发行与设备验收状态见 contracts/host.json，不把版本门槛当作已完成验收。包根放 platform.json，图标可选。retromao-package.json 是开发和发布元数据，不打入 ZIP。
 
-ZIP 根目录包含 `theme.json`。配色、布局与动效的可运行示例见 [`examples/amber/theme.json`](examples/amber/theme.json)。格式版本 3 增加模型槽位：
+platform.id 为 2–32 位小写字母、数字、下划线或连字符。name 与 aliases 不能和内置或已安装平台重复；extensions 不带点、1–12 位小写字母数字，可与其他平台重叠，但重叠扩展名不能独自识别机种。manufacturer 非空且不超过 80 字符，releaseYear 为 1970–2100。coverAspectRatio 是宽／高，范围 0.5–2。medium 允许 CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD；不提供模型时仍保留封面与占位图。内置 ID、名称、别名在 contracts/host.json。
 
-```json
-{
-  "schemaVersion": 3,
-  "id": "example",
-  "name": "示例主题",
-  "author": "作者",
-  "colors": {
-    "background": "#141210", "surface": "#22201D", "foreground": "#F8F3EA",
-    "muted": "#BBB0A0", "accent": "#E8A94C", "outline": "#514536"
-  },
-  "assets": {
-    "background.library": "art/library.png",
-    "platform.msx.logo": "art/msx-logo.png",
-    "model.msx.packaging": "models/msx-box.glb",
-    "model.msx.gameMedia": "models/msx-cart.glb"
-  }
-}
-```
+assets 只允许 logo、pixel，引用包内 PNG/WebP；每个最多 8 MiB、1–2048 像素。路径必须相对，不得包含空段、点段、反斜线、冒号、NUL、符号链接或越出包目录。平台包最多 128 个文件、解压后 64 MiB，清单最多 1 MiB。
 
-`model.<机种ID>.packaging` 和 `model.<机种ID>.gameMedia` 指向独立的 GLB 2.0 文件，单个不超过 32 MiB。模型替换只换几何文件，保留原有 Filament 渲染、贴图槽位、比例归一化、灯光与动效；作者必须检查封面或标签是否正确映射。主题包可以省略任意模型槽位，不会为缺失模型凭空生成替代模型。扩展平台的主题素材需先安装该平台才能通过导入校验。
+launchers 最多 16 项，ID 在平台内唯一、1–40 位，以小写字母起始；宿主保存的 profile ID 为 community.<平台ID>.<启动ID>，更新后不可随意改名。packageName 必须是真实 Android 包名，activity 必须是完整类名，不能写相对类名。name 非空且不超过 80 字符。平台启动仍走原模拟器设置、ROM 实际读取、SAF 授权、启动文件选择和返回流程，不另外扫描或复制 ROM。
 
-主题预览图固定为 1280×720 PNG/WebP，存放 `previews/<id>.png` 或 `.webp`，展示 16:9 游戏库实际视觉方向；文字需注明模拟画面与实机截图的区别。作者还须检查 4:3 和 1:1 页面及手柄焦点。在线列表先显示预览和作者信息，安装后仍由用户在主题设置中明确预览或应用。
+URI 使用 ACTION_VIEW、只读 content URI 和 ClipData；mimeType 可选，使用明确的 MIME 字符串。模拟器应通过 ACTION_VIEW/content 的 intent filter 可见，且目标 Activity 已导出并支持传入 URI。RETROARCH 使用现有官方启动参数和核心路径规则，必须提供 1–64 个 cores，不能提供 mimeType。核心 ID 是去掉 _libretro_android.so 后的文件名，核心名称非空；不会安装或下载核心。旧版 RetroArch 的本机路径约束仍适用，同平台声明的核心进入原共享核心列表。
 
-## 在线目录与发布
+不得把专有的 intent extras、任意 shell、JS 或未知协议塞进平台包。需要新协议时应先扩展宿主正式契约。平台安装后继续使用原扫描、库、网盘映射和资源任务；它不提供模拟器、ROM、固件或存档规则。平台暂无卸载入口；同 ID 更新保留游戏关联，改 ID 视为新平台。
 
-公开仓库默认分支根目录的 `catalog.json` 结构为 `{"schemaVersion":1,"entries":[...]}`。每个条目提供 `kind` (`PLATFORM`/`THEME`)、`id`、`name`、`author`、`description`、`version`、`minAppVersion`、`releaseTag`、`fileName`、`sizeBytes`、`sha256`；主题还必须有 `previewPath`。`releaseTag` 与 `fileName` 对应该来源仓库的 GitHub Release 资产。应用下载后先核对精确字节数和 SHA-256，再交给与本地 ZIP 导入相同的安装链路。目录下载失败时显示上次缓存及错误；不影响离线游戏库或已安装扩展。
+主题继续使用根目录 theme.json，格式 3 可引用 model.<平台ID>.packaging 和 model.<平台ID>.gameMedia，GLB 2.0 每个最多 32 MiB，沿用原渲染和贴图管线。扩展平台素材要求先安装平台。主题在线预览为 1280×720 PNG/WebP，路径在 previews 下；须另验收 4:3、1:1。旧 build_examples 仅重建已提交示例，输出目录条目到 dist，不重写在线 catalog。通用平台打包使用统一 CLI。
 
-0.9.88 起支持多个公开仓库，设置方法见 [README](README.md)。平台和主题按类型、扩展 ID 与内容 SHA-256 合并相同条目，其他内容分别展示。同一批安装只能为同一扩展选择一个版本。Fork 作者须自行发布索引所引用的 Release 资产；只复制索引而未发布资产，无法从自己的仓库下载安装。不要把 APK 版本当成扩展包版本，也不要为文档更新改写已发布 ZIP 的大小或摘要。
+catalog.json 格式为 schemaVersion:1 与 entries。每项声明 kind、id、name、author、description、version、minAppVersion、releaseTag、fileName、sizeBytes、sha256；主题必须有 previewPath。实际 ZIP 必须先在来源仓库 Release 发布并回读校验，之后才能更新目录。插件使用 plugins/index.json，语言使用 languages/index.json，格式不可混用。
 
-## 语言与同步渠道
+## English
 
-脚本插件采用独立的 `plugins/index.json` 和包含 `plugin.json` 的 ZIP，SDK、安装与页面规则见[脚本插件文档](sdk/README.md)。框架已随 0.9.90 APK 打包，原生设备验收仍待完成；资源包不会因为增加脚本框架而获得代码执行权限。存储服务的脚本注册及流式文件桥接仍待后续阶段接入，不将现有通用 JSON API 当成另一套同步实现。
+Start platforms from templates/platform. Format 1 remains compatible; format 2 adds launchers and requires 0.9.108 or a host source build containing the feature. Check contracts/host.json for formal-release and device acceptance; a version threshold is not acceptance evidence. Put platform.json at the ZIP root. Icons are optional. retromao-package.json is authoring/release metadata and is excluded from the ZIP.
 
-语言使用独立的 `languages/index.json` 和单语 JSON，不加入平台／主题的 ZIP 清单。作者署名、译文基线和 reviewed 发布规则见[语言贡献说明](languages/README.md)。
+platform.id uses 2–32 lowercase letters, digits, underscores or hyphens. name/aliases must not collide with built-in or installed platforms. extensions have no dot and use 1–12 lowercase alphanumeric characters. Overlap is allowed but cannot alone identify a platform. manufacturer is nonempty with at most 80 characters; releaseYear is 1970–2100. coverAspectRatio is width/height, between 0.5 and 2. medium accepts CARTRIDGE, GAME_CARD, HUCARD, DISC, UMD and DISK_CARD. Covers/placeholders remain available without a model. Built-in identities are in contracts/host.json.
 
-平台和主题的 `author` 由在线目录展示，主题清单可保存自身署名；语言文件使用 `author` 和 `credits`。Fork 保留原作者、素材来源与许可，新增维护者署名不能冒充原作者。
+assets only accepts logo/pixel pointing to package PNG/WebP files, each at most 8 MiB and 1–2048 pixels per dimension. Paths must be relative and cannot contain empty/dot segments, backslashes, colons, NUL, symlinks or escapes. A platform ZIP has at most 128 files, 64 MiB expanded data and a 1 MiB manifest.
 
-0.9.89 已建立宿主内的公共同步流程和渠道连接表单，独立存储插件 SDK、安装桥接及分发尚未发布。当前不能将提供者代码放进主题、平台或语言包执行。职责与效率约束见[同步渠道扩展说明](SYNC_PROVIDERS.md)。
+launchers has at most 16 entries. IDs are unique within a platform, 1–40 characters, starting with a lowercase letter. The saved host profile ID is community.<platformID>.<launcherID>; do not casually rename it on updates. packageName must be a real Android package, activity a full class name, and name nonempty with at most 80 characters. Launching uses the existing settings, current ROM reads, SAF permissions, entry selection and return flow, without a separate ROM scan/copy.
 
-平台和主题的名称、图标、背景、包装图、模型等必须由投稿者自行创作或有可再分发许可。不要在包内提交 ROM、固件、存档、密钥或第三方账号资料。
+URI uses ACTION_VIEW, read-only content URI access and ClipData. An explicit mimeType is optional. The emulator must be discoverable through an ACTION_VIEW/content intent filter, and the exported target Activity must accept the URI. RETROARCH uses existing official launch arguments and core-path rules, requires 1–64 cores, and forbids mimeType. A core ID is its filename without _libretro_android.so; names are nonempty. Packs never install/download cores. Existing native-path constraints for old RetroArch versions remain; cores declared for the same platform join the shared core list.
+
+Do not embed proprietary intent extras, shell commands, JS or unknown protocols in platform packs. A new protocol first requires a formal host contract. Installed platforms use existing scanning, library, cloud mappings and resource tasks. They include no emulator, ROM, firmware or save rules. There is currently no platform uninstall entry. Same-ID updates retain game associations; a changed ID is a new platform.
+
+Themes still use root theme.json. Format 3 can reference model.<platformID>.packaging and model.<platformID>.gameMedia, with GLB 2.0 files up to 32 MiB, using the existing renderer and texture pipeline. Install extension platforms before referencing their assets. Online theme previews are 1280×720 PNG/WebP under previews; also test 4:3 and 1:1. Legacy build_examples only rebuilds committed examples and writes catalog entries under dist, without replacing the live catalog. Use the unified CLI for platform packages.
+
+catalog.json contains schemaVersion:1 and entries. Each entry declares kind, id, name, author, description, version, minAppVersion, releaseTag, fileName, sizeBytes and sha256; themes require previewPath. Publish and download-verify the actual ZIP in the source repository before updating the catalog. Scripts use plugins/index.json; languages use languages/index.json. Do not mix formats.
+
+## 日本語
+
+プラットフォームは templates/platform から作成します。既存の形式 1 は引き続き対応し、形式 2 は launchers を追加します。0.9.108 または本機能を含むホストビルドが必要です。正式公開と実機検証の状況は contracts/host.json を確認してください。最低バージョンは検証完了の証拠ではありません。ZIP のルートに platform.json を置きます。アイコンは任意です。retromao-package.json は開発と公開用の情報で、ZIP には含めません。
+
+platform.id は小文字英数字、アンダースコア、ハイフンの 2～32 文字です。name と aliases は内蔵またはインストール済みの定義と重複できません。extensions はドットを付けず、小文字英数字の 1～12 文字です。重複は可能ですが、それだけで機種を自動判定できません。manufacturer は空でない 80 文字以内、releaseYear は 1970～2100 です。coverAspectRatio は幅／高さで 0.5～2。medium は CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD です。モデルがなくても表紙とプレースホルダーを表示します。内蔵の識別情報は contracts/host.json にあります。
+
+assets は logo と pixel のみで、パック内の PNG/WebP を参照します。各ファイルは 8 MiB 以下、各辺 1～2048 ピクセルです。相対パスを使い、空の要素、ドット要素、バックスラッシュ、コロン、NUL、シンボリックリンク、ディレクトリ外への参照を禁止します。最大 128 ファイル、展開後 64 MiB、マニフェストは 1 MiB までです。
+
+launchers は最大 16 項目です。ID は機種内で一意な 1～40 文字で、小文字から始めます。保存される profile ID は community.<platformID>.<launcherID> です。更新時に不用意に変更しないでください。packageName は実際の Android パッケージ名、activity は完全なクラス名、name は空でない 80 文字以内です。起動は既存の設定、現在の ROM の読み取り、SAF 権限、起動ファイル選択、復帰処理を使用し、別のスキャンや ROM コピーは行いません。
+
+URI は ACTION_VIEW、読み取り専用の content URI 権限、ClipData を使用します。明示的な mimeType は任意です。エミュレーターは ACTION_VIEW/content の intent filter から検出可能で、公開された Activity が URI に対応している必要があります。RETROARCH は既存の公式起動引数とコアのパス規則を使用し、1～64 個の cores が必要です。mimeType は使用できません。コア ID はファイル名から _libretro_android.so を除いた部分で、名称は空にできません。パックはコアをインストールしません。旧 RetroArch の実パス制約は維持され、同じ機種のコアは既存の共有一覧に統合されます。
+
+独自 intent extras、シェル、JS、未知のプロトコルをパックに入れないでください。新しいプロトコルには先にホスト契約の拡張が必要です。インストール後も既存のスキャン、ライブラリ、クラウドマッピング、リソースタスクを使います。エミュレーター、ROM、ファームウェア、セーブ規則は含まれません。現在アンインストール機能はありません。同じ ID の更新はゲームとの関連を維持し、別 ID は新しい機種として扱います。
+
+テーマは引き続きルートの theme.json を使用します。形式 3 は model.<platformID>.packaging と model.<platformID>.gameMedia を参照でき、GLB 2.0 は各 32 MiB 以下です。既存の描画とテクスチャ処理を使います。拡張機種の素材を使う場合は先にその機種をインストールしてください。オンラインのプレビューは previews 内の 1280×720 PNG/WebP とし、4:3 と 1:1 も確認します。旧 build_examples は既存のサンプルを再作成し、索引を dist に出力するだけで、公開カタログを置き換えません。プラットフォームの作成には統一 CLI を使います。
+
+catalog.json は schemaVersion:1 と entries で構成します。各項目に kind、id、name、author、description、version、minAppVersion、releaseTag、fileName、sizeBytes、sha256 を指定し、テーマには previewPath も必要です。公開元の Release に ZIP を公開して再取得・検証した後に索引を更新します。スクリプトは plugins/index.json、言語は languages/index.json を使用し、形式を混在させないでください。

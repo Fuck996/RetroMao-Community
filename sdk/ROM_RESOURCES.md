@@ -1,49 +1,47 @@
-# 插件 ROM 资源提供者
+# ROM 资源提供者 / ROM resource providers / ROM リソースプロバイダー
 
-最低宿主版本 0.9.98。插件定位已安装游戏等外部资源，宿主沿用系统 ROM 同步的资源计划、网盘适配器、文件读写、持久任务、哈希缓存及索引提交。插件不创建另一套同步任务，不传输大文件正文，不选择另一网盘。
+[中文](#中文) · [English](#english) · [日本語](#日本語)
 
-## 声明与解析
+[Types](retromao.d.ts) · [Vita3K example](../examples/vita3k-sync/README.md) · [Official Vita3K installation](https://github.com/Vita3K/Vita3K/blob/f0273e4cd9b860ea77c44c73d9f5c5b1ed5fa8ab/vita3k/interface.cpp) · [Official licenses](https://github.com/Vita3K/Vita3K/blob/f0273e4cd9b860ea77c44c73d9f5c5b1ed5fa8ab/vita3k/packages/src/license.cpp)
 
-在 `plugin.json` 的 `settings` 中声明 `DIRECTORY` 字段，宿主使用系统目录选择器取得并持久保存读写授权；配置无需启用插件即可编辑。通过 `resourceProviders` 声明平台、ROM 扩展名、目录字段、候选存储子目录及结构标记：
+## 中文
 
-```json
-{
-  "capabilities": ["ROM_RESOURCES"],
-  "settings": [{"id":"directory","label":"模拟器目录","kind":"DIRECTORY"}],
-  "resourceProviders": [{
-    "id":"installed","platformId":"psv","extensions":["psvita"],
-    "directorySetting":"directory","rootPaths":["","fs","vita","files/fs","files/vita"],
-    "rootMarker":"ux0","formatVersion":1
-  }]
-}
-```
+最低宿主 0.9.98。插件只定位本次游戏的外部资源范围，上传、下载、进度、取消、恢复、哈希缓存和索引提交全部使用原 ROM 同步队列。不得传大文件正文、另选网盘或创建私有同步任务。
 
-脚本通过 `retromao.define({resources:{installed: resolver}})` 注册与提供者 ID 对应的解析函数。输入 `{games:[{gameId,romNames}]}`，输出 `[{gameId,key,paths:[{path,required}]}]`。所有路径均相对定位后的存储根目录；不得返回绝对路径、URI 或 `..`。`required` 为 true 的目录缺失时，此资源计划明确失败；不存在的可选目录不产生文件任务。
+清单声明 ROM_RESOURCES、DIRECTORY 配置和 resourceProviders；每项提供 id、platformId、extensions、directorySetting、rootPaths、rootMarker、formatVersion:1。DIRECTORY 的系统授权由宿主持久保存，配置不要求先启用插件。路径相对定位后的存储根，禁止绝对路径、URI、空段与点段；rootPaths 中空字符串仅表示所选根本身。
 
-宿主仅在用户已选择 ROM 同步、插件已启用并获准使用 `ROM_RESOURCES` 且目录已配置时调用。上传每次最多向一个解析函数传入 100 个游戏，只返回目录范围；宿主枚举这些范围并保存文件清单。下载使用远端索引，不运行上传解析脚本或枚举整个游戏树。
+通过 define 的 resources 注册同 ID 函数。输入 games 数组，每项 gameId、romNames；输出每项 gameId、key、paths，路径项含 path 和 required。必需目录缺失明确失败，可选目录不存在不创建文件任务。上传每次最多输入 100 个游戏，仅返回目录范围；宿主枚举并保存文件清单。下载直接使用远端索引，不重新运行解析脚本。纯资源插件不需要业务页面或手动动作。
 
-自动解析不作为插件动作出现在业务按钮中。纯资源插件无需业务页面或手动动作，沿用宿主配置、启用、授权与卸载界面。Vita3K 示例只有一个目录字段，网盘及库位置来自本次系统同步已确认的映射。
+自有库索引格式 13 保存 romResources，包含插件 ID、资源键、格式、文件及相对路径，不保存本机授权 URI。资源不会变成启动候选或刮削指纹。云端使用原 ROM 根下 .retromao/resources/<插件ID>/<资源键>/，共用索引和回执。未安装、禁用或未配置插件的终端保留扩展记录，仅执行原标题与媒体同步；不能把没有启用视为删除。
 
-## 数据与任务
+已解析范围保存到原任务检查点，恢复不重复运行解析函数。取消通过系统任务卡片处理，保留已确认的文件；禁用只停止新的解析，已解析文件传输仍属宿主任务。只枚举本次游戏范围、复用本轮 DocumentTree 与哈希缓存，不额外扫描全盘、逐文件取远端摘要或反复提交索引。游戏启动不运行解析或等待同步。
 
-- 自有游戏库索引版本 13 增加 `romResources`。每组包含提供者插件 ID、资源键、格式版本、常规文件记录以及文件 ID 对应的本地相对路径；不包含本机目录授权 URI。
-- 插件资源与启动 ROM、媒体分别保存。它们不会作为启动候选、刮削指纹或多 ROM 版本进入游戏启动链路。
-- 远端文件存放在原 ROM 映射根内的 `.retromao/resources/<插件ID>/<资源键>/`，复用同一库索引和文件回执。没有私有云端索引或远端任务日志。
-- 另一终端依据自己的目录配置写入。未安装、禁用或未配置插件的终端只同步原有标题索引和媒体，写回时保留已索引的扩展资源，不能把未启用的资源组视为删除。
-- 已解析文件范围随原任务检查点保存。恢复已解析任务不再次运行解析函数；取消保留原流程已写入并确认的文件。解析完毕的文件传输属于宿主任务，使用系统任务卡片取消；禁用插件停止新任务的资源解析。
+Vita3K 1.0.0 由 4NPC 提供，使用 .psvita 文件名中的标题 ID，定位 ux0/app、ux0/patch、ux0/addcont、ux0/license 的对应游戏，不处理其他游戏、存档、固件、配置或缓存。支持根本身、fs、vita、files/fs、files/vita，必须唯一定位 ux0。两端都需安装、启用并选择自己的授权目录；实际 Android 文档提供方、模拟器和网盘仍需双端验收。
 
-索引版本 13 由 0.9.98 及更新宿主识别；未安装插件不影响该宿主识别和保留资源组。更旧的 APK 需要升级，不能将未知格式按旧索引覆盖。
+## English
 
-## 工作量边界
+Requires host 0.9.98. The plugin locates external resources for the selected games. Uploads, downloads, progress, cancellation, recovery, hash caches and index commits use the existing ROM queue. Do not transfer large file bodies, select another cloud destination or create private sync jobs.
 
-每轮仅定位本次游戏的相关目录，共用文件提交器的 `DocumentTree` 枚举缓存。目录结构定位不读取游戏正文。首次或实际内容变化时沿原流程计算哈希；有效缓存继续复用，不逐文件获取远端 MD5，不为扩展资源另读写库索引。文件流、并发、速度、检查点、取消和提交均沿原资源队列处理。
+Declare ROM_RESOURCES, a DIRECTORY setting and resourceProviders. Each provider has id, platformId, extensions, directorySetting, rootPaths, rootMarker and formatVersion:1. The host persists system directory permission; configuration does not require enabling the plugin first. Paths are relative to the located storage root, without absolute paths, URIs, empty or dot segments. Only rootPaths may use an empty string for the selected root itself.
 
-首次定位范围是新增资源能力的必要工作，不是额外全盘扫描；已解析范围写入本机任务一次，用于恢复，不新增逐文件远端索引提交。游戏启动不调用该提供者，也不等待其任务。
+Register the matching ID in define.resources. Input is games containing gameId/romNames; output entries contain gameId, key and paths, each with path/required. Missing required directories fail; absent optional directories create no tasks. Upload resolution receives at most 100 games and returns directory ranges; the host enumerates and checkpoints files. Downloads use the remote index without rerunning the resolver. Resource-only plugins need no business page or manual action.
 
-## Vita3K 示例
+Library index format 13 stores romResources with plugin ID, resource key, format, files and relative paths, never local permission URIs. Resources do not become launch candidates or scraping identities. Cloud files use .retromao/resources/<pluginID>/<resourceKey>/ under the existing ROM root, sharing its index/receipts. Hosts without an installed/enabled/configured plugin preserve resource records and sync existing title/media data only; lack of enablement is not deletion.
 
-源码见 [vita3k-sync](../examples/vita3k-sync/)，作者 4NPC，插件版本 1.0.0，内含简中、繁中、英语及日语。选中的 Vita3K 目录可为存储根本身，或包含 `fs`、`vita`、`files/fs`、`files/vita` 的目录。根目录须能唯一定位到 `ux0`；同一个目录下存在多套存储时，选择实际使用的那一套。
+Resolved ranges join existing task checkpoints; recovery does not rerun resolution. Cancel through the system task card, retaining confirmed files. Disabling prevents new resolution; already-resolved transfers remain host tasks. Enumerate only selected-game ranges and reuse per-round DocumentTree/hash caches. Do not scan the whole device, fetch remote hashes per file or repeatedly commit indexes. Game launch never runs or waits for resolution.
 
-按 `.psvita` 文件名中的标题 ID 纳入 `ux0/app`、`ux0/patch`、`ux0/addcont`、`ux0/license` 下对应游戏的内容，不包含其他游戏、存档、固件、模拟器配置和缓存。布局核对来源为 [Vita3K 官方安装源码](https://github.com/Vita3K/Vita3K/blob/f0273e4cd9b860ea77c44c73d9f5c5b1ed5fa8ab/vita3k/interface.cpp)及[许可源码](https://github.com/Vita3K/Vita3K/blob/f0273e4cd9b860ea77c44c73d9f5c5b1ed5fa8ab/vita3k/packages/src/license.cpp)。
+Vita3K 1.0.0 by 4NPC uses title IDs in .psvita names to locate matching ux0/app, ux0/patch, ux0/addcont and ux0/license content. It excludes other games, saves, firmware, configuration and caches. Supported roots are the selected root, fs, vita, files/fs and files/vita, with exactly one ux0. Both devices must install/enable the plugin and select their own authorized directories. Actual Android providers, emulator versions and cloud services require two-device acceptance.
 
-两端都须安装插件并设置各自目录才能双向传输本体。目录访问依赖系统授权或模拟器提供的文档入口，不通过固定字符串路径绕过 Android 权限。自动化检查不替代实际 Vita3K 版本、Android 文档提供方与网盘的双端运行验收。
+## 日本語
+
+ホスト 0.9.98 が必要です。プラグインは今回選択したゲームの外部リソース範囲だけを決めます。アップロード、ダウンロード、進捗、キャンセル、復旧、ハッシュキャッシュ、索引更新は既存の ROM キューを使います。大きな本文の転送、別クラウドの選択、専用同期タスクの作成は行いません。
+
+ROM_RESOURCES、DIRECTORY 設定、resourceProviders を宣言します。各定義は id、platformId、extensions、directorySetting、rootPaths、rootMarker、formatVersion:1 を持ちます。システムのディレクトリ権限はホストが保存し、プラグインを有効にする前でも設定できます。パスは特定されたルートからの相対パスで、絶対パス、URI、空要素、ドット要素は禁止です。rootPaths の空文字列だけは選択ルート自体を表します。
+
+define.resources に同じ ID の関数を登録します。入力は gameId と romNames を含む games、出力は gameId、key、paths で、各パスに path と required を指定します。必須ディレクトリがなければ失敗し、任意のものがなければタスクを作りません。アップロード時は最大 100 ゲームを受け取り、範囲だけを返します。ホストが列挙してチェックポイントに保存します。ダウンロードはリモート索引を使い、解析を再実行しません。リソース専用プラグインに業務ページや手動動作は不要です。
+
+ライブラリ索引形式 13 の romResources にプラグイン ID、リソースキー、形式、ファイル、相対パスを保存し、ローカル権限 URI は保存しません。起動候補やスクレイピングの識別情報にはなりません。クラウド上は既存 ROM ルートの .retromao/resources/<pluginID>/<resourceKey>/ に置き、索引と確認記録を共有します。未インストール、無効、未設定の端末はリソース記録を保持し、従来のタイトルとメディアだけを同期します。無効状態を削除と見なしてはいけません。
+
+解析済み範囲は既存チェックポイントに保存し、復旧時に再解析しません。キャンセルはシステムのタスクカードで行い、確認済みファイルを残します。無効化は新しい解析を停止しますが、解析済み転送はホストのタスクです。今回のゲーム範囲だけを列挙し、同一回の DocumentTree とハッシュキャッシュを再利用します。全端末スキャン、ファイルごとのリモートハッシュ取得、索引の反復更新は行いません。ゲーム起動は解析を実行せず、同期を待ちません。
+
+4NPC の Vita3K 1.0.0 は .psvita 名のタイトル ID を使い、ux0/app、ux0/patch、ux0/addcont、ux0/license の該当内容を扱います。他のゲーム、セーブ、ファームウェア、設定、キャッシュは対象外です。選択ルート、fs、vita、files/fs、files/vita に対応し、ux0 を一意に特定する必要があります。両端末でインストール、有効化、各端末の権限付きディレクトリ設定が必要です。実際の Android プロバイダー、エミュレーター、クラウドは二端末で検証してください。

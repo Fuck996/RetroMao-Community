@@ -1,0 +1,432 @@
+[
+  {
+    "name": "retroarch",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "legacy",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 1,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "uri",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "uri",
+          "name": "URI",
+          "packageName": "org.example.emu",
+          "activity": "org.example.emu.MainActivity",
+          "protocol": "URI",
+          "mimeType": "application/octet-stream"
+        }
+      ]
+    }
+  },
+  {
+    "name": "old-schema-with-launchers",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 1,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "duplicate-launcher",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "missing-cores",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": []
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "path-as-core-id",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "../bad",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "relative-activity",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": ".MainActivity",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "unknown-protocol",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "launchers": [
+        {
+          "id": "retroarch",
+          "name": "RetroArch",
+          "packageName": "com.retroarch",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "SHELL",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        },
+        {
+          "id": "retroarch64",
+          "name": "RetroArch 64",
+          "packageName": "com.retroarch.aarch64",
+          "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+          "protocol": "RETROARCH",
+          "cores": [
+            {
+              "id": "bluemsx",
+              "name": "blueMSX"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

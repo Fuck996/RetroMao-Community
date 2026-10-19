@@ -13,7 +13,7 @@ from build_script_plugin import build, validate_localizations
 
 class PluginLocalizationTest(unittest.TestCase):
     def manifest(self):
-        return {"id": "example.localized", "name": "Example plugin", "author": "Author", "version": "1.0.0", "minAppVersion": "0.9.94",
+        return {"schemaVersion": 1, "apiVersion": 1, "id": "example.localized", "name": "Example plugin", "author": "Author", "version": "1.0.0", "minAppVersion": "0.9.94",
                 "defaultLocale": "en", "description": "Example", "pages": [{"id": "main", "title": "Home", "path": "index.html"}],
                 "messages": {"hint": "Choose"}, "localizations": {"zh-Hans": {"name": "示例插件", "description": "示例",
                 "pages": {"main": "主页"}, "messages": {"hint": "选择"}}}}
@@ -72,7 +72,8 @@ class PluginLocalizationTest(unittest.TestCase):
         manifest["pages"].append({"id": "settings", "title": "Settings", "path": "settings.html", "kind": "CONFIGURATION"})
         manifest["localizations"]["zh-Hans"]["pages"]["settings"] = "配置"
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = Path(directory) / "source"
+            root.mkdir()
             (root / "index.html").write_text("Business", encoding="utf-8")
             (root / "settings.html").write_text("Settings", encoding="utf-8")
             for role, path, valid in [("CONFIGURATION", "settings.html", True), ("BUSINESS", "settings.html", False), ("CONFIGURATION", "index.html", False)]:

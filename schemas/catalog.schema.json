@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "entries"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "entries": {"type": "array", "maxItems": 500, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "id", "name", "author", "description", "version", "minAppVersion", "releaseTag", "fileName", "sizeBytes", "sha256"],
+      "properties": {
+        "kind": {"enum": ["PLATFORM", "THEME", "SCRIPT"]},
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,79}$"},
+        "name": {"type": "string", "minLength": 1, "maxLength": 80},
+        "author": {"type": "string", "maxLength": 80},
+        "description": {"type": "string", "maxLength": 240},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "minAppVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "releaseTag": {"type": "string", "pattern": "^[a-zA-Z0-9._-]{1,80}$"},
+        "fileName": {"type": "string", "pattern": "^[a-zA-Z0-9._-]{1,120}\\.zip$"},
+        "sizeBytes": {"type": "integer", "minimum": 1, "maximum": 134217728},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "previewPath": {"type": "string", "pattern": "^previews/[a-zA-Z0-9._-]{1,120}\\.(png|webp)$"},
+        "iconName": {"type": "string"}, "defaultLocale": {"type": "string"},
+        "localizations": {"type": "object", "maxProperties": 31}
+      }
+    }}
+  }
+}
