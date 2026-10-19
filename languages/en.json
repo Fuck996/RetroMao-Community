@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "en",
   "name": "English",
-  "catalog_version": "0.9.104",
-  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
+  "catalog_version": "0.9.108",
+  "catalog_hash": "e4f30c4ad72db89c672ecd0ce4dd6095b05ec92a454c1f82e2ea3ee9d934a098",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1341,7 +1341,15 @@
     "emulator_rom_directory_clear": "Clear folder setting",
     "emulator_rom_directory_unreadable": "Unable to obtain read access to the game folder",
     "emulator_rom_directory_mismatch": "The selected AetherSX2 / NetherSX2 game folder and ROM use different file providers. Select the folder again.",
-    "emulator_document_uri_unsupported": "The index requires a system-storage document URI. This ROM provider does not support that format."
+    "emulator_document_uri_unsupported": "The index requires a system-storage document URI. This ROM provider does not support that format.",
+    "apps_search": "Search apps",
+    "apps_system_settings": "System settings",
+    "apps_empty": "No launchable apps found",
+    "apps_load_failed": "Could not load apps: %1$s",
+    "apps_launch_failed": "Could not open the app or system screen: %1$s",
+    "apps_default_home": "Default home app",
+    "apps_home_description": "Set RetroMao as your default home app. Press Home to return to the game frontend.",
+    "apps_home_active": "RetroMao is your default home app. Select to change it in system settings."
   },
   "author": "4NPC",
   "credits": []

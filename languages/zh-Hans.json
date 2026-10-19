@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hans",
   "name": "简体中文",
-  "catalog_version": "0.9.104",
-  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
+  "catalog_version": "0.9.108",
+  "catalog_hash": "e4f30c4ad72db89c672ecd0ce4dd6095b05ec92a454c1f82e2ea3ee9d934a098",
   "status": "source",
   "messages": {
     "android_manifest_text_0001": "复古猫",
@@ -1341,7 +1341,15 @@
     "emulator_rom_directory_clear": "清除目录设置",
     "emulator_rom_directory_unreadable": "无法取得游戏目录的读取授权",
     "emulator_rom_directory_mismatch": "所选以太游戏目录与 ROM 不属于同一文件提供方，请重新选择",
-    "emulator_document_uri_unsupported": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式"
+    "emulator_document_uri_unsupported": "索引要求系统存储的文档 URI，当前 ROM 的文件提供方不支持此格式",
+    "apps_search": "搜索应用",
+    "apps_system_settings": "系统设置",
+    "apps_empty": "未找到可启动的应用",
+    "apps_load_failed": "读取应用列表失败：%1$s",
+    "apps_launch_failed": "无法打开应用或系统页面：%1$s",
+    "apps_default_home": "默认桌面",
+    "apps_home_description": "将复古猫设为默认桌面，按 Home 键返回游戏前端。",
+    "apps_home_active": "复古猫已是默认桌面。点击可在系统中更换。"
   },
   "author": "4NPC",
   "credits": []

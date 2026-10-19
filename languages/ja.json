@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "ja",
   "name": "日本語",
-  "catalog_version": "0.9.104",
-  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
+  "catalog_version": "0.9.108",
+  "catalog_hash": "e4f30c4ad72db89c672ecd0ce4dd6095b05ec92a454c1f82e2ea3ee9d934a098",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1341,7 +1341,15 @@
     "emulator_rom_directory_clear": "フォルダー設定を解除",
     "emulator_rom_directory_unreadable": "ゲームフォルダーの読み取り権限を取得できません",
     "emulator_rom_directory_mismatch": "選択した AetherSX2 / NetherSX2 のゲームフォルダーと ROM のファイルプロバイダーが異なります。フォルダーを選び直してください。",
-    "emulator_document_uri_unsupported": "インデックスにはシステムストレージのドキュメント URI が必要です。この ROM のファイルプロバイダーは対応していません。"
+    "emulator_document_uri_unsupported": "インデックスにはシステムストレージのドキュメント URI が必要です。この ROM のファイルプロバイダーは対応していません。",
+    "apps_search": "アプリを検索",
+    "apps_system_settings": "システム設定",
+    "apps_empty": "起動できるアプリが見つかりません",
+    "apps_load_failed": "アプリ一覧を読み込めませんでした：%1$s",
+    "apps_launch_failed": "アプリまたはシステム画面を開けませんでした：%1$s",
+    "apps_default_home": "ホームアプリ",
+    "apps_home_description": "RetroMaoをホームアプリに設定すると、ホームボタンでゲームフロントエンドに戻れます。",
+    "apps_home_active": "RetroMaoがホームアプリに設定されています。選択するとシステム設定で変更できます。"
   },
   "author": "4NPC",
   "credits": []

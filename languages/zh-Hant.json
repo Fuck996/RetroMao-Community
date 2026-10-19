@@ -2,8 +2,8 @@
   "schema_version": 1,
   "locale": "zh-Hant",
   "name": "繁體中文",
-  "catalog_version": "0.9.104",
-  "catalog_hash": "3a994b0fc21953479fee94ed0a4622e6198ea0df406c0da19af8a01bb4f9d6d3",
+  "catalog_version": "0.9.108",
+  "catalog_hash": "e4f30c4ad72db89c672ecd0ce4dd6095b05ec92a454c1f82e2ea3ee9d934a098",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1341,7 +1341,15 @@
     "emulator_rom_directory_clear": "清除目錄設定",
     "emulator_rom_directory_unreadable": "無法取得遊戲目錄的讀取授權",
     "emulator_rom_directory_mismatch": "所選以太遊戲目錄與 ROM 不屬於同一個檔案提供者，請重新選擇",
-    "emulator_document_uri_unsupported": "索引要求系統儲存空間的文件 URI，目前 ROM 的檔案提供者不支援此格式"
+    "emulator_document_uri_unsupported": "索引要求系統儲存空間的文件 URI，目前 ROM 的檔案提供者不支援此格式",
+    "apps_search": "搜尋應用程式",
+    "apps_system_settings": "系統設定",
+    "apps_empty": "找不到可啟動的應用程式",
+    "apps_load_failed": "讀取應用程式清單失敗：%1$s",
+    "apps_launch_failed": "無法開啟應用程式或系統頁面：%1$s",
+    "apps_default_home": "預設主畫面應用程式",
+    "apps_home_description": "將復古貓設為預設主畫面應用程式，按 Home 鍵返回遊戲前端。",
+    "apps_home_active": "復古貓已是預設主畫面應用程式。點選可在系統中更換。"
   },
   "author": "4NPC",
   "credits": []
