@@ -1,6 +1,6 @@
 {
-  "catalog_version": "0.9.118",
-  "catalog_hash": "afd632bb043478a3c096573f91d29ecfd096f19e09d57099bd1e50453cdfc20a",
+  "catalog_version": "0.9.124",
+  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -1996,7 +1996,7 @@
       ]
     },
     "game_action_dialog_text_0033": {
-      "source": "正在保存所选资料",
+      "source": "正在保存资料",
       "arguments": [],
       "surfaces": [
         "game_action_dialog"
@@ -2238,7 +2238,7 @@
       ]
     },
     "game_metadata_dialog_text_0006": {
-      "source": "自定义字段会优先保留，保存前可以逐项选择。",
+      "source": "自定义字段会优先保留。",
       "arguments": [],
       "surfaces": [
         "game_metadata_dialog"
@@ -2338,7 +2338,7 @@
       ]
     },
     "game_metadata_dialog_text_0017": {
-      "source": "先编辑，再预览并选择要保存的字段。评分留空表示未评分。",
+      "source": "只保存改动过的字段。评分留空表示未评分。",
       "arguments": [],
       "surfaces": [
         "game_metadata_dialog"
@@ -4320,7 +4320,7 @@
       ]
     },
     "resource_transfer_dialog_text_0008": {
-      "source": "已加入 %1$s 个传输任务，可在设置 → 传输任务中查看进度。",
+      "source": "已加入 %1$s 个传输任务",
       "arguments": [
         "%1$s"
       ],
@@ -8353,7 +8353,7 @@
       ]
     },
     "settings_screen_text_0054": {
-      "source": "全部批次",
+      "source": "进行中",
       "arguments": [],
       "surfaces": [
         "settings_screen"
@@ -9145,7 +9145,7 @@
       ]
     },
     "source_settings_text_0018": {
-      "source": "连接密码已更新，可到传输任务继续处理未完成的任务",
+      "source": "连接密码已更新",
       "arguments": [],
       "surfaces": [
         "source_settings"
@@ -12903,6 +12903,1378 @@
     },
     "save_directory_restore_discarded": {
       "source": "已更改同步目录，丢弃尚未写入本地存档的恢复进度。云端文件和历史版本保留，下次同步重新检查。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_progress": {
+      "source": "正在删除本机内容（%1$d / %2$d）",
+      "arguments": [
+        "%1$d",
+        "%2$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_complete": {
+      "source": "本机删除完成",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_failed": {
+      "source": "删除未完成：%1$s。已删除的文件无法撤销，请重新检查后继续。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_files_busy": {
+      "source": "所选游戏还有未结束的资源任务，请先完成或取消任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_location_changed": {
+      "source": "本地文件位置已变化，请重新检查删除内容",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_size_changed": {
+      "source": "本地文件大小已变化，请重新检查删除内容",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "local_deletion_resources_changed": {
+      "source": "本地资源在确认后变化，请重新检查删除内容",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "toast_view_transfers": {
+      "source": "查看传输",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "save_settings_backup_state": {
+      "source": " · 备份%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "save_settings_queued_backups": {
+      "source": " · %1$d 份备份%2$s",
+      "arguments": [
+        "%1$d",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_general": {
+      "source": "通用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_general_description": {
+      "source": "语言 · 默认桌面 · 菜单显示 · 仓库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_repository_description": {
+      "source": "语言、主题和平台扩展的下载来源",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_settings_configure": {
+      "source": "配置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "emulator_settings_saving": {
+      "source": "正在设置默认模拟器",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_selected_count": {
+      "source": "已选 %1$d 项",
+      "arguments": [
+        "%1$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_select_all": {
+      "source": "全选",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_select_none": {
+      "source": "取消全选",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_batch_delete_local": {
+      "source": "删除本机 %1$d 项",
+      "arguments": [
+        "%1$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_batch_delete_remote": {
+      "source": "删除远端 %1$d 项",
+      "arguments": [
+        "%1$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_import_title": {
+      "source": "导入与重新扫描",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_import_description": {
+      "source": "选择索引文件、再次导入已保存的索引或重新扫描目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "folder_settings_show_all_hidden": {
+      "source": "全部重新显示",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "folder_settings_shown_all_hidden": {
+      "source": "已重新显示 %1$d 个游戏",
+      "arguments": [
+        "%1$d"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "common_more": {
+      "source": "更多操作",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "source_settings_browse": {
+      "source": "浏览 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "unsaved_changes_title": {
+      "source": "放弃未保存的修改？",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "unsaved_changes_message": {
+      "source": "当前页面的修改还没有保存，离开后会丢失。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "unsaved_changes_discard": {
+      "source": "放弃修改",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "settings_scraping_description": {
+      "source": "ScreenScraper 账号、后台刮削与缓存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_language_zh": {
+      "source": "中文",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_language_en": {
+      "source": "英语",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_language_ja": {
+      "source": "日语",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_region_jp": {
+      "source": "日本",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_region_us": {
+      "source": "美国",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_region_eu": {
+      "source": "欧洲",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scrape_region_world": {
+      "source": "世界版",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_cover_load_failed": {
+      "source": "封面读取失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "library_scanning_folder": {
+      "source": "正在扫描 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "plugin_requires_newer_app": {
+      "source": "插件要求的最低前端版本不满足",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_removal_001": {
+      "source": "移除导入配置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_removal_002": {
+      "source": "移除“%1$s”的再次导入入口和上次选择。已有游戏、ROM、媒体文件及游戏自身的路径定位记录会保留。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_removal_003": {
+      "source": "移除未完成：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_media_001": {
+      "source": "选择未完成：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_media_002": {
+      "source": "正在核对",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_001": {
+      "source": "导入游戏索引",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_002": {
+      "source": "确认导入",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_003": {
+      "source": "导入未完成：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_004": {
+      "source": "已找到索引所在 ROM 目录，ROM 和媒体均按索引中的相对路径读取。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_005": {
+      "source": "收起路径设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_006": {
+      "source": "调整路径（跨目录或迁移时使用）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_007": {
+      "source": "导入到机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_008": {
+      "source": "街机自动分类",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_009": {
+      "source": "按 CPS、PGM、NAOMI、NEO GEO 和其他街机分类，保留索引的启动配置。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_010": {
+      "source": "索引未提供可识别的机种，请选择后继续。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_011": {
+      "source": "已自动识别：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_012": {
+      "source": "识别到多个机种，请分别导入：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_013": {
+      "source": "将索引中的原目录对应到已配置的本地文件夹。此操作不搬动文件，也不改变 WebDAV 同步映射。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_014": {
+      "source": "确认导入后保存这份索引配置，下次可沿用目录和已选游戏。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_015": {
+      "source": "例如 C:/LaunchBox/Games/GBA → GBA ROM 文件夹。相对路径可留空；媒体在独立目录时请另加媒体对应关系。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_016": {
+      "source": "索引中的机种：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_017": {
+      "source": "自动图片目录：Images/机种名/Box - Front 等分类，可包含地区子目录。例如把 Images/Nintendo Game Boy Advance 对应到本机该机种的媒体文件夹。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_018": {
+      "source": "ES-DE 媒体：把 downloaded_media/机种目录名（例如 gba）对应到本机该机种媒体文件夹，保留 covers、physicalmedia 等分类及 ROM 同名子目录。XML 已指定的素材优先。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_019": {
+      "source": "原机种 ROM 根目录（可选）",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_020": {
+      "source": "相对 ROM 路径可留空。绝对路径请填写原机种根目录，例如 C:/ROMs/gba；即使仅映射 Japan 子目录，也要保留原根目录以匹配媒体层级。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_021": {
+      "source": " ROM 目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_022": {
+      "source": " 媒体目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_023": {
+      "source": "移除此目录对应关系",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_024": {
+      "source": "索引中的原目录前缀",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_025": {
+      "source": "留空表示索引所在目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_026": {
+      "source": "本地文件夹",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_027": {
+      "source": "请先到“游戏库与文件夹”为此机种添加本地 ROM 文件夹。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_028": {
+      "source": "导入到 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_029": {
+      "source": "%1$s · 共 %2$s 个游戏 · 已选 %3$s 个",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_030": {
+      "source": "原机种 ROM 根目录：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_031": {
+      "source": "已沿用上次的游戏选择；新条目可手动勾选。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_032": {
+      "source": "可保留缺少 ROM 的资料条目；未定位的路径需要返回调整。已有收藏、游玩记录、外观及手工编辑的名称和介绍会保留。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_033": {
+      "source": "全选可导入",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_034": {
+      "source": "清空选择",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_035": {
+      "source": "索引中没有可导入的游戏，请检查筛选条件和目录对应关系。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_036": {
+      "source": "调整目录",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_037": {
+      "source": "正在读取目录并生成预览",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_038": {
+      "source": "正在核对并导入所选游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_039": {
+      "source": "生成预览",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_040": {
+      "source": "导入所选游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_041": {
+      "source": "正在核对所选素材",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_042": {
+      "source": "导入%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_043": {
+      "source": "新增游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_044": {
+      "source": "更新资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_045": {
+      "source": "ROM %1$s/%2$s · 媒体 %3$s/%4$s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s",
+        "%4$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_046": {
+      "source": "收起导入详情",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_047": {
+      "source": "展开导入详情",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_048": {
+      "source": "%1$s 个路径尚未定位，暂不可导入",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_049": {
+      "source": "部分文件缺失，将保留资料和路径",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_050": {
+      "source": "有 %1$s 项资源检查提示，请展开查看",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_051": {
+      "source": "请先选择待确认的媒体素材",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_052": {
+      "source": "导入后保持隐藏，可在目录设置中重新显示",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_053": {
+      "source": "待选择",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_054": {
+      "source": "未收藏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_055": {
+      "source": "%1$s · 游玩 %2$s 次",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_056": {
+      "source": "保留复古猫中的收藏、隐藏状态和游玩记录。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_057": {
+      "source": "名称：%1$s → %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_058": {
+      "source": "介绍：%1$s → %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_059": {
+      "source": "未提供",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_060": {
+      "source": "开发商：%1$s · 发行商：%2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_061": {
+      "source": "类型：%1$s · 日期：%2$s · 人数：%3$s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_062": {
+      "source": "已有",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_063": {
+      "source": "未定位",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_064": {
+      "source": "机种：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_065": {
+      "source": "街机硬件：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "index_import_ui_066": {
+      "source": "启动核心：%1$s · %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_001": {
+      "source": "刮削设置操作失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_002": {
+      "source": "无法读取缓存用量",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_003": {
+      "source": "游戏识别与 ScreenScraper",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_004": {
+      "source": "扫描后先在本机识别 ROM 内容，再联网补齐资料；无法确定的游戏由你确认。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_005": {
+      "source": "此安装包尚未配置 ScreenScraper 应用授权，后台识别与联网刮削暂不可用。本地导入和自定义资料可继续使用。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_006": {
+      "source": "账号与资料偏好",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_007": {
+      "source": "匿名访问",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_008": {
+      "source": "后台自动刮削",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_009": {
+      "source": "配置可用来源及对应机种后，先识别 ROM，再补齐资料和媒体。未配置时不读取 ROM 内容；关闭后暂停并保留进度。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_010": {
+      "source": "自动获取预览视频",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_011": {
+      "source": "为后续任务获取视频；已完成的游戏可在单游戏刮削中选择。视频占用更多流量和缓存。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_012": {
+      "source": "检查连接与额度",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_013": {
+      "source": "读取服务返回的当前额度；账号密码仅在本机加密保存。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_014": {
+      "source": "连接检查失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_015": {
+      "source": "今日请求 %1$s / %2$s · 每分钟上限 %3$s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_016": {
+      "source": "今日未匹配 %1$s / %2$s · 下载限速 %3$s KB/s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_017": {
+      "source": "媒体缓存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_018": {
+      "source": "已用 %1$s MB",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_019": {
+      "source": "正在读取用量",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_020": {
+      "source": "%1$s · 按最近使用顺序清理；正在显示或保存的素材在使用结束后清理。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_021": {
+      "source": "清理未使用的缓存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_022": {
+      "source": "缓存可重新下载，不随用户素材上传。清理不删除用户图片、ROM 或游戏资料。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_023": {
+      "source": "后台刮削任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_024": {
+      "source": "%1$s 已完成 · %2$s 等待或进行中 · %3$s 待确认",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_025": {
+      "source": "全部机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_026": {
+      "source": "设置来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_027": {
+      "source": " · 编号 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_028": {
+      "source": "显示已完成和已取消",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_029": {
+      "source": "继续待处理任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_030": {
+      "source": "后台自动刮削已关闭，任务记录保留。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_031": {
+      "source": "暂无待显示的任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_032": {
+      "source": "添加或扫描本地 ROM 后，后台任务会自动出现在这里。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_033": {
+      "source": "后台已关闭",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_034": {
+      "source": "正在本地识别",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_035": {
+      "source": "等待本地识别",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_036": {
+      "source": "待应用授权",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_037": {
+      "source": "待选择来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_038": {
+      "source": "光盘 %1$s · 修订 %2$s",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_039": {
+      "source": "ROM 内容标识",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_040": {
+      "source": "ROM 文件组标识 · %1$s 个文件",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_041": {
+      "source": "选择来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_042": {
+      "source": "搜索并确认游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_043": {
+      "source": "取消此任务",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_044": {
+      "source": "来源机种读取失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_045": {
+      "source": "为 %1$s 选择对应机种，后续扫描和后台刮削共用此配置。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_046": {
+      "source": "筛选机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_047": {
+      "source": "来源没有返回可选机种。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_048": {
+      "source": "重新读取来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_049": {
+      "source": "没有符合筛选条件的机种。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_050": {
+      "source": "来源机种未保存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_051": {
+      "source": "刮削账号与偏好",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_052": {
+      "source": "用户名留空使用匿名访问。所选语言或地区没有资料时会保留原值，不自动换成其他语言。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_053": {
+      "source": "ScreenScraper 用户名",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_054": {
+      "source": "保留原账号时，密码留空表示不修改。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_055": {
+      "source": "资料语言",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_056": {
+      "source": "封面与发行地区",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_057": {
+      "source": "账号设置未保存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "scraper_settings_ui_058": {
+      "source": "保存设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_001": {
+      "source": "刮削请求失败",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_002": {
+      "source": "确认刮削资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_003": {
+      "source": "此安装包尚未配置 ScreenScraper 应用授权。可以先设置偏好，联网功能需要应用发布者完成授权配置。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_004": {
+      "source": "正在保存资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_005": {
+      "source": "%1$s · %2$s · 来源编号 %3$s",
+      "arguments": [
+        "%1$s",
+        "%2$s",
+        "%3$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_006": {
+      "source": "只保存勾选的内容；自定义字段和已有用户素材保留。媒体缓存不会自动上传到 WebDAV。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_007": {
+      "source": " · 自定义，保留",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_008": {
+      "source": " · 内容相同",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_009": {
+      "source": "当前：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_010": {
+      "source": "媒体素材",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_011": {
+      "source": "此游戏没有所选地区或世界版的可用素材。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_012": {
+      "source": "通用",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_013": {
+      "source": " · 已有用户素材",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_014": {
+      "source": "搜索游戏名称",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_015": {
+      "source": "正在读取来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_016": {
+      "source": "选择对应的来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_017": {
+      "source": "筛选来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_018": {
+      "source": "没有找到匹配游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_019": {
+      "source": "修改名称或确认机种后重新搜索。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_020": {
+      "source": "找到 %1$s 个候选，请选择与当前 ROM 对应的游戏。",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_021": {
+      "source": "取消请求",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_022": {
+      "source": "刮削设置",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_023": {
+      "source": "正在搜索游戏",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_024": {
+      "source": "请先选择与本机机种对应的来源机种",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_025": {
+      "source": "正在保存刮削资料",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_026": {
+      "source": "所选游戏资料与媒体已保存",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_027": {
+      "source": "保存所选内容",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_028": {
+      "source": "刮削封面",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_029": {
+      "source": "来源封面预览",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "online_scrape_ui_030": {
+      "source": "封面预览失败：%1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_001": {
+      "source": "正在读取索引文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_002": {
+      "source": "导入已有游戏库",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_003": {
+      "source": "选择 ROM 总目录，自动识别机种子目录、gamelist、天马索引和同名媒体",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_004": {
+      "source": "选择索引文件",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_005": {
+      "source": "已授权 ROM 目录内的索引自动读取相对路径；跨设备迁移可调整路径",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_006": {
+      "source": "选择已有 ROM 目录重新扫描。导入内容转为复古猫格式，原始索引文件保持不变。",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_007": {
+      "source": "已保存的索引",
+      "arguments": [],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_008": {
+      "source": "%1$s · %2$s 个已选游戏 · 再次导入",
+      "arguments": [
+        "%1$s",
+        "%2$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_009": {
+      "source": "正在读取 %1$s",
+      "arguments": [
+        "%1$s"
+      ],
+      "surfaces": [],
+      "owners": []
+    },
+    "import_settings_ui_010": {
+      "source": "扫描本地 ROM 目录",
       "arguments": [],
       "surfaces": [],
       "owners": []
