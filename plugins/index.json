@@ -118,6 +118,35 @@
           "description": "Vita3K のゲーム本体・更新・DLC・ライセンスを同期。"
         }
       }
+    },
+    {
+      "id": "azahar-plus",
+      "name": "Azahar Plus",
+      "author": "4NPC",
+      "version": "1.0.1",
+      "minAppVersion": "0.9.138",
+      "description": "通过 Azahar Plus 启动 Nintendo 3DS 游戏。",
+      "kind": "SCRIPT",
+      "releaseTag": "azahar-plus-1.0.1",
+      "fileName": "plugin-azahar-plus-1.0.1.zip",
+      "sizeBytes": 4045,
+      "sha256": "8d157db18e453c1ec90a0b4c31b1a3d8e37c2426bd22ac6316bc4a384af7f620",
+      "iconName": "gamepad",
+      "defaultLocale": "zh-Hans",
+      "localizations": {
+        "zh-Hant": {
+          "name": "Azahar Plus",
+          "description": "透過 Azahar Plus 啟動 Nintendo 3DS 遊戲。"
+        },
+        "en": {
+          "name": "Azahar Plus",
+          "description": "Launch Nintendo 3DS games with Azahar Plus."
+        },
+        "ja": {
+          "name": "Azahar Plus",
+          "description": "Azahar Plus で Nintendo 3DS のゲームを起動します。"
+        }
+      }
     }
   ]
 }
