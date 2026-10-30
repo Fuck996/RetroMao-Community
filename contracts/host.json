@@ -1,5 +1,10 @@
 {
   "schemaVersion": 1,
+  "pluginEmulators": {
+    "minAppVersion": "0.9.136",
+    "protocols": ["URI"],
+    "releaseVerified": false
+  },
   "platformLaunchers": {
     "schemaVersion": 2,
     "minAppVersion": "0.9.108",

@@ -2,6 +2,8 @@
 
 [中文](#中文) · [English](#english) · [日本語](#日本語)
 
+[模拟器插件（开发中，宿主 0.9.136） / Emulator plugins (development, host 0.9.136) / エミュレータープラグイン（開発中、ホスト 0.9.136）](EMULATOR_PLUGINS.md)
+
 [搜索扩展 / Search extensions / 検索拡張](SEARCH_EXTENSIONS.md)
 
 [插件卡片与文案规范 / Card and copy guidelines / カードと文言の規約](PLUGIN_PRESENTATION.md)

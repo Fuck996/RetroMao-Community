@@ -16,6 +16,7 @@
     "homepage": {"type": "string"}, "license": {"type": "string"},
     "capabilities": {"type": "array", "uniqueItems": true, "items": {"enum": ["LIBRARY_READ", "LIBRARY_WRITE", "NETWORK", "STORAGE", "ROM_RESOURCES", "SEARCH"]}},
     "searchProvider": {"$ref": "#/$defs/id"},
+    "emulators": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/emulator"}},
     "networkHosts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(?:\\*|[a-z0-9][a-z0-9.-]*(?::[0-9]{1,5})?)$"}},
     "pages": {"type": "array", "maxItems": 32, "items": {"type": "object", "additionalProperties": false,
       "required": ["id", "title", "path"], "properties": {"id": {"$ref": "#/$defs/id"}, "title": {"type": "string", "minLength": 1}, "path": {"$ref": "#/$defs/path"}, "kind": {"enum": ["BUSINESS", "CONFIGURATION"]}}}},
@@ -31,6 +32,18 @@
       "properties": {"id": {"$ref": "#/$defs/id"}, "platformId": {"type": "string"}, "extensions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9]+$"}}, "directorySetting": {"$ref": "#/$defs/id"}, "rootPaths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}, "rootMarker": {"$ref": "#/$defs/path"}, "formatVersion": {"const": 1}}}}
   },
   "$defs": {
+    "emulator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "packageName", "activity", "platforms"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,39}$"},
+        "name": {"type": "string", "minLength": 1, "maxLength": 80},
+        "packageName": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+$"},
+        "activity": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_$]*)+$"},
+        "platforms": {"type": "array", "minItems": 1, "maxItems": 64, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{1,31}$"}},
+        "mimeType": {"type": "string", "pattern": "^[a-zA-Z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+$"}
+      }
+    },
     "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
     "locale": {"type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}|[0-9]{3}))?$"},
     "id": {"type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9._-]{0,79}$"},
