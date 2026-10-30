@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog_version": "0.9.124",
-  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
+  "catalog_hash": "9b91067fd4828808261c22e9a3415c3c1dc901accb5651c3b8590b0f6e245dfd",
   "languages": [
     {
       "locale": "en",
@@ -9,10 +9,10 @@
       "file": "en.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1584,
-      "total": 1584,
-      "size_bytes": 118880,
-      "sha256": "ca7eda9f7cced4c9f5c275a8475a423627124c060b2a3b413e7ea9fc3e8289b1"
+      "translated": 1591,
+      "total": 1591,
+      "size_bytes": 119603,
+      "sha256": "b01859ff6e5ee83959a0c1a4cd76dc801efda7b3385bd79a747ceb60ccd2f755"
     },
     {
       "locale": "ja",
@@ -20,10 +20,10 @@
       "file": "ja.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1584,
-      "total": 1584,
-      "size_bytes": 152858,
-      "sha256": "4e587d08146aa476788cd8c83cd25852e0d024a780b573962dd5176ca2847b7d"
+      "translated": 1591,
+      "total": 1591,
+      "size_bytes": 153766,
+      "sha256": "31f54450d2be88d489377f2f3a31c0c627ed12839baaffced772ce70173e9416"
     },
     {
       "locale": "zh-Hans",
@@ -31,10 +31,10 @@
       "file": "zh-Hans.json",
       "author": "4NPC",
       "status": "source",
-      "translated": 1584,
-      "total": 1584,
-      "size_bytes": 114721,
-      "sha256": "0dc684f18afa83c0de1b05707fd3a7cae30e545238393fecff707e9bfb9ff095"
+      "translated": 1591,
+      "total": 1591,
+      "size_bytes": 115367,
+      "sha256": "f5de2514459c2c74bbfdebc9c41f1e7c9449ecb876b6f92a78dd5d89bab322a5"
     },
     {
       "locale": "zh-Hant",
@@ -42,10 +42,10 @@
       "file": "zh-Hant.json",
       "author": "4NPC",
       "status": "draft",
-      "translated": 1584,
-      "total": 1584,
-      "size_bytes": 115353,
-      "sha256": "988378a7e72143aba16dfbda26b9e66f290fc85cb7debaf27d8ab3f707c9a481"
+      "translated": 1591,
+      "total": 1591,
+      "size_bytes": 116020,
+      "sha256": "e0900ad0acd8ce86a03833119a6af6cf61fde2d424dcb265be2880161f4d5dcf"
     }
   ]
 }

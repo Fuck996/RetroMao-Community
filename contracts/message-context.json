@@ -1,6 +1,6 @@
 {
   "catalog_version": "0.9.124",
-  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
+  "catalog_hash": "9b91067fd4828808261c22e9a3415c3c1dc901accb5651c3b8590b0f6e245dfd",
   "messages": {
     "android_manifest_text_0001": {
       "source": "复古猫",
@@ -14278,6 +14278,76 @@
       "arguments": [],
       "surfaces": [],
       "owners": []
+    },
+    "idle_screen_cover_wall": {
+      "source": "封面墙",
+      "arguments": [],
+      "surfaces": [
+        "settings_general"
+      ],
+      "owners": [
+        "IdleScreenSettings"
+      ]
+    },
+    "idle_screen_description": {
+      "source": "游戏或应用在另一屏运行时接管闲置屏。关闭时显示纯黑画面；轻触可显示操作。",
+      "arguments": [],
+      "surfaces": [
+        "settings_general"
+      ],
+      "owners": [
+        "IdleScreenSettings"
+      ]
+    },
+    "idle_screen_no_covers": {
+      "source": "尚无游戏封面，闲置时保持纯黑。退出游戏后会自动恢复，也可手动解除。",
+      "arguments": [],
+      "surfaces": [
+        "idle_screen"
+      ],
+      "owners": [
+        "IdleScreen"
+      ]
+    },
+    "idle_screen_title": {
+      "source": "副屏闲置显示",
+      "arguments": [],
+      "surfaces": [
+        "settings_general"
+      ],
+      "owners": [
+        "IdleScreenSettings"
+      ]
+    },
+    "idle_screen_touch_hint": {
+      "source": "副屏闲置画面，轻触显示操作",
+      "arguments": [],
+      "surfaces": [
+        "idle_screen"
+      ],
+      "owners": [
+        "IdleScreen"
+      ]
+    },
+    "oled_pixel_shift_description": {
+      "source": "启动器画面每分钟在两个物理像素范围内微移，只能降低烧屏风险，不影响游戏画面。",
+      "arguments": [],
+      "surfaces": [
+        "settings_general"
+      ],
+      "owners": [
+        "IdleScreenSettings"
+      ]
+    },
+    "oled_pixel_shift_title": {
+      "source": "OLED 防烧屏位移",
+      "arguments": [],
+      "surfaces": [
+        "settings_general"
+      ],
+      "owners": [
+        "IdleScreenSettings"
+      ]
     }
   }
 }

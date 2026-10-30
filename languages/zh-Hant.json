@@ -3,7 +3,7 @@
   "locale": "zh-Hant",
   "name": "繁體中文",
   "catalog_version": "0.9.124",
-  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
+  "catalog_hash": "9b91067fd4828808261c22e9a3415c3c1dc901accb5651c3b8590b0f6e245dfd",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "復古貓",
@@ -1589,7 +1589,14 @@
     "import_settings_ui_007": "已儲存的索引",
     "import_settings_ui_008": "%1$s · %2$s 個已選遊戲 · 再次匯入",
     "import_settings_ui_009": "正在讀取 %1$s",
-    "import_settings_ui_010": "掃描本地 ROM 目錄"
+    "import_settings_ui_010": "掃描本地 ROM 目錄",
+    "idle_screen_title": "副螢幕閒置顯示",
+    "idle_screen_description": "遊戲或應用程式在另一個螢幕執行時接管閒置螢幕。關閉時顯示純黑畫面；輕觸可顯示操作。",
+    "idle_screen_cover_wall": "封面牆",
+    "idle_screen_touch_hint": "副螢幕閒置畫面，輕觸顯示操作",
+    "idle_screen_no_covers": "尚無遊戲封面，閒置時保持純黑。結束遊戲後會自動恢復，也可手動解除。",
+    "oled_pixel_shift_title": "OLED 防烙印位移",
+    "oled_pixel_shift_description": "啟動器畫面每分鐘在兩個實體像素範圍內微移，只能降低烙印風險，不影響遊戲畫面。"
   },
   "author": "4NPC",
   "credits": []

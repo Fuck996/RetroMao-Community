@@ -3,7 +3,7 @@
   "locale": "en",
   "name": "English",
   "catalog_version": "0.9.124",
-  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
+  "catalog_hash": "9b91067fd4828808261c22e9a3415c3c1dc901accb5651c3b8590b0f6e245dfd",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1589,7 +1589,14 @@
     "import_settings_ui_007": "Saved indexes",
     "import_settings_ui_008": "%1$s · %2$s selected games · Import again",
     "import_settings_ui_009": "Reading %1$s",
-    "import_settings_ui_010": "Scan local ROM folder"
+    "import_settings_ui_010": "Scan local ROM folder",
+    "idle_screen_title": "Idle secondary screen",
+    "idle_screen_description": "Use the idle screen while a game or app runs on the other screen. Off shows a black screen. Tap to show controls.",
+    "idle_screen_cover_wall": "Cover wall",
+    "idle_screen_touch_hint": "Idle secondary screen. Tap to show controls.",
+    "idle_screen_no_covers": "No game covers yet. The idle screen stays black. It restores automatically when you exit the game, or you can release it manually.",
+    "oled_pixel_shift_title": "OLED pixel shift",
+    "oled_pixel_shift_description": "Shifts the launcher by up to two physical pixels each minute to reduce burn-in risk. It cannot eliminate the risk and does not affect the game screen."
   },
   "author": "4NPC",
   "credits": []

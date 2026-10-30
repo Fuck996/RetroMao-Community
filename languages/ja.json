@@ -3,7 +3,7 @@
   "locale": "ja",
   "name": "日本語",
   "catalog_version": "0.9.124",
-  "catalog_hash": "d7956b50ff48bfb924aeb84492474ece9569f148a6728eeb453bb5306f87fe58",
+  "catalog_hash": "9b91067fd4828808261c22e9a3415c3c1dc901accb5651c3b8590b0f6e245dfd",
   "status": "draft",
   "messages": {
     "android_manifest_text_0001": "RetroMao",
@@ -1589,7 +1589,14 @@
     "import_settings_ui_007": "保存済みのインデックス",
     "import_settings_ui_008": "%1$s · 選択済み %2$s 件 · 再インポート",
     "import_settings_ui_009": "%1$s を読み込み中",
-    "import_settings_ui_010": "ローカル ROM フォルダをスキャン"
+    "import_settings_ui_010": "ローカル ROM フォルダをスキャン",
+    "idle_screen_title": "待機中のサブ画面",
+    "idle_screen_description": "もう一方の画面でゲームやアプリを実行中に、待機画面を表示します。オフでは黒一色になります。タップすると操作を表示します。",
+    "idle_screen_cover_wall": "カバーウォール",
+    "idle_screen_touch_hint": "待機中のサブ画面。タップすると操作を表示します。",
+    "idle_screen_no_covers": "ゲームのカバーがないため、待機中は黒一色になります。ゲーム終了後に自動で元に戻ります。手動でも解除できます。",
+    "oled_pixel_shift_title": "OLED 焼き付き軽減",
+    "oled_pixel_shift_description": "ランチャー画面を毎分、最大2物理ピクセルずらして焼き付きのリスクを軽減します。完全には防げません。ゲーム画面には影響しません。"
   },
   "author": "4NPC",
   "credits": []
