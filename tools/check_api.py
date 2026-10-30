@@ -12,7 +12,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = ("中文", "English", "日本語")
 CONTEXTS = {"PAGE", "CONFIGURATION", "ACTION", "RESOURCE"}
-CAPABILITIES = {"LIBRARY_READ", "LIBRARY_WRITE", "NETWORK", "STORAGE", "ROM_RESOURCES"}
+CAPABILITIES = {"LIBRARY_READ", "LIBRARY_WRITE", "NETWORK", "STORAGE", "ROM_RESOURCES", "EMULATORS"}
 
 
 def load(path):

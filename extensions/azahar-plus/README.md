@@ -1,27 +1,21 @@
-# Azahar Plus 1.0.1
+# 自定义启动入口 / Custom launch entries / カスタム起動設定 1.1.0
 
 ## 中文
 
-作者：4NPC。这是可安装的复古猫插件 ZIP，需要包含[模拟器插件接口](../../sdk/EMULATOR_PLUGINS.md)的宿主 0.9.138 或更新版本；不能安装到旧版后冒充支持。它没有执行脚本、额外网络权限、游戏或模拟器安装包。
+作者：4NPC。需要复古猫 0.9.141 或更新版本。从插件商店安装并授权「模拟器」，在已安装插件中打开「启动入口」。选择平台，填写入口名称、应用包名和完整 Activity；新增默认预填 Azahar Plus。保存后可设为平台默认，也可在游戏的模拟器选择中使用。支持编辑、删除，同来源插件更新保留已保存参数；删除全部入口后不会自动恢复预设。
 
-在「插件 → 已安装」导入 ZIP 并启用，再到「设置 → 模拟器 → Nintendo 3DS」选择对应配置。共存版显示 `+AzaharPlus+`，包名 `io.github.azaharplus.android`；替换版显示 `AzaharPlus`，包名 `io.github.lime3ds.android`。用户仍须安装模拟器、完成初始化，并准备自己有权使用的 ROM。支持原 3DS 目录的 `.3ds`、`.cci`、`.cxi`、`.app` 启动候选，文件内容能否运行由模拟器判断。
+高级参数支持 Action、MIME、ROM Data、类型明确的 JSON 附加参数和四种 Activity 标志。`{romUri}` 替换为当前选中的 ROM URI。仅沿用宿主实际拥有的只读授权，不提供命令行、任意文件路径或直接启动 API。具体限制见 [SDK 调用手册](../../sdk/API_REFERENCE.md) 和 [启动契约](../../sdk/EMULATOR_PLUGINS.md)。
 
-官方依据为 [2126.2-A 发布](https://github.com/AzaharPlus/AzaharPlus/releases/tag/AZAHAR_PLUS_2126_2_A)、[公开 Activity](https://github.com/AzaharPlus/AzaharPlus/blob/AZAHAR_PLUS_2126_2_A/src/android/app/src/main/AndroidManifest.xml) 与 [URI 读取](https://github.com/AzaharPlus/AzaharPlus/blob/AZAHAR_PLUS_2126_2_A/src/android/app/src/main/java/org/citra/citra_emu/fragments/EmulationFragment.kt)。已读取两份官方发布 APK 的 Manifest：共存版 SHA-256 为 `cf6047efe1dd019fb15c6b2cbdc2bcdc92330f3975f500fe42361745dcdba8c6`，替换版为 `9aaf2ecdedd3aded560504196c5709c7c185d71990c72e8b20b57342d0496dcd`；不以默认源码分支的包名替代发布包口径。
-
-可从插件商店安装，或下载 Release ZIP 后导入。自动检查不能代替真实设备进入游戏验收；安装、启用和启动仍须使用兼容宿主。
+默认共存版包名 `io.github.azaharplus.android`，替换版为 `io.github.lime3ds.android`；完整 Activity 为 `org.citra.citra_emu.activities.EmulationActivity`。依据 [Azahar Plus 2126.2-A](https://github.com/AzaharPlus/AzaharPlus/releases/tag/AZAHAR_PLUS_2126_2_A) 的发布 APK Manifest 与公开 URI 读取接口。模拟器初始化和游戏文件由用户准备。自动检查、样本预览、实机安装与进入游戏分别验收。
 
 ## English
 
-By 4NPC. This installable RetroMao plugin ZIP requires host 0.9.138 or later with the [emulator plugin contract](../../sdk/EMULATOR_PLUGINS.md). Older hosts cannot use it. It includes no executable script, network permission, emulator or game.
+By 4NPC. Requires RetroMao 0.9.141 or later. Install from the plugin store, grant Emulators and open Launch entries. Choose a platform and enter a name, package and full Activity. New entries are prefilled with Azahar Plus. Save, select a platform default or choose the entry from a game's emulator selector. Edit/delete operations persist across same-source updates; deleting all entries does not restore presets.
 
-Import and enable the ZIP under Plugins → Installed, then select its Nintendo 3DS profile in Settings → Emulators. The coexist build is `+AzaharPlus+` (`io.github.azaharplus.android`); the replacement build is `AzaharPlus` (`io.github.lime3ds.android`). Install and initialize the emulator separately and provide ROMs you are entitled to use. Existing `.3ds`, `.cci`, `.cxi` and `.app` entries pass through the standard ROM launch flow. The emulator decides whether their contents can run.
-
-The linked official 2126.2-A release, exported Activity and URI reader are the protocol sources. Both official APK manifests were inspected; their SHA-256 values are recorded above. Install from the plugin store or import the Release ZIP using a compatible host. Automated checks do not establish actual gameplay; record device acceptance separately.
+Advanced settings include Action, MIME, ROM Data, typed JSON extras and four Activity flags. `{romUri}` becomes the selected ROM URI using the host's existing read-only grants. There is no shell, arbitrary path access or direct-launch API. See the linked SDK reference and launch contract. The coexist package is `io.github.azaharplus.android`, the replacement package `io.github.lime3ds.android`, and Activity `org.citra.citra_emu.activities.EmulationActivity`, verified against the linked official 2126.2-A APKs and URI reader. Initialize the emulator and supply game files separately. Automated checks, fixture previews, device installation and gameplay are separate acceptance stages.
 
 ## 日本語
 
-作者：4NPC。[エミュレータープラグイン仕様](../../sdk/EMULATOR_PLUGINS.md)に対応するホスト 0.9.138 以降が必要な、インストール可能な ZIP です。旧ホストでは使用できません。実行スクリプト、ネットワーク権限、エミュレーター本体、ゲームは含みません。
+作者：4NPC。復古猫 0.9.141 以降が必要です。ストアからインストールしてエミュレーター権限を許可し、起動設定を開きます。プラットフォーム、設定名、パッケージ名、完全な Activity を指定します。初期値は Azahar Plus です。保存後は既定やゲームのエミュレーター選択で使用できます。同じ配布元の更新でも編集を保持し、全件削除後に初期値を復元しません。
 
-プラグイン → インストール済みから ZIP を読み込み、有効にしてください。設定 → エミュレーター → Nintendo 3DS で起動設定を選択します。共存版は `+AzaharPlus+`（`io.github.azaharplus.android`）、置換版は `AzaharPlus`（`io.github.lime3ds.android`）です。本体のインストールと初期設定は別途必要です。利用権限のある `.3ds`、`.cci`、`.cxi`、`.app` を既存の ROM 起動処理に渡し、内容の実行可否はエミュレーターが判断します。
-
-上記の公式 2126.2-A リリース、公開 Activity、URI 読み取り処理を確認し、両 APK の Manifest と SHA-256 を照合しています。対応ホストのプラグインストアからインストールするか、Release の ZIP を読み込んでください。自動検証は実機ゲーム起動の成功を保証しないため、実機の結果は分けて記録します。
+詳細設定は Action、MIME、ROM Data、型付き JSON 追加値、四種の Activity フラグに対応します。`{romUri}` を選択した ROM の URI に置換し、既存の読取専用許可を使用します。シェル、任意パス、直接起動 API は提供しません。制約は SDK リファレンスと起動仕様を参照してください。共存版は `io.github.azaharplus.android`、置換版は `io.github.lime3ds.android`、Activity は `org.citra.citra_emu.activities.EmulationActivity` です。公式 2126.2-A APK と URI 読取処理を確認しています。本体の初期設定とゲームは別途必要です。自動検査、サンプル表示、実機インストール、ゲーム実行は分けて検証します。

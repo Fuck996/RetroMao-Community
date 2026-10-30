@@ -75,6 +75,12 @@
       }),
       settings: Object.freeze({ get: () => call("settings.get") }),
       data: Object.freeze({ get: () => call("data.get"), patch: values => call("data.patch", values) }),
+      emulators: Object.freeze({
+        list: () => call("emulators.list"),
+        save: (entry, expected = null) => call("emulators.save", { entry, expected }),
+        remove: (id, expected) => call("emulators.remove", { id, expected }),
+        select: (id, platformId) => call("emulators.select", { id, platformId })
+      }),
       storage: Object.freeze({
         sources: () => call("storage.sources"),
         read: (source, key) => call("storage.read", { sourceId: source.id, scope: source.scope, key }),
@@ -143,7 +149,8 @@
       const direction = directions[event.key];
       if (!direction || event.altKey || event.ctrlKey || event.metaKey) return;
       if ((event.key === "ArrowLeft" || event.key === "ArrowRight") && /^(INPUT|TEXTAREA)$/.test(event.target.tagName)) return;
-      const elements = Array.from(document.querySelectorAll("button,a[href],input,select,textarea,[tabindex]"))
+      const scope = document.querySelector("dialog[open]") || document;
+      const elements = Array.from(scope.querySelectorAll("button,a[href],input,select,textarea,summary,[tabindex]"))
         .filter(element => !element.disabled && element.tabIndex >= 0 && element.getClientRects().length);
       const current = document.activeElement;
       if (!elements.includes(current)) { if (elements[0]) { elements[0].focus(); event.preventDefault(); } return; }

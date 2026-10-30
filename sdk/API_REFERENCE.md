@@ -6,7 +6,7 @@
 
 ## 中文
 
-本文件由 tools/check_api.py 从 api.json 生成，请编辑清单后运行 --write。当前契约 1.1.0，运行时 API 1，对照宿主 0.9.112。完整字段见 Types；本页覆盖每个公开成员的签名、权限、上下文、参数、返回值、限制与示例。
+本文件由 tools/check_api.py 从 api.json 生成，请编辑清单后运行 --write。当前契约 1.2.0，运行时 API 1，对照宿主 0.9.141。完整字段见 Types；本页覆盖每个公开成员的签名、权限、上下文、参数、返回值、限制与示例。
 
 PAGE = 已启用插件的业务页面；CONFIGURATION = 独立配置页，可在插件禁用时使用；ACTION = tasks.run 发起的后台动作；RESOURCE = 宿主资源解析回调。标记未列出的上下文不属于受支持调用方式。权限须在 plugin.json 声明并授权；storage.sources 的配置页例外见该接口。
 
@@ -48,6 +48,10 @@ PAGE = 已启用插件的业务页面；CONFIGURATION = 独立配置页，可在
 | [`tasks.progress`](#api-zh-tasks-progress) | 0.9.90 | — | ACTION |
 | [`tasks.watch`](#api-zh-tasks-watch) | 0.9.90 | — | PAGE |
 | [`define`](#api-zh-define) | 0.9.90 | — | ACTION, RESOURCE |
+| [`emulators.list`](#api-zh-emulators-list) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.save`](#api-zh-emulators-save) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.remove`](#api-zh-emulators-remove) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.select`](#api-zh-emulators-select) | 0.9.141 | EMULATORS | PAGE |
 
 <a id="api-zh-version"></a>
 
@@ -604,9 +608,73 @@ retromao.define({
 });
 ```
 
+<a id="api-zh-emulators-list"></a>
+
+### retromao.emulators.list
+
+```typescript
+list(): Promise<EmulatorCatalog>
+```
+
+`emulators.list` · `0.9.141` · PAGE
+
+读取本插件的入口、清单预设、平台及安装/默认状态。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。
+
+```javascript
+const catalog = await retromao.emulators.list();
+```
+
+<a id="api-zh-emulators-save"></a>
+
+### retromao.emulators.save
+
+```typescript
+save(entry: EmulatorEntry, expected?: EmulatorEntry | null): Promise<EmulatorCatalog>
+```
+
+`emulators.save` · `0.9.141` · PAGE
+
+保存单平台入口。创建时 expected 省略或 null；编辑时传读取到的原入口，冲突则失败。参数按 Android 类型传入；{romUri} 替换为当前游戏 URI，始终只授予实际 ROM 的读取权限。最多 16 个入口、每个 16 KiB，extras 最多 32 项，只允许文本、布尔值、有限数值和最多 64 个文本的数组。CLEAR_TASK 要求 NEW_TASK；romData=false 时 extras 必须包含 {romUri}。返回更新后的 EmulatorCatalog，不自动设为默认。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。
+
+```javascript
+const catalog = await retromao.emulators.list(); const entry = { ...catalog.defaults[0], id: "example-entry", platforms: ["3ds"] }; await retromao.emulators.save(entry, null);
+```
+
+<a id="api-zh-emulators-remove"></a>
+
+### retromao.emulators.remove
+
+```typescript
+remove(id: string, expected: EmulatorEntry): Promise<EmulatorCatalog>
+```
+
+`emulators.remove` · `0.9.141` · PAGE
+
+按本插件入口 ID 和原值删除，冲突则失败。保留游戏、存档和已选默认值；默认引用失效时由原启动流程提示重新选择。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。
+
+```javascript
+const catalog = await retromao.emulators.list(); if (catalog.entries.length) { const entry = catalog.entries[0].entry; await retromao.emulators.remove(entry.id, entry); }
+```
+
+<a id="api-zh-emulators-select"></a>
+
+### retromao.emulators.select
+
+```typescript
+select(id: string, platformId: string): Promise<EmulatorCatalog>
+```
+
+`emulators.select` · `0.9.141` · PAGE
+
+将本插件已安装且支持该平台的入口设为平台默认，沿用宿主手动模拟器选择链路。不会立即启动游戏，也不覆盖单游戏入口覆盖值。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。
+
+```javascript
+const catalog = await retromao.emulators.list(); const item = catalog.entries.find(item => item.installed); if (item) await retromao.emulators.select(item.entry.id, item.entry.platforms[0]);
+```
+
 ## English
 
-Generated from api.json by tools/check_api.py; edit the inventory and run --write. Contract 1.1.0, runtime API 1, checked against host 0.9.112. Types defines every data field; this reference covers each public member's signature, grants, contexts, arguments, results, constraints and example.
+Generated from api.json by tools/check_api.py; edit the inventory and run --write. Contract 1.2.0, runtime API 1, checked against host 0.9.141. Types defines every data field; this reference covers each public member's signature, grants, contexts, arguments, results, constraints and example.
 
 PAGE = enabled plugin business page; CONFIGURATION = dedicated configuration page, also available while disabled; ACTION = background action started with tasks.run; RESOURCE = host resource-resolution callback. Unlisted contexts are unsupported usage. Declare grants in plugin.json and obtain approval; see storage.sources for its configuration-page exception.
 
@@ -648,6 +716,10 @@ game-demo, media-demo, task-demo and example.com are fixture identifiers: replac
 | [`tasks.progress`](#api-en-tasks-progress) | 0.9.90 | — | ACTION |
 | [`tasks.watch`](#api-en-tasks-watch) | 0.9.90 | — | PAGE |
 | [`define`](#api-en-define) | 0.9.90 | — | ACTION, RESOURCE |
+| [`emulators.list`](#api-en-emulators-list) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.save`](#api-en-emulators-save) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.remove`](#api-en-emulators-remove) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.select`](#api-en-emulators-select) | 0.9.141 | EMULATORS | PAGE |
 
 <a id="api-en-version"></a>
 
@@ -1204,9 +1276,73 @@ retromao.define({
 });
 ```
 
+<a id="api-en-emulators-list"></a>
+
+### retromao.emulators.list
+
+```typescript
+list(): Promise<EmulatorCatalog>
+```
+
+`emulators.list` · `0.9.141` · PAGE
+
+Read this plugin’s entries, manifest presets, platforms and installed/default status. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.
+
+```javascript
+const catalog = await retromao.emulators.list();
+```
+
+<a id="api-en-emulators-save"></a>
+
+### retromao.emulators.save
+
+```typescript
+save(entry: EmulatorEntry, expected?: EmulatorEntry | null): Promise<EmulatorCatalog>
+```
+
+`emulators.save` · `0.9.141` · PAGE
+
+Save a single-platform entry. Omit expected or pass null to create; editing requires the original entry and rejects conflicts. Extras retain Android types; {romUri} is the current game URI with read-only grants for the real ROM. Limits: 16 entries, 16 KiB each, 32 extras of string/boolean/finite number/string array (64 items). CLEAR_TASK requires NEW_TASK; romData=false requires {romUri} in extras. Returns EmulatorCatalog without selecting a default. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.
+
+```javascript
+const catalog = await retromao.emulators.list(); const entry = { ...catalog.defaults[0], id: "example-entry", platforms: ["3ds"] }; await retromao.emulators.save(entry, null);
+```
+
+<a id="api-en-emulators-remove"></a>
+
+### retromao.emulators.remove
+
+```typescript
+remove(id: string, expected: EmulatorEntry): Promise<EmulatorCatalog>
+```
+
+`emulators.remove` · `0.9.141` · PAGE
+
+Delete an owned entry using its id and original value; conflicts fail. Games, saves and selected preferences remain; the normal launch flow requests selection for a missing entry. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.
+
+```javascript
+const catalog = await retromao.emulators.list(); if (catalog.entries.length) { const entry = catalog.entries[0].entry; await retromao.emulators.remove(entry.id, entry); }
+```
+
+<a id="api-en-emulators-select"></a>
+
+### retromao.emulators.select
+
+```typescript
+select(id: string, platformId: string): Promise<EmulatorCatalog>
+```
+
+`emulators.select` · `0.9.141` · PAGE
+
+Select an installed owned entry for a supported platform through the host’s manual emulator selection flow. Does not launch a game or overwrite per-game overrides. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.
+
+```javascript
+const catalog = await retromao.emulators.list(); const item = catalog.entries.find(item => item.installed); if (item) await retromao.emulators.select(item.entry.id, item.entry.platforms[0]);
+```
+
 ## 日本語
 
-api.json から tools/check_api.py で生成します。一覧を編集して --write を実行してください。契約 1.1.0、実行 API 1、確認対象ホスト 0.9.112。全データ項目は Types を参照してください。各公開メンバーのシグネチャ、権限、実行場所、引数、戻り値、制限、例を記載します。
+api.json から tools/check_api.py で生成します。一覧を編集して --write を実行してください。契約 1.2.0、実行 API 1、確認対象ホスト 0.9.141。全データ項目は Types を参照してください。各公開メンバーのシグネチャ、権限、実行場所、引数、戻り値、制限、例を記載します。
 
 PAGE は有効なプラグインの業務ページ、CONFIGURATION は無効時にも利用できる独立設定ページ、ACTION は tasks.run のバックグラウンド処理、RESOURCE はホストのリソース解析コールバックです。記載のない場所での呼び出しはサポート対象外です。plugin.json で権限を宣言して許可を得てください。storage.sources の設定ページでの例外は個別説明を参照してください。
 
@@ -1248,6 +1384,10 @@ game-demo、media-demo、task-demo、example.com はサンプルです。現在�
 | [`tasks.progress`](#api-ja-tasks-progress) | 0.9.90 | — | ACTION |
 | [`tasks.watch`](#api-ja-tasks-watch) | 0.9.90 | — | PAGE |
 | [`define`](#api-ja-define) | 0.9.90 | — | ACTION, RESOURCE |
+| [`emulators.list`](#api-ja-emulators-list) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.save`](#api-ja-emulators-save) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.remove`](#api-ja-emulators-remove) | 0.9.141 | EMULATORS | PAGE |
+| [`emulators.select`](#api-ja-emulators-select) | 0.9.141 | EMULATORS | PAGE |
 
 <a id="api-ja-version"></a>
 
@@ -1802,4 +1942,68 @@ define(definition: { actions?: Record<string, (arguments_: Record<string, Json>)
 retromao.define({
   actions: { run: async arguments_ => ({ dryRun: arguments_.dryRun === true }) }
 });
+```
+
+<a id="api-ja-emulators-list"></a>
+
+### retromao.emulators.list
+
+```typescript
+list(): Promise<EmulatorCatalog>
+```
+
+`emulators.list` · `0.9.141` · PAGE
+
+このプラグインの設定、初期値、プラットフォーム、インストールと既定状態を EmulatorCatalog で取得します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。
+
+```javascript
+const catalog = await retromao.emulators.list();
+```
+
+<a id="api-ja-emulators-save"></a>
+
+### retromao.emulators.save
+
+```typescript
+save(entry: EmulatorEntry, expected?: EmulatorEntry | null): Promise<EmulatorCatalog>
+```
+
+`emulators.save` · `0.9.141` · PAGE
+
+単一プラットフォームの設定を保存します。新規は expected を省略または null、編集は取得時の設定を指定し、競合時は失敗します。追加値は Android の型を保持し、{romUri} を実際の ROM の読取専用 URI に置換します。最大16件、各16 KiB、追加値32件（文字列・真偽値・有限数・64件以内の文字列配列）。CLEAR_TASK は NEW_TASK が必要です。romData=false では追加値に {romUri} が必要です。EmulatorCatalog を返し、既定は変更しません。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。
+
+```javascript
+const catalog = await retromao.emulators.list(); const entry = { ...catalog.defaults[0], id: "example-entry", platforms: ["3ds"] }; await retromao.emulators.save(entry, null);
+```
+
+<a id="api-ja-emulators-remove"></a>
+
+### retromao.emulators.remove
+
+```typescript
+remove(id: string, expected: EmulatorEntry): Promise<EmulatorCatalog>
+```
+
+`emulators.remove` · `0.9.141` · PAGE
+
+自身の設定 ID と元の値で削除し、競合時は失敗します。ゲーム、セーブ、既定の参照は保持し、参照先がない場合は通常の起動処理で再選択を求めます。EmulatorCatalog を返します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。
+
+```javascript
+const catalog = await retromao.emulators.list(); if (catalog.entries.length) { const entry = catalog.entries[0].entry; await retromao.emulators.remove(entry.id, entry); }
+```
+
+<a id="api-ja-emulators-select"></a>
+
+### retromao.emulators.select
+
+```typescript
+select(id: string, platformId: string): Promise<EmulatorCatalog>
+```
+
+`emulators.select` · `0.9.141` · PAGE
+
+インストール済みで対象に対応する自身の設定を、ホストの手動選択処理で既定にします。ゲームは起動せず、ゲーム別設定は上書きしません。EmulatorCatalog を返します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。
+
+```javascript
+const catalog = await retromao.emulators.list(); const item = catalog.entries.find(item => item.installed); if (item) await retromao.emulators.select(item.entry.id, item.entry.platforms[0]);
 ```

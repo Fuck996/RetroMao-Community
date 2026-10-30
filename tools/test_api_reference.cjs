@@ -18,6 +18,8 @@ async function fixture() {
   };
   const task = { id: "task-demo", pluginId: "demo-plugin", version: "1.0.0", actionId: "run", state: "SUCCEEDED", message: "", completed: 1, total: 1, createdAt: 1, updatedAt: 2 };
   const source = { id: "source-demo", name: "Fixture", provider: "WEBDAV", scope: "scope-demo" };
+  const emulator = { id: "demo", name: "Demo", packageName: "org.example.emulator", activity: "org.example.EmulationActivity", platforms: ["3ds"] };
+  const emulatorCatalog = { platforms: [{ id: "3ds", name: "Nintendo 3DS" }], defaults: [emulator], entries: [{ entry: emulator, installed: true, selectedPlatforms: [] }] };
   const responses = {
     "session.ready": () => ({ locale: "en", appLocale: "en", defaultLocale: "en", messages: {}, icons: ["star"] }),
     "library.game": () => game,
@@ -27,6 +29,8 @@ async function fixture() {
     "media.folders": () => [{ id: "media-demo", platformId: "fc", role: "MEDIA", name: "Fixture media" }],
     "media.assets": params => params.afterPath ? [] : [{ folderId: "media-demo", path: "demo.png", revision: "r1", bytes: 100 }],
     "settings.get": () => ({}), "data.get": () => ({}), "data.patch": params => params,
+    "emulators.list": () => emulatorCatalog, "emulators.save": () => emulatorCatalog,
+    "emulators.remove": () => emulatorCatalog, "emulators.select": () => emulatorCatalog,
     "storage.sources": () => [source], "storage.read": () => ({ token: "token-demo", value: null }), "storage.write": () => null,
     "http.request": () => ({ status: 200, headers: {}, body: "{}" }),
     "tasks.run": () => ({ ...task, state: "WAITING" }), "tasks.current": () => task, "tasks.get": () => task,

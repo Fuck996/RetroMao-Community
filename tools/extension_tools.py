@@ -101,6 +101,24 @@ def validate_plugin(source):
         raise ValueError("Emulator plugins require host 0.9.138")
     if any(not emulator["name"].strip() for emulator in emulators):
         raise ValueError("Emulator names cannot be blank")
+    editable = manifest.get("editableEmulators", False)
+    if editable and (minimum < (0, 9, 141) or "EMULATORS" not in manifest.get("capabilities", []) or
+                     not any(page.get("kind", "BUSINESS") == "BUSINESS" for page in pages) or
+                     any(len(entry["platforms"]) != 1 for entry in emulators)):
+        raise ValueError("Editable emulators require a business page, EMULATORS and host 0.9.141; each entry has one platform")
+    if "EMULATORS" in manifest.get("capabilities", []) and not editable:
+        raise ValueError("EMULATORS requires editableEmulators")
+    for entry in emulators:
+        flags = entry.get("flags", [])
+        if "CLEAR_TASK" in flags and "NEW_TASK" not in flags:
+            raise ValueError("CLEAR_TASK requires NEW_TASK")
+        if not entry.get("romData", True) and not any(
+                "{romUri}" in value if isinstance(value, str) else
+                any("{romUri}" in item for item in value) if isinstance(value, list) else False
+                for value in entry.get("extras", {}).values()):
+            raise ValueError("romData=false requires {romUri} in extras")
+        if len(json.dumps(entry, ensure_ascii=False, separators=(",", ":")).encode("utf-8")) > 16 * 1024:
+            raise ValueError("Emulator entry exceeds 16 KiB")
     if "SEARCH" in manifest.get("capabilities", []) and not search:
         raise ValueError("SEARCH requires a searchProvider")
     if not (pages or actions or providers or search or emulators):

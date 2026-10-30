@@ -7,6 +7,8 @@
   });
   let api, worker = null, task = null, result = null, privateData = {}, sequence = 0;
   let activeToken = null;
+  let emulatorEntries = null;
+  const emulatorDefaults = new Map();
   const tokens = new Map();
   const params = new URLSearchParams(location.search);
   const configuring = params.get("config") === "1";
@@ -18,6 +20,28 @@
   async function dispatch(request, background = false) {
     const data = await loading, manifest = data.manifest, fixtures = data.fixtures;
     const input = request.params || {}, method = request.method;
+    if (method.startsWith("emulators.")) {
+      requireCapability(manifest, "EMULATORS");
+      if (configuring || background || !manifest.editableEmulators) throw new Error("Editable emulator business page required");
+      emulatorEntries ??= clone(manifest.emulators || []);
+      const platforms = fixtures.platforms || [{ id: "3ds", name: "Nintendo 3DS" }, { id: "nds", name: "Nintendo DS" }, { id: "psp", name: "PlayStation Portable" }];
+      if (method === "emulators.save") {
+        const previous = emulatorEntries.find(entry => entry.id === input.entry.id) ?? null;
+        if (JSON.stringify(previous) !== JSON.stringify(input.expected ?? null)) throw new Error("Entry changed");
+        if (input.entry.platforms.length !== 1 || !platforms.some(platform => platform.id === input.entry.platforms[0])) throw new Error("Choose one platform");
+        if (!previous && emulatorEntries.length >= 16) throw new Error("At most 16 entries");
+        emulatorEntries = previous ? emulatorEntries.map(entry => entry.id === input.entry.id ? clone(input.entry) : entry) : [...emulatorEntries, clone(input.entry)];
+      } else if (method === "emulators.remove") {
+        if (JSON.stringify(emulatorEntries.find(entry => entry.id === input.id)) !== JSON.stringify(input.expected)) throw new Error("Entry changed");
+        emulatorEntries = emulatorEntries.filter(entry => entry.id !== input.id);
+      } else if (method === "emulators.select") {
+        const entry = emulatorEntries.find(entry => entry.id === input.id);
+        if (!entry || !entry.platforms.includes(input.platformId)) throw new Error("Entry does not support platform");
+        emulatorDefaults.set(input.platformId, entry.id);
+      } else if (method !== "emulators.list") throw new Error("Unknown emulator method");
+      if (configuring) throw new Error("Not available on configuration pages");
+      return clone({ platforms, defaults: manifest.emulators || [], entries: emulatorEntries.map(entry => ({ entry, installed: true, selectedPlatforms: entry.platforms.filter(id => emulatorDefaults.get(id) === entry.id) })) });
+    }
     if (configuring && !background && !["session.ready", "settings.get", "data.get", "data.patch", "storage.sources"].includes(method)) throw new Error("Not available on configuration pages: " + method);
     if (method.startsWith("library.") || method.startsWith("media.")) requireCapability(manifest, method === "library.edit" ? "LIBRARY_WRITE" : "LIBRARY_READ");
     switch (method) {

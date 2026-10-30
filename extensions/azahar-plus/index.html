@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>自定义启动入口</title><link rel="stylesheet" href="page.css"></head>
+<body>
+<main>
+  <header><div><h1 data-text="title"></h1><p data-text="intro"></p></div><button id="add" class="primary" disabled data-text="add"></button></header>
+  <p id="notice" role="status" aria-live="polite"></p>
+  <p id="error" class="error" role="alert" hidden></p>
+  <section id="entries" aria-label="启动入口"></section>
+  <div id="empty" class="empty" hidden><h2 data-text="empty"></h2><p data-text="emptyHint"></p></div>
+  <p class="hint" data-text="launchHint"></p>
+</main>
+<dialog id="editor" aria-labelledby="editor-title">
+ <form id="form">
+  <div class="dialog-head"><div><h2 id="editor-title"></h2><p data-text="presetHint"></p></div><button type="button" id="preset" data-text="preset"></button></div>
+  <div class="fields">
+   <section class="group"><h3 data-text="stepOne"></h3>
+    <label><span data-text="platform"></span><select id="platform" required></select></label>
+    <label><span data-text="name"></span><input id="name" maxlength="80" required autocomplete="off"></label>
+   </section>
+   <section class="group"><h3 data-text="stepTwo"></h3>
+    <label><span data-text="package"></span><input id="package" required spellcheck="false" autocomplete="off"></label>
+    <label><span data-text="activity"></span><input id="activity" required spellcheck="false" autocomplete="off"></label>
+    <div class="pair"><label><span>Action</span><input id="action" required list="actions" spellcheck="false"></label><label><span data-text="mime"></span><input id="mime" spellcheck="false" placeholder="application/octet-stream"></label></div>
+    <datalist id="actions"><option value="android.intent.action.VIEW"><option value="android.intent.action.MAIN"></datalist>
+    <label class="check"><input type="checkbox" id="rom-data"><span data-text="romData"></span></label>
+   </section>
+   <details class="advanced"><summary data-text="advanced"></summary>
+    <p class="hint" data-text="extrasHint"></p>
+    <label><span data-text="extras"></span><textarea id="extras" rows="4" spellcheck="false"></textarea></label>
+    <fieldset><legend data-text="flags"></legend><div class="flags">
+     <label class="check"><input type="checkbox" value="NEW_TASK"><span data-text="newTask"></span></label>
+     <label class="check"><input type="checkbox" value="CLEAR_TASK"><span data-text="clearTask"></span></label>
+     <label class="check"><input type="checkbox" value="CLEAR_TOP"><span data-text="clearTop"></span></label>
+     <label class="check"><input type="checkbox" value="SINGLE_TOP"><span data-text="singleTop"></span></label>
+    </div></fieldset>
+   </details>
+  </div>
+  <footer><p id="form-error" class="error" role="alert"></p><div><button type="button" id="cancel" data-text="cancel"></button><button type="submit" class="primary" id="save" data-text="save"></button></div></footer>
+ </form>
+</dialog>
+<dialog id="confirmation" aria-labelledby="delete-title"><form method="dialog"><h2 id="delete-title" data-text="deleteTitle"></h2><p id="delete-detail"></p><p class="hint" data-text="deleteHint"></p><p id="delete-error" class="error" role="alert"></p><footer><button value="cancel" data-text="cancel"></button><button type="button" id="delete-confirm" class="danger" data-text="delete"></button></footer></form></dialog>
+<script src="page.js"></script>
+</body></html>

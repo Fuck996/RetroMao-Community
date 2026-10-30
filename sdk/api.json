@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "apiVersion": 1,
-  "date": "2026-10-19",
-  "verifiedHostVersion": "0.9.112",
+  "date": "2026-10-30",
+  "verifiedHostVersion": "0.9.141",
   "sources": {
-    "sdk/runtime/retromao.js": "6e6f5a71dbc6825dd8df814780759abd1504648589c0e7da88ec8daccebac247",
-    "sdk/retromao.d.ts": "eb3970cfb6c60f68a2841c1ddeed26c30a7367bb67b7d5a7ae9dc9ab1a672939"
+    "sdk/runtime/retromao.js": "442bf7058908dee3e0134d3daa54134b7370ad0c3cceb68ee1d3ea66e5b89d40",
+    "sdk/retromao.d.ts": "a17565a11d4d905944a60c2e157d3204f6ff3b13bf8eca150ad9f1115e7f1af3"
   },
   "members": [
     {
@@ -613,6 +613,78 @@
         "日本語": "バックグラウンド入口のトップレベルで {actions?,resources?} を一度登録し、同期的に void を返します。重複は Error です。actions のキーはマニフェスト actions.id と一致し、Json オブジェクトを受け、Json/void または Promise を返します。ホストが実行して結果を保存します。resources は 0.9.98、ROM_RESOURCES、対応する resourceProviders が必要です。{games:[{gameId,romNames}]} を受け、入力ゲームごとにちょうど一つの ResourceResolution[] を返します。権限ルート内の安全な相対パスだけで、転送はしません。例外は動作・解析を失敗させます。内部 __run を呼ばないでください。"
       },
       "example": "retromao.define({\n  actions: { run: async arguments_ => ({ dryRun: arguments_.dryRun === true }) }\n});"
+    },
+    {
+      "path": "emulators.list",
+      "declaration": "list(): Promise<EmulatorCatalog>",
+      "rpc": "emulators.list",
+      "capabilities": [
+        "EMULATORS"
+      ],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.141",
+      "description": {
+        "中文": "读取本插件的入口、清单预设、平台及安装/默认状态。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。",
+        "English": "Read this plugin’s entries, manifest presets, platforms and installed/default status. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.",
+        "日本語": "このプラグインの設定、初期値、プラットフォーム、インストールと既定状態を EmulatorCatalog で取得します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。"
+      },
+      "example": "const catalog = await retromao.emulators.list();"
+    },
+    {
+      "path": "emulators.save",
+      "declaration": "save(entry: EmulatorEntry, expected?: EmulatorEntry | null): Promise<EmulatorCatalog>",
+      "rpc": "emulators.save",
+      "capabilities": [
+        "EMULATORS"
+      ],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.141",
+      "description": {
+        "中文": "保存单平台入口。创建时 expected 省略或 null；编辑时传读取到的原入口，冲突则失败。参数按 Android 类型传入；{romUri} 替换为当前游戏 URI，始终只授予实际 ROM 的读取权限。最多 16 个入口、每个 16 KiB，extras 最多 32 项，只允许文本、布尔值、有限数值和最多 64 个文本的数组。CLEAR_TASK 要求 NEW_TASK；romData=false 时 extras 必须包含 {romUri}。返回更新后的 EmulatorCatalog，不自动设为默认。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。",
+        "English": "Save a single-platform entry. Omit expected or pass null to create; editing requires the original entry and rejects conflicts. Extras retain Android types; {romUri} is the current game URI with read-only grants for the real ROM. Limits: 16 entries, 16 KiB each, 32 extras of string/boolean/finite number/string array (64 items). CLEAR_TASK requires NEW_TASK; romData=false requires {romUri} in extras. Returns EmulatorCatalog without selecting a default. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.",
+        "日本語": "単一プラットフォームの設定を保存します。新規は expected を省略または null、編集は取得時の設定を指定し、競合時は失敗します。追加値は Android の型を保持し、{romUri} を実際の ROM の読取専用 URI に置換します。最大16件、各16 KiB、追加値32件（文字列・真偽値・有限数・64件以内の文字列配列）。CLEAR_TASK は NEW_TASK が必要です。romData=false では追加値に {romUri} が必要です。EmulatorCatalog を返し、既定は変更しません。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。"
+      },
+      "example": "const catalog = await retromao.emulators.list(); const entry = { ...catalog.defaults[0], id: \"example-entry\", platforms: [\"3ds\"] }; await retromao.emulators.save(entry, null);"
+    },
+    {
+      "path": "emulators.remove",
+      "declaration": "remove(id: string, expected: EmulatorEntry): Promise<EmulatorCatalog>",
+      "rpc": "emulators.remove",
+      "capabilities": [
+        "EMULATORS"
+      ],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.141",
+      "description": {
+        "中文": "按本插件入口 ID 和原值删除，冲突则失败。保留游戏、存档和已选默认值；默认引用失效时由原启动流程提示重新选择。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。",
+        "English": "Delete an owned entry using its id and original value; conflicts fail. Games, saves and selected preferences remain; the normal launch flow requests selection for a missing entry. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.",
+        "日本語": "自身の設定 ID と元の値で削除し、競合時は失敗します。ゲーム、セーブ、既定の参照は保持し、参照先がない場合は通常の起動処理で再選択を求めます。EmulatorCatalog を返します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。"
+      },
+      "example": "const catalog = await retromao.emulators.list(); if (catalog.entries.length) { const entry = catalog.entries[0].entry; await retromao.emulators.remove(entry.id, entry); }"
+    },
+    {
+      "path": "emulators.select",
+      "declaration": "select(id: string, platformId: string): Promise<EmulatorCatalog>",
+      "rpc": "emulators.select",
+      "capabilities": [
+        "EMULATORS"
+      ],
+      "contexts": [
+        "PAGE"
+      ],
+      "since": "0.9.141",
+      "description": {
+        "中文": "将本插件已安装且支持该平台的入口设为平台默认，沿用宿主手动模拟器选择链路。不会立即启动游戏，也不覆盖单游戏入口覆盖值。返回 EmulatorCatalog。 仅启用的 editableEmulators 业务页可用，未授权、已卸载或更新的页面会失败。",
+        "English": "Select an installed owned entry for a supported platform through the host’s manual emulator selection flow. Does not launch a game or overwrite per-game overrides. Returns EmulatorCatalog. Available only to enabled editableEmulators business pages; missing grants, uninstall or update fails.",
+        "日本語": "インストール済みで対象に対応する自身の設定を、ホストの手動選択処理で既定にします。ゲームは起動せず、ゲーム別設定は上書きしません。EmulatorCatalog を返します。 有効な editableEmulators 業務ページ専用です。未許可、削除済み、更新済みページでは失敗します。"
+      },
+      "example": "const catalog = await retromao.emulators.list(); const item = catalog.entries.find(item => item.installed); if (item) await retromao.emulators.select(item.entry.id, item.entry.platforms[0]);"
     }
   ],
   "sourceEncoding": "UTF-8/LF",

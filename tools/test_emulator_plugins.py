@@ -12,20 +12,24 @@ class EmulatorPluginTest(unittest.TestCase):
     def setUp(self):
         self.manifest = read_json(ROOT / "extensions/azahar-plus/plugin.json")
 
-    def test_declarative_package_contains_no_executable_or_dummy_page(self):
+    def test_editable_package_contains_business_page_and_default_azahar(self):
         source = ROOT / "extensions/azahar-plus"
         validate_plugin(source)
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
-            entry = build(source, output, "azahar-plus-1.0.1")
+            entry = build(source, output, "azahar-plus-1.1.0")
             with zipfile.ZipFile(output / entry["fileName"]) as archive:
                 names = archive.namelist()
                 self.assertIn("plugin.json", names)
-                self.assertFalse(any(name.endswith((".js", ".html")) for name in names))
+                self.assertIn("index.html", names)
+                self.assertIn("page.js", names)
+                self.assertIn("page.css", names)
+                self.assertEqual(self.manifest["emulators"][0]["packageName"], "io.github.azaharplus.android")
+                self.assertTrue(self.manifest["editableEmulators"])
 
     def test_contract_rejects_old_host_duplicate_ids_and_invalid_components(self):
         variants = []
-        for key, value in (("minAppVersion", "0.9.137"), ("emulators", [])):
+        for key, value in (("minAppVersion", "0.9.140"), ("capabilities", []), ("editableEmulators", False)):
             manifest = copy.deepcopy(self.manifest)
             manifest[key] = value
             variants.append(manifest)

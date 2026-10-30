@@ -20,7 +20,11 @@ declare namespace RetroMao {
   interface ResourceProvider { id: string; platformId: string; extensions: string[]; directorySetting: string; rootPaths?: string[]; rootMarker: string; formatVersion?: 1; }
   interface Edit { gameId: string; metadata?: { expected: Metadata; values: Partial<Record<MetadataField, string>> }; favorite?: boolean; recent?: { expected: Recent; value: Recent }; media?: { role: MediaRole; expected: Media | null; asset: Asset | null }[]; extensions?: Record<string, { expected?: Json; value?: Json }>; mode?: "EDIT" | "FILL_MISSING"; }
   interface Task { id: string; pluginId: string; version: string; actionId: string; state: "WAITING" | "RUNNING" | "CANCELLING" | "SUCCEEDED" | "FAILED" | "CANCELLED"; message: string; completed: number; total: number | null; createdAt: number; updatedAt: number; }
+  type EmulatorFlag = "NEW_TASK" | "CLEAR_TASK" | "CLEAR_TOP" | "SINGLE_TOP";
+  interface EmulatorEntry { id: string; name: string; packageName: string; activity: string; platforms: string[]; mimeType?: string | null; action?: string; romData?: boolean; extras?: Record<string, string | number | boolean | string[]>; flags?: EmulatorFlag[]; }
+  interface EmulatorCatalog { platforms: { id: string; name: string }[]; entries: { entry: EmulatorEntry; installed: boolean; selectedPlatforms: string[] }[]; defaults: EmulatorEntry[]; }
   interface Api {
+    emulators: { list(): Promise<EmulatorCatalog>; save(entry: EmulatorEntry, expected?: EmulatorEntry | null): Promise<EmulatorCatalog>; remove(id: string, expected: EmulatorEntry): Promise<EmulatorCatalog>; select(id: string, platformId: string): Promise<EmulatorCatalog> };
     readonly version: 1;
     readonly ready: Promise<{ locale?: string; appLocale?: string; defaultLocale?: string; locales?: readonly string[]; messages?: Readonly<Record<string, string>>; colors?: Record<string, string>; configuring?: boolean }>;
     icons: { list(): Promise<readonly IconName[]>; url(name: IconName): string };

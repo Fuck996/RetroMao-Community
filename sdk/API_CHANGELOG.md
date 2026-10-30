@@ -6,6 +6,10 @@
 
 ## 中文
 
+### 1.2.0 · 2026-10-30
+
+新增 EMULATORS 授权和 emulators.list/save/remove/select，最低宿主 0.9.141。入口归插件所有，使用原值校验避免覆盖并发编辑，沿用宿主启动和平台默认链路。原接口、历史快照不变，旧插件无需迁移。
+
 ### 1.1.0 · 2026-10-19
 
 追加 SearchBatch／SearchAliases 类型与 searchProvider 清单约定，最低宿主 0.9.112，使用原 API 1 后台引擎。32 个公开成员及原调用签名、授权和上下文定义不变；搜索自动回调额外限制为只读 ready／settings.get，详见 SEARCH_EXTENSIONS.md。历史快照保持原字节。既有插件无需迁移。
@@ -27,6 +31,10 @@
 
 ## English
 
+### 1.2.0 · 2026-10-30
+
+Adds the EMULATORS grant and emulators.list/save/remove/select for host 0.9.141. Entries are plugin-owned, edits compare original values, and launch/default selection uses the existing host flow. Existing APIs and historical snapshots remain unchanged; old plugins need no migration.
+
 ### 1.1.0 · 2026-10-19
 
 Adds SearchBatch/SearchAliases types and the searchProvider manifest contract for host 0.9.112, using the existing API 1 engine. All 32 public members, signatures, grants and context definitions remain unchanged; automatic search callbacks additionally allow only read-only ready/settings.get. See SEARCH_EXTENSIONS.md. Historical snapshots remain byte-identical; existing plugins require no migration.
@@ -47,6 +55,10 @@ First independently versioned public SDK contract, checked against host 0.9.108'
 Historical feature baselines: 0.9.90 basic scripts/pages and library, favorites, media, task and network APIs; 0.9.91 lightweight records, apply/checkpoint and STORAGE; 0.9.92 public icons; 0.9.94 author locale environment; 0.9.96 dedicated configuration pages; 0.9.98 ROM resource callbacks. Earlier records did not use contract semver: no older contract versions or dates are invented. Product history retains product changes.
 
 ## 日本語
+
+### 1.2.0 · 2026-10-30
+
+ホスト 0.9.141 向けに EMULATORS 権限と emulators.list/save/remove/select を追加します。設定はプラグインに所属し、元の値で競合を検出します。起動と既定設定は既存のホスト処理を使用します。既存 API と過去のスナップショットは維持し、旧プラグインの移行は不要です。
 
 ### 1.1.0 · 2026-10-19
 
