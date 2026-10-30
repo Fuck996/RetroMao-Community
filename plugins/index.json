@@ -121,30 +121,30 @@
     },
     {
       "id": "azahar-plus",
-      "name": "Azahar Plus",
+      "name": "自定义启动入口",
       "author": "4NPC",
-      "version": "1.0.1",
-      "minAppVersion": "0.9.138",
-      "description": "通过 Azahar Plus 启动 Nintendo 3DS 游戏。",
+      "version": "1.1.0",
+      "minAppVersion": "0.9.141",
+      "description": "选择平台并自定义模拟器启动参数，默认预填 Azahar Plus。",
       "kind": "SCRIPT",
-      "releaseTag": "azahar-plus-1.0.1",
-      "fileName": "plugin-azahar-plus-1.0.1.zip",
-      "sizeBytes": 4045,
-      "sha256": "8d157db18e453c1ec90a0b4c31b1a3d8e37c2426bd22ac6316bc4a384af7f620",
+      "releaseTag": "azahar-plus-1.1.0",
+      "fileName": "plugin-azahar-plus-1.1.0.zip",
+      "sizeBytes": 11664,
+      "sha256": "2ba7543063687cdb83e1fa7ea45e1866b079709b329a97aff529204464c3d58d",
       "iconName": "gamepad",
       "defaultLocale": "zh-Hans",
       "localizations": {
         "zh-Hant": {
-          "name": "Azahar Plus",
-          "description": "透過 Azahar Plus 啟動 Nintendo 3DS 遊戲。"
+          "name": "自訂啟動入口",
+          "description": "選擇平台並自訂模擬器啟動參數，預設填入 Azahar Plus。"
         },
         "en": {
-          "name": "Azahar Plus",
-          "description": "Launch Nintendo 3DS games with Azahar Plus."
+          "name": "Custom launch entries",
+          "description": "Choose a platform and customize emulator launch parameters, prefilled with Azahar Plus."
         },
         "ja": {
-          "name": "Azahar Plus",
-          "description": "Azahar Plus で Nintendo 3DS のゲームを起動します。"
+          "name": "カスタム起動設定",
+          "description": "プラットフォームと起動パラメーターを設定します。初期値は Azahar Plus です。"
         }
       }
     }

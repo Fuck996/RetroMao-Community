@@ -14,7 +14,7 @@ npm test
 
 ## 中文
 
-版本分为四层：`apiVersion:1` 与 `retromao.version === 1` 是运行协议主版本；`sdk/api.json` 的 `version` 是公开 SDK 契约版本，当前 1.0.1；插件 `version` 是作者自己的发行版本；`minAppVersion` 是最低兼容宿主。这四者不能互相代替。插件清单不增加 `sdkVersion`，也不把契约版本填进 `minAppVersion`。
+版本分为四层：`apiVersion:1` 与 `retromao.version === 1` 是运行协议主版本；`sdk/api.json` 的 `version` 是公开 SDK 契约版本，当前 1.2.0；插件 `version` 是作者自己的发行版本；`minAppVersion` 是最低兼容宿主。这四者不能互相代替。插件清单不增加 `sdkVersion`，也不把契约版本填进 `minAppVersion`。
 
 契约使用三段数字：修正文档、补充示例或兼容修复升 patch；增加接口升 minor；移除接口、改变签名、权限、可用上下文或调用语义升 major。主版本必须与真实运行时及宿主支持的 API 主版本相同。API v2 需要先实现宿主与运行时支持，不能仅修改文档或版本值。新增参数、返回字段或行为变化也必须人工审查兼容性；自动门禁无法理解所有业务语义。
 
@@ -32,7 +32,7 @@ sourceEncoding 为 UTF-8/LF：SDK 文本源码统一换行为 LF，再编码 UTF
 
 ## English
 
-There are four version layers: `apiVersion:1` and `retromao.version === 1` identify the runtime protocol major; `sdk/api.json` version is the public SDK contract release, currently 1.0.1; plugin `version` belongs to the author's release; `minAppVersion` is the oldest supported host. They are not interchangeable. Do not add `sdkVersion` to plugin manifests or put the contract version in `minAppVersion`.
+There are four version layers: `apiVersion:1` and `retromao.version === 1` identify the runtime protocol major; `sdk/api.json` version is the public SDK contract release, currently 1.2.0; plugin `version` belongs to the author's release; `minAppVersion` is the oldest supported host. They are not interchangeable. Do not add `sdkVersion` to plugin manifests or put the contract version in `minAppVersion`.
 
 Contract releases use three numbers: documentation/example corrections and compatible fixes increment patch; additional APIs increment minor; removals or changes to signatures, grants, contexts or semantics increment major. The major must match an implemented runtime and host API major. API v2 requires host/runtime implementation first; editing documentation or a version number does not provide it. New arguments, return fields and behavioral changes also need human compatibility review: automated checks cannot understand every business rule.
 
@@ -50,7 +50,7 @@ Commit and push the contract/source first, pass CI, then follow PUBLISHING for t
 
 ## 日本語
 
-バージョンは四層です。`apiVersion:1` と `retromao.version === 1` は実行プロトコルのメジャー版、sdk/api.json の version は公開 SDK 契約版（現在 1.0.1）、プラグインの version は作者の公開版、minAppVersion は必要なホストの最低版です。相互に代用できません。プラグインのマニフェストへ sdkVersion を追加したり、契約版を minAppVersion に入れたりしないでください。
+バージョンは四層です。`apiVersion:1` と `retromao.version === 1` は実行プロトコルのメジャー版、sdk/api.json の version は公開 SDK 契約版（現在 1.2.0）、プラグインの version は作者の公開版、minAppVersion は必要なホストの最低版です。相互に代用できません。プラグインのマニフェストへ sdkVersion を追加したり、契約版を minAppVersion に入れたりしないでください。
 
 契約版は三つの数字です。文書・例の訂正や互換修正は patch、API の追加は minor、削除やシグネチャ・権限・実行場所・意味の変更は major を上げます。メジャー版は実装済みのホストと実行 API に一致する必要があります。API v2 は先にホストと実行コードの対応が必要で、文書や数字を変えるだけでは利用できません。引数、戻り項目、動作の追加も人による互換性確認が必要で、自動検査だけでは業務上の意味を判定できません。
 
