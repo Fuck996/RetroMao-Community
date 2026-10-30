@@ -17,7 +17,7 @@ class EmulatorPluginTest(unittest.TestCase):
         validate_plugin(source)
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
-            entry = build(source, output, "azahar-plus-1.0.0")
+            entry = build(source, output, "azahar-plus-1.0.1")
             with zipfile.ZipFile(output / entry["fileName"]) as archive:
                 names = archive.namelist()
                 self.assertIn("plugin.json", names)
@@ -25,7 +25,7 @@ class EmulatorPluginTest(unittest.TestCase):
 
     def test_contract_rejects_old_host_duplicate_ids_and_invalid_components(self):
         variants = []
-        for key, value in (("minAppVersion", "0.9.135"), ("emulators", [])):
+        for key, value in (("minAppVersion", "0.9.137"), ("emulators", [])):
             manifest = copy.deepcopy(self.manifest)
             manifest[key] = value
             variants.append(manifest)

@@ -97,8 +97,8 @@ def validate_plugin(source):
     search = manifest.get("searchProvider")
     emulators = manifest.get("emulators", [])
     unique_ids(emulators, "emulator")
-    if emulators and minimum < (0, 9, 136):
-        raise ValueError("Emulator plugins require host 0.9.136")
+    if emulators and minimum < (0, 9, 138):
+        raise ValueError("Emulator plugins require host 0.9.138")
     if any(not emulator["name"].strip() for emulator in emulators):
         raise ValueError("Emulator names cannot be blank")
     if "SEARCH" in manifest.get("capabilities", []) and not search:

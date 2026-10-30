@@ -4,10 +4,10 @@
   "id": "azahar-plus",
   "name": "Azahar Plus",
   "author": "4NPC",
-  "version": "1.0.0",
-  "minAppVersion": "0.9.136",
+  "version": "1.0.1",
+  "minAppVersion": "0.9.138",
   "defaultLocale": "zh-Hans",
-  "description": "为 Nintendo 3DS 注册 Azahar Plus 共存版与替换版的启动配置。安装并启用后，在设置 → 模拟器中选择；不附带模拟器或游戏。",
+  "description": "通过 Azahar Plus 启动 Nintendo 3DS 游戏。",
   "iconName": "gamepad",
   "category": "emulators",
   "emulators": [
@@ -29,8 +29,8 @@
     }
   ],
   "localizations": {
-    "zh-Hant": {"name": "Azahar Plus", "description": "為 Nintendo 3DS 註冊 Azahar Plus 共存版與替換版的啟動設定。安裝並啟用後，在設定 → 模擬器中選擇；不附帶模擬器或遊戲。"},
-    "en": {"name": "Azahar Plus", "description": "Add Nintendo 3DS launch profiles for both Azahar Plus Android variants. Install and enable this plugin, then select a profile in Settings → Emulators. No emulator or games are included."},
-    "ja": {"name": "Azahar Plus", "description": "Azahar Plus の共存版・置換版を Nintendo 3DS の起動設定に追加します。インストールして有効にした後、設定 → エミュレーターで選択してください。エミュレーター本体やゲームは含まれません。"}
+    "zh-Hant": {"name": "Azahar Plus", "description": "透過 Azahar Plus 啟動 Nintendo 3DS 遊戲。"},
+    "en": {"name": "Azahar Plus", "description": "Launch Nintendo 3DS games with Azahar Plus."},
+    "ja": {"name": "Azahar Plus", "description": "Azahar Plus で Nintendo 3DS のゲームを起動します。"}
   }
 }
