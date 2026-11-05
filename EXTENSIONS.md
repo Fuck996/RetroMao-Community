@@ -15,11 +15,17 @@ python tools/retromao.py pack extensions/demo-msx --release-tag demo-msx-1.0.0
 
 ## 中文
 
+格式 3（最低宿主 1.0.32）把默认图标、包装与介质模型统一放入平台包，旧格式 1/2 保持兼容。platform.hasPackaging 默认 true；false 时不得声明包装模型或变体。platform.medium=NONE 表示没有实体介质，models.gameMedia 省略或为只有 kind:NONE 的空描述。没有几何不等于无实物：保留真实介质类型并省略 model。两个实物组都不存在时显示封面，不提供实物预览或挿入音效。正式发布/设备状态仍以 contracts/host.json 的 releaseVerified 为准。
+
+models 复用宿主模型描述：packaging 是包内 GLB 路径；packagingVariantLabel 为默认区域说明；gameMedia 可声明 kind、model、variantLabel、artworkAspectRatio（0.1–10）和 shell。日版包装是默认值，packagingVariants.US 可声明 model、label、coverAspectRatio（0.5–2）。所有路径必须通过同一包内路径校验，每个 GLB 最多 32 MiB。GLB 必须自包含，只有内嵌 BIN/图片，不允许外部或 data URI、稀疏 accessor。动态贴图需要 artwork_ 节点、User artwork 材质、基础颜色贴图与 TEXCOORD_0。shell 必须有 name、baseColor（3 个 0–1 数值）、roughness（0–1）、translucentMaterial（与 name 不同）、wallThickness（有限正数）；可选 defaultFinish（默认 SATIN）、metallic（默认 0）、normalScale（默认 0.2）、translucentNormalScale（默认 0.04）。模型须具备对应材质和 shell-opaque / shell-translucent 变体；裸 DISC 禁止换壳。
+
+显示优先级为主题明确覆盖、平台包默认、内置资源；主题不改变实物有无。平台更新后仍沿用原机种 ID 和游戏关联。可打包的原创虚构机种示例见 examples/platform-presentation；它不代表真实日版机种。包含 Fork、AI 提示词、发布和玩家添加仓库下载的完整教程见 [制作指南](docs/PLATFORM_GUIDE.md) 与 [PDF](docs/PLATFORM_GUIDE.pdf)。
+
 平台从 templates/platform 开始。格式 1 兼容既有数据包；格式 2 增加 launchers，需要 0.9.108 或含此能力的宿主源码构建。正式发行与设备验收状态见 contracts/host.json，不把版本门槛当作已完成验收。包根放 platform.json，图标可选。retromao-package.json 是开发和发布元数据，不打入 ZIP。
 
-platform.id 为 2–32 位小写字母、数字、下划线或连字符。name 与 aliases 不能和内置或已安装平台重复；extensions 不带点、1–12 位小写字母数字，可与其他平台重叠，但重叠扩展名不能独自识别机种。manufacturer 非空且不超过 80 字符，releaseYear 为 1970–2100。coverAspectRatio 是宽／高，范围 0.5–2。medium 允许 CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD；不提供模型时仍保留封面与占位图。内置 ID、名称、别名在 contracts/host.json。
+platform.id 为 2–32 位小写字母、数字、下划线或连字符。name 与 aliases 不能和内置或已安装平台重复；extensions 不带点、1–12 位小写字母数字，可与其他平台重叠，但重叠扩展名不能独自识别机种。manufacturer 非空且不超过 80 字符，releaseYear 为 1970–2100。coverAspectRatio 是宽／高，范围 0.5–2。medium 允许 NONE、CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD；不提供模型时仍保留封面与占位图。内置 ID、名称、别名在 contracts/host.json。
 
-assets 只允许 logo、pixel，引用包内 PNG/WebP；每个最多 8 MiB、1–2048 像素。路径必须相对，不得包含空段、点段、反斜线、冒号、NUL、符号链接或越出包目录。平台包最多 128 个文件、解压后 64 MiB，清单最多 1 MiB。
+assets 只允许 logo、pixel，引用包内 PNG/WebP；每个最多 8 MiB、1–2048 像素。路径必须相对，不得包含空段、点段、反斜线、冒号、NUL、符号链接或越出包目录。平台包最多 128 个文件、解压后 128 MiB，清单最多 1 MiB。
 
 launchers 最多 16 项，ID 在平台内唯一、1–40 位，以小写字母起始；宿主保存的 profile ID 为 community.<平台ID>.<启动ID>，更新后不可随意改名。packageName 必须是真实 Android 包名，activity 必须是完整类名，不能写相对类名。name 非空且不超过 80 字符。平台启动仍走原模拟器设置、ROM 实际读取、SAF 授权、启动文件选择和返回流程，不另外扫描或复制 ROM。
 
@@ -33,11 +39,17 @@ catalog.json 格式为 schemaVersion:1 与 entries。每项声明 kind、id、na
 
 ## English
 
+Format 3 (minimum host 1.0.32) puts default icons, packaging and media models in one platform pack; formats 1/2 remain compatible. platform.hasPackaging defaults true; false forbids packaging models/variants. platform.medium=NONE means no physical medium; omit models.gameMedia or use only kind:NONE. Missing geometry does not mean absent physical hardware. With neither group, show covers without physical previews or insert sounds. Check releaseVerified in contracts/host.json for shipped/device acceptance.
+
+models reuses the host descriptor: packaging is a package GLB path; packagingVariantLabel describes the default region; gameMedia accepts kind, model, variantLabel, artworkAspectRatio (0.1–10) and shell. Japanese packaging is the default; packagingVariants.US accepts model, label and coverAspectRatio (0.5–2). Each GLB is at most 32 MiB and self-contained, with embedded BIN/images and no external/data URI or sparse accessor. Dynamic artwork requires artwork_ nodes, User artwork materials, a base-color texture and TEXCOORD_0. shell requires name, baseColor (three 0–1 numbers), roughness (0–1), distinct translucentMaterial and finite positive wallThickness. Optional defaults: defaultFinish=SATIN, metallic=0, normalScale=0.2, translucentNormalScale=0.04. Both named materials and shell-opaque/shell-translucent variants must exist; bare DISC cannot customize shells.
+
+Resolution order is explicit theme override, platform-pack default, built-in asset. Themes cannot change physical availability. Keep platform IDs stable to retain game associations. examples/platform-presentation is original fictional hardware, not a real Japanese replica. See the [authoring guide](docs/PLATFORM_GUIDE.md) and [PDF](docs/PLATFORM_GUIDE.pdf) for Fork, AI prompts, publishing and player repository/download steps.
+
 Start platforms from templates/platform. Format 1 remains compatible; format 2 adds launchers and requires 0.9.108 or a host source build containing the feature. Check contracts/host.json for formal-release and device acceptance; a version threshold is not acceptance evidence. Put platform.json at the ZIP root. Icons are optional. retromao-package.json is authoring/release metadata and is excluded from the ZIP.
 
-platform.id uses 2–32 lowercase letters, digits, underscores or hyphens. name/aliases must not collide with built-in or installed platforms. extensions have no dot and use 1–12 lowercase alphanumeric characters. Overlap is allowed but cannot alone identify a platform. manufacturer is nonempty with at most 80 characters; releaseYear is 1970–2100. coverAspectRatio is width/height, between 0.5 and 2. medium accepts CARTRIDGE, GAME_CARD, HUCARD, DISC, UMD and DISK_CARD. Covers/placeholders remain available without a model. Built-in identities are in contracts/host.json.
+platform.id uses 2–32 lowercase letters, digits, underscores or hyphens. name/aliases must not collide with built-in or installed platforms. extensions have no dot and use 1–12 lowercase alphanumeric characters. Overlap is allowed but cannot alone identify a platform. manufacturer is nonempty with at most 80 characters; releaseYear is 1970–2100. coverAspectRatio is width/height, between 0.5 and 2. medium accepts NONE, CARTRIDGE, GAME_CARD, HUCARD, DISC, UMD and DISK_CARD. Covers/placeholders remain available without a model. Built-in identities are in contracts/host.json.
 
-assets only accepts logo/pixel pointing to package PNG/WebP files, each at most 8 MiB and 1–2048 pixels per dimension. Paths must be relative and cannot contain empty/dot segments, backslashes, colons, NUL, symlinks or escapes. A platform ZIP has at most 128 files, 64 MiB expanded data and a 1 MiB manifest.
+assets only accepts logo/pixel pointing to package PNG/WebP files, each at most 8 MiB and 1–2048 pixels per dimension. Paths must be relative and cannot contain empty/dot segments, backslashes, colons, NUL, symlinks or escapes. A platform ZIP has at most 128 files, 128 MiB expanded data and a 1 MiB manifest.
 
 launchers has at most 16 entries. IDs are unique within a platform, 1–40 characters, starting with a lowercase letter. The saved host profile ID is community.<platformID>.<launcherID>; do not casually rename it on updates. packageName must be a real Android package, activity a full class name, and name nonempty with at most 80 characters. Launching uses the existing settings, current ROM reads, SAF permissions, entry selection and return flow, without a separate ROM scan/copy.
 
@@ -51,11 +63,17 @@ catalog.json contains schemaVersion:1 and entries. Each entry declares kind, id,
 
 ## 日本語
 
+形式 3（最低ホスト 1.0.32）は既定アイコン、箱と媒体のモデルを機種パックにまとめ、形式 1/2 は互換を維持します。platform.hasPackaging は既定 true で、false の場合は箱モデルと地域版を指定できません。platform.medium=NONE は実物媒体なしで、models.gameMedia を省くか kind:NONE のみを指定します。モデル未完成を実物なしと混同しません。両方がない場合は表紙を使い、実物プレビューと挿入音は使いません。正式公開と実機状況は contracts/host.json の releaseVerified を確認します。
+
+models はホストの定義を使います。packaging は相対 GLB、packagingVariantLabel は地域名、gameMedia は kind、model、variantLabel、artworkAspectRatio（0.1–10）、shell です。日本版が既定で、packagingVariants.US は model、label、coverAspectRatio（0.5–2）を持ちます。GLB は各 32 MiB、BIN と画像を内蔵し、外部/data URI と sparse accessor は禁止です。画像差替えには artwork_ ノード、User artwork 材質、基本色テクスチャと TEXCOORD_0 が必要です。shell は name、baseColor（0–1 の三値）、roughness（0–1）、異なる translucentMaterial、有限の正数 wallThickness を持ちます。任意値の既定は defaultFinish=SATIN、metallic=0、normalScale=0.2、translucentNormalScale=0.04。対応材質と shell-opaque / shell-translucent 地域ではない材質変体が必要で、裸 DISC の外装変更は不可です。
+
+優先順はテーマの明示指定、パック既定、内蔵素材です。テーマは実物の有無を変更しません。更新時は機種 ID を維持します。examples/platform-presentation は架空の教材で実機の日本版ではありません。Fork、AI 依頼、公開、利用者の登録と取得は [作成ガイド](docs/PLATFORM_GUIDE.md) と [PDF](docs/PLATFORM_GUIDE.pdf) を参照してください。
+
 プラットフォームは templates/platform から作成します。既存の形式 1 は引き続き対応し、形式 2 は launchers を追加します。0.9.108 または本機能を含むホストビルドが必要です。正式公開と実機検証の状況は contracts/host.json を確認してください。最低バージョンは検証完了の証拠ではありません。ZIP のルートに platform.json を置きます。アイコンは任意です。retromao-package.json は開発と公開用の情報で、ZIP には含めません。
 
-platform.id は小文字英数字、アンダースコア、ハイフンの 2～32 文字です。name と aliases は内蔵またはインストール済みの定義と重複できません。extensions はドットを付けず、小文字英数字の 1～12 文字です。重複は可能ですが、それだけで機種を自動判定できません。manufacturer は空でない 80 文字以内、releaseYear は 1970～2100 です。coverAspectRatio は幅／高さで 0.5～2。medium は CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD です。モデルがなくても表紙とプレースホルダーを表示します。内蔵の識別情報は contracts/host.json にあります。
+platform.id は小文字英数字、アンダースコア、ハイフンの 2～32 文字です。name と aliases は内蔵またはインストール済みの定義と重複できません。extensions はドットを付けず、小文字英数字の 1～12 文字です。重複は可能ですが、それだけで機種を自動判定できません。manufacturer は空でない 80 文字以内、releaseYear は 1970～2100 です。coverAspectRatio は幅／高さで 0.5～2。medium は NONE、CARTRIDGE、GAME_CARD、HUCARD、DISC、UMD、DISK_CARD です。モデルがなくても表紙とプレースホルダーを表示します。内蔵の識別情報は contracts/host.json にあります。
 
-assets は logo と pixel のみで、パック内の PNG/WebP を参照します。各ファイルは 8 MiB 以下、各辺 1～2048 ピクセルです。相対パスを使い、空の要素、ドット要素、バックスラッシュ、コロン、NUL、シンボリックリンク、ディレクトリ外への参照を禁止します。最大 128 ファイル、展開後 64 MiB、マニフェストは 1 MiB までです。
+assets は logo と pixel のみで、パック内の PNG/WebP を参照します。各ファイルは 8 MiB 以下、各辺 1～2048 ピクセルです。相対パスを使い、空の要素、ドット要素、バックスラッシュ、コロン、NUL、シンボリックリンク、ディレクトリ外への参照を禁止します。最大 128 ファイル、展開後 128 MiB、マニフェストは 1 MiB までです。
 
 launchers は最大 16 項目です。ID は機種内で一意な 1～40 文字で、小文字から始めます。保存される profile ID は community.<platformID>.<launcherID> です。更新時に不用意に変更しないでください。packageName は実際の Android パッケージ名、activity は完全なクラス名、name は空でない 80 文字以内です。起動は既存の設定、現在の ROM の読み取り、SAF 権限、起動ファイル選択、復帰処理を使用し、別のスキャンや ROM コピーは行いません。
 

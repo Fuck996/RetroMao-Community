@@ -187,6 +187,8 @@ def validate_plugin(source):
 def validate_platform(source):
     manifest = read_json(required_file(source, "platform.json", 1024 * 1024))
     schema_check(manifest, "platform")
+    from platform_models import validate_models, validate_glb
+    models = validate_models(manifest)
     platform = manifest["platform"]
     if any(not value.strip() for value in [platform["name"], manifest["manufacturer"], *platform["aliases"]]):
         raise ValueError("Platform names, manufacturer and aliases cannot be blank")
@@ -207,7 +209,9 @@ def validate_platform(source):
             if image.format not in ("PNG", "WEBP") or not all(1 <= size <= 2048 for size in image.size):
                 raise ValueError(f"Invalid platform icon: {value}")
             image.verify()
-    archive_limits(source, 128)
+    for value, shell in models.items():
+        validate_glb(required_file(source, value, 32 * 1024 * 1024), shell)
+    archive_limits(source, 128, 128 * 1024 * 1024)
     return manifest
 
 

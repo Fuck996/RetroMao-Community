@@ -1,5 +1,7 @@
 # RetroMao Community
 
+Platform format 3 provides icons, physical availability and default packaging/media GLBs in one pack, with theme overrides. Requires a host 1.0.32 build containing this feature; see contracts/host.json for release acceptance. [Fork-to-download guide](docs/PLATFORM_GUIDE.md) · [PDF](docs/PLATFORM_GUIDE.pdf).
+
 [中文](README.md) · **English** · [日本語](README.ja.md)
 
 This standalone repository supports extension development and distribution. You do not need the host source to build plugins, translations or platform packs. Use Python 3.11+; plugin and browser tests also need Node.js 22+. Create and activate a Python virtual environment first if possible. Run every command from this repository root.

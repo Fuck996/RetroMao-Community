@@ -9,3 +9,4 @@ languages/*.json text eol=lf
 *.css text eol=lf
 *.ts text eol=lf
 *.txt text eol=lf
+*.pdf binary

@@ -4,6 +4,8 @@
 
 ## 中文
 
+2026-11-05：平台格式 3 增加默认包装/介质模型、NONE 与 hasPackaging、区域比例和材质描述；校验、打包与发布共用检查，主题仍可覆盖。补齐原创教学示例和三语制作指南/PDF。最低宿主 1.0.32，正式包与真机验收未声明完成。
+
 ### 设置菜单显示 · 0.9.115 · 2026-10-19
 
 “主题与显示”集中提供最近游戏、收藏、应用、同步存档和插件的菜单显示开关，顺序与主菜单一致；隐藏项不参与手柄切页和历史返回。设置首页各入口以整组最高的自然内容高度对齐，随窗口、字号和语言重新测量，不截断说明。四语新增“菜单显示”，各 1372 键，保留其余译文与插件资产。
@@ -193,6 +195,8 @@
 
 ## English
 
+2026-11-05: Format 3 adds default packaging/media models, NONE/hasPackaging, regional ratios and material descriptors with shared validation/packaging/publication checks and theme overrides. Includes original tutorial assets and trilingual guide/PDF. Minimum host 1.0.32; shipped APK/device acceptance is not claimed.
+
 ### Settings menu visibility · 0.9.115 · 2026-10-19
 
 Themes & display groups visibility switches for recent games, favorites, apps, save sync and plugins in main-menu order. Hidden pages are excluded from controller cycling and return history. Settings home cards share the tallest natural content height, remeasured for width, font and language without truncating descriptions. One four-language menu-visibility heading brings each catalog to 1372 keys; other translations and plugin assets are preserved.
@@ -320,6 +324,8 @@ Built-in Simplified/Traditional Chinese, English and Japanese follow system lang
 First MSX/platform and Amber/theme examples required host 0.9.44. Original trilingual release notes remain in RELEASE_NOTES.md.
 
 ## 日本語
+
+2026-11-05：形式 3 に既定の箱/媒体 GLB、NONE/hasPackaging、地域比率と材質設定を追加。検査、パッケージ化と公開は共通検査を使い、テーマ上書きを維持。原创教材と三言語ガイド/PDF を追加。最低ホスト 1.0.32 で、正式 APK と実機検証の完了は主張しません。
 
 ### 設定のメニュー表示 · 0.9.115 · 2026-10-19
 

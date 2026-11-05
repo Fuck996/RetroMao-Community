@@ -71,6 +71,8 @@ def check_source(source):
             raise ValueError("Platform package identity differs from its release metadata")
         if manifest.get("launchers") and version(metadata["minAppVersion"]) < (0, 9, 108):
             raise ValueError("Platform launchers require host 0.9.108 or a build containing that feature")
+        if manifest["schemaVersion"] >= 3 and version(metadata["minAppVersion"]) < (1, 0, 32):
+            raise ValueError("Platform format 3 requires host 1.0.32 or a build containing that feature")
         return "PLATFORM", metadata
     raise ValueError("No plugin.json or platform.json at package root")
 
@@ -89,7 +91,7 @@ def pack(source, output, tag):
     else:
         entry = {key: manifest[key] for key in ("id", "name", "author", "description", "version", "minAppVersion")}
         target = output / f"platform-{entry['id']}-{entry['version']}.zip"
-        entry.update(kind=kind, releaseTag=tag, **write_archive(source, target, archive_limits(source, 128)))
+        entry.update(kind=kind, releaseTag=tag, **write_archive(source, target, archive_limits(source, 128, 128 * 1024 * 1024)))
         if manifest.get("previewPath"):
             entry["previewPath"] = manifest["previewPath"]
         write_json(output / f"{entry['id']}.catalog-entry.json", entry)

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 3,
+  "platform": {"id": "demo-console", "name": "Demo Console", "aliases": ["demo-console"], "extensions": ["demo"], "medium": "CARTRIDGE", "hasPackaging": true},
+  "manufacturer": "RetroMao tutorial", "releaseYear": 2026, "coverAspectRatio": 0.7142857,
+  "assets": {"logo": "assets/logo.png", "pixel": "assets/pixel.png"},
+  "models": {
+    "packaging": "models/box.glb", "packagingVariantLabel": "原创教学包装",
+    "gameMedia": {"kind": "CARTRIDGE", "model": "models/cartridge.glb", "variantLabel": "原创教学卡带", "artworkAspectRatio": 1.25}
+  }
+}

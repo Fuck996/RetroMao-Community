@@ -428,5 +428,382 @@
         }
       ]
     }
+  },
+  {
+    "name": "v3-defaults",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "v3-digital-only",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "NONE",
+        "hasPackaging": false
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "v3-package-only",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "NONE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "v3-media-only",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE",
+        "hasPackaging": false
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "legacy-cannot-disable-packaging",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE",
+        "hasPackaging": false
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "legacy-cannot-use-none",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 1,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "NONE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75
+    }
+  },
+  {
+    "name": "legacy-cannot-declare-models",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {}
+    }
+  },
+  {
+    "name": "no-packaging-model",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE",
+        "hasPackaging": false
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "packaging": "box.glb"
+      }
+    }
+  },
+  {
+    "name": "no-media-model",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "NONE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "gameMedia": {
+          "kind": "CARTRIDGE"
+        }
+      }
+    }
+  },
+  {
+    "name": "model-medium-mismatch",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "gameMedia": {
+          "kind": "DISC"
+        }
+      }
+    }
+  },
+  {
+    "name": "model-path-escape",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "packaging": "../box.glb"
+      }
+    }
+  },
+  {
+    "name": "none-cannot-hide-model",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "gameMedia": {
+          "kind": "NONE",
+          "model": "cart.glb"
+        }
+      }
+    }
+  },
+  {
+    "name": "jp-is-default-not-variant",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "packagingVariants": {
+          "JAPANESE": {
+            "model": "box.glb",
+            "label": "JP"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "label-aspect-range",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "models": {
+        "gameMedia": {
+          "kind": "CARTRIDGE",
+          "artworkAspectRatio": 11
+        }
+      }
+    }
   }
 ]

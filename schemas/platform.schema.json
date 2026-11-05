@@ -1,47 +1,441 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object", "additionalProperties": false,
-  "required": ["schemaVersion", "platform", "manufacturer", "releaseYear"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "platform",
+    "manufacturer",
+    "releaseYear"
+  ],
   "properties": {
-    "schemaVersion": {"enum": [1, 2]},
+    "schemaVersion": {
+      "enum": [
+        1,
+        2,
+        3
+      ]
+    },
     "platform": {
-      "type": "object", "additionalProperties": false,
-      "required": ["id", "name", "aliases", "extensions"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "aliases",
+        "extensions"
+      ],
       "properties": {
-        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{1,31}$"},
-        "name": {"type": "string", "minLength": 1, "maxLength": 80},
-        "aliases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 80}},
-        "extensions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9]{1,12}$"}},
-        "medium": {"enum": ["CARTRIDGE", "GAME_CARD", "HUCARD", "DISC", "UMD", "DISK_CARD"]}
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{1,31}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "aliases": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "extensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]{1,12}$"
+          }
+        },
+        "medium": {
+          "enum": [
+            "NONE",
+            "CARTRIDGE",
+            "GAME_CARD",
+            "HUCARD",
+            "DISC",
+            "UMD",
+            "DISK_CARD"
+          ]
+        },
+        "hasPackaging": {
+          "type": "boolean"
+        }
       }
     },
-    "manufacturer": {"type": "string", "minLength": 1, "maxLength": 80},
-    "releaseYear": {"type": "integer", "minimum": 1970, "maximum": 2100},
-    "coverAspectRatio": {"type": "number", "minimum": 0.5, "maximum": 2},
-    "assets": {"type": "object", "additionalProperties": false, "properties": {"logo": {"$ref": "#/$defs/path"}, "pixel": {"$ref": "#/$defs/path"}}},
-    "launchers": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/launcher"}}
-  },
-  "allOf": [{"if": {"properties": {"schemaVersion": {"const": 1}}}, "then": {"properties": {"launchers": {"maxItems": 0}}}}],
-  "$defs": {
-    "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+$"},
-    "launcher": {
-      "type": "object", "additionalProperties": false,
-      "required": ["id", "name", "packageName", "activity", "protocol"],
+    "manufacturer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "releaseYear": {
+      "type": "integer",
+      "minimum": 1970,
+      "maximum": 2100
+    },
+    "coverAspectRatio": {
+      "type": "number",
+      "minimum": 0.5,
+      "maximum": 2
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,39}$"},
-        "name": {"type": "string", "minLength": 1, "maxLength": 80},
-        "packageName": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+$"},
-        "activity": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_$]*)+$"},
-        "protocol": {"enum": ["URI", "RETROARCH"]},
-        "mimeType": {"type": "string", "pattern": "^[a-zA-Z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+$"},
-        "cores": {"type": "array", "maxItems": 64, "items": {
-          "type": "object", "additionalProperties": false, "required": ["id", "name"],
-          "properties": {"id": {"type": "string", "pattern": "^[a-zA-Z0-9_]{1,100}$"}, "name": {"type": "string", "minLength": 1, "maxLength": 80}}
-        }}
+        "logo": {
+          "$ref": "#/$defs/path"
+        },
+        "pixel": {
+          "$ref": "#/$defs/path"
+        }
+      }
+    },
+    "launchers": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/launcher"
+      }
+    },
+    "models": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/models"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          }
+        }
       },
-      "allOf": [{"if": {"properties": {"protocol": {"const": "RETROARCH"}}},
-        "then": {"required": ["cores"], "properties": {"cores": {"minItems": 1}}, "not": {"required": ["mimeType"]}},
-        "else": {"properties": {"cores": {"maxItems": 0}}}}]
+      "then": {
+        "properties": {
+          "launchers": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schemaVersion": {
+            "enum": [
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "models": {
+            "type": "null"
+          },
+          "platform": {
+            "properties": {
+              "medium": {
+                "not": {
+                  "const": "NONE"
+                }
+              },
+              "hasPackaging": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "path": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+$"
+    },
+    "launcher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "packageName",
+        "activity",
+        "protocol"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]{0,39}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "packageName": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+$"
+        },
+        "activity": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_$]*)+$"
+        },
+        "protocol": {
+          "enum": [
+            "URI",
+            "RETROARCH"
+          ]
+        },
+        "mimeType": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9!#$&^_.+-]+/[a-zA-Z0-9!#$&^_.+-]+$"
+        },
+        "cores": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_]{1,100}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "protocol": {
+                "const": "RETROARCH"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "cores"
+            ],
+            "properties": {
+              "cores": {
+                "minItems": 1
+              }
+            },
+            "not": {
+              "required": [
+                "mimeType"
+              ]
+            }
+          },
+          "else": {
+            "properties": {
+              "cores": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "models": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "packaging": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+\\.glb$"
+        },
+        "packagingVariantLabel": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "\\S"
+        },
+        "gameMedia": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "NONE",
+                "CARTRIDGE",
+                "GAME_CARD",
+                "HUCARD",
+                "DISC",
+                "UMD",
+                "DISK_CARD"
+              ]
+            },
+            "model": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+\\.glb$"
+            },
+            "variantLabel": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "\\S"
+            },
+            "artworkAspectRatio": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0.1,
+              "maximum": 10
+            },
+            "shell": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "baseColor",
+                    "roughness",
+                    "translucentMaterial",
+                    "wallThickness"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "\\S"
+                    },
+                    "translucentMaterial": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80,
+                      "pattern": "\\S"
+                    },
+                    "baseColor": {
+                      "type": "array",
+                      "minItems": 3,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    },
+                    "roughness": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "metallic": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "wallThickness": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "normalScale": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "translucentNormalScale": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "defaultFinish": {
+                      "enum": [
+                        "MATTE",
+                        "SATIN",
+                        "GLOSSY",
+                        "TRANSLUCENT"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "packagingVariants": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "US": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "model",
+                "label"
+              ],
+              "properties": {
+                "model": {
+                  "type": "string",
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:\\u0000]+\\.glb$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80,
+                  "pattern": "\\S"
+                },
+                "coverAspectRatio": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0.5,
+                  "maximum": 2
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

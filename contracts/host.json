@@ -2,7 +2,9 @@
   "schemaVersion": 1,
   "pluginEmulators": {
     "minAppVersion": "0.9.138",
-    "protocols": ["URI"],
+    "protocols": [
+      "URI"
+    ],
     "releaseVerified": false
   },
   "platformLaunchers": {
@@ -13,6 +15,25 @@
       "RETROARCH"
     ],
     "releaseVerified": false
+  },
+  "platformPresentation": {
+    "schemaVersion": 3,
+    "minAppVersion": "1.0.32",
+    "releaseVerified": false,
+    "mediumNone": true,
+    "hasPackaging": true,
+    "models": [
+      "packaging",
+      "gameMedia"
+    ],
+    "modelPriority": [
+      "theme",
+      "platformPack",
+      "builtIn"
+    ],
+    "archiveMaxBytes": 134217728,
+    "modelMaxBytes": 33554432,
+    "iconMaxBytes": 8388608
   },
   "platforms": [
     {

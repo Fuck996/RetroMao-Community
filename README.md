@@ -1,5 +1,7 @@
 # RetroMao Community｜复古猫社区扩展
 
+平台格式 3 可在一个包中提供图标、包装、介质有无和默认 GLB；主题保留覆盖能力。需要包含本能力的 1.0.32 构建，发布状态见 contracts/host.json。[完整制作与 Fork 发布教程](docs/PLATFORM_GUIDE.md) · [PDF 教程](docs/PLATFORM_GUIDE.pdf)。
+
 **中文** · [English](README.en.md) · [日本語](README.ja.md)
 
 这里是独立的扩展开发与分发仓库。开发插件、翻译或平台包无需获取宿主源码；需要 Python 3.11+，插件测试与浏览器验证还需要 Node.js 22+。建议先创建并激活 Python 虚拟环境。所有命令都在本仓库根目录执行。
