@@ -2,20 +2,6 @@
   "schemaVersion": 1,
   "entries": [
     {
-      "kind": "PLATFORM",
-      "id": "msx",
-      "name": "MSX",
-      "author": "RetroMao Community",
-      "description": "MSX 平台配置与图标示例；不包含模拟器或 ROM。",
-      "version": "1.0.0",
-      "minAppVersion": "0.9.44",
-      "releaseTag": "packs-2026-10-06",
-      "fileName": "platform-msx-1.0.0.zip",
-      "sizeBytes": 14440,
-      "sha256": "bfab526dfc929bf87093917065db38360cb45db17badfea9ebb3009474e9ceb3",
-      "previewPath": "previews/msx.png"
-    },
-    {
       "kind": "THEME",
       "id": "amber-arcade",
       "name": "琥珀街机",
@@ -28,6 +14,20 @@
       "sizeBytes": 33381,
       "sha256": "9281d51852e1c0b0bbf41fbb5acf542098938747033bdea18723c3cdc34a04a0",
       "previewPath": "previews/amber-arcade.png"
+    },
+    {
+      "id": "msx",
+      "name": "MSX",
+      "author": "RetroMao Community",
+      "description": "日版 MSX 包装与卡带模型、同源像素机种图及主题色字标；支持 RetroArch blueMSX。",
+      "version": "1.1.0",
+      "minAppVersion": "1.0.32",
+      "kind": "PLATFORM",
+      "releaseTag": "msx-1.1.0",
+      "fileName": "platform-msx-1.1.0.zip",
+      "sizeBytes": 202236,
+      "sha256": "ce666e850075d3490f1743b6d33c2ec98f73ef958fa4a8e4822fc34f615c2479",
+      "previewPath": "previews/msx-1.1.0.png"
     }
   ]
 }
