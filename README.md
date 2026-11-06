@@ -1,5 +1,7 @@
 # RetroMao Community｜复古猫社区扩展
 
+完整平台资源示例：[MSX 日版包装、卡带与机种图标](examples/msx/README.md)。源码准备版为 1.1.0；在线是否可下载以 catalog.json 与已发布资产为准。
+
 平台格式 3 可在一个包中提供图标、包装、介质有无和默认 GLB；主题保留覆盖能力。需要包含本能力的 1.0.32 构建，发布状态见 contracts/host.json。[完整制作与 Fork 发布教程](docs/PLATFORM_GUIDE.md) · [PDF 教程](docs/PLATFORM_GUIDE.pdf)。
 
 **中文** · [English](README.en.md) · [日本語](README.ja.md)

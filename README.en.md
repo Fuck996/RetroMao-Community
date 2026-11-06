@@ -1,5 +1,7 @@
 # RetroMao Community
 
+Complete platform resource example: [Japanese MSX packaging, cartridge and icons](examples/msx/README.md), prepared as 1.1.0. Online availability follows catalog.json and published Release assets.
+
 Platform format 3 provides icons, physical availability and default packaging/media GLBs in one pack, with theme overrides. Requires a host 1.0.32 build containing this feature; see contracts/host.json for release acceptance. [Fork-to-download guide](docs/PLATFORM_GUIDE.md) · [PDF](docs/PLATFORM_GUIDE.pdf).
 
 [中文](README.md) · **English** · [日本語](README.ja.md)

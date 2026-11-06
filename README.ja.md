@@ -1,5 +1,7 @@
 # RetroMao Community｜コミュニティ拡張
 
+完全素材の例：[MSX 日本版の箱、カートリッジ、アイコン](examples/msx/README.md)。準備版は 1.1.0 で、取得可否は catalog.json と公開アセットに従います。
+
 形式 3 はアイコン、箱と媒体の有無、既定 GLB を一つのパックで提供し、テーマの上書きも維持します。本機能を含む 1.0.32 が必要で、公開状況は contracts/host.json を確認します。[Fork から導入まで](docs/PLATFORM_GUIDE.md) · [PDF](docs/PLATFORM_GUIDE.pdf)。
 
 [中文](README.md) · [English](README.en.md) · **日本語**

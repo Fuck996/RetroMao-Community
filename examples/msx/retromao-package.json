@@ -1,0 +1,10 @@
+{
+  "kind": "PLATFORM",
+  "id": "msx",
+  "name": "MSX",
+  "author": "RetroMao Community",
+  "description": "日版 MSX 包装与卡带模型、同源像素机种图及主题色字标；支持 RetroArch blueMSX。",
+  "version": "1.1.0",
+  "minAppVersion": "1.0.32",
+  "previewPath": "previews/msx-1.1.0.png"
+}

@@ -113,6 +113,9 @@
           "type": "null"
         }
       ]
+    },
+    "tintLogo": {
+      "type": "boolean"
     }
   },
   "allOf": [
@@ -159,6 +162,9 @@
                 "const": true
               }
             }
+          },
+          "tintLogo": {
+            "const": false
           }
         }
       }

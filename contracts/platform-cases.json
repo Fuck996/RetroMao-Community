@@ -805,5 +805,55 @@
         }
       }
     }
+  },
+  {
+    "name": "v3-theme-tinted-logo",
+    "valid": true,
+    "manifest": {
+      "schemaVersion": 3,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "tintLogo": true
+    }
+  },
+  {
+    "name": "legacy-cannot-tint-logo",
+    "valid": false,
+    "manifest": {
+      "schemaVersion": 2,
+      "platform": {
+        "id": "msx",
+        "name": "MSX",
+        "aliases": [
+          "msx",
+          "msx computer"
+        ],
+        "extensions": [
+          "rom",
+          "mx1",
+          "mx2"
+        ],
+        "medium": "CARTRIDGE"
+      },
+      "manufacturer": "ASCII / Microsoft",
+      "releaseYear": 1983,
+      "coverAspectRatio": 0.75,
+      "tintLogo": true
+    }
   }
 ]

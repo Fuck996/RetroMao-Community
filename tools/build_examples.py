@@ -25,23 +25,6 @@ def font(size: int):
 
 
 def make_images() -> None:
-    icons = ROOT / "examples/msx/assets"
-    icons.mkdir(parents=True, exist_ok=True)
-    logo = Image.new("RGBA", (640, 240), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(logo)
-    draw.rounded_rectangle((10, 12, 630, 228), radius=32, fill="#161B25", outline="#4AB9C5", width=10)
-    draw.text((320, 119), "MSX", anchor="mm", font=font(140), fill="#E7F6F8")
-    logo.save(icons / "logo.png")
-
-    pixel = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(pixel)
-    draw.rounded_rectangle((20, 40, 236, 216), radius=20, fill="#1F2933", outline="#4AB9C5", width=10)
-    draw.rectangle((42, 62, 214, 164), fill="#6B9C86")
-    draw.text((128, 183), "MSX", anchor="mm", font=font(38), fill="white")
-    pixel.save(icons / "pixel.png")
-    (ROOT / "previews").mkdir(exist_ok=True)
-    pixel.save(ROOT / "previews/msx.png")
-
     art = ROOT / "examples/amber/art"
     art.mkdir(parents=True, exist_ok=True)
     background = Image.new("RGB", (1280, 720))
@@ -91,16 +74,13 @@ def make_package(name: str, paths: list[str]) -> dict[str, int | str]:
 
 
 def main() -> None:
-    platform = make_package("platform-msx-1.0.0.zip", [
-        "examples/msx/platform.json", "examples/msx/assets/logo.png", "examples/msx/assets/pixel.png"
-    ])
+    from retromao import pack
+    platform = pack(ROOT / "examples/msx", DIST, "msx-1.1.0")
     theme = make_package("theme-amber-1.0.0.zip", [
         "examples/amber/theme.json", "examples/amber/art/library.png"
     ])
     entries = [
-        {"kind": "PLATFORM", "id": "msx", "name": "MSX", "author": "RetroMao Community",
-         "description": "MSX 平台配置与图标示例；不包含模拟器或 ROM。", "version": "1.0.0",
-         "minAppVersion": "0.9.44", "releaseTag": TAG, **platform, "previewPath": "previews/msx.png"},
+        platform,
         {"kind": "THEME", "id": "amber-arcade", "name": "琥珀街机", "author": "RetroMao Community",
          "description": "暖色网格背景、琥珀色卡片与轻微焦点动效。", "version": "1.0.0",
          "minAppVersion": "0.9.44", "releaseTag": TAG, **theme,

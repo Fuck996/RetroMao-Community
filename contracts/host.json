@@ -22,6 +22,7 @@
     "releaseVerified": false,
     "mediumNone": true,
     "hasPackaging": true,
+    "tintLogoOptIn": true,
     "models": [
       "packaging",
       "gameMedia"

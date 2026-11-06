@@ -15,6 +15,8 @@ python tools/retromao.py pack extensions/demo-msx --release-tag demo-msx-1.0.0
 
 ## 中文
 
+tintLogo 是格式 3 的可选布尔字段，默认 false 保留图片原色。单色透明字标可设 true，跟随内置机种使用主题 onSurface 色；pixel 图和用户主题显式覆盖不受影响。MSX 的完整资源示例位于 examples/msx，源码准备版本 1.1.0；在线 catalog 只有对应 Release 发布并回读校验后才更新。
+
 格式 3（最低宿主 1.0.32）把默认图标、包装与介质模型统一放入平台包，旧格式 1/2 保持兼容。platform.hasPackaging 默认 true；false 时不得声明包装模型或变体。platform.medium=NONE 表示没有实体介质，models.gameMedia 省略或为只有 kind:NONE 的空描述。没有几何不等于无实物：保留真实介质类型并省略 model。两个实物组都不存在时显示封面，不提供实物预览或挿入音效。正式发布/设备状态仍以 contracts/host.json 的 releaseVerified 为准。
 
 models 复用宿主模型描述：packaging 是包内 GLB 路径；packagingVariantLabel 为默认区域说明；gameMedia 可声明 kind、model、variantLabel、artworkAspectRatio（0.1–10）和 shell。日版包装是默认值，packagingVariants.US 可声明 model、label、coverAspectRatio（0.5–2）。所有路径必须通过同一包内路径校验，每个 GLB 最多 32 MiB。GLB 必须自包含，只有内嵌 BIN/图片，不允许外部或 data URI、稀疏 accessor。动态贴图需要 artwork_ 节点、User artwork 材质、基础颜色贴图与 TEXCOORD_0。shell 必须有 name、baseColor（3 个 0–1 数值）、roughness（0–1）、translucentMaterial（与 name 不同）、wallThickness（有限正数）；可选 defaultFinish（默认 SATIN）、metallic（默认 0）、normalScale（默认 0.2）、translucentNormalScale（默认 0.04）。模型须具备对应材质和 shell-opaque / shell-translucent 变体；裸 DISC 禁止换壳。
@@ -39,6 +41,8 @@ catalog.json 格式为 schemaVersion:1 与 entries。每项声明 kind、id、na
 
 ## English
 
+tintLogo is an optional format-3 boolean, default false to preserve original colors. Set true for a monochrome transparent logo to follow the theme onSurface color like built-in platforms; pixel art and explicit theme overrides remain unchanged. examples/msx is the complete-resource example, prepared as 1.1.0; the online catalog changes only after Release publication and byte/hash verification.
+
 Format 3 (minimum host 1.0.32) puts default icons, packaging and media models in one platform pack; formats 1/2 remain compatible. platform.hasPackaging defaults true; false forbids packaging models/variants. platform.medium=NONE means no physical medium; omit models.gameMedia or use only kind:NONE. Missing geometry does not mean absent physical hardware. With neither group, show covers without physical previews or insert sounds. Check releaseVerified in contracts/host.json for shipped/device acceptance.
 
 models reuses the host descriptor: packaging is a package GLB path; packagingVariantLabel describes the default region; gameMedia accepts kind, model, variantLabel, artworkAspectRatio (0.1–10) and shell. Japanese packaging is the default; packagingVariants.US accepts model, label and coverAspectRatio (0.5–2). Each GLB is at most 32 MiB and self-contained, with embedded BIN/images and no external/data URI or sparse accessor. Dynamic artwork requires artwork_ nodes, User artwork materials, a base-color texture and TEXCOORD_0. shell requires name, baseColor (three 0–1 numbers), roughness (0–1), distinct translucentMaterial and finite positive wallThickness. Optional defaults: defaultFinish=SATIN, metallic=0, normalScale=0.2, translucentNormalScale=0.04. Both named materials and shell-opaque/shell-translucent variants must exist; bare DISC cannot customize shells.
@@ -62,6 +66,8 @@ Themes still use root theme.json. Format 3 can reference model.<platformID>.pack
 catalog.json contains schemaVersion:1 and entries. Each entry declares kind, id, name, author, description, version, minAppVersion, releaseTag, fileName, sizeBytes and sha256; themes require previewPath. Publish and download-verify the actual ZIP in the source repository before updating the catalog. Scripts use plugins/index.json; languages use languages/index.json. Do not mix formats.
 
 ## 日本語
+
+tintLogo は形式 3 の任意の真偽値で、既定 false は原色を維持します。単色透明ロゴを true にすると、内蔵と同じテーマの onSurface 色を使います。ドット絵とテーマの明示上書きは変えません。完全素材の例は examples/msx の準備版 1.1.0 です。オンライン索引は Release 公開と再取得検証の後にだけ変更します。
 
 形式 3（最低ホスト 1.0.32）は既定アイコン、箱と媒体のモデルを機種パックにまとめ、形式 1/2 は互換を維持します。platform.hasPackaging は既定 true で、false の場合は箱モデルと地域版を指定できません。platform.medium=NONE は実物媒体なしで、models.gameMedia を省くか kind:NONE のみを指定します。モデル未完成を実物なしと混同しません。両方がない場合は表紙を使い、実物プレビューと挿入音は使いません。正式公開と実機状況は contracts/host.json の releaseVerified を確認します。
 

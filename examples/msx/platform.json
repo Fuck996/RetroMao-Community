@@ -1,14 +1,76 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "platform": {
     "id": "msx",
     "name": "MSX",
-    "aliases": ["msx", "msx computer"],
-    "extensions": ["rom", "mx1", "mx2"],
-    "medium": "CARTRIDGE"
+    "aliases": [
+      "msx",
+      "msx computer"
+    ],
+    "extensions": [
+      "rom",
+      "mx1",
+      "mx2"
+    ],
+    "medium": "CARTRIDGE",
+    "hasPackaging": true
   },
   "manufacturer": "ASCII / Microsoft",
   "releaseYear": 1983,
-  "coverAspectRatio": 0.75,
-  "assets": {"logo": "assets/logo.png", "pixel": "assets/pixel.png"}
+  "coverAspectRatio": 0.6746987951807228,
+  "launchers": [
+    {
+      "id": "retroarch",
+      "name": "RetroArch",
+      "packageName": "com.retroarch",
+      "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+      "protocol": "RETROARCH",
+      "cores": [
+        {
+          "id": "bluemsx",
+          "name": "blueMSX"
+        }
+      ]
+    },
+    {
+      "id": "retroarch64",
+      "name": "RetroArch 64",
+      "packageName": "com.retroarch.aarch64",
+      "activity": "com.retroarch.browser.retroactivity.RetroActivityFuture",
+      "protocol": "RETROARCH",
+      "cores": [
+        {
+          "id": "bluemsx",
+          "name": "blueMSX"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "packaging": "models/msx_box_jp.glb",
+    "packagingVariantLabel": "日版 Konami 系塑料盒",
+    "gameMedia": {
+      "kind": "CARTRIDGE",
+      "model": "models/msx_cartridge_jp.glb",
+      "variantLabel": "日版 MSX 标准卡带",
+      "artworkAspectRatio": 1.913978494623656,
+      "shell": {
+        "name": "MSX shell",
+        "translucentMaterial": "MSX translucent shell",
+        "baseColor": [
+          0.021,
+          0.024,
+          0.028
+        ],
+        "roughness": 0.45,
+        "wallThickness": 0.0013,
+        "defaultFinish": "SATIN"
+      }
+    }
+  },
+  "tintLogo": true,
+  "assets": {
+    "logo": "assets/logo.png",
+    "pixel": "assets/pixel.png"
+  }
 }
