@@ -28,6 +28,20 @@
       "sizeBytes": 202236,
       "sha256": "ce666e850075d3490f1743b6d33c2ec98f73ef958fa4a8e4822fc34f615c2479",
       "previewPath": "previews/msx-1.1.0.png"
+    },
+    {
+      "kind": "THEME",
+      "id": "deck",
+      "name": "DECK",
+      "author": "RetroMao Community",
+      "description": "横向浏览最近游戏，显示游戏介质或包装盒，带倒影和切换动画。支持单屏背景视频和双屏展示。",
+      "version": "1.0.0",
+      "minAppVersion": "1.0.36",
+      "releaseTag": "packs-2026-11-08",
+      "fileName": "theme-deck-1.0.0.zip",
+      "sizeBytes": 16454,
+      "sha256": "e1fa6e91db39bfd9658120089bfa2094bf948cf6eb4f035e86a73edf118ab689",
+      "previewPath": "previews/deck.png"
     }
   ]
 }
