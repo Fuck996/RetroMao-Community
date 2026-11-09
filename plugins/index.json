@@ -91,35 +91,6 @@
       }
     },
     {
-      "id": "org.retromao.vita3k-sync",
-      "name": "Vita3K ROM 同步",
-      "author": "4NPC",
-      "version": "1.0.1",
-      "minAppVersion": "0.9.98",
-      "description": "同步 Vita3K 游戏本体、补丁、DLC 和许可。",
-      "kind": "SCRIPT",
-      "releaseTag": "vita3k-sync-1.0.1",
-      "fileName": "plugin-org.retromao.vita3k-sync-1.0.1.zip",
-      "sizeBytes": 4721,
-      "sha256": "624e22ad963e479b0cac2e39b3220f2a73b10c1aacc55638b45851a6a7feeafb",
-      "iconName": "gamepad",
-      "defaultLocale": "zh-Hans",
-      "localizations": {
-        "zh-Hant": {
-          "name": "Vita3K ROM 同步",
-          "description": "同步 Vita3K 遊戲本體、更新、DLC 與授權。"
-        },
-        "en": {
-          "name": "Vita3K ROM sync",
-          "description": "Sync Vita3K games, updates, DLC and licenses."
-        },
-        "ja": {
-          "name": "Vita3K ROM 同期",
-          "description": "Vita3K のゲーム本体・更新・DLC・ライセンスを同期。"
-        }
-      }
-    },
-    {
       "id": "azahar-plus",
       "name": "自定义启动入口",
       "author": "4NPC",
@@ -145,6 +116,35 @@
         "ja": {
           "name": "カスタム起動設定",
           "description": "プラットフォームと起動パラメーターを設定します。初期値は Azahar Plus です。"
+        }
+      }
+    },
+    {
+      "id": "org.retromao.vita3k-sync",
+      "name": "Vita3K ROM 同步",
+      "author": "4NPC",
+      "version": "1.0.2",
+      "minAppVersion": "0.9.98",
+      "description": "同步 Vita3K 游戏本体、补丁、DLC 和许可。",
+      "kind": "SCRIPT",
+      "releaseTag": "vita3k-sync-1.0.2",
+      "fileName": "plugin-org.retromao.vita3k-sync-1.0.2.zip",
+      "sizeBytes": 5144,
+      "sha256": "6ffdea7f30f6d6db5c881d5a5c70131b6cee2607f08c7d3c62e5a6dbc35ab8c3",
+      "iconName": "gamepad",
+      "defaultLocale": "zh-Hans",
+      "localizations": {
+        "zh-Hant": {
+          "name": "Vita3K ROM 同步",
+          "description": "同步 Vita3K 遊戲本體、更新、DLC 與授權。"
+        },
+        "en": {
+          "name": "Vita3K ROM sync",
+          "description": "Sync Vita3K games, updates, DLC and licenses."
+        },
+        "ja": {
+          "name": "Vita3K ROM 同期",
+          "description": "Vita3K のゲーム本体・更新・DLC・ライセンスを同期。"
         }
       }
     }
