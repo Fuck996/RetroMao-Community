@@ -123,6 +123,10 @@ def check_theme_format7(manifest, format_version, metadata):
     if version(metadata["minAppVersion"]) < (1, 0, 43):
         raise ValueError("Theme format 7 requires host 1.0.43")
     schema_check(manifest["presentation"], "theme-presentation")
+    presentation = manifest["presentation"]
+    floor_stage = (presentation.get("details") or {}).get("stage") == "floor" or "detailStage" in presentation
+    if floor_stage and version(metadata["minAppVersion"]) < (1, 0, 46):
+        raise ValueError("The floor detail stage requires host 1.0.46")
 
 
 def theme_files(source, manifest):

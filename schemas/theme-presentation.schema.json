@@ -114,7 +114,8 @@
         "stage": {
           "enum": [
             "panel",
-            "plinth"
+            "plinth",
+            "floor"
           ]
         },
         "paddingDp": {
@@ -318,6 +319,30 @@
         "packaging",
         "setting"
       ]
+    },
+    "detailStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reflection": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4
+        },
+        "floor": {
+          "type": "number",
+          "minimum": 0.8,
+          "maximum": 1
+        },
+        "switchSwing": {
+          "type": "boolean"
+        },
+        "swingStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.5
+        }
+      }
     }
   }
 }

@@ -88,7 +88,7 @@
     "details": {
       "layout": "stack",
       "panel": false,
-      "stage": "panel",
+      "stage": "floor",
       "paddingDp": 14,
       "stageFraction": 0.64,
       "showPublisher": true,
@@ -118,6 +118,12 @@
     },
     "showcaseModelFraction": 0.58,
     "showcaseModel": "setting",
-    "showcaseHomeModel": "packaging"
+    "showcaseHomeModel": "packaging",
+    "detailStage": {
+      "reflection": 0.22,
+      "floor": 0.97,
+      "switchSwing": true,
+      "swingStrength": 1
+    }
   }
 }

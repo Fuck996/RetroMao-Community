@@ -36,6 +36,8 @@
 
 `recentCarousel` 在格式 7 另有 `geometry`（尺寸和间距）、`focus`（`start` 默认，选中项移到左侧；`center` 选中项停在中间，靠近两端时列表不再滚动）、`size`（显示 10～40 个游戏，最近游戏在前，按游戏库顺序补齐；省略时最多 20 个最近游戏、不足 10 个补到 10 个）和 `badges`（`none` 默认；`corner` 显示可下载、待上传等资源状态）。`presentation.showcaseModel` 与 `showcaseHomeModel` 设定双屏上屏在游戏库和首页显示 `packaging` 包装盒（默认）或按 `setting` 设置。
 
+`presentation.details.stage` 可选 `panel`（实色底板）、`plinth`（光池）或 `floor`（无底板，模型立在透明地面上）；`floor` 的倒影深度、地面线与切换动作由 `presentation.detailStage` 声明，格式与 `carouselStage` 相同。使用 `floor` 或 `detailStage` 时 `minAppVersion` 至少为 `1.0.46`。
+
 省略的字段保持原有呈现，应用不会替旧主题包补上新效果。格式 6 及更早的主题不能使用这些字段。发布格式 7 时 `minAppVersion` 至少为 `1.0.43`。
 
 ## English
@@ -54,6 +56,8 @@ Format 7 can be published for Android 1.0.43 and later. A `schemaVersion: 7` the
 
 In format 7, `recentCarousel` also accepts `geometry` for size and spacing, and `focus`. With `start`, the default, the selected game moves to the left. With `center`, it stays in the middle and the list stops scrolling near either end. `size` shows 10 to 40 games, with recent games first and the rest filled in library order. Without it, the list shows up to 20 recent games and fills to 10. `badges` is `none` by default, and `corner` shows statuses such as available to download or pending upload. `presentation.showcaseModel` and `showcaseHomeModel` set whether the upper screen shows the `packaging` box, the default, or follows the `setting`, for the library and the home page.
 
+`presentation.details.stage` can be `panel` for a solid base, `plinth` for a light pool, or `floor`, where the model stands on a transparent floor without a base. For `floor`, `presentation.detailStage` declares the reflection depth, floor line, and switch animation, using the same format as `carouselStage`. Themes that use `floor` or `detailStage` need `minAppVersion` of at least `1.0.46`.
+
 Omitted fields keep the previous appearance, and the app does not add new effects to older theme packs. Format 6 and earlier cannot use these fields. Publish format 7 themes with `minAppVersion` of at least `1.0.43`.
 
 ## 日本語
@@ -71,5 +75,7 @@ Android 版 1.0.39 以降でテーマ形式 6 を利用できます。`theme.jso
 形式 7 は Android 版 1.0.43 以降向けに配布できます。`schemaVersion: 7` では `presentation` が必須で、`modern`、`library`、`neutral`、`deck` のスタイルは使用できません。`presentation` では、ナビゲーション、設定項目、カード、詳細、モデルの台などを部品ごとに指定します。構造は [presentation schema](../schemas/theme-presentation.schema.json) を参照してください。
 
 形式 7 の `recentCarousel` では、サイズと間隔の `geometry` と `focus` も指定できます。既定の `start` では選択中のゲームが左に移動し、`center` では中央に留まり、両端に近づくと一覧はスクロールを止めます。`size` は 10～40 本を表示し、最近のゲームを先頭に、残りをライブラリの順で補います。省略すると最近のゲームを最大 20 本表示し、10 本まで補います。`badges` の既定値は `none` で、`corner` はダウンロード可能やアップロード待ちなどの状態を表示します。`presentation.showcaseModel` と `showcaseHomeModel` は、ライブラリとホームで上画面に `packaging` のパッケージ（既定）を表示するか、`setting` の設定に従うかを指定します。
+
+`presentation.details.stage` には、単色の台の `panel`、光の台の `plinth`、台を置かずモデルを透明な床に立たせる `floor` を指定できます。`floor` の映り込みの深さ、床の位置、切り替え時の動きは `presentation.detailStage` で、`carouselStage` と同じ形式で指定します。`floor` または `detailStage` を使う場合は `minAppVersion` に `1.0.46` 以上を指定します。
 
 省略した項目は従来の表示のままで、古いテーマパックに新しい効果が加わることはありません。形式 6 以前ではこれらの項目を使用できません。形式 7 を配布するときは `minAppVersion` に `1.0.43` 以上を指定します。

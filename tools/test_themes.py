@@ -30,7 +30,19 @@ class ThemeFormatTest(unittest.TestCase):
         self.assertEqual(7, self.manifest["schemaVersion"])
         carousel = self.manifest["shell"]["recentCarousel"]
         self.assertEqual(("center", 20, "corner"), (carousel["focus"], carousel["size"], carousel["badges"]))
-        self.assertEqual("1.0.43", metadata["minAppVersion"])
+        self.assertEqual("1.0.46", metadata["minAppVersion"])
+        self.assertEqual("floor", self.manifest["presentation"]["details"]["stage"])
+
+    def test_floor_detail_stage_requires_host_1_0_46(self):
+        with self.assertRaises(ValueError):
+            self.check(metadata=dict(self.metadata, minAppVersion="1.0.45"))
+        manifest = copy.deepcopy(self.manifest)
+        manifest["presentation"]["details"]["stage"] = "panel"
+        manifest["presentation"].pop("detailStage")
+        self.assertEqual("THEME", self.check(manifest, dict(self.metadata, minAppVersion="1.0.43"))[0])
+        manifest["presentation"]["detailStage"] = {"reflection": 0.5}
+        with self.assertRaises(ValueError):
+            self.check(manifest)
 
     def test_format_7_requires_presentation_and_current_host(self):
         manifest = copy.deepcopy(self.manifest)
