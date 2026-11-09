@@ -7,7 +7,7 @@
   "shell": {
     "home": "recent",
     "recentCarousel": {"defaultModel": "media", "actions": "title", "libraryShortcut": "navigation"},
-    "navigationAlignment": "end",
+    "navigationAlignment": "start",
     "footer": "compact",
     "ctrLibraryOnly": true,
     "videoScrim": 0.62,
