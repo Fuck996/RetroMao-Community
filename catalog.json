@@ -33,14 +33,14 @@
       "id": "deck",
       "name": "DECK",
       "author": "RetroMao Community",
-      "description": "横向浏览最近游戏的介质和包装盒模型。菜单靠左，列表末尾可打开游戏库。",
-      "version": "1.1.1",
-      "minAppVersion": "1.0.39",
+      "description": "横向浏览最近游戏的介质和包装盒模型，焦点停在中间，显示资源状态角标。列表末尾可打开游戏库。",
+      "version": "1.1.2",
+      "minAppVersion": "1.0.43",
       "kind": "THEME",
-      "releaseTag": "deck-1.1.1",
-      "fileName": "theme-deck-1.1.1.zip",
-      "sizeBytes": 16590,
-      "sha256": "6d7730a8090923fd64a876100593ca06f339ef6d8fe2a878006fb287e51047fa",
+      "releaseTag": "deck-1.1.2",
+      "fileName": "theme-deck-1.1.2.zip",
+      "sizeBytes": 16968,
+      "sha256": "9fc854dd650369056d8587910668ce3205830ac082d45c5035594771924ddcb4",
       "previewPath": "previews/deck.png"
     }
   ]
