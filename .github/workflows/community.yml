@@ -6,7 +6,8 @@ jobs:
   checks:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        # Playwright 1.56.1 supports Ubuntu 24.04 for Chromium dependency installation.
+        os: [ubuntu-24.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
