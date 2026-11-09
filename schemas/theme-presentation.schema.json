@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RetroMao format 7 theme-presentation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "navigation": {
+      "enum": [
+        "flat",
+        "tonal"
+      ]
+    },
+    "settings": {
+      "enum": [
+        "flat",
+        "tonal"
+      ]
+    },
+    "keycaps": {
+      "enum": [
+        "flat",
+        "tonal"
+      ]
+    },
+    "platformPicker": {
+      "enum": [
+        "flat",
+        "tonal"
+      ]
+    },
+    "library": {
+      "enum": [
+        "grid",
+        "platformList"
+      ]
+    },
+    "apps": {
+      "enum": [
+        "sections",
+        "grid",
+        "categoryList"
+      ]
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layout": {
+          "enum": [
+            "overlay",
+            "caption"
+          ]
+        },
+        "coverGlow": {
+          "type": "boolean"
+        },
+        "gloss": {
+          "type": "boolean"
+        },
+        "sweep": {
+          "type": "boolean"
+        },
+        "liftDp": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "layout": {
+                "const": "caption"
+              }
+            },
+            "required": [
+              "layout"
+            ]
+          },
+          "then": {},
+          "else": {
+            "properties": {
+              "coverGlow": {
+                "const": false
+              },
+              "gloss": {
+                "const": false
+              },
+              "sweep": {
+                "const": false
+              },
+              "liftDp": {
+                "const": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layout": {
+          "enum": [
+            "basic",
+            "stack"
+          ]
+        },
+        "panel": {
+          "type": "boolean"
+        },
+        "stage": {
+          "enum": [
+            "panel",
+            "plinth"
+          ]
+        },
+        "paddingDp": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "stageFraction": {
+          "type": "number",
+          "minimum": 0.35,
+          "maximum": 0.75
+        },
+        "showPublisher": {
+          "type": "boolean"
+        },
+        "centeredLogo": {
+          "type": "boolean"
+        },
+        "inlineStorage": {
+          "type": "boolean"
+        }
+      }
+    },
+    "floatingActions": {
+      "type": "boolean"
+    },
+    "coverPalette": {
+      "type": "boolean"
+    },
+    "surfaceTones": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "low": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "medium": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "high": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "highest": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "outline": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gridEffect": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tint": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+            },
+            "cellDp": {
+              "type": "integer",
+              "minimum": 12,
+              "maximum": 96
+            },
+            "majorEvery": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 8
+            },
+            "strength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "cycleMs": {
+              "type": "integer",
+              "minimum": 1000,
+              "maximum": 60000
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "showcaseTitle": {
+      "type": "boolean"
+    },
+    "showcaseBareMedia": {
+      "type": "boolean"
+    },
+    "deviceDate": {
+      "type": "boolean"
+    },
+    "bannerDate": {
+      "type": "boolean"
+    },
+    "bannerLogo": {
+      "type": "boolean"
+    },
+    "controlVideoPreview": {
+      "type": "boolean"
+    },
+    "actionButtons": {
+      "enum": [
+        "flat",
+        "tonal"
+      ]
+    },
+    "carouselStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reflection": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4
+        },
+        "floor": {
+          "type": "number",
+          "minimum": 0.8,
+          "maximum": 1
+        },
+        "switchSwing": {
+          "type": "boolean"
+        },
+        "swingStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.5
+        }
+      }
+    },
+    "showcaseStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reflection": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4
+        },
+        "floor": {
+          "type": "number",
+          "minimum": 0.8,
+          "maximum": 1
+        },
+        "switchSwing": {
+          "type": "boolean"
+        },
+        "swingStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1.5
+        }
+      }
+    },
+    "showcaseModelFraction": {
+      "type": "number",
+      "minimum": 0.25,
+      "maximum": 0.7
+    },
+    "coverPaletteBase": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "showcaseModel": {
+      "enum": [
+        "packaging",
+        "setting"
+      ]
+    },
+    "showcaseHomeModel": {
+      "enum": [
+        "packaging",
+        "setting"
+      ]
+    }
+  }
+}

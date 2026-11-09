@@ -1,12 +1,26 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "id": "deck",
   "name": "DECK",
   "author": "RetroMao Community",
-  "style": "neutral",
   "shell": {
     "home": "recent",
-    "recentCarousel": {"defaultModel": "media", "actions": "title", "libraryShortcut": "navigation"},
+    "recentCarousel": {
+      "defaultModel": "media",
+      "actions": "title",
+      "libraryShortcut": "navigation",
+      "geometry": {
+        "idleScale": 0.72,
+        "idleOpacity": 0.62,
+        "gapDp": 22,
+        "compactGapDp": 14,
+        "gutterDp": 48,
+        "compactGutterDp": 24
+      },
+      "focus": "center",
+      "size": 20,
+      "badges": "corner"
+    },
     "navigationAlignment": "start",
     "footer": "compact",
     "ctrLibraryOnly": true,
@@ -21,9 +35,23 @@
     "accent": "#E8EEF5",
     "outline": "#2C3644"
   },
-  "layout": {"detailWidthFraction": 0.25, "cardCornerRadius": 6, "cardGap": 16, "titleLines": 1},
-  "motion": {"focusDelayMs": 450, "focusScale": 1.0, "transitionMs": 220},
-  "media3d": {"floatAmplitude": 0.02, "floatSpeed": 0.9, "swayStrength": 1.0, "discDegreesPerSecond": 6},
+  "layout": {
+    "detailWidthFraction": 0.25,
+    "cardCornerRadius": 6,
+    "cardGap": 16,
+    "titleLines": 1
+  },
+  "motion": {
+    "focusDelayMs": 450,
+    "focusScale": 1.0,
+    "transitionMs": 220
+  },
+  "media3d": {
+    "floatAmplitude": 0.02,
+    "floatSpeed": 0.9,
+    "swayStrength": 1.0,
+    "discDegreesPerSecond": 6
+  },
   "assets": {
     "background.recent": "art/background.jpg",
     "background.library": "art/background.jpg",
@@ -31,6 +59,65 @@
     "background.showcase": "art/background.jpg"
   },
   "dualScreen": {
-    "showcase": {"layout": "modelHero", "synopsisLines": 6, "showLogo": true, "facts": ["year", "publisher", "genre", "players", "playtime"]}
+    "showcase": {
+      "layout": "modelHero",
+      "synopsisLines": 6,
+      "showLogo": true,
+      "facts": [
+        "year",
+        "publisher",
+        "genre",
+        "players",
+        "playtime"
+      ]
+    }
+  },
+  "presentation": {
+    "navigation": "tonal",
+    "settings": "tonal",
+    "keycaps": "tonal",
+    "platformPicker": "tonal",
+    "apps": "grid",
+    "card": {
+      "layout": "caption",
+      "coverGlow": true,
+      "gloss": true,
+      "sweep": true,
+      "liftDp": 4
+    },
+    "details": {
+      "layout": "stack",
+      "panel": false,
+      "stage": "panel",
+      "paddingDp": 14,
+      "stageFraction": 0.64,
+      "showPublisher": true,
+      "centeredLogo": false,
+      "inlineStorage": false
+    },
+    "floatingActions": true,
+    "surfaceTones": {
+      "low": 0.05,
+      "medium": 0.07,
+      "high": 0.1,
+      "highest": 0.15,
+      "outline": 0.12
+    },
+    "showcaseTitle": false,
+    "carouselStage": {
+      "reflection": 0.22,
+      "floor": 0.97,
+      "switchSwing": true,
+      "swingStrength": 1
+    },
+    "showcaseStage": {
+      "reflection": 0.22,
+      "floor": 0.97,
+      "switchSwing": true,
+      "swingStrength": 1
+    },
+    "showcaseModelFraction": 0.58,
+    "showcaseModel": "setting",
+    "showcaseHomeModel": "packaging"
   }
 }

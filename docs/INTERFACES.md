@@ -8,6 +8,7 @@
 | Plugin manifest schemaVersion 1 | [plugin.schema.json](../schemas/plugin.schema.json) | [Template](../templates/plugin/), [localization](../sdk/PLUGIN_LOCALIZATION.md) |
 | Platform schemaVersion 1 / 2 | [platform.schema.json](../schemas/platform.schema.json), [host.json](../contracts/host.json) | [Platform and theme contract](../EXTENSIONS.md), [template](../templates/platform/) |
 | Theme schemaVersion 6 | [theme-shell.schema.json](../schemas/theme-shell.schema.json) | [Theme launcher shell](THEME_SHELL.md), [DECK example](../examples/deck/theme.json) |
+| Theme schemaVersion 7 | [theme-presentation.schema.json](../schemas/theme-presentation.schema.json), [theme-shell.schema.json](../schemas/theme-shell.schema.json) | [Theme launcher shell](THEME_SHELL.md), [DECK example](../examples/deck/theme.json) |
 | Language schema_version 1 | [language.schema.json](../schemas/language.schema.json), [language index](../languages/index.json) | [Language guide](../languages/README.md), [message context](../contracts/message-context.json) |
 | Release/catalog schemaVersion 1 | [package.schema.json](../schemas/package.schema.json), [catalog.schema.json](../schemas/catalog.schema.json) | [Publishing](PUBLISHING.md), [validation](VALIDATION.md) |
 | Native storage provider integration | [Provider contract](../SYNC_PROVIDERS.md) | Host implementation required / 需宿主实现 / ホスト実装が必要 |

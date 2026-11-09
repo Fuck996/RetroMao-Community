@@ -1,23 +1,135 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RetroMao theme launcher shell",
+  "title": "RetroMao format 7 theme-shell",
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "home": {"enum": ["library", "recent"]},
-    "recentCarousel": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "defaultModel": {"enum": ["media", "packaging"]},
-        "actions": {"enum": ["floating", "title"]},
-        "libraryShortcut": {"enum": ["tile", "navigation"]}
-      }
+    "home": {
+      "enum": [
+        "library",
+        "recent"
+      ]
     },
-    "navigationAlignment": {"enum": ["start", "end"]},
-    "footer": {"enum": ["standard", "compact"]},
-    "ctrLibraryOnly": {"type": "boolean"},
-    "videoScrim": {"type": "number", "minimum": 0, "maximum": 1},
-    "showcaseVideo": {"type": "boolean"}
+    "recentCarousel": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultModel": {
+              "enum": [
+                "media",
+                "packaging"
+              ]
+            },
+            "actions": {
+              "enum": [
+                "floating",
+                "title"
+              ]
+            },
+            "libraryShortcut": {
+              "enum": [
+                "tile",
+                "navigation"
+              ]
+            },
+            "geometry": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "idleScale": {
+                      "type": "number",
+                      "minimum": 0.4,
+                      "maximum": 1
+                    },
+                    "idleOpacity": {
+                      "type": "number",
+                      "minimum": 0.2,
+                      "maximum": 1
+                    },
+                    "gapDp": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 64
+                    },
+                    "compactGapDp": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 64
+                    },
+                    "gutterDp": {
+                      "type": "integer",
+                      "minimum": 8,
+                      "maximum": 96
+                    },
+                    "compactGutterDp": {
+                      "type": "integer",
+                      "minimum": 8,
+                      "maximum": 96
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "focus": {
+              "enum": [
+                "start",
+                "center"
+              ]
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 10,
+              "maximum": 40
+            },
+            "badges": {
+              "enum": [
+                "none",
+                "corner"
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "navigationAlignment": {
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "footer": {
+      "enum": [
+        "standard",
+        "compact"
+      ]
+    },
+    "ctrLibraryOnly": {
+      "type": "boolean"
+    },
+    "videoScrim": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "showcaseVideo": {
+      "type": "boolean"
+    }
   }
 }

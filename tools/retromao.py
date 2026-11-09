@@ -84,7 +84,7 @@ def check_source(source):
             raise ValueError("Online themes require a preview")
         required_file(ROOT, metadata["previewPath"], 8 * 1024 * 1024)
         format_version = manifest.get("schemaVersion", 1)
-        if type(format_version) is not int or not 1 <= format_version <= 6:
+        if type(format_version) is not int or not 1 <= format_version <= 7:
             raise ValueError("Unsupported theme format")
         if manifest.get("style") == "deck" and format_version != 5:
             raise ValueError("The legacy deck style requires theme format 5")
@@ -96,11 +96,33 @@ def check_source(source):
             raise ValueError("Launcher shell capabilities require theme format 6")
         if format_version >= 6 and version(metadata["minAppVersion"]) < (1, 0, 39):
             raise ValueError("Theme format 6 requires host 1.0.39")
+        check_theme_format7(manifest, format_version, metadata)
         if "shell" in manifest:
             schema_check(manifest["shell"], "theme-shell")
         theme_files(source, manifest)
         return "THEME", metadata
     raise ValueError("No plugin.json, platform.json or theme.json at package root")
+
+
+FORMAT7_CAROUSEL_FIELDS = ("geometry", "focus", "size", "badges")
+
+
+def check_theme_format7(manifest, format_version, metadata):
+    """Format 7 declares components in presentation; older formats cannot carry format 7 fields."""
+    carousel = (manifest.get("shell") or {}).get("recentCarousel") or {}
+    if not isinstance(carousel, dict):
+        raise ValueError("Invalid recent carousel")
+    if format_version < 7:
+        if "presentation" in manifest or any(key in carousel for key in FORMAT7_CAROUSEL_FIELDS):
+            raise ValueError("Presentation capabilities require theme format 7")
+        return
+    if not isinstance(manifest.get("presentation"), dict):
+        raise ValueError("Theme format 7 requires presentation")
+    if manifest.get("style", "minimal") != "minimal":
+        raise ValueError("Theme format 7 does not use legacy styles")
+    if version(metadata["minAppVersion"]) < (1, 0, 43):
+        raise ValueError("Theme format 7 requires host 1.0.43")
+    schema_check(manifest["presentation"], "theme-presentation")
 
 
 def theme_files(source, manifest):
