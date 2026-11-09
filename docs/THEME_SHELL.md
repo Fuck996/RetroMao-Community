@@ -34,7 +34,7 @@
 
 Theme format 6 is available from Android 1.0.39. Set `schemaVersion: 6` in `theme.json` and put the object above in `shell`. Base styles are `minimal`, `modern`, `library`, and `neutral`, which uses the theme palette directly. Every theme ID follows the same rules.
 
-The default `home` is `library`; it can also be `recent`. Set `recentCarousel` to enable a model carousel. Its default model is `media`, and `packaging` is also available. A saved player preference takes precedence. Use `floating` actions or open options from the `title`. The shortcut to the library can be a `tile` or use the `navigation` style.
+The default `home` is `library`, and `recent` is also available. Set `recentCarousel` to enable a model carousel. Its default model is `media`, and `packaging` is also available. A saved player preference takes precedence. Use `floating` actions or open options from the `title`. The shortcut to the library can be a `tile` or use the `navigation` style.
 
 The default `navigationAlignment` is `start`, with `end` available. The `compact` footer shows the main actions for the current page. The host shows page keys at the ends of the top bar and platform keys in the footer on game pages. `ctrLibraryOnly` limits 3DS mode to the library. Set the video scrim to a value from `0` to `1` and use `showcaseVideo` for video on the upper screen. Set `dualScreen.showcase.layout` to `modelHero` for a large model on that screen.
 

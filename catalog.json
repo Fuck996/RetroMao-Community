@@ -30,17 +30,17 @@
       "previewPath": "previews/msx-1.1.0.png"
     },
     {
-      "kind": "THEME",
       "id": "deck",
       "name": "DECK",
       "author": "RetroMao Community",
-      "description": "横向浏览最近游戏，显示游戏介质或包装盒，带倒影和切换动画。支持单屏背景视频和双屏展示。",
-      "version": "1.0.0",
-      "minAppVersion": "1.0.36",
-      "releaseTag": "packs-2026-11-08",
-      "fileName": "theme-deck-1.0.0.zip",
-      "sizeBytes": 16454,
-      "sha256": "e1fa6e91db39bfd9658120089bfa2094bf948cf6eb4f035e86a73edf118ab689",
+      "description": "横向浏览最近游戏的介质和包装盒模型。菜单靠右，列表末尾可打开游戏库。",
+      "version": "1.1.0",
+      "minAppVersion": "1.0.39",
+      "kind": "THEME",
+      "releaseTag": "deck-1.1.0",
+      "fileName": "theme-deck-1.1.0.zip",
+      "sizeBytes": 16589,
+      "sha256": "0798a8a6b592393dfe2ea44524daa3d414485393cff716648739564152d53820",
       "previewPath": "previews/deck.png"
     }
   ]
