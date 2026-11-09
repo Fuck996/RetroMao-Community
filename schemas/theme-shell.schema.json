@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RetroMao theme launcher shell",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "home": {"enum": ["library", "recent"]},
+    "recentCarousel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaultModel": {"enum": ["media", "packaging"]},
+        "actions": {"enum": ["floating", "title"]},
+        "libraryShortcut": {"enum": ["tile", "navigation"]}
+      }
+    },
+    "navigationAlignment": {"enum": ["start", "end"]},
+    "footer": {"enum": ["standard", "compact"]},
+    "ctrLibraryOnly": {"type": "boolean"},
+    "videoScrim": {"type": "number", "minimum": 0, "maximum": 1},
+    "showcaseVideo": {"type": "boolean"}
+  }
+}

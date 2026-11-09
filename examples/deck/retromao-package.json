@@ -1,0 +1,10 @@
+{
+  "kind": "THEME",
+  "id": "deck",
+  "name": "DECK",
+  "author": "RetroMao Community",
+  "description": "横向浏览最近游戏的介质和包装盒模型。菜单靠右，列表末尾可打开游戏库。",
+  "version": "1.1.0",
+  "minAppVersion": "1.0.39",
+  "previewPath": "previews/deck.png"
+}

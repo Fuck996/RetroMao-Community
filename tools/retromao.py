@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 
-from extension_tools import ROOT, archive_limits, read_json, schema_check, validate_catalog, validate_platform, validate_plugin, version, write_archive, write_json
+from extension_tools import ROOT, archive_limits, read_json, required_file, schema_check, validate_catalog, validate_platform, validate_plugin, version, write_archive, write_json
 import validate_languages
 
 
@@ -74,7 +74,44 @@ def check_source(source):
         if manifest["schemaVersion"] >= 3 and version(metadata["minAppVersion"]) < (1, 0, 32):
             raise ValueError("Platform format 3 requires host 1.0.32 or a build containing that feature")
         return "PLATFORM", metadata
-    raise ValueError("No plugin.json or platform.json at package root")
+    if (source / "theme.json").is_file():
+        manifest = read_json(required_file(source, "theme.json", 1024 * 1024))
+        metadata = read_json(source / "retromao-package.json")
+        schema_check(metadata, "package")
+        if metadata["kind"] != "THEME" or any(metadata[key] != manifest.get(key) for key in ("id", "name", "author")):
+            raise ValueError("Theme package identity differs from its release metadata")
+        if not metadata.get("previewPath"):
+            raise ValueError("Online themes require a preview")
+        required_file(ROOT, metadata["previewPath"], 8 * 1024 * 1024)
+        format_version = manifest.get("schemaVersion", 1)
+        if type(format_version) is not int or not 1 <= format_version <= 6:
+            raise ValueError("Unsupported theme format")
+        if manifest.get("style") == "deck" and format_version != 5:
+            raise ValueError("The legacy deck style requires theme format 5")
+        dual_screen = manifest.get("dualScreen") or {}
+        if not isinstance(dual_screen, dict) or not isinstance(dual_screen.get("showcase", {}), dict):
+            raise ValueError("Invalid theme dual screen settings")
+        showcase = dual_screen.get("showcase", {})
+        if format_version < 6 and ("shell" in manifest or manifest.get("style") == "neutral" or showcase.get("layout") == "modelHero"):
+            raise ValueError("Launcher shell capabilities require theme format 6")
+        if format_version >= 6 and version(metadata["minAppVersion"]) < (1, 0, 39):
+            raise ValueError("Theme format 6 requires host 1.0.39")
+        if "shell" in manifest:
+            schema_check(manifest["shell"], "theme-shell")
+        theme_files(source, manifest)
+        return "THEME", metadata
+    raise ValueError("No plugin.json, platform.json or theme.json at package root")
+
+
+def theme_files(source, manifest):
+    assets = manifest.get("assets", {})
+    if not isinstance(assets, dict) or any(not isinstance(path, str) for path in assets.values()):
+        raise ValueError("Theme assets must map slots to package paths")
+    paths = sorted({"theme.json", *assets.values()})
+    files = [required_file(source, path, 128 * 1024 * 1024) for path in paths]
+    if len(files) > 2048 or sum(path.stat().st_size for path in files) > 128 * 1024 * 1024:
+        raise ValueError("Theme exceeds host archive limits")
+    return files
 
 
 def pack(source, output, tag):
@@ -90,8 +127,9 @@ def pack(source, output, tag):
         entry = build(source, output, tag)
     else:
         entry = {key: manifest[key] for key in ("id", "name", "author", "description", "version", "minAppVersion")}
-        target = output / f"platform-{entry['id']}-{entry['version']}.zip"
-        entry.update(kind=kind, releaseTag=tag, **write_archive(source, target, archive_limits(source, 128, 128 * 1024 * 1024)))
+        target = output / f"{kind.lower()}-{entry['id']}-{entry['version']}.zip"
+        files = theme_files(source, read_json(source / "theme.json")) if kind == "THEME" else archive_limits(source, 128, 128 * 1024 * 1024)
+        entry.update(kind=kind, releaseTag=tag, **write_archive(source, target, files))
         if manifest.get("previewPath"):
             entry["previewPath"] = manifest["previewPath"]
         write_json(output / f"{entry['id']}.catalog-entry.json", entry)
@@ -171,6 +209,8 @@ def check_repository():
             validate_plugin(folder)
         if (folder / "platform.json").exists():
             validate_platform(folder)
+        if (folder / "theme.json").is_file() and (folder / "retromao-package.json").is_file():
+            check_source(folder)
     from build_sync_examples import build_examples
     with tempfile.TemporaryDirectory(prefix="retromao-shared-check-") as directory:
         build_examples(Path(directory), "validation")

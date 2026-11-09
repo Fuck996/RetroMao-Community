@@ -1,9 +1,18 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "id": "deck",
   "name": "DECK",
   "author": "RetroMao Community",
-  "style": "deck",
+  "style": "neutral",
+  "shell": {
+    "home": "recent",
+    "recentCarousel": {"defaultModel": "media", "actions": "title", "libraryShortcut": "navigation"},
+    "navigationAlignment": "end",
+    "footer": "compact",
+    "ctrLibraryOnly": true,
+    "videoScrim": 0.62,
+    "showcaseVideo": true
+  },
   "colors": {
     "background": "#0E141B",
     "surface": "#1B222C",
@@ -22,6 +31,6 @@
     "background.showcase": "art/background.jpg"
   },
   "dualScreen": {
-    "showcase": {"synopsisLines": 6, "showLogo": true, "facts": ["year", "publisher", "genre", "players", "playtime"]}
+    "showcase": {"layout": "modelHero", "synopsisLines": 6, "showLogo": true, "facts": ["year", "publisher", "genre", "players", "playtime"]}
   }
 }
