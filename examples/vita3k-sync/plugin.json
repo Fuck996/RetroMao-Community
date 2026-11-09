@@ -4,7 +4,7 @@
   "id": "org.retromao.vita3k-sync",
   "name": "Vita3K ROM 同步",
   "author": "4NPC",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "minAppVersion": "0.9.98",
   "defaultLocale": "zh-Hans",
   "description": "同步 Vita3K 游戏本体、补丁、DLC 和许可。",

@@ -27,10 +27,14 @@ test("Vita3K resolver runs through the SDK and returns paths without per-file RP
   await context.retromao.ready;
   messages.length = 0;
   vm.runInContext(script, context);
-  await context.retromao.__run("resource:installed", { games: [{ gameId: "one", romNames: ["PCSG00001.psvita"] }, { gameId: "two", romNames: ["PCSE00002.PSVITA"] }] });
+  await context.retromao.__run("resource:installed", { games: [{ gameId: "one", romNames: ["PCSG00001.psvita"] }, { gameId: "two", romNames: ["PCSE00002.PSVITA"] }, { gameId: "numeric", romNames: ["123456789.psvita"] }] });
   assert.equal(messages.length, 1);
   assert.equal(messages[0].type, "complete");
-  const [first, second] = messages[0].result;
+  const [first, second, numeric] = messages[0].result;
+  assert.equal(first.key, "PCSG00001");
+  assert.equal(numeric.key, "n" + "123456789".padStart(64, "_"));
+  assert.equal(numeric.paths[0].path, "ux0/app/123456789");
+  assert.equal(numeric.paths[0].required, true);
   assert.equal(first.paths[0].path, "ux0/app/PCSG00001");
   assert.equal(second.paths[0].path, "ux0/app/PCSE00002");
   assert.equal(first.paths[0].required, true);
