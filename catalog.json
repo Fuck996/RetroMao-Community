@@ -2,20 +2,6 @@
   "schemaVersion": 1,
   "entries": [
     {
-      "kind": "THEME",
-      "id": "amber-arcade",
-      "name": "琥珀街机",
-      "author": "RetroMao Community",
-      "description": "暖色网格背景、琥珀色卡片与轻微焦点动效。",
-      "version": "1.0.0",
-      "minAppVersion": "0.9.44",
-      "releaseTag": "packs-2026-10-06",
-      "fileName": "theme-amber-1.0.0.zip",
-      "sizeBytes": 33381,
-      "sha256": "9281d51852e1c0b0bbf41fbb5acf542098938747033bdea18723c3cdc34a04a0",
-      "previewPath": "previews/amber-arcade.png"
-    },
-    {
       "id": "msx",
       "name": "MSX",
       "author": "RetroMao Community",
