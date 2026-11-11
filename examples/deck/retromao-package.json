@@ -3,8 +3,8 @@
   "id": "deck",
   "name": "DECK",
   "author": "RetroMao Community",
-  "description": "横向浏览最近游戏的介质和包装盒模型，焦点停在中间，显示资源状态角标。游戏库详情的模型立在地面上，带倒影。",
-  "version": "1.1.3",
-  "minAppVersion": "1.0.46",
+  "description": "横向浏览最近游戏的介质和包装盒模型，切换卡带或光盘时播放轻短音效。游戏库详情的模型立在地面上，带倒影。",
+  "version": "1.1.4",
+  "minAppVersion": "1.1.7",
   "previewPath": "previews/deck.png"
 }

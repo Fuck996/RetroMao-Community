@@ -40,6 +40,10 @@
 
 省略的字段保持原有呈现，应用不会替旧主题包补上新效果。格式 6 及更早的主题不能使用这些字段。发布格式 7 时 `minAppVersion` 至少为 `1.0.43`。
 
+### 格式 8
+
+格式 8 需要 Android 1.1.7 或更新版本。通过 `assets["sound.mediaSwitch"]` 指定包内 WAV，切换到另一个游戏的介质模型时播放。文件须为标准 16 位 PCM WAV，8～48 kHz、单声道或双声道，最长 250 毫秒，采用 44 字节头。可选的 `mediaSwitchVolume` 范围为 0～1，默认 1。
+
 ## English
 
 Theme format 6 is available from Android 1.0.39. Set `schemaVersion: 6` in `theme.json` and put the object above in `shell`. Base styles are `minimal`, `modern`, `library`, and `neutral`, which uses the theme palette directly. Every theme ID follows the same rules.
@@ -60,6 +64,10 @@ In format 7, `recentCarousel` also accepts `geometry` for size and spacing, and 
 
 Omitted fields keep the previous appearance, and the app does not add new effects to older theme packs. Format 6 and earlier cannot use these fields. Publish format 7 themes with `minAppVersion` of at least `1.0.43`.
 
+### Format 8
+
+Format 8 requires Android 1.1.7 or later. Set `assets["sound.mediaSwitch"]` to a WAV file in the pack to play it when switching to another game's media model. Use standard 16-bit PCM WAV with a 44-byte header, 8–48 kHz, mono or stereo, and a duration of up to 250 ms. The optional `mediaSwitchVolume` ranges from 0 to 1 and defaults to 1.
+
 ## 日本語
 
 Android 版 1.0.39 以降でテーマ形式 6 を利用できます。`theme.json` に `schemaVersion: 6` を指定し、上のオブジェクトを `shell` に設定します。基本スタイルは `minimal`、`modern`、`library`、テーマの配色をそのまま使う `neutral` です。すべてのテーマ ID に同じ規則が適用されます。
@@ -79,3 +87,7 @@ Android 版 1.0.39 以降でテーマ形式 6 を利用できます。`theme.jso
 `presentation.details.stage` には、単色の台の `panel`、光の台の `plinth`、台を置かずモデルを透明な床に立たせる `floor` を指定できます。`floor` の映り込みの深さ、床の位置、切り替え時の動きは `presentation.detailStage` で、`carouselStage` と同じ形式で指定します。`floor` または `detailStage` を使う場合は `minAppVersion` に `1.0.46` 以上を指定します。
 
 省略した項目は従来の表示のままで、古いテーマパックに新しい効果が加わることはありません。形式 6 以前ではこれらの項目を使用できません。形式 7 を配布するときは `minAppVersion` に `1.0.43` 以上を指定します。
+
+### 形式 8
+
+形式 8 には Android 版 1.1.7 以降が必要です。`assets["sound.mediaSwitch"]` にパック内の WAV を指定すると、別のゲームのメディアモデルに切り替わる際に再生されます。44 バイトヘッダーの標準 16 ビット PCM WAV（8～48 kHz、モノラルまたはステレオ、最長 250 ミリ秒）を使用します。`mediaSwitchVolume` は 0～1 で、既定値は 1 です。

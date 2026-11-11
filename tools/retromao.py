@@ -3,13 +3,16 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
 import shutil
+from struct import Struct
 import subprocess
 import sys
 import tempfile
+from zipfile import ZipFile
 
 from extension_tools import ROOT, archive_limits, read_json, required_file, schema_check, validate_catalog, validate_platform, validate_plugin, version, write_archive, write_json
 import validate_languages
@@ -84,7 +87,7 @@ def check_source(source):
             raise ValueError("Online themes require a preview")
         required_file(ROOT, metadata["previewPath"], 8 * 1024 * 1024)
         format_version = manifest.get("schemaVersion", 1)
-        if type(format_version) is not int or not 1 <= format_version <= 7:
+        if type(format_version) is not int or not 1 <= format_version <= 8:
             raise ValueError("Unsupported theme format")
         if manifest.get("style") == "deck" and format_version != 5:
             raise ValueError("The legacy deck style requires theme format 5")
@@ -100,6 +103,7 @@ def check_source(source):
         if "shell" in manifest:
             schema_check(manifest["shell"], "theme-shell")
         theme_files(source, manifest)
+        check_theme_switch_sound(source, manifest, format_version, metadata)
         return "THEME", metadata
     raise ValueError("No plugin.json, platform.json or theme.json at package root")
 
@@ -138,6 +142,37 @@ def theme_files(source, manifest):
     if len(files) > 2048 or sum(path.stat().st_size for path in files) > 128 * 1024 * 1024:
         raise ValueError("Theme exceeds host archive limits")
     return files
+
+
+def check_theme_switch_sound(source, manifest, format_version, metadata):
+    if format_version == 8 and version(metadata["minAppVersion"]) < (1, 1, 7):
+        raise ValueError("Theme format 8 requires host 1.1.7")
+    asset = manifest.get("assets", {}).get("sound.mediaSwitch")
+    volume = manifest.get("mediaSwitchVolume")
+    if volume is not None and (asset is None or type(volume) not in (float, int) or not 0 <= volume <= 1):
+        raise ValueError("Switch sound volume must be between 0 and 1 and requires a sound asset")
+    if asset is None:
+        return
+    if format_version < 8:
+        raise ValueError("Switch sounds require theme format 8")
+    header_format = Struct("<4sI4s4sIHHIIHH4sI")
+    path = required_file(source, asset, header_format.size + 48_000)
+    with path.open("rb") as stream:
+        header = stream.read(header_format.size)
+    if path.suffix.lower() != ".wav" or len(header) != header_format.size:
+        raise ValueError("Switch sound must be a PCM WAV file")
+    (riff, riff_size, wave, fmt, fmt_size, encoding, channels, rate, byte_rate,
+     block_size, bits, data, data_size) = header_format.unpack(header)
+    size = path.stat().st_size
+    if not (
+        (riff, wave, fmt, data) == (b"RIFF", b"WAVE", b"fmt ", b"data")
+        and (fmt_size, encoding, bits) == (16, 1, 16)
+        and 8000 <= rate <= 48000 and channels in (1, 2)
+        and block_size == channels * 2 and byte_rate == rate * block_size
+        and riff_size == size - 8 and data_size == size - header_format.size
+        and 0 < data_size <= byte_rate // 4 and data_size % block_size == 0
+    ):
+        raise ValueError("Switch sound must be standard 16-bit PCM WAV, 8–48 kHz, mono or stereo, up to 250 ms")
 
 
 def pack(source, output, tag):
@@ -190,6 +225,21 @@ def publish(args):
     if prior and version(entry["version"]) <= version(prior["version"]):
         raise ValueError("Published extension versions are immutable; increment version")
     archive = ROOT / "dist" / entry["fileName"]
+    existing_archive = getattr(args, "archive", None)
+    if existing_archive is not None:
+        accepted = existing_archive.resolve()
+        if accepted.name != entry["fileName"]:
+            raise ValueError("The supplied archive name must match the package and version")
+        with ZipFile(archive) as built, ZipFile(accepted) as supplied:
+            names = sorted(built.namelist())
+            if sorted(supplied.namelist()) != names or any(
+                supplied.getinfo(name).file_size != built.getinfo(name).file_size
+                or supplied.read(name) != built.read(name) for name in names
+            ):
+                raise ValueError("The supplied archive contents differ from the validated build")
+        archive = accepted
+        content = archive.read_bytes()
+        entry.update(sizeBytes=len(content), sha256=hashlib.sha256(content).hexdigest())
     if not args.notes or not Path(args.notes).is_file():
         raise ValueError("Provide --notes with Chinese, English and Japanese release notes")
     notes = Path(args.notes).read_text(encoding="utf-8")
@@ -202,7 +252,6 @@ def publish(args):
     with tempfile.TemporaryDirectory(prefix="retromao-release-") as directory:
         command("gh", "release", "download", args.tag, "--repo", args.repository,
                 "--pattern", entry["fileName"], "--dir", directory)
-        import hashlib
         actual = (Path(directory) / entry["fileName"]).read_bytes()
         if len(actual) != entry["sizeBytes"] or hashlib.sha256(actual).hexdigest() != entry["sha256"]:
             raise ValueError("Published asset verification failed; index was not changed")
@@ -270,6 +319,7 @@ def main():
     release.add_argument("--tag", required=True)
     release.add_argument("--repository", required=True)
     release.add_argument("--notes", required=True)
+    release.add_argument("--archive", type=Path, help="Publish an existing ZIP after verifying its contents against the validated build")
     args = parser.parse_args()
     if args.command == "init":
         scaffold(args)
