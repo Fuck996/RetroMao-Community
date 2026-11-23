@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 3,
+  "platform": {
+    "id": "switch2",
+    "name": "Nintendo Switch 2",
+    "aliases": ["switch2", "switch 2", "ns2", "banananative", "banana native"],
+    "extensions": ["nup"],
+    "medium": "GAME_CARD"
+  },
+  "manufacturer": "Nintendo",
+  "releaseYear": 2025,
+  "coverAspectRatio": 0.62,
+  "tintLogo": true,
+  "assets": {
+    "logo": "assets/logo.png",
+    "pixel": "assets/pixel.png"
+  },
+  "models": {
+    "packaging": "models/switch2-box.glb",
+    "packagingVariantLabel": "日版红色纵式游戏卡盒",
+    "gameMedia": {
+      "kind": "GAME_CARD",
+      "model": "models/switch2-game-card.glb",
+      "variantLabel": "日版红色游戏卡",
+      "artworkAspectRatio": 0.72580645
+    }
+  },
+  "launchers": [
+    {
+      "id": "banana-native",
+      "name": "Banana Native",
+      "packageName": "dev.bananative.android",
+      "activity": "dev.bananative.android.Launch",
+      "protocol": "URI"
+    }
+  ]
+}

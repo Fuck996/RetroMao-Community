@@ -1,0 +1,10 @@
+{
+  "kind": "PLATFORM",
+  "id": "switch2",
+  "name": "Nintendo Switch 2",
+  "author": "RetroMao Community",
+  "description": "使用 Banana Native 启动 .nup，包含红色包装盒和游戏卡、平台 Logo、像素机种图及存档迁移同步指南。",
+  "version": "1.0.4",
+  "minAppVersion": "1.2.5",
+  "previewPath": "previews/switch2.png"
+}
