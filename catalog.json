@@ -28,6 +28,20 @@
       "sizeBytes": 22947,
       "sha256": "510e93eeee422a22676493ee386e2651742f22c330f213f76eb04d3b9b43226d",
       "previewPath": "previews/deck.png"
+    },
+    {
+      "id": "switch2",
+      "name": "Nintendo Switch 2",
+      "author": "RetroMao Community",
+      "description": "使用 Banana Native 启动 .nup，包含红色包装盒和游戏卡、平台 Logo、像素机种图及存档迁移同步指南。",
+      "version": "1.0.4",
+      "minAppVersion": "1.2.5",
+      "kind": "PLATFORM",
+      "releaseTag": "switch2-1.0.4",
+      "fileName": "platform-switch2-1.0.4.zip",
+      "sizeBytes": 410129,
+      "sha256": "bceb1f1a306f3e7c06a94d3fbf7bfa50cfca39d1ea02d55d2421685b71d58b0e",
+      "previewPath": "previews/switch2.png"
     }
   ]
 }
